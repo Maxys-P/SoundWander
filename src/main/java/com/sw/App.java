@@ -3,6 +3,7 @@ package com.sw;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.text.Font;
 import java.io.IOException;
@@ -41,6 +42,8 @@ public class App extends Application {
         // Ajout de la scène au stage et ajustement de la taille du stage pour correspondre à la scène.
         stage.setScene(scene);
         stage.sizeToScene();
+        stage.setMinWidth(420);
+        stage.setMinHeight(250);
 
         // Affichage du stage (fenêtre).
         stage.show();

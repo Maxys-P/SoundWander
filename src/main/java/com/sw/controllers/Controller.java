@@ -58,7 +58,6 @@ public class Controller {
         // Associe un gestionnaire d'événements aux champs de texte pour réagir à la pression de la touche Entrée.
         textFieldIdentifiant.setOnKeyPressed(event -> handleEnterPressed(event));
         passwordField.setOnKeyPressed(event -> handleEnterPressed(event));
-
     }
 
     /**

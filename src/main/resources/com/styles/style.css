@@ -10,6 +10,9 @@
     -fx-padding: 10px 15px 0px 15px; /* Haut, Droit, Bas, Gauche */
     -fx-border-radius: 20px; /* Rayon de la bordure pour les coins arrondis */
     -fx-background-radius: 20px; /* Rayon du fond pour les coins arrondis */
+    /* longueur maximale et minimale */
+    -fx-min-width: 400px;
+    -fx-max-width: 400px;
 }
 
 #labelSeConnecter {

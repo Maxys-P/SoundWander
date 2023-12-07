@@ -6,21 +6,21 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
+<?import javafx.scene.layout.StackPane?>
 <AnchorPane fx:controller="com.sw.controllers.Controller" xmlns:fx="http://javafx.com/fxml" prefHeight="250.0" prefWidth="400.0">
     <!-- Conteneur principal pour l'interface utilisateur. Definit le contrôleur associé à cette vue. -->
-
+    <StackPane alignment="CENTER" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0"
+               AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0">
     <!-- VBox comme conteneur pour les éléments de connexion. Les éléments à l'intérieur seront organisés verticalement. -->
-    <VBox fx:id="conteneurConnexion" spacing="10" alignment="CENTER"
-          AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0"
-          AnchorPane.topAnchor="30.0" AnchorPane.bottomAnchor="30.0">
+    <VBox fx:id="conteneurConnexion" spacing="10" alignment="CENTER" maxWidth="300" maxHeight="200">
         <!-- Label pour le titre de la page. Style appliqué pour augmenter la taille de la police. -->
         <Label fx:id="labelSeConnecter" text="Se Connecter" style="-fx-font-size: 20px;"/>
 
         <!-- Champ de texte pour saisir l'identifiant. 'promptText' fournit un texte indicatif. -->
-        <TextField fx:id="textFieldIdentifiant" prefWidth="150" promptText="Identifiant"/>
+        <TextField fx:id="textFieldIdentifiant" prefWidth="250" maxWidth="250" promptText="Identifiant"/>
 
         <!-- Champ de mot de passe pour saisir le mot de passe. 'promptText' fournit un texte indicatif. -->
-        <PasswordField fx:id="passwordField" prefWidth="150" promptText="Mot de Passe"/>
+        <PasswordField fx:id="passwordField" prefWidth="250" maxWidth="250" promptText="Mot de Passe"/>
 
         <!-- Bouton pour valider la connexion. L'action est liée à une méthode dans le contrôleur. -->
         <Button fx:id="boutonValider" text="Valider" onAction="#handleButtonAction"/>
@@ -28,6 +28,8 @@
         <!-- Label pour afficher les messages d'erreur. Initialement caché. -->
         <Label fx:id="labelErreur" text="Identifiant incorrect" visible="false" style="-fx-text-fill: red;"/>
     </VBox>
+    </StackPane>
+
 
     <!-- Label pour le message de bienvenue affiché après une connexion réussie. Initialement caché. -->
     <Label fx:id="labelBienvenue" text="Bienvenue dans SoundWander" visible="false" layoutX="70.0" layoutY="50.0" style="-fx-font-size: 20px;"/>
