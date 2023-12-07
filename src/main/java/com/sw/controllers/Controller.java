@@ -1,7 +1,5 @@
 package com.sw.controllers;
 
-import java.util.*;
-
 /**
  *
  */
@@ -39,7 +37,7 @@ public class Controller {
     private VBox conteneurConnexion; // Conteneur pour les champs de connexion et le bouton.
 
     @FXML
-    private TextField textFieldIdentifiant; // Champ de saisie pour l'identifiant.
+    private TextField textFieldPseudo; // Champ de saisie pour l'identifiant.
 
     @FXML
     private PasswordField passwordField; // Champ de saisie pour le mot de passe.
@@ -56,7 +54,7 @@ public class Controller {
     @FXML
     private void initialize() {
         // Associe un gestionnaire d'événements aux champs de texte pour réagir à la pression de la touche Entrée.
-        textFieldIdentifiant.setOnKeyPressed(event -> handleEnterPressed(event));
+        textFieldPseudo.setOnKeyPressed(event -> handleEnterPressed(event));
         passwordField.setOnKeyPressed(event -> handleEnterPressed(event));
     }
 
@@ -87,7 +85,7 @@ public class Controller {
      * Sinon, affiche un message d'erreur.
      */
     private void validateLogin() {
-        String identifiant = textFieldIdentifiant.getText();
+        String identifiant = textFieldPseudo.getText();
         String motDePasse = passwordField.getText();
 
         // Validation de l'identifiant et du mot de passe. (À remplacer par une vérification sécurisée dans une application réelle)
@@ -104,7 +102,7 @@ public class Controller {
             pause.setOnFinished(event -> labelErreur.setVisible(false));
             pause.play();
             // Réinitialiser les champs de texte
-            textFieldIdentifiant.clear();
+            textFieldPseudo.clear();
             passwordField.clear();
 
         }

@@ -3,7 +3,6 @@ package com.sw;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.text.Font;
 import java.io.IOException;
@@ -24,6 +23,7 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
         // Chargement de la police personnalisée
         Font.loadFont(getClass().getResourceAsStream("fonts/Mirza-Regular.ttf"), 14);
+        Font.loadFont(getClass().getResourceAsStream("fonts/Mirza-Bold.ttf"), 14);
 
         // Chargement du fichier FXML.
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("/com/views/users/login-view.fxml"));
@@ -35,14 +35,12 @@ public class App extends Application {
         scene.getStylesheets().add(getClass().getResource("/com/styles/style.css").toExternalForm());
 
         // Configuration des propriétés du stage (fenêtre).
-        stage.setTitle("Hello!"); // Définit le titre de la fenêtre.
-
-        //stage.setResizable(false); // Empêche le redimensionnement de la fenêtre.
+        stage.setTitle("SoundWander"); // Définit le titre de la fenêtre.
 
         // Ajout de la scène au stage et ajustement de la taille du stage pour correspondre à la scène.
         stage.setScene(scene);
-        stage.sizeToScene();
-        stage.setMinWidth(420);
+        stage.sizeToScene(); // Ajuste la taille du stage pour correspondre à la scène.
+        stage.setMinWidth(420); // Définit la largeur minimale du stage.
         stage.setMinHeight(250);
 
         // Affichage du stage (fenêtre).

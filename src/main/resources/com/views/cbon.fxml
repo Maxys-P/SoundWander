@@ -17,7 +17,7 @@
         <Label fx:id="labelSeConnecter" text="Sauter de la fenetre" style="-fx-font-size: 20px;"/>
 
         <!-- Champ de texte pour saisir l'identifiant. 'promptText' fournit un texte indicatif. -->
-        <TextField fx:id="textFieldIdentifiant" prefWidth="150" promptText="Pseudo"/>
+        <TextField fx:id="textFieldPseudo" prefWidth="150" promptText="Pseudo"/>
 
         <!-- Champ de mot de passe pour saisir le mot de passe. 'promptText' fournit un texte indicatif. -->
         <PasswordField fx:id="passwordField" prefWidth="150" promptText="Mot de Passe"/>

@@ -12,22 +12,28 @@
     <StackPane alignment="CENTER" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0"
                AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0">
     <!-- VBox comme conteneur pour les éléments de connexion. Les éléments à l'intérieur seront organisés verticalement. -->
-    <VBox fx:id="conteneurConnexion" spacing="10" alignment="CENTER" maxWidth="300" maxHeight="200">
-        <!-- Label pour le titre de la page. Style appliqué pour augmenter la taille de la police. -->
-        <Label fx:id="labelSeConnecter" text="Se Connecter" style="-fx-font-size: 20px;"/>
+        <VBox fx:id="conteneurConnexion" spacing="10" alignment="CENTER" maxWidth="300" maxHeight="200">
+            <!-- Label pour le titre de la page. Style appliqué pour augmenter la taille de la police. -->
+            <Label fx:id="labelSeConnecter" text="Se Connecter" style="-fx-font-size: 20px;"/>
 
-        <!-- Champ de texte pour saisir l'identifiant. 'promptText' fournit un texte indicatif. -->
-        <TextField fx:id="textFieldIdentifiant" prefWidth="250" maxWidth="250" promptText="Identifiant"/>
+            <!-- Champ de texte pour saisir l'identifiant. 'promptText' fournit un texte indicatif. -->
+            <TextField fx:id="textFieldPseudo" prefWidth="250" maxWidth="250" promptText="Pseudo"/>
 
-        <!-- Champ de mot de passe pour saisir le mot de passe. 'promptText' fournit un texte indicatif. -->
-        <PasswordField fx:id="passwordField" prefWidth="250" maxWidth="250" promptText="Mot de Passe"/>
+            <!-- Champ de mot de passe pour saisir le mot de passe. 'promptText' fournit un texte indicatif. -->
+            <PasswordField fx:id="passwordField" prefWidth="250" maxWidth="250" promptText="Mot de Passe"/>
 
-        <!-- Bouton pour valider la connexion. L'action est liée à une méthode dans le contrôleur. -->
-        <Button fx:id="boutonValider" text="Valider" onAction="#handleButtonAction"/>
+            <!-- Bouton pour valider la connexion. L'action est liée à une méthode dans le contrôleur. -->
+            <Button fx:id="boutonValider" text="Valider" onAction="#handleButtonAction"/>
 
-        <!-- Label pour afficher les messages d'erreur. Initialement caché. -->
-        <Label fx:id="labelErreur" text="Identifiant incorrect" visible="false" style="-fx-text-fill: red;"/>
-    </VBox>
+            <!-- Label lien pour la registration page. -->
+            <Label fx:id="labelRegistration" text="Je n'ai pas encore de compte" visible="true"/>
+
+            <!-- Label lien pour la mdp oublié page. -->
+            <Label fx:id="labelMdpOublie" text="J'ai oublié mon mot de passe" visible="true"/>
+
+            <!-- Label pour afficher les messages d'erreur. Initialement caché. -->
+            <Label fx:id="labelErreur" text="Pseudo ou mot de passe incorrect" visible="false"/>
+        </VBox>
     </StackPane>
 
 
