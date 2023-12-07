@@ -2,7 +2,6 @@ package com.sw.dao.factory;
 
 import com.sw.dao.*;
 
-
 /**
  * Classe parente de toutes les factories de modèles qui générent les modèles en fonction du type de base de donnée
  * Classe abstraite que l'on ne peut pas instancier (singleton)
@@ -15,7 +14,6 @@ public abstract class FactoryDAO {
      */
     private static FactoryDAO instance = null;
 
-
     /**
      * Type de la base de donnée
      */
@@ -24,7 +22,8 @@ public abstract class FactoryDAO {
     /**
      *  Constructeur de la FactoryDAO
      */
-    protected FactoryDAO(){}
+    protected FactoryDAO(){
+    }
 
 
     /**
@@ -37,8 +36,11 @@ public abstract class FactoryDAO {
                 instance = new FactoryDAOMySQL();
             }
             else {
-                //mettre une erreur ici
-                System.out.println("Le type de base de données n'existe pas");
+                try {
+                    throw new Exception("Le type de base de données n'existe pas");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         }
         return instance;
