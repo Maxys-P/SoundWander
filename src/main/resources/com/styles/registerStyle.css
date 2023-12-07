@@ -1,0 +1,45 @@
+.titreInscription {
+    -fx-font-size: 20px;
+    -fx-text-fill: #143442;
+}
+
+.champTexte {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 20px;
+    -fx-padding: 5px 10px;
+    -fx-font-family: 'Mirza Regular';
+    -fx-font-size: 12px;
+}
+
+.champTexte:hover {
+    -fx-background-color: #FFFFFF80;
+}
+
+.bouton {
+    -fx-background-color: #416569;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-family: 'Mirza Regular';
+    -fx-font-size: 16px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-padding: 0px 50px;
+}
+
+.bouton:hover {
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: #416569;
+}
+
+.bouton:pressed {
+    -fx-background-color: #416569;
+    -fx-text-fill: #FFFFFF;
+}
+
+.lien {
+    -fx-text-fill: #416569;
+    -fx-font-size: 12px;
+}
+
+.lien:hover {
+    -fx-text-fill: #FFFFFF;
+}

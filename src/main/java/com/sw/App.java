@@ -32,7 +32,7 @@ public class App extends Application {
         Scene scene = new Scene(fxmlLoader.load());
 
         // Ajout d'une feuille de style CSS à la scène pour la personnalisation de l'interface utilisateur.
-        scene.getStylesheets().add(getClass().getResource("/com/styles/style.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/com/styles/loginStyle.css").toExternalForm());
 
         // Configuration des propriétés du stage (fenêtre).
         stage.setTitle("SoundWander"); // Définit le titre de la fenêtre.

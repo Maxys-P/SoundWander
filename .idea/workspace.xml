@@ -4,13 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="488cdd30-80e1-4c58-a706-5bdc807ad006" name="Changes" comment="Mateo Fonctionnel">
+    <list default="true" id="488cdd30-80e1-4c58-a706-5bdc807ad006" name="Changes" comment="ajout d'elements front (label mdp oublié, créer un compte. pas fonctionnels pour le moment)">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/RegistrationController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/styles/registerStyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/views/users/home-view.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/controllers/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/styles/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/styles/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/controllers/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/styles/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/styles/loginStyle.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/views/cbon.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/views/cbon.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/views/users/login-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/views/users/login-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/views/users/register-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/views/users/register-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,8 +25,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="module-info" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -104,7 +109,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701906608694</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="ajout d'elements front (label mdp oublié, créer un compte. pas fonctionnels pour le moment)">
+      <option name="closed" value="true" />
+      <created>1701965968679</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1701965968679</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -114,7 +127,8 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Création" />
     <MESSAGE value="Mateo Fonctionnel" />
-    <option name="LAST_COMMIT_MESSAGE" value="Mateo Fonctionnel" />
+    <MESSAGE value="ajout d'elements front (label mdp oublié, créer un compte. pas fonctionnels pour le moment)" />
+    <option name="LAST_COMMIT_MESSAGE" value="ajout d'elements front (label mdp oublié, créer un compte. pas fonctionnels pour le moment)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

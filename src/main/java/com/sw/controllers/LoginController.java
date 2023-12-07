@@ -17,6 +17,7 @@ public abstract class Controller {
 }
 */
 
+import com.sw.App;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -26,11 +27,15 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.animation.PauseTransition;
 import javafx.util.Duration;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import java.io.IOException;
 
 /**
  * Contrôleur pour la gestion de la vue de connexion.
  */
-public class Controller {
+public class LoginController {
 
     // Déclarations des composants de l'interface utilisateur liés au FXML.
     @FXML
@@ -107,4 +112,29 @@ public class Controller {
 
         }
     }
+
+    @FXML
+    private void handleRegistrationLink() {
+        try {
+            // Chargez le fichier FXML pour la vue d'inscription
+            FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("/com/views/users/register-view.fxml"));
+
+            // Création d'une nouvelle scène à partir du contenu FXML.
+            Scene scene = new Scene(fxmlLoader.load());
+
+            // Ajout d'une feuille de style CSS à la scène pour la personnalisation de l'interface utilisateur.
+            scene.getStylesheets().add(getClass().getResource("/com/styles/registerStyle.css").toExternalForm());
+
+            // Obtenez le stage actuel (fenêtre) à partir d'un des composants de la scène
+            Stage stage = (Stage) conteneurConnexion.getScene().getWindow();
+
+            // Définissez la nouvelle scène sur le stage
+            stage.setScene(scene);
+            stage.sizeToScene();
+        } catch (IOException e) {
+            e.printStackTrace();
+            // Gérez l'exception ici (par exemple, affichez une boîte de dialogue d'erreur)
+        }
+    }
+
 }

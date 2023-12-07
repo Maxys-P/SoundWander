@@ -72,6 +72,10 @@
     -fx-text-fill: #FFFFFF; /* Définit la couleur du texte du label en blanc */
 }
 
+#labelRegistration:pressed {
+    -fx-text-fill: #416569; /* Définit la couleur du texte du label en rouge */
+}
+
 #labelMdpOublie {
     -fx-text-fill: #416569; /* Définit la couleur du texte du label en rouge */
     -fx-font-size: 12px; /* La taille de la police du bouton */

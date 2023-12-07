@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml">
+    <VBox alignment="CENTER" spacing="20">
+        <Label text="Bienvenue sur SoundWander" style="-fx-font-size: 24px;"/>
+    </VBox>
+</AnchorPane>
