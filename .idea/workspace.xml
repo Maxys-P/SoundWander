@@ -4,29 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="488cdd30-80e1-4c58-a706-5bdc807ad006" name="Changes" comment="Création">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sw/App.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sw/classes/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/Controller.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/users/ControlleurUser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/DAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/DAOUser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/factory/FactoryDAOAbstract.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/factory/FactoryDAOMySQL.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/mysql/DAOUserMySQL.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sw/facades/FacadeUser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/fonts/Mirza-Bold.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/fonts/Mirza-Medium.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/fonts/Mirza-Regular.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/fonts/Mirza-SemiBold.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/styles/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/views/cbon.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/views/users/login-view.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/views/users/register-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/Main.java" afterDir="false" />
+    <list default="true" id="488cdd30-80e1-4c58-a706-5bdc807ad006" name="Changes" comment="Mateo Fonctionnel">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/factory/FactoryDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/DAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/DAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/DAOUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/DAOUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/factory/FactoryDAOAbstract.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/factory/FactoryDAOMySQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/factory/FactoryDAOMySQL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/mysql/DAOUserMySQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/mysql/DAOUserMySQL.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,7 +77,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1701898240071</updated>
-      <workItem from="1701898241494" duration="8276000" />
+      <workItem from="1701898241494" duration="11075000" />
     </task>
     <task id="LOCAL-00001" summary="Création">
       <option name="closed" value="true" />
@@ -111,7 +95,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701898952125</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Mateo Fonctionnel">
+      <option name="closed" value="true" />
+      <created>1701906608694</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1701906608694</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -120,7 +112,8 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Création" />
-    <option name="LAST_COMMIT_MESSAGE" value="Création" />
+    <MESSAGE value="Mateo Fonctionnel" />
+    <option name="LAST_COMMIT_MESSAGE" value="Mateo Fonctionnel" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -132,5 +125,9 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

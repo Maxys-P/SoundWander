@@ -1,30 +1,31 @@
 package com.sw.dao.factory;
 
-import java.util.*;
+import com.sw.dao.*;
+import com.sw.dao.mysql.*;
 
 /**
- *
+ *  Classe de la factory de model MySQL qui permet de créer des models MySQL
+ *   Implémentation concrète de FactoryDAO pour créer des instances de DAO spécifiques à MySQL.
  */
-public class FactoryDAOMySQL {
+public class FactoryDAOMySQL extends FactoryDAO {
 
     /**
-     * Default constructor
+     * Constructor
      */
     public FactoryDAOMySQL() {
+        super();
     }
 
     /**
-     *
+     * Méthode permettant de récupérer une instance de la DAOClient
+     * @return l'instance du model UserMySQL
      */
-    public void getUser() {
-        // TODO implement here
+    @Override
+    public DAOUser getDAOUser() {
+        return new DAOUserMySQL();
     }
 
-    /**
-     *
-     */
-    public void saveUser() {
-        // TODO implement here
-    }
+
+    //Autres méthodes ici plus tard pour les autres classes
 
 }

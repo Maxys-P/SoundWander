@@ -1,11 +1,11 @@
 package com.sw.dao;
 
-import java.util.*;
+
 
 /**
- *
+ *  Classe abstraite définissant les opérations standard pour interagir avec les données utilisateur, indépendamment du SGBD.
  */
-public abstract class DAOUser {
+public abstract class DAOUser extends DAO {
 
     /**
      * Default constructor
