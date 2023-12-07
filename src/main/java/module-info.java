@@ -5,5 +5,5 @@ module com.sw {
 
     exports com.sw;
 
-    opens com.sw.controllers to javafx.fxml;
+    opens com.sw.controllers.users to javafx.fxml;
 }

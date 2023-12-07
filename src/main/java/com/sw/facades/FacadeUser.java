@@ -1,27 +1,16 @@
 package com.sw.facades;
 
-import java.util.*;
-
-/**
- *
- */
 public class FacadeUser {
 
-    /**
-     * Default constructor
-     */
     public FacadeUser() {
+        // Initialisation si nécessaire
     }
 
-    /**
-     * @param id
-     * @param password
-     */
-    /*
-    public void login(void id, void password) {
-        // TODO implement here
+    public boolean validateCredentials(String identifiant, String motDePasse) {
+        // Validation des identifiants (remplacez cela par votre logique de validation réelle)
+        return "admin".equals(identifiant) && "admin".equals(motDePasse);
     }
-*/
+
     /**
      *
      */
@@ -30,3 +19,4 @@ public class FacadeUser {
     }
 
 }
+
