@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:controller="com.sw.controllers.Controller" xmlns:fx="http://javafx.com/fxml" prefHeight="250.0" prefWidth="400.0">
+<AnchorPane fx:controller="com.sw.controllers.users.ControlleurUser" xmlns:fx="http://javafx.com/fxml" prefHeight="250.0" prefWidth="400.0">
     <!-- Conteneur principal pour l'interface utilisateur. Definit le contrôleur associé à cette vue. -->
 
     <!-- VBox comme conteneur pour les éléments de connexion. Les éléments à l'intérieur seront organisés verticalement. -->

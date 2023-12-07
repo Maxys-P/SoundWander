@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="488cdd30-80e1-4c58-a706-5bdc807ad006" name="Changes" comment="Mateo Fonctionnel">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/factory/FactoryDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/DAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/DAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/DAOUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/DAOUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/factory/FactoryDAOAbstract.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/factory/FactoryDAOMySQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/factory/FactoryDAOMySQL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/mysql/DAOUserMySQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/mysql/DAOUserMySQL.java" afterDir="false" />
-    </list>
+    <list default="true" id="488cdd30-80e1-4c58-a706-5bdc807ad006" name="Changes" comment="Mateo Fonctionnel" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -28,9 +21,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 7
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
   <component name="ProjectId" id="2ZBb5gIMKX71TcA3jxkbiMxReNj" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -48,6 +41,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -78,6 +72,7 @@
       <option name="presentableId" value="Default" />
       <updated>1701898240071</updated>
       <workItem from="1701898241494" duration="11075000" />
+      <workItem from="1701939703069" duration="3138000" />
     </task>
     <task id="LOCAL-00001" summary="Création">
       <option name="closed" value="true" />
