@@ -32,6 +32,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.io.IOException;
 
+
 /**
  * Contrôleur pour la gestion de la vue de connexion.
  */
@@ -93,25 +94,29 @@ public class LoginController {
         String identifiant = textFieldPseudo.getText();
         String motDePasse = passwordField.getText();
 
-        // Validation de l'identifiant et du mot de passe. (À remplacer par une vérification sécurisée dans une application réelle)
         if ("admin".equals(identifiant) && "admin".equals(motDePasse)) {
-            // Connexion réussie
-            conteneurConnexion.setVisible(false);
-            labelErreur.setVisible(false); // Cache le message d'erreur
-            labelBienvenue.setVisible(true); // Affiche le message de bienvenue
+            // Connexion réussie, ouvrir la vue home-view
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("/com/views/users/home-view.fxml"));
+                Scene scene = new Scene(fxmlLoader.load());
+                Stage stage = (Stage) conteneurConnexion.getScene().getWindow();
+                stage.setScene(scene);
+                stage.sizeToScene();
+            } catch (IOException e) {
+                e.printStackTrace();
+                // Gérez l'exception ici (par exemple, affichez une boîte de dialogue d'erreur)
+            }
         } else {
-            // Connexion échouée
-            labelErreur.setVisible(true); // Affiche le message d'erreur
-            // Créer un délai de 2 secondes avant de cacher le label
+            // Connexion échouée, afficher le message d'erreur
+            labelErreur.setVisible(true);
             PauseTransition pause = new PauseTransition(Duration.seconds(3));
             pause.setOnFinished(event -> labelErreur.setVisible(false));
             pause.play();
-            // Réinitialiser les champs de texte
             textFieldPseudo.clear();
             passwordField.clear();
-
         }
     }
+
 
     @FXML
     private void handleRegistrationLink() {
