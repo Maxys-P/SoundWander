@@ -1,7 +1,5 @@
 package com.sw.controllers;
 
-import java.util.*;
-
 /**
  *
  */
@@ -19,6 +17,7 @@ public abstract class Controller {
 }
 */
 
+import com.sw.App;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -28,18 +27,23 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.animation.PauseTransition;
 import javafx.util.Duration;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import java.io.IOException;
+
 
 /**
  * Contrôleur pour la gestion de la vue de connexion.
  */
-public class Controller {
+public class LoginController {
 
     // Déclarations des composants de l'interface utilisateur liés au FXML.
     @FXML
     private VBox conteneurConnexion; // Conteneur pour les champs de connexion et le bouton.
 
     @FXML
-    private TextField textFieldIdentifiant; // Champ de saisie pour l'identifiant.
+    private TextField textFieldPseudo; // Champ de saisie pour l'identifiant.
 
     @FXML
     private PasswordField passwordField; // Champ de saisie pour le mot de passe.
@@ -56,9 +60,8 @@ public class Controller {
     @FXML
     private void initialize() {
         // Associe un gestionnaire d'événements aux champs de texte pour réagir à la pression de la touche Entrée.
-        textFieldIdentifiant.setOnKeyPressed(event -> handleEnterPressed(event));
+        textFieldPseudo.setOnKeyPressed(event -> handleEnterPressed(event));
         passwordField.setOnKeyPressed(event -> handleEnterPressed(event));
-
     }
 
     /**
@@ -88,26 +91,55 @@ public class Controller {
      * Sinon, affiche un message d'erreur.
      */
     private void validateLogin() {
-        String identifiant = textFieldIdentifiant.getText();
+        String identifiant = textFieldPseudo.getText();
         String motDePasse = passwordField.getText();
 
-        // Validation de l'identifiant et du mot de passe. (À remplacer par une vérification sécurisée dans une application réelle)
         if ("admin".equals(identifiant) && "admin".equals(motDePasse)) {
-            // Connexion réussie
-            conteneurConnexion.setVisible(false);
-            labelErreur.setVisible(false); // Cache le message d'erreur
-            labelBienvenue.setVisible(true); // Affiche le message de bienvenue
+            // Connexion réussie, ouvrir la vue home-view
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("/com/views/users/home-view.fxml"));
+                Scene scene = new Scene(fxmlLoader.load());
+                Stage stage = (Stage) conteneurConnexion.getScene().getWindow();
+                stage.setScene(scene);
+                stage.sizeToScene();
+            } catch (IOException e) {
+                e.printStackTrace();
+                // Gérez l'exception ici (par exemple, affichez une boîte de dialogue d'erreur)
+            }
         } else {
-            // Connexion échouée
-            labelErreur.setVisible(true); // Affiche le message d'erreur
-            // Créer un délai de 2 secondes avant de cacher le label
+            // Connexion échouée, afficher le message d'erreur
+            labelErreur.setVisible(true);
             PauseTransition pause = new PauseTransition(Duration.seconds(3));
             pause.setOnFinished(event -> labelErreur.setVisible(false));
             pause.play();
-            // Réinitialiser les champs de texte
-            textFieldIdentifiant.clear();
+            textFieldPseudo.clear();
             passwordField.clear();
-
         }
     }
+
+
+    @FXML
+    private void handleRegistrationLink() {
+        try {
+            // Chargez le fichier FXML pour la vue d'inscription
+            FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("/com/views/users/register-view.fxml"));
+
+            // Création d'une nouvelle scène à partir du contenu FXML.
+            Scene scene = new Scene(fxmlLoader.load());
+
+            // Ajout d'une feuille de style CSS à la scène pour la personnalisation de l'interface utilisateur.
+            scene.getStylesheets().add(getClass().getResource("/com/styles/registerStyle.css").toExternalForm());
+
+            // Obtenez le stage actuel (fenêtre) à partir d'un des composants de la scène
+            Stage stage = (Stage) conteneurConnexion.getScene().getWindow();
+
+            // Définissez la nouvelle scène sur le stage
+            stage.setScene(scene);
+            stage.sizeToScene();
+        } catch (IOException e) {
+            e.printStackTrace();
+            // Gérez l'exception ici (par exemple, affichez une boîte de dialogue d'erreur)
+        }
+    }
+
 }

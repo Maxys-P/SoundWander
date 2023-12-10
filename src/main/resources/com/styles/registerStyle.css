@@ -1,0 +1,81 @@
+#conteneurInscription {
+    -fx-background-color: #5A93A480;
+    -fx-border-color: #416569; /* Couleur de la bordure */
+    -fx-border-width: 2px; /* Largeur de la bordure */
+    -fx-border-style: solid; /* Style de la bordure */
+    -fx-padding: 10px 15px 0px 15px; /* Haut, Droit, Bas, Gauche */
+    -fx-border-radius: 20px; /* Rayon de la bordure pour les coins arrondis */
+    -fx-background-radius: 20px; /* Rayon du fond pour les coins arrondis */
+    /* longueur maximale et minimale */
+    -fx-min-width: 400px;
+    -fx-max-width: 400px;
+}
+
+#labelInscription {
+    -fx-text-fill: #143442; /* Définit la couleur du texte du label en rouge */
+}
+
+#textFieldNomUtilisateur {
+    -fx-background-color: #FFFFFF; /* Couleur de fond */
+    -fx-background-radius: 20px; /* Rayon du fond pour les coins arrondis */
+    -fx-padding: 5px 10px 5px; /* Haut, Droit, Bas, Gauche */
+    -fx-font-family: 'Mirza Regular'; /* La police du texte du bouton */
+    -fx-font-size: 12px; /* La taille de la police du bouton */
+}
+
+#textFieldNomUtilisateur:hover {
+    -fx-background-color: #FFFFFF80; /* Couleur de fond au survol */
+}
+
+#passwordField {
+    -fx-background-color: #FFFFFF; /* Couleur de fond */
+    -fx-background-radius: 20px; /* Rayon du fond pour les coins arrondis */
+    -fx-padding: 5px 10px 5px; /* Haut, Droit, Bas, Gauche */
+    -fx-font-family: 'Mirza Regular'; /* La police du texte du bouton */
+    -fx-font-size: 12px; /* La taille de la police du bouton */
+}
+
+#passwordField:hover {
+    -fx-background-color: #FFFFFF80; /* Couleur de fond au survol */
+}
+
+#confirmPasswordField {
+    -fx-background-color: #FFFFFF; /* Couleur de fond */
+    -fx-background-radius: 20px; /* Rayon du fond pour les coins arrondis */
+    -fx-padding: 5px 10px 5px; /* Haut, Droit, Bas, Gauche */
+    -fx-font-family: 'Mirza Regular'; /* La police du texte du bouton */
+    -fx-font-size: 12px; /* La taille de la police du bouton */
+}
+
+#passwordField:hover {
+    -fx-background-color: #FFFFFF80; /* Couleur de fond au survol */
+}
+
+#boutonInscrire {
+    -fx-background-color: #416569; /* La couleur de fond du bouton */
+    -fx-text-fill: #FFFFFF; /* La couleur du texte du bouton */
+    -fx-font-family: 'Mirza Regular'; /* La police du texte du bouton */
+    -fx-font-size: 16px; /* La taille de la police du bouton */
+    -fx-border-radius: 20px; /* Le rayon de la bordure pour les coins arrondis */
+    -fx-background-radius: 20px; /* Le rayon de l'arrière-plan pour les coins arrondis */
+    -fx-padding: 0px 50px; /* Le padding à l'intérieur du bouton */
+}
+
+#boutonInscrire:hover {
+    -fx-background-color: #FFFFFF; /* Couleur de fond au survol */
+    -fx-text-fill: #416569; /* Couleur du texte au survol */
+}
+
+#boutonInscrire:pressed {
+    -fx-background-color: #416569; /* Couleur de fond au clic */
+    -fx-text-fill: #FFFFFF; /* Couleur du texte au clic */
+}
+
+#labelRetourConnexion {
+-fx-text-fill: #416569; /* Définit la couleur du texte du label en rouge */
+    -fx-font-size: 12px; /* La taille de la police du bouton */
+}
+
+#labelRetourConnexion:hover {
+    -fx-text-fill: #FFFFFF; /* Définit la couleur du texte du label en blanc */
+}
