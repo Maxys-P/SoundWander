@@ -43,6 +43,7 @@ public abstract class Controller {
      * @throws IOException si la vue n'a pas pu être chargée.
      */
     public static void startAppFX (Stage stage) throws IOException {
+        /*
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("/com/views/users/login-view.fxml"));
         Parent root = fxmlLoader.load();
         Scene scene = new Scene(root);
@@ -50,11 +51,11 @@ public abstract class Controller {
         stage.setTitle("Bienvenue sur SoundWander");
         stage.setScene(scene);
         stage.show();
+        */
 
-        /*
         // Chargement de la police personnalisée
-        Font.loadFont(getClass().getResourceAsStream("fonts/Mirza-Regular.ttf"), 14);
-        Font.loadFont(getClass().getResourceAsStream("fonts/Mirza-Bold.ttf"), 14);
+        Font.loadFont(Controller.class.getResourceAsStream("/com/styles/fonts/Mirza-Regular.ttf"), 14);
+        Font.loadFont(Controller.class.getResourceAsStream("fonts/Mirza-Bold.ttf"), 14);
 
         // Chargement du fichier FXML.
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("/com/views/users/login-view.fxml"));
@@ -63,7 +64,7 @@ public abstract class Controller {
         Scene scene = new Scene(fxmlLoader.load());
 
         // Ajout d'une feuille de style CSS à la scène pour la personnalisation de l'interface utilisateur.
-        scene.getStylesheets().add(getClass().getResource("/com/styles/loginStyle.css").toExternalForm());
+        scene.getStylesheets().add(Controller.class.getResource("/com/styles/loginStyle.css").toExternalForm());
 
         // Configuration des propriétés du stage (fenêtre).
         stage.setTitle("SoundWander"); // Définit le titre de la fenêtre.
@@ -76,8 +77,6 @@ public abstract class Controller {
 
         // Affichage du stage (fenêtre).
         stage.show();
-
-         */
     }
 
     /**
