@@ -1,21 +1,4 @@
-package com.sw.controllers;
-
-/**
- *
- */
-/*
-public abstract class Controller {
-
-    public Controller() {
-    }
-
-
-    public void onAction() {
-        // TODO implement here
-    }
-
-}
-*/
+package com.sw.controllers.users;
 
 import com.sw.App;
 import javafx.fxml.FXML;
@@ -36,7 +19,7 @@ import java.io.IOException;
 /**
  * Contrôleur pour la gestion de la vue de connexion.
  */
-public class LoginController {
+public class ControllerLogin extends ControllerUser {
 
     // Déclarations des composants de l'interface utilisateur liés au FXML.
     @FXML

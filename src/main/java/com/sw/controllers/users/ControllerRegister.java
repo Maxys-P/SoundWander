@@ -1,4 +1,4 @@
-package com.sw.controllers;
+package com.sw.controllers.users;
 
 import com.sw.App;
 import javafx.fxml.FXML;
@@ -13,7 +13,7 @@ import javafx.scene.layout.VBox;
 
 
 
-public class RegistrationController {
+public class ControllerRegister {
 
     @FXML
     private TextField usernameField;

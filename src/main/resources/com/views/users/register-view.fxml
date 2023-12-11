@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.layout.StackPane?>
 
-<AnchorPane fx:controller="com.sw.controllers.RegistrationController" stylesheets="@../../styles/registerStyle.css" xmlns:fx="http://javafx.com/fxml" prefHeight="300.0" prefWidth="400.0">
+<AnchorPane fx:controller="com.sw.controllers.users.ControllerRegister" stylesheets="@../../styles/registerStyle.css" xmlns:fx="http://javafx.com/fxml" prefHeight="300.0" prefWidth="400.0">
     <StackPane alignment="CENTER" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0"
                AnchorPane.topAnchor="20.0" AnchorPane.bottomAnchor="20.0">
         <VBox fx:id="conteneurInscription" spacing="10" alignment="CENTER" maxWidth="300" maxHeight="250">
