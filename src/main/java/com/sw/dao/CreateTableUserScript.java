@@ -1,4 +1,4 @@
-package com.sw.dao.mysql;
+package com.sw.dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;

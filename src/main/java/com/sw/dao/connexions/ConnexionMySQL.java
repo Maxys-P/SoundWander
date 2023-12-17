@@ -11,21 +11,38 @@ import java.sql.SQLException;
 public class ConnexionMySQL extends ConnexionDB {
 
     private Connection connection;
-    private String url;
-    private String username;
-    private String password;
+    private String url = "jdbc:mysql://6.tcp.eu.ngrok.io:10618/DBSoundWander";
+    private String utilisateur = "root";
+    private String motDePasse = "se123";
 
+    /**
+     * Se connecte à la base de données MySQL
+     * @return Connection, un objet de connexion
+     * @throws ExceptionDB en cas d'erreur lors de la connexion
+     */
     @Override
     public Connection connection() throws ExceptionDB {
         try {
             // Chargement du pilote JDBC pour MySQL
             Class.forName("com.mysql.cj.jdbc.Driver");
 
+            System.out.println("Je vais me connecter à la base de données");
+
             // Établissement de la connexion
-            this.connection = DriverManager.getConnection(url, username, password);
-        } catch (ClassNotFoundException | SQLException e) {
-            // Gestion des exceptions et encapsulation dans une ExceptionDB
-            throw new ExceptionDB("Erreur lors de la connexion à la base de données MySQL", e);
+            this.connection = DriverManager.getConnection(url, utilisateur, motDePasse);
+
+            if (this.connection != null) {
+                System.out.println("Connexion à la base de données établie");
+            } else {
+                System.out.println("Connexion à la base de données échouée");
+            }
+
+        } catch (ClassNotFoundException e) {
+            System.out.println("Échec de la connexion : Pilote JDBC non trouvé.");
+            throw new ExceptionDB("Erreur lors de la connexion à la base de données MySQL : Pilote non trouvé", e);
+        } catch (SQLException e) {
+            System.out.println("Échec de la connexion : Erreur SQL.");
+            throw new ExceptionDB("Erreur lors de la connexion à la base de données MySQL : Erreur SQL", e);
         }
         return this.connection;
     }

@@ -9,7 +9,7 @@
                AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0"
                AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0">
         <VBox fx:id="labelBienvenue" alignment="CENTER" spacing="20">
-            <Label text="Bienvenue sur SoundWander" style="-fx-font-size: 24px;"/>
+            <Label text="Bienvenue sur SoundWander" styleClass="h1"/>
         </VBox>
     </StackPane>
 </AnchorPane>

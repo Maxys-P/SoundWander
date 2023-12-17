@@ -2,7 +2,7 @@ package com.sw.facades;
 
 import com.sw.classes.User;
 import com.sw.dao.DAOUser;
-import com.sw.dao.factory.FactoryDAO;
+import com.sw.dao.factories.FactoryDAO;
 import com.sw.exceptions.ExceptionUsedEmail;
 import com.sw.exceptions.ExceptionUsedPseudo;
 import com.sw.exceptions.ExceptionDB;
@@ -11,6 +11,7 @@ import com.sw.exceptions.ExceptionBadPassword;
 import com.sw.dao.boiteAOutils.PasswordAuthentification;
 
 import java.sql.SQLException;
+import java.util.Date;
 
 /**
  * Classe de facade pour les utilisateurs visiteurs
@@ -19,7 +20,7 @@ import java.sql.SQLException;
 public class FacadeUser extends Facade {
 
     /**
-     * Modèle de user
+     * DAO pour les utilisateurs
      */
     protected DAOUser daoUser;
 
@@ -32,14 +33,6 @@ public class FacadeUser extends Facade {
      * Instance de la facade pour le singleton
      */
     private static FacadeUser instance = null;
-
-
-    /**
-     * Constructeur de la facade pour le singleton
-     */
-    protected FacadeUser() {
-        this.daoUser = FactoryDAO.getInstance().getDAOUser();
-    }
 
 
     /**
@@ -62,11 +55,15 @@ public class FacadeUser extends Facade {
      * @throws Exception si les identifiants sont incorrects
      */
     public User connexion(String mail, String motDePasse) throws Exception {
+        FactoryDAO f = FactoryDAO.getInstanceofFactoryDAO();
+        DAOUser du = f.getInstanceofDAOUser();
         try {
-            User user = this.daoUser.getUserByMail(mail);
+            User user = du.getAllUsers().get(0);
+            //User user = du.getUserByMail(mail);
             if (user != null /*&& user.getPassword().equals(motDePasse)*/){
                 //TODO : vérifier le mot de passe avec la méthode de PasswordAuthentication
                 Facade.currentUser = user;
+                System.out.println(user);
                 return user;
             }
             else {
@@ -86,15 +83,14 @@ public class FacadeUser extends Facade {
      * @return User, l'utilisateur inscrit
      * @throws Exception si l'utilisateur existe déjà
      */
-    public User inscription(String mail, String pseudo, String motDePasse) throws Exception {
+    public User inscription(String mail, String pseudo, String motDePasse, Date dateNaissance) throws Exception {
         if (daoUser.dataExist(mail, "mail")) {
             throw new ExceptionUsedEmail(mail);
         } else if (daoUser.dataExist(pseudo, "pseudo")) {
             throw new ExceptionUsedPseudo(pseudo);
         } else {
             try {
-
-                daoUser.createUser(mail, pseudo, motDePasse);
+                daoUser.createUser(mail, pseudo, motDePasse, dateNaissance);
                 User newuser = daoUser.getUserByMail(mail);
                 Facade.currentUser = newuser;
                 return newuser;

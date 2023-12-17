@@ -1,7 +1,7 @@
-package com.sw.dao.factory;
+package com.sw.dao.factories;
 
 import com.sw.dao.*;
-import com.sw.dao.mysql.*;
+import com.sw.dao.daoMysql.*;
 
 /**
  *  Classe de la factory de model MySQL qui permet de créer des models MySQL
@@ -21,7 +21,7 @@ public class FactoryDAOMySQL extends FactoryDAO {
      * @return l'instance du model UserMySQL
      */
     @Override
-    public DAOUser getDAOUser() {
+    public DAOUser getInstanceofDAOUser() {
         return new DAOUserMySQL();
     }
 

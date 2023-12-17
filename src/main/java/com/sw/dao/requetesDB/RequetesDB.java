@@ -1,4 +1,4 @@
-package com.sw.dao.methodesDB;
+package com.sw.dao.requetesDB;
 
 import com.sw.dao.connexions.ConnexionDB;
 import com.sw.exceptions.ExceptionDB;
@@ -6,7 +6,7 @@ import com.sw.exceptions.ExceptionDB;
 /**
  * Classe abstraite, parente de toutes les classes de methodesDB
  */
-public abstract class MethodesDB {
+public abstract class RequetesDB {
     /**
      * Une instance de la connexionDB pour exécuter les requêtes
      */
@@ -17,7 +17,7 @@ public abstract class MethodesDB {
      * Constructeur de la classe MethodesDB
      * @param connexionDB une instance de la connexionDB
      */
-    public MethodesDB(ConnexionDB connexionDB){
+    public RequetesDB(ConnexionDB connexionDB){
         this.connexionDB = connexionDB;
     }
 

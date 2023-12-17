@@ -2,6 +2,8 @@ package com.sw.controllers.users;
 
 import com.sw.controllers.Controller;
 import com.sw.facades.FacadeUser;
+import com.sw.exceptions.ExceptionBadPage;
+import javafx.scene.control.Control;
 
 /**
  * Controller générique pour les pages accessibles aux visiteurs
@@ -19,4 +21,21 @@ public class ControllerUser extends Controller {
      */
     private final String path = "users/";
 
+    /**
+     * Methode permettant de se rendre sur la page d'accueil visiteur
+     * @param controlEl Control, élément de contrôle de la page
+     * @throws ExceptionBadPage si la vue n'existe pas
+     */
+    void goToVisitor(Control controlEl) throws ExceptionBadPage {
+        goToPage(controlEl, path + "visitor-view.fxml", "Bienvenue sur SoundWander");
+    }
+
+    /**
+     * Méthode pour aller à la page d'accueil
+     * @throws ExceptionBadPage si problème pendant le chargement de la page
+     */
+    void goToHome(Control controlEl) throws ExceptionBadPage {
+        //TODO : rajouter un contexte en fonction du rôle pour afficher les bonnes pages
+        goToPage(controlEl, path + "home-view.fxml", "Accueil");
+    }
 }

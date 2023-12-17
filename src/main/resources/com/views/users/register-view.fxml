@@ -6,17 +6,24 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.DatePicker?>
 
-<AnchorPane fx:controller="com.sw.controllers.users.ControllerRegister" stylesheets="@../../styles/registerStyle.css" xmlns:fx="http://javafx.com/fxml" prefHeight="300.0" prefWidth="400.0">
+<?import javafx.scene.control.DatePicker?>
+<AnchorPane fx:controller="com.sw.controllers.users.ControllerRegister" stylesheets="@../../styles/Style.css" xmlns:fx="http://javafx.com/fxml" prefHeight="600.0" prefWidth="1200.0">
     <StackPane alignment="CENTER" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0"
-               AnchorPane.topAnchor="20.0" AnchorPane.bottomAnchor="20.0">
-        <VBox fx:id="conteneurInscription" spacing="10" alignment="CENTER" maxWidth="300" maxHeight="250">
-            <Label fx:id="labelInscription" text="Inscription" styleClass="titreInscription"/>
-            <TextField fx:id="textFieldNomUtilisateur" promptText="Nom d'utilisateur" styleClass="champTexte"/>
-            <PasswordField fx:id="passwordField" promptText="Mot de Passe" styleClass="champTexte"/>
-            <PasswordField fx:id="confirmPasswordField" promptText="Confirmez le Mot de Passe" styleClass="champTexte"/>
-            <Button fx:id="boutonInscrire" text="S'inscrire" onAction="#handleInscriptionAction" styleClass="bouton"/>
-            <Label fx:id="labelRetourConnexion" text="Retour à la connexion" onMouseClicked="#handleBackToLogin" styleClass="lien"/>
+               AnchorPane.topAnchor="20.0" AnchorPane.bottomAnchor="20.0" prefHeight="500.00" prefWidth="800.00">
+        <VBox fx:id="conteneurInscription" spacing="10" alignment="CENTER" prefHeight="300" prefWidth="300" maxHeight="400" maxWidth="400" styleClass="conteneur">
+            <Label fx:id="labelInscription" text="Inscription" styleClass="h1"/>
+            <TextField fx:id="pseudo" promptText="Pseudo" styleClass="champ"/>
+            <TextField fx:id="mail" promptText="Adresse Mail" styleClass="champ"/>
+            <PasswordField fx:id="motDePasse" promptText="Mot de Passe" styleClass="champ"/>
+            <PasswordField fx:id="motDePasseConfirm" promptText="Confirmez le Mot de Passe" styleClass="champ"/>
+            <DatePicker fx:id="dateNaissance" promptText="Date de Naissance" styleClass="champ"/>
+            <Text fx:id="errorText" fill="red" />
+            <Button fx:id="boutonInscrire" text="S'inscrire" onAction="#handleButtonRegister" styleClass="boutonBleu"/>
+            <Label fx:id="labelConnexion" text="Retour à la connexion" onMouseClicked="#goToLogin" styleClass="lien"/>
+            <Button fx:id="boutonVisitor" text="Retour" onAction="#goToVisitor" styleClass="boutonBleu"/>
         </VBox>
     </StackPane>
 </AnchorPane>

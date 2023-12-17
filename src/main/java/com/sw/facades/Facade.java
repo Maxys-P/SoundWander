@@ -7,6 +7,5 @@ import com.sw.classes.User;
  */
 public abstract class Facade {
     public static User currentUser;
-    //jsp quoi mettre dans cette facade abstraite
-    //pas forcément utile ?
+    //On stocke le User lors de la connexion pour pouvoir l'utiliser dans les autres facades
 }

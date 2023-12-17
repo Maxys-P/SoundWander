@@ -1,7 +1,7 @@
 package com.sw.dao;
 
-import com.sw.dao.methodesDB.MethodesDB;
-import com.sw.dao.methodesDB.MethodesMySQL;
+import com.sw.dao.requetesDB.RequetesDB;
+import com.sw.dao.requetesDB.RequetesMySQL;
 import com.sw.exceptions.ExceptionDB;
 
 /**
@@ -18,7 +18,7 @@ public abstract class DAO {
     /**
      * L'instance pour accéder aux méthodes de base de données
      */
-    protected MethodesDB methodesDB;
+    protected RequetesDB requetesDB;
 
     public DAO(String table){
         this.table = table;
@@ -32,6 +32,7 @@ public abstract class DAO {
      * @throws ExceptionDB si la requête SQL est incorrecte
      */
     public boolean dataExist(Object data, String name) throws ExceptionDB {
-        return (((MethodesMySQL)this.methodesDB).exist(data, name, this.table));
+        return (((RequetesMySQL)this.requetesDB).exist(data, name, this.table));
+        //pas fou que ça dépende de MySQL mais sinon il faudra le mettre dans chaque DAO
     }
 }

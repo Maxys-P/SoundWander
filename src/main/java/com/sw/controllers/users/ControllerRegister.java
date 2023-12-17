@@ -1,84 +1,131 @@
 package com.sw.controllers.users;
 
-import com.sw.App;
+import com.sw.facades.Facade;
+import com.sw.classes.User;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
-import javafx.scene.control.PasswordField;
-import javafx.stage.Stage;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import java.io.IOException;
-import javafx.scene.layout.VBox;
+import javafx.scene.control.*;
+import javafx.scene.text.Text;
+import com.sw.exceptions.ExceptionBadPage;
+import com.sw.exceptions.ExceptionFormIncomplete;
+
+import java.util.Date;
 
 
-
-public class ControllerRegister {
-
-    @FXML
-    private TextField usernameField;
+/**
+ * Controller pour la page d'incription
+ */
+public class ControllerRegister extends ControllerUser {
 
     @FXML
-    private PasswordField passwordField;
+    private TextField mail;
 
     @FXML
-    private PasswordField confirmPasswordField;
+    private TextField pseudo;
 
     @FXML
-    private Button registerButton;
+    private TextField motDePasse;
 
     @FXML
-    private VBox conteneurInscription; // Assurez-vous que ceci correspond à l'fx:id dans le fichier FXML
+    private TextField motDePasseConfirm;
 
+    @FXML
+    private DatePicker dateNaissance;
+
+    @FXML
+    private Button boutonInscrire;
+
+    @FXML
+    private Label labelConnexion;
+
+    @FXML
+    private Label labelInscription;
+
+    @FXML
+    private Button boutonVisitor;
+
+    @FXML
+    private Text errorText;
+
+// =====================================================================================================================
 
     /**
-     * Cette méthode est appelée pour revenir à la vue de connexion.
+     * Méthode appelée lors de la tentative d'inscription
      */
     @FXML
-    private void handleBackToLogin() {
+    private void handleButtonRegister() {
         try {
-            // Chargez le fichier FXML pour la vue d'inscription
-            FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("/com/views/users/login-view.fxml"));
-
-            // Création d'une nouvelle scène à partir du contenu FXML.
-            Scene scene = new Scene(fxmlLoader.load());
-
-            // Obtenez le stage actuel (fenêtre) à partir d'un des composants de la scène
-            Stage stage = (Stage) conteneurInscription.getScene().getWindow();
-
-            // Ajout d'une feuille de style CSS à la scène pour la personnalisation de l'interface utilisateur.
-            scene.getStylesheets().add(getClass().getResource("/com/styles/loginStyle.css").toExternalForm());
-
-            // Définissez la nouvelle scène sur le stage
-            stage.setScene(scene);
-            stage.sizeToScene();
-        } catch (IOException e) {
-            e.printStackTrace();
-            // Gérez l'exception ici (par exemple, affichez une boîte de dialogue d'erreur)
+            verifForm();
+            verifPassword();
+            User user = super.userFacade.inscription(mail.getText(), pseudo.getText(), motDePasse.getText(), (Date) dateNaissance.getDayCellFactory());
+            if (user != null) {
+                super.hideError(errorText);
+                Facade.currentUser = user;
+                goToHome();
+            }
+        } catch (Exception e) {
+            super.displayError(errorText, e.getMessage());
         }
     }
 
+    /**
+     * Méthode qui redirige vers la page d'accueil interne à l'application
+     */
     @FXML
-    private void handleInscriptionAction() {
-        // Ici, vous devriez normalement effectuer une validation de l'inscription,
-        // par exemple vérifier si les mots de passe correspondent et traiter l'enregistrement de l'utilisateur.
-        // Pour cet exemple, nous allons simplement changer de vue.
-
+    private void goToHome() {
         try {
-            // Chargez le fichier FXML pour la vue d'inscription
-            FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("/com/views/users/home-view.fxml"));
-
-            // Création d'une nouvelle scène à partir du contenu FXML.
-            Scene scene = new Scene(fxmlLoader.load());
-
-            // Obtenez le stage actuel (fenêtre) à partir d'un des composants de la scène
-            Stage stage = (Stage) conteneurInscription.getScene().getWindow();
-
-            // Définissez la nouvelle scène sur le stage
-            stage.setScene(scene);
-            stage.sizeToScene();
-        } catch (IOException e) {
-            e.printStackTrace();
-            // Gérez l'exception ici (par exemple, affichez une boîte de dialogue d'erreur)
+            super.hideError(errorText);
+            super.goToHome(boutonInscrire);
+        } catch (ExceptionBadPage e) {
+            super.displayError(errorText, e.getMessage());
         }
-    }}
+    }
+
+    /**
+     * Méthode qui redirige vers la page de connexion
+     */
+    @FXML
+    private void goToLogin() {
+        try {
+            super.hideError(errorText);
+            super.goToPage(labelConnexion, "users/login-view.fxml", "Connexion");
+        } catch (ExceptionBadPage e) {
+            super.displayError(errorText, e.getMessage());
+        }
+    }
+
+    /**
+     * Méthode qui redirige vers la page d'accueil externe à l'application
+     */
+    @FXML
+    private void goToVisitor() {
+        try {
+            super.hideError(errorText);
+            super.goToVisitor(boutonVisitor);
+        } catch (ExceptionBadPage e) {
+            super.displayError(errorText, e.getMessage());
+        }
+    }
+
+    /**
+     * Méthode qui vérifie que le mot de passe est identique à la confirmation
+     * @throws ExceptionFormIncomplete si le mot de passe et la confirmation sont identiques
+     */
+    private void verifPassword() throws ExceptionFormIncomplete {
+        if (!motDePasse.getText().equals(motDePasseConfirm.getText()) || motDePasse.getText().isEmpty() || motDePasseConfirm.getText().isEmpty()) {
+            throw new ExceptionFormIncomplete("Les mots de passe ne correspondent pas");
+        }
+    }
+
+    /**
+     * Méthode qui vérifie que tous les champs sont remplis
+     * @throws ExceptionFormIncomplete si un champ n'est pas rempli
+     */
+    private void verifForm() throws ExceptionFormIncomplete {
+        if (mail.getText().isEmpty() || pseudo.getText().isEmpty() || motDePasse.getText().isEmpty() || motDePasseConfirm.getText().isEmpty()) {
+            throw new ExceptionFormIncomplete("Veuillez remplir tous les champs");
+        }
+    }
+
+
+
+}

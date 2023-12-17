@@ -1,4 +1,4 @@
-package com.sw.dao.factory;
+package com.sw.dao.factories;
 
 import com.sw.dao.*;
 
@@ -19,18 +19,12 @@ public abstract class FactoryDAO {
      */
     public static final String databaseType = "MySQL";
 
-    /**
-     *  Constructeur de la FactoryDAO
-     */
-    protected FactoryDAO(){
-    }
-
 
     /**
      * Méthode permettant de récupérer l'instance de la FactoryDAO
      * @return FactoryDAO, l'instance de la FactoryDAO
      */
-    public static FactoryDAO getInstance(){
+    public static FactoryDAO getInstanceofFactoryDAO(){
         if (instance == null){
             if (databaseType.equals("MySQL")){
                 instance = new FactoryDAOMySQL();
@@ -50,7 +44,7 @@ public abstract class FactoryDAO {
      * Méthode permettant de récupérer une instance de la DAOClient
      * @return l'instance du DAOClient
      */
-    public abstract DAOUser getDAOUser();
+    public abstract DAOUser getInstanceofDAOUser();
 
 }
 
