@@ -9,7 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class ConversionMP3ToBinary {
+public class AddMusicToBD {
     public static void main(String[] args) {
         // Chemin vers le fichier MP3
         String filePath = "src/main/java/com/sw/dao/boiteAOutils/Premier_son.mp3";
