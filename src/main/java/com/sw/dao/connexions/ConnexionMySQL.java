@@ -11,7 +11,7 @@ import java.sql.SQLException;
 public class ConnexionMySQL extends ConnexionDB {
 
     private Connection connection;
-    private String url = "jdbc:mysql://6.tcp.eu.ngrok.io:10618/DBSoundWander";
+    private String url = "jdbc:mysql://6.tcp.eu.ngrok.io:19929/DBSoundWander";
     private String utilisateur = "root";
     private String motDePasse = "se123";
 
