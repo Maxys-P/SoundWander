@@ -47,7 +47,7 @@ public abstract class FactoryDAO {
     public abstract DAOUser getInstanceofDAOUser();
     public abstract DAOProposal getInstanceofDAOProposal();
 
-    public abstract DAOMusic getInstanceofDAOMusicPlay();
+    public abstract DAOMusic getInstanceofDAOMusic();
 
 }
 
