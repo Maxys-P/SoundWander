@@ -8,7 +8,7 @@ public class Music {
     private FacadeMusicPlay facadeMusicPlay;
     private int id;
     private String name;
-    private String artist;
+    private int artist;
     private int duration;
     /**
      * Le fichier de musique stocké sous forme de tableau d'octets.
@@ -19,7 +19,7 @@ public class Music {
         this.facadeMusicPlay = facadeMusicPlay;
     }
 
-    public Music(int id, String name, String artist, int duration){
+    public Music(int id, String name, int artist, int duration){
         this.id = id;
         this.name = name;
         this.artist = artist;
@@ -42,7 +42,7 @@ public class Music {
 
     public int getId(){return id;}
     public String getName(){return name;}
-    public String getArtist(){return artist;}
+    public int getArtist(){return artist;}
     public int getDuration(){return duration;}
 
     /**
@@ -67,7 +67,7 @@ public class Music {
 
     public void setName(String name){this.name = name;}
 
-    public void setArtist(String artist){this.artist = artist;}
+    public void setArtist(int artist){this.artist = artist;}
 
     public void setDuration(int duration){this.duration = duration;}
 }
