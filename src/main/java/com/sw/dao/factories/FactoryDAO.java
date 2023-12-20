@@ -46,7 +46,9 @@ public abstract class FactoryDAO {
      */
     public abstract DAOUser getInstanceofDAOUser();
 
+    public abstract DAOMusic getInstanceofDAOMusicPlay();
+
 }
 
 
-//Autres méthodes ici plus tard pour les autres classes
+

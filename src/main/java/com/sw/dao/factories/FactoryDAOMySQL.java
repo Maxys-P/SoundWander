@@ -25,7 +25,10 @@ public class FactoryDAOMySQL extends FactoryDAO {
         return new DAOUserMySQL();
     }
 
+    @Override
+    public DAOMusic getInstanceofDAOMusicPlay() {
+        return new DAOMusicMySQL();
+    }
 
-    //Autres méthodes ici plus tard pour les autres classes
 
 }
