@@ -2,6 +2,8 @@ package com.sw.facades;
 
 import com.sw.classes.Music;
 import com.sw.dao.DAOMusic;
+import com.sw.dao.factories.FactoryDAO;
+
 public class FacadeMusicPlay extends Facade{
 
     protected DAOMusic daoMusic;
