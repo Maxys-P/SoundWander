@@ -1,6 +1,10 @@
 package com.sw.dao;
 
-public class DAOProposal extends DAO{
+import com.sw.classes.Music;
+import com.sw.classes.Proposal;
+import com.sw.classes.User;
+
+public abstract class DAOProposal extends DAO{
     /**
      * Default constructor
      */
@@ -8,5 +12,6 @@ public class DAOProposal extends DAO{
         super("proposal");
     }
 
+    public abstract Proposal createProposal(String country, String description, Music music, User artist) throws Exception;
 
 }

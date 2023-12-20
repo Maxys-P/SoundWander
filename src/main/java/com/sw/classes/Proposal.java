@@ -1,7 +1,6 @@
 package com.sw.classes;
 
 import com.sw.facades.FacadeProposal;
-import com.sw.facades.FacadeUser;
 
 public class Proposal {
     /**
@@ -9,18 +8,19 @@ public class Proposal {
      */
     private FacadeProposal facadeProposal;
     private int id;
-    //private Music music;
-    //private Artist artist;
+    private Music music;
+    private User artist;
     private String country;
     private String description;
 
     /**
      * Default constructor
      */
-    public Proposal(int id, String country, String description) {
-        this.id = id;
+    public Proposal(String country, String description, Music music, User artist) {
         this.country = country;
         this.description = description;
+        this.music = music;
+        this.artist = artist;
     }
 
     //Getters :
@@ -48,6 +48,16 @@ public class Proposal {
      * @return la description de la proposal
      */
     public String getDescription() {return description;}
+    /**
+     * Getter de la music de la proposal
+     * @return la music de la proposal
+     */
+    public Music getMusic() {return music;}
+    /**
+     * Getter de l'artist de la proposal
+     * @return l'artist' de la proposal
+     */
+    public User getArtist() {return artist;}
 
     //Setters :
 
@@ -79,4 +89,14 @@ public class Proposal {
     public void setDescription(String description) {
         this.description = description;
     }
+    /**
+     * Setter de la music de la proposal
+     * @param music la music de la proposal
+     */
+    public void setMusic(Music music) {this.music = music;}
+    /**
+     * Setter de l'artist de la proposal
+     * @param artist l'artist de la proposal
+     */
+    public void setArtist(User artist) {this.artist = artist;}
 }

@@ -24,13 +24,14 @@ public class AddMusicToBD {
             byte[] fileContent = Files.readAllBytes(path);
 
             // Préparer la requête SQL pour insérer les données
-            String sql = "INSERT INTO music (audio, name, artist) VALUES (?, ?, ?)";
+            String sql = "INSERT INTO music (audio, name, artist, duration) VALUES (?, ?, ?, ?)";
             PreparedStatement pstmt = conn.prepareStatement(sql);
 
             // Remplir les paramètres de la requête préparée
             pstmt.setBytes(1, fileContent);
             pstmt.setString(2, "Premier Son");
             pstmt.setString(3, "aurianedu13");
+            pstmt.setInt(4, 10);
 
             // Exécuter la requête
             pstmt.executeUpdate();
