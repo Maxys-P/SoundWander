@@ -25,6 +25,9 @@ public class FactoryDAOMySQL extends FactoryDAO {
         return new DAOUserMySQL();
     }
 
+    @Override
+    public DAOProposal getInstanceofDAOProposal() {return new DAOProposalMySQL();}
+
 
     //Autres méthodes ici plus tard pour les autres classes
 
