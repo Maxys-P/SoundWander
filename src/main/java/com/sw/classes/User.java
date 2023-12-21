@@ -15,31 +15,14 @@ public class User {
     private FacadeUser facadeUser;
 
     private int id;
-    /**
-     *
-     */
     private String pseudo;
 
-    /**
-     *
-     */
     private String mail;
-
-    /**
-     *
-     */
 
     private String motDePasse;
 
-    /**
-     *
-     */
-
     private Date dateNaissance;
 
-    /**
-     *
-     */
     //public List<Musique> liste_perso;
 
     /**
