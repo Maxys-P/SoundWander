@@ -2,10 +2,10 @@ package com.sw.classes;
 
 import com.sw.facades.FacadeUser;
 
-import java.util.*;
+import java.time.LocalDate;
 
 /**
- *
+ * Classe représentant un user
  */
 public class User {
 
@@ -14,28 +14,30 @@ public class User {
      */
     private FacadeUser facadeUser;
 
-    private int id;
     /**
-     *
+     * L'id du user
+     */
+    private int id;
+
+    /**
+     * Le pseudo du user
      */
     private String pseudo;
 
     /**
-     *
+     * Le mail du user
      */
     private String mail;
 
     /**
-     *
+     * Le mot de passe du user
      */
-
     private String motDePasse;
 
     /**
-     *
+     * La date de naissance du user
      */
-
-    private Date dateNaissance;
+    private LocalDate dateNaissance;
 
     /**
      *
@@ -61,7 +63,8 @@ public class User {
     /**
      * Default constructor
      */
-    public User(String pseudo, String mail, String motDePasse, Date dateNaissance) {
+    public User(int id, String pseudo, String mail, String motDePasse, LocalDate dateNaissance) {
+        this.id = id;
         this.pseudo = pseudo;
         this.mail = mail;
         this.motDePasse = motDePasse;
@@ -71,7 +74,8 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "pseudo='" + pseudo + '\'' +
+                "id=" + id +
+                ", pseudo='" + pseudo + '\'' +
                 ", mail='" + mail + '\'' +
                 ", motDePasse='" + motDePasse + '\'' +
                 ", dateNaissance=" + dateNaissance + '\'' +
@@ -122,9 +126,10 @@ public class User {
 
     /**
      * Getter de la date de naissance du user
+     *
      * @return la date de naissance du user
      */
-    public Date getDateNaissance() {
+    public LocalDate getDateNaissance() {
         return dateNaissance;
     }
 
@@ -175,7 +180,7 @@ public class User {
      * Setter de la date de naissance du user
      * @param dateNaissance la date de naissance du user
      */
-    public void setDateNaissance(Date dateNaissance) {
+    public void setDateNaissance(LocalDate dateNaissance) {
         this.dateNaissance = dateNaissance;
     }
 
