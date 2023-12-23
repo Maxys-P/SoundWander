@@ -16,7 +16,8 @@ public class Proposal {
     /**
      * Default constructor
      */
-    public Proposal(String country, String description, Music music, User artist) {
+    public Proposal(int id, String country, String description, Music music, User artist) {
+        this.id = id;
         this.country = country;
         this.description = description;
         this.music = music;
