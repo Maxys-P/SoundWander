@@ -2,8 +2,9 @@ package com.sw.dao;
 
 import com.sw.classes.User;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
 /**
  *  Classe abstraite définissant les opérations standard pour interagir avec les données utilisateur, indépendamment du SGBD.
@@ -18,7 +19,6 @@ public abstract class DAOUser extends DAO {
         super("user");
     }
 
-    public abstract List<User> getAllUsers() throws Exception;
 
     /**
      * Méthode pour créer un utilisateur
@@ -29,11 +29,19 @@ public abstract class DAOUser extends DAO {
      * @return User, l'utilisateur créé
      * @throws Exception si problème pendant la création du user
      */
-    public abstract User createUser(String pseudo, String mail, String motDePasse, Date dateNaissance) throws Exception;
+    public abstract User createUser(String pseudo, String mail, String motDePasse, LocalDate dateNaissance) throws Exception;
 
 
     /**
-     * Méthode pour récupérer un utilisateur par son pseudo
+     * Méthode pour récupérer tous les users
+     * @return List<User>, la liste des utilisateurs
+     * @throws Exception si problème pendant la récupération des users
+     */
+    public abstract List<User> getAllUsers() throws Exception;
+
+
+    /**
+     * Méthode pour récupérer un utilisateur par son mail
      * @param mail String, le mail de l'utilisateur
      * @return User, l'utilisateur récupéré
      * @throws Exception si problème pendant la récupération du user
@@ -47,52 +55,26 @@ public abstract class DAOUser extends DAO {
      * @return User, l'utilisateur récupéré
      * @throws Exception si problème pendant la récupération du user
      */
-    //public abstract User getUserById(int id) throws Exception;
-
+    public abstract User getUserById(int id) throws Exception;
 
     /**
-     * Supprimer le user de la base de donnée avec son mail
-     * @param mail, le mail du user
-     * @throws Exception si une erreur survient lors de la suppression du user
+     * Met à jour les informations d'un utilisateur et retourne l'utilisateur mis à jour.
+     * @param id L'identifiant de l'utilisateur à mettre à jour.
+     * @param updates Map contenant les champs à mettre à jour et leurs nouvelles valeurs.
+     * @return User L'utilisateur mis à jour.
+     * @throws Exception En cas d'erreur lors de la mise à jour ou de récupération des données.
      */
-    //public abstract void deleteUserByMail(String mail) throws Exception;
+    public abstract User updateUser(int id, Map<String, Object> updates) throws Exception;
+
 
     /**
      * Supprimer le user de la base de donnée
      * @param id int, l'id du user
      * @throws Exception si une erreur survient lors de la suppression du user
      */
-    //public abstract void deleteUserById(int id) throws Exception;
+    public abstract boolean deleteUser(int id) throws Exception;
 
 
-
-    //Update :
-    /**
-     * Met à jour le pseudo du user dans la base de donnée
-     * @param pseudo, le pseudo du user
-     * @param id int, l'id du user
-     * @throws Exception si une erreur survient lors de la requête SQL
-     */
-    //public abstract User updateUserPseudo(String pseudo, int id) throws Exception;
-
-
-    /**
-     * Modifie le mail du user
-     * @param mail String, le mail du user
-     * @param id int, l'id du user
-     * @return User, le user modifié
-     * @throws Exception en cas de problème lors de la requête SQL
-     */
-    //public abstract User updateUserMail(String mail, int id) throws Exception;
-
-
-    /**
-     * Met à jour le password du user dans la base de donnée
-     * @param password, le password du user
-     * @param id int, l'id du user
-     * @throws Exception si une erreur survient lors de la requête SQL
-     */
-    //public abstract User updateUserPassword(String password, int id) throws Exception;
 
 
 }

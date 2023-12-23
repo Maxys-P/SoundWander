@@ -4,7 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="488cdd30-80e1-4c58-a706-5bdc807ad006" name="Changes" comment="Changement cbon" />
+    <list default="true" id="488cdd30-80e1-4c58-a706-5bdc807ad006" name="Changes" comment="Méthodes génériques login et inscription">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/boiteAOutils/MapperResultSet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/classes/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/classes/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/controllers/users/ControllerRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/users/ControllerRegister.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/CreateTableUserScript.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/CreateTableUserScript.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/DAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/DAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/DAOUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/DAOUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/connexions/ConnexionDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/connexions/ConnexionDB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/connexions/ConnexionMySQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/connexions/ConnexionMySQL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/daoMysql/DAOUserMySQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/daoMysql/DAOUserMySQL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/requetesDB/RequetesMySQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/requetesDB/RequetesMySQL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/exceptions/ExceptionUsedPseudo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/facades/FacadeUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/facades/FacadeUser.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,6 +30,7 @@
       <list>
         <option value="module-info" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -25,6 +41,12 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
@@ -42,11 +64,13 @@
     &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;Application.App.executor&quot;: &quot;Run&quot;,
+    &quot;Application.CreateTableUserScript.executor&quot;: &quot;Run&quot;,
     &quot;Application.Main.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;auriane&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -57,6 +81,7 @@
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
@@ -64,6 +89,12 @@
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\maxys\Desktop\SoundWander\src\main\java\com\sw\controllers" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.sw.dao.boiteAOutils" />
     </key>
   </component>
   <component name="RunManager" selected="Application.ConversionMP3ToBinary">
@@ -80,12 +111,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ConversionMP3ToBinary" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.sw.dao.boiteAOutils.ConversionMP3ToBinary" />
+    <configuration name="CreateTableUserScript" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.sw.dao.CreateTableUserScript" />
       <module name="SoundWander" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.sw.dao.boiteAOutils.*" />
+          <option name="PATTERN" value="com.sw.dao.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -115,6 +146,7 @@
       <list>
         <item itemvalue="Application.ConversionMP3ToBinary" />
         <item itemvalue="Application.App" />
+        <item itemvalue="Application.CreateTableUserScript" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
@@ -137,6 +169,19 @@
       <workItem from="1701898241494" duration="11075000" />
       <workItem from="1702227692652" duration="8932000" />
       <workItem from="1702251368245" duration="4736000" />
+      <workItem from="1702856758517" duration="653000" />
+      <workItem from="1702895349628" duration="5627000" />
+      <workItem from="1702929851879" duration="829000" />
+      <workItem from="1702935081663" duration="2061000" />
+      <workItem from="1702937969289" duration="3139000" />
+      <workItem from="1702976182919" duration="6273000" />
+      <workItem from="1702991578939" duration="26000" />
+      <workItem from="1702998627359" duration="8102000" />
+      <workItem from="1703080052230" duration="113000" />
+      <workItem from="1703080351370" duration="9762000" />
+      <workItem from="1703148870695" duration="10125000" />
+      <workItem from="1703281196015" duration="6528000" />
+      <workItem from="1703294437762" duration="413000" />
     </task>
     <task id="LOCAL-00001" summary="Création">
       <option name="closed" value="true" />
@@ -183,7 +228,23 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Création" />
     <MESSAGE value="Mateo Fonctionnel" />
-    <option name="LAST_COMMIT_MESSAGE" value="Mateo Fonctionnel" />
+    <MESSAGE value="Méthodes génériques login et inscription" />
+    <option name="LAST_COMMIT_MESSAGE" value="Méthodes génériques login et inscription" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/com/sw/dao/DAOUser.java</url>
+          <line>31</line>
+          <properties class="com.sw.dao.DAOUser" method="createUser">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

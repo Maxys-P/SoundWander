@@ -11,7 +11,7 @@ public class DAOMusicMySQL extends DAOMusic {
         this.requetesDB = new RequetesMySQL();
     }
 
-    public Music createMusic(String name, String Artiste, int duration){
+    public Music createMusic(String name, String Artist, int duration){
         return null;
     }
     @Override
