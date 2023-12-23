@@ -30,7 +30,7 @@ public class AddMusicToBD {
             // Remplir les paramètres de la requête préparée
             pstmt.setBytes(1, fileContent);
             pstmt.setString(2, "Premier Son Bis");
-            pstmt.setInt(3, 2);
+            pstmt.setInt(3, 1);
             pstmt.setInt(4, 10);
 
             // Exécuter la requête

@@ -9,7 +9,7 @@ public class CreateTableUserScript {
     public static void main(String[] args) {
         String url = "jdbc:mysql://localhost:3306/DBSoundWander";
         String utilisateur = "root";
-        String motDePasse = "se123";
+        String motDePasse = "se-database";
 
         try (Connection connexion = DriverManager.getConnection(url, utilisateur, motDePasse);
              Statement statement = connexion.createStatement()) {
