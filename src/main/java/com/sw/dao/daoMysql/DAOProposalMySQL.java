@@ -28,8 +28,22 @@ public class DAOProposalMySQL extends DAOProposal {
      */
     @Override
     public Proposal createProposal(String country, String description, Music music, User artist) throws Exception {
-        //TODO
-        System.out.println("TODO");
-        return null;
+        // Préparer les valeurs à insérer, en respectant le type des colonnes de la table proposal
+        Object[] values = {country, description, music.getId(), artist.getId()};
+
+        // Créer une instance de RequetesMySQL
+        RequetesMySQL requetePourCreer = new RequetesMySQL();
+
+        // Appeler la méthode create de RequetesMySQL
+        // Pour l'instant, cette méthode ne fait rien, donc nous simulerons l'appel sans effectuer d'insertion réelle
+        try {
+            requetePourCreer.create("proposal", new String[]{"country", "description", "music", "artist"}, values);
+        } catch (Exception e) {
+            System.out.println("Erreur lors de la création de la proposition : " + e.getMessage());
+            throw e;
+        }
+
+        Proposal proposal_created = new Proposal(country, description, music, artist);
+        return proposal_created;
     }
 }
