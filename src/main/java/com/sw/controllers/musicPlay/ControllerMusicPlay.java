@@ -2,8 +2,11 @@ package com.sw.controllers.musicPlay;
 import com.sw.classes.Music;
 import com.sw.controllers.Controller;
 import com.sw.facades.FacadeMusicPlay;
+import javafx.scene.control.Button;
 
 public class ControllerMusicPlay extends Controller {
+
+    private Button boutonPlay;
 
     final FacadeMusicPlay musicPlayFacade = FacadeMusicPlay.getInstance();
 
