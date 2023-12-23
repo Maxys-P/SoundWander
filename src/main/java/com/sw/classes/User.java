@@ -14,49 +14,26 @@ public class User {
      */
     private FacadeUser facadeUser;
 
-    /**
-     * L'id du user
-     */
     private int id;
 
-    /**
-     * Le pseudo du user
-     */
     private String pseudo;
 
-    /**
-     * Le mail du user
-     */
     private String mail;
 
-    /**
-     * Le mot de passe du user
-     */
     private String motDePasse;
 
-    /**
-     * La date de naissance du user
-     */
     private LocalDate dateNaissance;
 
-    /**
-     *
-     */
+
     //public List<Musique> liste_perso;
 
-    /**
-     *
-     */
+
     //public List<Notification> notifs;
 
-    /**
-     *
-     */
+  
     //public <List<Discussion> discussions;
 
-    /**
-     *
-     */
+
     //public Image photo_profil;
 
 
