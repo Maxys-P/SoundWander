@@ -18,7 +18,7 @@ public class CreateTableUserScript {
             String requeteSQL = "CREATE TABLE IF NOT EXISTS user (" +
                     "id INT AUTO_INCREMENT PRIMARY KEY," +
                     "pseudo VARCHAR(255) NOT NULL," +
-                    "email VARCHAR(255) NOT NULL," +
+                    "mail VARCHAR(255) NOT NULL," +
                     "dateNaissance DATE," +
                     "motDePasse VARCHAR(255) NOT NULL" +
                     ");";

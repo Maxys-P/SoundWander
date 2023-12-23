@@ -1,9 +1,10 @@
 package com.sw.dao.requetesDB;
 
+import com.sw.dao.boiteAOutils.MapperResultSet;
 import com.sw.dao.connexions.ConnexionMySQL;
 import com.sw.exceptions.ExceptionDB;
 import java.sql.*;
-import java.util.Collections;
+import java.util.*;
 
 /**
  * Classe qui donne les méthodes pour interagir avec la base de données MySQL
@@ -28,131 +29,202 @@ public class RequetesMySQL extends RequetesDB {
      * @return Connection, la connexion à la base de données
      * @throws ExceptionDB si la connexion ne peut pas être établie
      */
-    private Connection getConnexion() throws ExceptionDB {
-        System.out.println("Je suis dans la méthode getConnexion de RequetesMySQL");
+    private Connection getConnexion() throws ExceptionDB, SQLException {
         return this.connexionDB.getConnection();
     }
 
     // On mets les méthodes pour interagir avec la base de données ici :
     //Les CRUD de base quoi avec des paramètres (qu'on utilisera dans les fonctions de DAOMySQL)
 
-
     /**
      * Read du CRUD, équivaut à un select * from table
      * @param table La table dans laquelle lire les données
      * @return un objet ResultSet qui contient les données de chaque tuple
-     * @throws ExceptionDB
+     * @throws ExceptionDB si une exception SQL se produit.
      */
-    public ResultSet selectAll(String table) throws ExceptionDB {
-        System.out.println("Je suis dans la méthode selectAll de RequetesMySQL");
+    //Je pense qu'on pourrait juste faire un selectWhere avec une map vide maintenant qu'on l'a mais je laisse au cas où et ça doit être plus rapide
+    public MapperResultSet selectAll(String table) throws ExceptionDB {
         String sql = "SELECT * FROM " + table;
-        try (Connection connection = this.getConnexion()) {
-            try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
-                ResultSet result = pstmt.executeQuery();
-                return result;
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
+        try (Connection connection = this.getConnexion();
+            PreparedStatement requete = connection.prepareStatement(sql)) {
+
+                ResultSet result = requete.executeQuery();
+                return new MapperResultSet(result);
         } catch (SQLException e) {
-            e.printStackTrace();
+        e.printStackTrace();
+        throw new ExceptionDB("Erreur lors de la sélection des données", e);
+        }
+    }
+
+
+    /**
+     * Méthode générique pour effectuer des requêtes SELECT avec des conditions WHERE.
+     * @param table Le nom de la table.
+     * @param whereConditions Liste des paires colonne-valeur pour les conditions WHERE.
+     * @return MapperResultSet, le résultat de la requête.
+     * @throws ExceptionDB si une exception SQL se produit.
+     */
+    public MapperResultSet selectWhere(String table, Map<String, Object> whereConditions) throws ExceptionDB {
+        StringBuilder wherePart = new StringBuilder();
+        // Construction de la partie WHERE de la requête
+        int i = 0;
+        for (Map.Entry<String, Object> entry : whereConditions.entrySet()) {
+            wherePart.append(entry.getKey()).append(" = ?");
+            if (i < whereConditions.size() - 1) {
+                wherePart.append(" AND ");
+            }
+            i++;
+        }
+
+        String sql = "SELECT * FROM " + table + " WHERE " + wherePart;
+        try (Connection connection = this.getConnexion();
+             PreparedStatement requete = connection.prepareStatement(sql)) {
+            int index = 1;
+            for (Object value : whereConditions.values()) {
+                requete.setObject(index++, value);
+            }
+            ResultSet rs = requete.executeQuery();
+            return new MapperResultSet(rs);
+
+        } catch (SQLException e) {
             throw new ExceptionDB("Erreur lors de la sélection des données", e);
         }
     }
 
 
     /**
-     * Insère des données dans une table spécifiée.
+     * Méthode générique pour insérer une seule ligne de données dans n'importe quelle table.
      * @param table Le nom de la table dans laquelle insérer les données.
-     * @param columns Les colonnes dans lesquelles insérer les données.
-     * @param values Les valeurs à insérer dans les colonnes correspondantes.
-     * @throws SQLException si la requête SQL ne peut pas être exécutée.
+     * @param data Map des données à insérer, où chaque clé est le nom de la colonne et chaque valeur est la valeur à insérer.
+     * @throws ExceptionDB, SQLException si une exception SQL se produit.
      */
-    public void create(String table, String[] columns, Object[] values) throws Exception {
-        if (columns.length != values.length) {
-            throw new Exception("Le nombre de colonnes et de valeurs doit être égal.");
+    public int create(String table, Map<String, Object> data) throws ExceptionDB, SQLException {
+        if (data.isEmpty()) {
+            throw new ExceptionDB("Aucune donnée à insérer");
         }
-        String columnPart = String.join(", ", columns);
-        String valuePart = String.join(", ", Collections.nCopies(columns.length, "?"));
+
+        String columnPart = String.join(", ", data.keySet());
+        String valuePart = String.join(", ", Collections.nCopies(data.size(), "?"));
         String sql = "INSERT INTO " + table + " (" + columnPart + ") VALUES (" + valuePart + ")";
 
-        try(Connection connection = this.getConnexion();
-            PreparedStatement pstmt = connection.prepareStatement(sql)) {
-            for (int i = 0; i < values.length; i++) {
-                pstmt.setObject(i + 1, values[i]);
-            }
-
-            pstmt.executeUpdate();
-        } catch (SQLException e) {
-            throw new SQLException("Erreur lors de l'insertion des données", e);
-        }
-    }
-
-
-    /**
-     * Read du CRUD, équivaut à un select * from table avec une condition where
-     * @param table La table dans laquelle lire les données
-     * @param columns  Les colonnes à lire
-     * @param whereColumns Les colonnes sur lesquelles appliquer la condition
-     * @param whereValues Les valeurs à chercher dans les colonnes
-     * @return ResultSet, le résultat de la requête
-     * @throws ExceptionDB si la requête SQL ne peut pas être exécutée
-     */
-    public ResultSet selectWhere(String table, String[] columns, String[] whereColumns, Object[] whereValues) throws ExceptionDB {
-        if (whereColumns.length != whereValues.length) {
-            throw new ExceptionDB("Le nombre de colonnes WHERE et de valeurs doit être égal.");
-        }
-
-        String columnPart = String.join(", ", columns);
-        String wherePart = "";
-        for (int i = 0; i < whereColumns.length; i++) {
-            wherePart += whereColumns[i] + " = ?";
-            if (i < whereColumns.length - 1) {
-                wherePart += " AND ";
-            }
-        }
-
-        String sql = "SELECT " + columnPart + " FROM " + table + " WHERE " + wherePart;
-
         try (Connection connection = this.getConnexion();
-             PreparedStatement pstmt = connection.prepareStatement(sql)) {
-
-            for (int i = 0; i < whereValues.length; i++) {
-                pstmt.setObject(i + 1, whereValues[i]);
+             PreparedStatement requete = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+            int index = 1;
+            for (Object value : data.values()) {
+                requete.setObject(index++, value);
             }
 
-            return pstmt.executeQuery();
-        } catch (SQLException e) {
-            throw new ExceptionDB("Erreur lors de la sélection des données", e);
-        }
-    }
+            int affectedRows = requete.executeUpdate();
+            if (affectedRows == 0) {
+                throw new SQLException("La création a échoué, aucune ligne n'a été modifiée.");
+            }
 
-
-
-    /**
-     * Méthode pour savoir si une donnée existe dans la base de données
-     * @param data La donnée à chercher
-     * @param name  Le nom de la colonne dans laquelle chercher
-     * @param table La table dans laquelle chercher
-     * @return boolean, true si la donnée existe, false sinon
-     * @throws ExceptionDB  si la requête SQL ne peut pas être exécutée
-     */
-    public boolean exist(Object data, String name, String table) throws ExceptionDB {
-        String sql = "SELECT COUNT(*) FROM " + table + " WHERE " + name + " = ?";
-        try (Connection conn = this.connexionDB.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-
-            // Définit la valeur à chercher dans la requête
-            pstmt.setObject(1, data);
-
-            try (ResultSet rs = pstmt.executeQuery()) {
-                if (rs.next()) {
-                    // Vérifie si le nombre d'occurrences est supérieur à 0
-                    return rs.getInt(1) > 0;
+            try (ResultSet generatedKeys = requete.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    return generatedKeys.getInt(1);
+                } else {
+                    throw new SQLException("La création a échoué, aucun ID n'a été retourné.");
                 }
             }
         } catch (SQLException e) {
-            throw new ExceptionDB("Erreur lors de la vérification de l'existence de la donnée", e);
+            throw new ExceptionDB("Erreur lors de l'insertion des données", e);
         }
-        return false;
+    }
+
+
+    /**
+     * Méthode générique pour modifier les données d'une table.
+     * @param table Le nom de la table dans laquelle modifier les données.
+     * @param data Map des données à modifier, où chaque clé est le nom de la colonne et chaque valeur est la valeur à modifier.
+     * @param whereConditions Map des conditions WHERE, où chaque clé est le nom de la colonne et chaque valeur est la valeur à modifier.
+     * @throws ExceptionDB si une exception SQL se produit.
+     */
+    public void update(String table, Map<String, Object> data, Map<String, Object> whereConditions) throws ExceptionDB {
+        if (data.isEmpty()) {
+            throw new ExceptionDB("Aucune donnée à mettre à jour");
+        }
+        if (whereConditions.isEmpty()) {
+            throw new ExceptionDB("Aucune condition WHERE spécifiée. Mise à jour annulée pour éviter les modifications de masse.");
+        }
+
+        // Construction de la partie UPDATE de la requête
+        StringBuilder setPart = new StringBuilder();
+        int index = 0;
+        for (String key : data.keySet()) {
+            setPart.append(key).append(" = ?");
+            if (index < data.size() - 1) setPart.append(", ");
+            index++;
+        }
+
+        // Construction de la partie WHERE de la requête
+        StringBuilder wherePart = new StringBuilder();
+        index = 0;
+        for (String key : whereConditions.keySet()) {
+            wherePart.append(key).append(" = ?");
+            if (index < whereConditions.size() - 1) wherePart.append(" AND ");
+            index++;
+        }
+
+        String sql = "UPDATE " + table + " SET " + setPart + " WHERE " + wherePart;
+
+        try (Connection connection = this.getConnexion();
+             PreparedStatement requete = connection.prepareStatement(sql)) {
+
+            index = 1; // Réinitialisation de l'index pour la préparation des paramètres
+
+            // Affectation des valeurs à mettre à jour
+            for (Object value : data.values()) {
+                requete.setObject(index++, value);
+            }
+            // Affectation des valeurs des conditions WHERE
+            for (Object value : whereConditions.values()) {
+                requete.setObject(index++, value);
+            }
+
+            int affectedRows = requete.executeUpdate();
+            if (affectedRows == 0) {
+                throw new SQLException("La mise à jour a échoué, aucune ligne n'a été modifiée.");
+            }
+        } catch (SQLException e) {
+            throw new ExceptionDB("Erreur lors de la mise à jour des données" + e.getMessage(), e);
+        }
+    }
+
+    /**
+     * Méthode générique pour supprimer des données d'une table.
+     * @param table Le nom de la table dans laquelle supprimer les données.
+     * @param whereConditions Map des conditions WHERE, où chaque clé est le nom de la colonne et chaque valeur est la valeur à modifier.
+     * @throws ExceptionDB si une exception SQL se produit.
+     */
+    public int delete(String table, Map<String, Object> whereConditions) throws ExceptionDB {
+        if (whereConditions.isEmpty()) {
+            throw new ExceptionDB("Aucune condition WHERE spécifiée. Suppression annulée pour éviter les suppressions de masse.");
+        }
+
+        // Construction de la partie WHERE de la requête
+        StringBuilder wherePart = new StringBuilder();
+        int i = 0;
+        for (Map.Entry<String, Object> entry : whereConditions.entrySet()) {
+            wherePart.append(entry.getKey()).append(" = ?");
+            if (i < whereConditions.size() - 1) {
+                wherePart.append(" AND ");
+            }
+            i++;
+        }
+
+        String sql = "DELETE FROM " + table + " WHERE " + wherePart;
+
+        try (Connection connection = this.getConnexion();
+             PreparedStatement requete = connection.prepareStatement(sql)) {
+
+            int index = 1;
+            for (Object value : whereConditions.values()) {
+                requete.setObject(index++, value);
+            }
+
+            return requete.executeUpdate();
+        } catch (SQLException e) {
+            throw new ExceptionDB("Erreur lors de la suppression des données", e);
+        }
     }
 }

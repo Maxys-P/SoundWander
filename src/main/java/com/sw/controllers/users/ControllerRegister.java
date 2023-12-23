@@ -8,6 +8,8 @@ import javafx.scene.text.Text;
 import com.sw.exceptions.ExceptionBadPage;
 import com.sw.exceptions.ExceptionFormIncomplete;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 
 
@@ -56,7 +58,8 @@ public class ControllerRegister extends ControllerUser {
         try {
             verifForm();
             verifPassword();
-            User user = super.userFacade.inscription(mail.getText(), pseudo.getText(), motDePasse.getText(), (Date) dateNaissance.getDayCellFactory());
+            LocalDate localDate = dateNaissance.getValue();
+            User user = super.userFacade.inscription(mail.getText(), pseudo.getText(), motDePasse.getText(), localDate);
             if (user != null) {
                 super.hideError(errorText);
                 Facade.currentUser = user;
