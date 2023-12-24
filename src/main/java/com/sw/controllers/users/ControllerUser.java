@@ -16,6 +16,7 @@ public class ControllerUser extends Controller {
      */
     final FacadeUser userFacade = FacadeUser.getInstance();
 
+
     /**
      * Chemin du dossier dans lequel se trouve les ressources pour les pages accessibles aux utilisateurs
      */

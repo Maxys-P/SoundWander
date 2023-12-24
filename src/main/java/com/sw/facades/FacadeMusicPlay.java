@@ -6,10 +6,12 @@ import com.sw.dao.boiteAOutils.PlayMusicFromBD;
 import com.sw.dao.factories.FactoryDAO;
 
 public class FacadeMusicPlay extends Facade{
-
-    protected DAOMusic daoMusic;
-
     private static FacadeMusicPlay instance = null;
+    private DAOMusic daoMusic;
+
+    private FacadeMusicPlay(){
+        this.daoMusic = FactoryDAO.getInstanceofFactoryDAO().getInstanceofDAOMusic();
+    }
 
     public static FacadeMusicPlay getInstance(){
         if(instance == null){
@@ -18,7 +20,8 @@ public class FacadeMusicPlay extends Facade{
         return instance;
     }
 
-    public void playMusic(int id) throws Exception{
+    public Music playMusic(int id) throws Exception{
+        try {
         Music music = daoMusic.getMusicById(id);
         if (music != null){
             byte[] musicData = music.getMusicFile();
@@ -30,15 +33,64 @@ public class FacadeMusicPlay extends Facade{
         } else {
             System.out.println("Music not found for the selected ID.");
         }
+        return music;
+        } catch (Exception e) {
+            throw new Exception("Erreur lors de la lecture de la musique", e);
+        }
+
+    }
+
+    public void stopMusic(){
+        PlayMusicFromBD.stopMusic();
     }
 
     public Music playNextMusic(int id) throws Exception{
-        return daoMusic.getNextMusic(id);
+        try {
+            Music music = daoMusic.getNextMusic(id);
+            if (music != null){
+                byte[] musicData = music.getMusicFile();
+                if (musicData != null) {
+                    PlayMusicFromBD.playMusicFromBD(musicData);
+                } else {
+                    System.out.println("No music data found for the selected music.");
+                }
+            } else {
+                System.out.println("Music not found for the selected ID.");
+            }
+            return music;
+        } catch (Exception e) {
+            throw new Exception("Erreur lors de la lecture de la musique", e);
+        }
     }
 
-    public Music playPreviousMusic(int id){
-        return daoMusic.getPreviousMusic(id);
+    public Music playPreviousMusic(int id) throws Exception {
+        try {
+            Music music = daoMusic.getPreviousMusic(id);
+            if (music != null){
+                byte[] musicData = music.getMusicFile();
+                if (musicData != null) {
+                    PlayMusicFromBD.playMusicFromBD(musicData);
+                } else {
+                    System.out.println("No music data found for the selected music.");
+                }
+            } else {
+                System.out.println("Music not found for the selected ID.");
+            }
+            return music;
+        } catch (Exception e) {
+            throw new Exception("Erreur lors de la lecture de la musique", e);
+        }
     }
+
+    public void pauseMusic(){
+        PlayMusicFromBD.pauseMusic();
+    }
+
+    public void resumeMusic(){
+        PlayMusicFromBD.resumeMusic();
+    }
+
+
 
     public void addPrivatePlaylist(String name){
         daoMusic.addPrivatePlaylist(name);

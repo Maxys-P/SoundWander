@@ -91,3 +91,25 @@
 .lien:pressed {
     -fx-text-fill: #416569; /* Définit la couleur du texte du label en rouge */
 }
+
+/* ############ Bandeau Music ############ */
+
+.container-Bandeau-Music {
+    -fx-background-color: #142F3E; /* Couleur de fond */
+    -fx-padding: 10px;
+    -fx-alignment: center;
+}
+
+.bandeau-music{
+    -fx-background-color: #D9D9D9; /* Couleur de fond */
+    -fx-background-radius: 20px; /* Rayon du fond pour les coins arrondis */
+    -fx-padding: 5px 10px 5px; /* Haut, Droit, Bas, Gauche */
+    -fx-font-family: 'Mirza Regular'; /* La police du texte du bouton */
+    -fx-font-size: 12px; /* La taille de la police du bouton */
+}
+
+.musicBouton{
+        -fx-background-radius: 15;
+        -fx-background-color: #ffffff;
+    -fx-padding: 5px 10px 5px; /* Haut, Droit, Bas, Gauche */
+    }

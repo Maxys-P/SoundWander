@@ -5,9 +5,11 @@ module com.sw {
     requires java.sql;
     requires mysql.connector.java;
     requires java.desktop;
+    requires jlayer;
 
     exports com.sw;
 
     opens com.sw.controllers to javafx.fxml;
     opens com.sw.controllers.users to javafx.fxml;
+    opens com.sw.controllers.musicPlay to javafx.fxml;
 }

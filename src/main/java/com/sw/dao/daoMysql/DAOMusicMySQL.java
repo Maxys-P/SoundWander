@@ -2,13 +2,10 @@ package com.sw.dao.daoMysql;
 
 import com.sw.classes.Music;
 import com.sw.dao.DAOMusic;
+import com.sw.dao.boiteAOutils.MapperResultSet;
 import com.sw.dao.requetesDB.RequetesMySQL;
-
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class DAOMusicMySQL extends DAOMusic {
 
@@ -27,24 +24,24 @@ public class DAOMusicMySQL extends DAOMusic {
 
     @Override
     public Music getMusicById(int musicId) throws Exception {
-        String table = "music";
-        String[] columns = {"id", "name", "artist", "duration", "musicFile"};
-        String[] whereColumns = {"id"};
-        Object[] whereValues = {musicId};
+        Map<String,Object> conditions = new HashMap<>();
+        conditions.put("id", musicId);
+        try {
+            MapperResultSet musicData = ((RequetesMySQL) requetesDB).selectWhere(table, conditions);
+            if (!musicData.getListData().isEmpty()) {
+                Map<String, Object> musicDetails = musicData.getListData().getFirst();
 
-        try (ResultSet rs = ((RequetesMySQL)requetesDB).selectWhere(table, columns, whereColumns, whereValues)) {
-            if (rs.next()) {
-                int retrievedId = rs.getInt("id");
-                String name = rs.getString("name");
-                int artist = rs.getInt("artist");
-                int duration = rs.getInt("duration");
-                byte[] musicFile = rs.getBytes("musicFile");
+                String name = (String) musicDetails.get("name");
+                int artist = (int) musicDetails.get("artist");
+                int duration = (int) musicDetails.get("duration");
+                byte[] musicFile = (byte[]) musicDetails.get("musicFile");
 
-                Music music = new Music(retrievedId, name, artist, duration, musicFile);
-                return music;
+                return new Music(musicId, name, artist, duration, musicFile);
+            } else {
+                System.out.println("Pb quand on appelle selectWhere");
             }
             return null;
-        } catch (SQLException e) {
+        } catch (Exception e) {
             throw new Exception("Erreur lors de la récupération de la musique par ID", e);
         }
     }
@@ -52,30 +49,13 @@ public class DAOMusicMySQL extends DAOMusic {
 
     @Override
     public Music getNextMusic(int currentId) throws Exception {
-        String table = "music";
-        String[] columns = {"id", "name", "artist", "duration"};
-        String[] whereColumns = {"id"};
-        Object[] whereValues = {currentId + 1}; // Suppose que l'ID suivant est simplement l'actuel + 1
-
-        try (ResultSet rs = ((RequetesMySQL)requetesDB).selectWhere(table, columns, whereColumns, whereValues)) {
-            if (rs.next()) {
-                int nextId = rs.getInt("id");
-                String name = rs.getString("name");
-                int artist = rs.getInt("artist");
-                int duration = rs.getInt("duration");
-                byte[] musicFile = rs.getBytes("musicFile");
-
-                Music music = new Music(nextId, name, artist, duration, musicFile);
-                return music;
-            }
-            return null;
-        } catch (SQLException e) {
-            throw new Exception("Erreur lors de la récupération de la musique suivante", e);
-        }
+        getMusicById(currentId+1);
+        return null;
     }
 
     @Override
-    public Music getPreviousMusic(int id) {
+    public Music getPreviousMusic(int id) throws Exception{
+        getMusicById(id-1);
         return null;
     }
 
