@@ -1,8 +1,6 @@
 package com.sw.dao;
 
 import com.sw.dao.requetesDB.RequetesDB;
-import com.sw.dao.requetesDB.RequetesMySQL;
-import com.sw.exceptions.ExceptionDB;
 
 /**
  *  Classe abstraite non instanciable
@@ -24,15 +22,4 @@ public abstract class DAO {
         this.table = table;
     }
 
-    /**
-     * Méthode pour savoir si une donnée existe dans la base de données
-     * @param data Object, la donnée à chercher
-     * @param name String, le nom de la colonne dans laquelle chercher
-     * @return boolean, true si la donnée existe, false sinon
-     * @throws ExceptionDB si la requête SQL est incorrecte
-     */
-    public boolean dataExist(Object data, String name) throws ExceptionDB {
-        return (((RequetesMySQL)this.requetesDB).exist(data, name, this.table));
-        //pas fou que ça dépende de MySQL mais sinon il faudra le mettre dans chaque DAO
-    }
 }

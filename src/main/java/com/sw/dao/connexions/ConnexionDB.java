@@ -2,6 +2,7 @@ package com.sw.dao.connexions;
 
 import com.sw.exceptions.ExceptionDB;
 import java.sql.Connection;
+import java.sql.SQLException;
 
 public abstract class ConnexionDB {
 
@@ -16,7 +17,7 @@ public abstract class ConnexionDB {
      * @return Connection, un objet de connection permettant d'exécuter des requêtes sur la base de donnée
      * @throws ExceptionDB en cas d'erreur
      */
-    public abstract Connection getConnection() throws ExceptionDB;
+    public abstract Connection getConnection() throws ExceptionDB, SQLException;
 
     /**
      * Ferme la connexion à la base de données
