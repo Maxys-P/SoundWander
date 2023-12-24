@@ -7,13 +7,11 @@ import com.sw.exceptions.ExceptionUsedEmail;
 import com.sw.exceptions.ExceptionDB;
 import com.sw.exceptions.ExceptionBadLogin;
 import com.sw.exceptions.ExceptionBadPassword;
-import com.sw.dao.boiteAOutils.PasswordAuthentification;
+import com.sw.dao.boiteAOutils.AuthentificationManager;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 
 /**
@@ -32,10 +30,6 @@ public class FacadeUser extends Facade {
      */
     protected DAOUser daoUser = f.getInstanceofDAOUser();
 
-    /**
-     * Authentification du mot de passe
-     */
-    protected PasswordAuthentification passwordAuthentification;
 
     /**
      * Instance de la facade pour le singleton
@@ -65,8 +59,7 @@ public class FacadeUser extends Facade {
     public User connexion(String mail, String motDePasse) throws Exception {
         try {
             User user = daoUser.getUserByMail(mail);
-            if (user.getMotDePasse().equals(motDePasse)){
-                //TODO : vérifier le mot de passe avec la méthode de PasswordAuthentication
+            if (AuthentificationManager.checkPassword(motDePasse, user.getMotDePasse())) {
                 Facade.currentUser = user;
                 return user;
             }

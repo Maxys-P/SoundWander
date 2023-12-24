@@ -6,10 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="488cdd30-80e1-4c58-a706-5bdc807ad006" name="Changes" comment="Méthodes génériques login et inscription">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/classes/Music.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/classes/Music.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/DAOMusic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/DAOMusic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/daoMysql/DAOMusicMySQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/daoMysql/DAOMusicMySQL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/facades/FacadeMusicPlay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/facades/FacadeMusicPlay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/DAOUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/DAOUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/boiteAOutils/PasswordAuthentification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/boiteAOutils/AuthentificationManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/daoMysql/DAOUserMySQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/daoMysql/DAOUserMySQL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/facades/FacadeUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/facades/FacadeUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -173,6 +175,7 @@
       <workItem from="1703148870695" duration="10125000" />
       <workItem from="1703281196015" duration="6528000" />
       <workItem from="1703294437762" duration="413000" />
+      <workItem from="1703432328006" duration="1522000" />
     </task>
     <task id="LOCAL-00001" summary="Création">
       <option name="closed" value="true" />
@@ -227,7 +230,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/com/sw/dao/DAOUser.java</url>
-          <line>31</line>
+          <line>38</line>
           <properties class="com.sw.dao.DAOUser" method="createUser">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
