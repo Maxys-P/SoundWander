@@ -9,7 +9,9 @@ public abstract class DAOMusic extends DAO {
     public abstract Music getMusicByName(String name);
 
 
-    public abstract Music getNextMusic(int id);
+    public abstract Music getMusicById(int id) throws Exception;
+
+    public abstract Music getNextMusic(int id) throws Exception;
 
     public abstract Music getPreviousMusic(int id);
 

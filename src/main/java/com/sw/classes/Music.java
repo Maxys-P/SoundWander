@@ -19,11 +19,12 @@ public class Music {
         this.facadeMusicPlay = facadeMusicPlay;
     }
 
-    public Music(int id, String name, int artist, int duration){
+    public Music(int id, String name, int artist, int duration, byte[] musicFile){
         this.id = id;
         this.name = name;
         this.artist = artist;
         this.duration = duration;
+        this.musicFile = musicFile;
     }
 
     @Override
@@ -31,8 +32,9 @@ public class Music {
         return "Music{" +
                 "id=" + id + '\'' +
                 ", name=" + name + '\'' +
-                 ", artist=" + artist + '\'' +
+                ", artist=" + artist + '\'' +
                 ", duration=" + '\'' + duration +
+                ", musicFile=" + musicFile + '\'' +
                 '}';
     }
 
