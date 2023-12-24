@@ -4,6 +4,7 @@ module com.sw {
     requires org.controlsfx.controls;
     requires java.sql;
     requires mysql.connector.java;
+    requires jbcrypt;
 
     exports com.sw;
 
