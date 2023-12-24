@@ -21,7 +21,7 @@ public class FacadeMusicPlay extends Facade{
         return daoMusic.getMusicByName(name);
     }
 
-    public Music playNextMusic(int id){
+    public Music playNextMusic(int id) throws Exception {
         return daoMusic.getNextMusic(id);
     }
 
