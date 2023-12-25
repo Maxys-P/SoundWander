@@ -8,6 +8,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.Label;
 import com.sw.classes.Music;
+import com.sw.dao.DAOMusic;
 import com.sw.classes.User;
 import com.sw.facades.Facade;
 import javafx.scene.text.Text;
@@ -46,11 +47,12 @@ public class ControllerCreateProposal extends ControllerProposal {
 
     private Music getSelectedMusic() {
         // TODO: Implémentez la méthode getSelectedMusic() qui retourne un objet Music
-            int id = 1;
+          /*  int id = 1;
             String name = "Premier Son Bis";
             int artist = 1;
             int duration = 10;
-            return new Music(id, name, artist, duration);
+            return new Music(id, name, artist, duration);*/
+    return null;
     }
 
     @FXML
