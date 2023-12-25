@@ -40,13 +40,21 @@
 }
 
 .boutonBleu:hover {
-    -fx-background-color: #FFFFFF; /* Couleur de fond au survol */
+    -fx-background-color: #143442; /* Couleur de fond au survol */
     -fx-text-fill: #416569; /* Couleur du texte au survol */
 }
 
 .boutonBleu:pressed {
     -fx-background-color: #416569; /* Couleur de fond au clic */
     -fx-text-fill: #FFFFFF; /* Couleur du texte au clic */
+}
+
+.close-button {
+    -fx-background-color: transparent; /* Rendre le fond transparent */
+    -fx-text-fill: #FFFFFF; /* Couleur du texte */
+    -fx-border-color: transparent; /* Rendre la bordure transparente */
+    -fx-font-size: 16px; /* Augmenter la taille du texte */
+    -fx-font-weight: bold; /* Mettre le texte en gras */
 }
 
 

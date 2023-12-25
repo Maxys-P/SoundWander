@@ -4,6 +4,7 @@ import com.sw.classes.User;
 import com.sw.dao.DAOUser;
 import com.sw.dao.boiteAOutils.MapperResultSet;
 import com.sw.dao.requetesDB.RequetesMySQL;
+import com.sw.dao.boiteAOutils.AuthentificationManager;
 
 import java.time.LocalDate;
 import java.util.*;
@@ -36,7 +37,10 @@ public class DAOUserMySQL extends DAOUser {
         Map<String, Object> userData = new LinkedHashMap<>();
         userData.put("pseudo", pseudo);
         userData.put("mail", mail);
-        userData.put("motDePasse", motDePasse);
+
+        // Hacher le mot de passe avant de l'insérer
+        String hashedPassword = AuthentificationManager.hashPassword(motDePasse);
+        userData.put("motDePasse", hashedPassword);
 
         // Convertir LocalDate en java.sql.Date
         if (dateNaissance != null) {
@@ -121,7 +125,7 @@ public class DAOUserMySQL extends DAOUser {
 
             }
             else {
-                System.out.println("Pb quand on appelle selectWhere");
+                System.out.println("Pb quand on récupère le user");
             }
             return null;
         } catch (Exception e) {

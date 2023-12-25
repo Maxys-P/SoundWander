@@ -1,6 +1,7 @@
 package com.sw.dao;
 
 import com.sw.classes.User;
+import com.sw.dao.boiteAOutils.AuthentificationManager;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -18,6 +19,12 @@ public abstract class DAOUser extends DAO {
     public DAOUser() {
         super("user");
     }
+
+    /**
+     * Instance de la classe utilitaire pour l'authentification du mot de passe
+     * Elle permet de hasher et vérifier le mot de passe
+     */
+    protected AuthentificationManager passwordAuthentification = new AuthentificationManager();
 
 
     /**

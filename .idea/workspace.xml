@@ -4,23 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="488cdd30-80e1-4c58-a706-5bdc807ad006" name="Changes" comment="changement/ajout classes Music">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/views/users/music-view.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/music-next.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/music-pause.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/music-play.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/music-previous.png" afterDir="false" />
+    <list default="true" id="488cdd30-80e1-4c58-a706-5bdc807ad006" name="Changes" comment="Méthodes génériques login et inscription">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/controllers/musicPlay/ControllerMusicPlay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/musicPlay/ControllerMusicPlay.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/controllers/users/ControllerUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/users/ControllerUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/DAOMusic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/DAOMusic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/boiteAOutils/PlayMusicFromBD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/boiteAOutils/PlayMusicFromBD.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/daoMysql/DAOMusicMySQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/daoMysql/DAOMusicMySQL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/facades/FacadeMusicPlay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/facades/FacadeMusicPlay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/DAOUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/DAOUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/boiteAOutils/PasswordAuthentification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/boiteAOutils/AuthentificationManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/daoMysql/DAOUserMySQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/daoMysql/DAOUserMySQL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/facades/FacadeUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/facades/FacadeUser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/styles/Style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/styles/Style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/views/users/home-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/views/users/home-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,17 +23,23 @@
       <list>
         <option value="module-info" />
         <option value="Class" />
-        <option value="FxmlFile" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="margaux" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
@@ -60,11 +57,14 @@
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "Application.App.executor": "Run",
+    "Application.CreateTableUserScript.executor": "Run",
     "Application.Main.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "Merging margaux",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -75,15 +75,20 @@
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
+    "run.code.analysis.last.selected.profile": "pProject Default",
     "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\thiri\Documents\1_POLYTECH\4A cours\SED\SoundWander\src\main\resources\com\views\users" />
-      <recent name="C:\Users\thiri\Documents\1_POLYTECH\4A cours\SED\SoundWander\src\main\resources\com" />
       <recent name="C:\Users\maxys\Desktop\SoundWander\src\main\java\com\sw\controllers" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.sw.dao.boiteAOutils" />
     </key>
   </component>
   <component name="RunManager" selected="Application.App">
@@ -100,12 +105,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ConversionMP3ToBinary" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.sw.dao.boiteAOutils.ConversionMP3ToBinary" />
+    <configuration name="CreateTableUserScript" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.sw.dao.CreateTableUserScript" />
       <module name="SoundWander" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.sw.dao.boiteAOutils.*" />
+          <option name="PATTERN" value="com.sw.dao.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -127,14 +132,14 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.ConversionMP3ToBinary" />
+      <item itemvalue="Application.CreateTableUserScript" />
       <item itemvalue="Application.Main" />
       <item itemvalue="Application.App" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.App" />
-        <item itemvalue="Application.ConversionMP3ToBinary" />
+        <item itemvalue="Application.CreateTableUserScript" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
@@ -157,6 +162,20 @@
       <workItem from="1701898241494" duration="11075000" />
       <workItem from="1702227692652" duration="8932000" />
       <workItem from="1702251368245" duration="4736000" />
+      <workItem from="1702856758517" duration="653000" />
+      <workItem from="1702895349628" duration="5627000" />
+      <workItem from="1702929851879" duration="829000" />
+      <workItem from="1702935081663" duration="2061000" />
+      <workItem from="1702937969289" duration="3139000" />
+      <workItem from="1702976182919" duration="6273000" />
+      <workItem from="1702991578939" duration="26000" />
+      <workItem from="1702998627359" duration="8102000" />
+      <workItem from="1703080052230" duration="113000" />
+      <workItem from="1703080351370" duration="9762000" />
+      <workItem from="1703148870695" duration="10125000" />
+      <workItem from="1703281196015" duration="6528000" />
+      <workItem from="1703294437762" duration="413000" />
+      <workItem from="1703432328006" duration="1522000" />
     </task>
     <task id="LOCAL-00001" summary="Création">
       <option name="closed" value="true" />
@@ -188,12 +207,6 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="UnknownFeatures">
-    <option featureType="dependencySupport" implementationName="executable:docker" />
-    <option featureType="dependencySupport" implementationName="java:com.google.protobuf:protobuf-java" />
-    <option featureType="dependencySupport" implementationName="java:org.openjfx:javafx-base" />
-    <option featureType="dependencySupport" implementationName="executable:kubectl" />
-  </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
@@ -209,8 +222,23 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Création" />
     <MESSAGE value="Mateo Fonctionnel" />
-    <MESSAGE value="changement/ajout classes Music" />
-    <option name="LAST_COMMIT_MESSAGE" value="changement/ajout classes Music" />
+    <MESSAGE value="Méthodes génériques login et inscription" />
+    <option name="LAST_COMMIT_MESSAGE" value="Méthodes génériques login et inscription" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/com/sw/dao/DAOUser.java</url>
+          <line>38</line>
+          <properties class="com.sw.dao.DAOUser" method="createUser">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

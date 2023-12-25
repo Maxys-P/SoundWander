@@ -4,6 +4,7 @@ import com.sw.controllers.Controller;
 import com.sw.facades.FacadeUser;
 import com.sw.exceptions.ExceptionBadPage;
 import javafx.scene.control.Control;
+import com.sw.facades.FacadeProposal;
 
 /**
  * Controller générique pour les pages accessibles aux visiteurs
