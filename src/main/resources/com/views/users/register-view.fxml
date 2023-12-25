@@ -19,7 +19,7 @@
             <TextField fx:id="mail" promptText="Adresse Mail" styleClass="champ"/>
             <PasswordField fx:id="motDePasse" promptText="Mot de Passe" styleClass="champ"/>
             <PasswordField fx:id="motDePasseConfirm" promptText="Confirmez le Mot de Passe" styleClass="champ"/>
-            <DatePicker fx:id="dateNaissance" promptText="Date de Naissance" styleClass="champ"/>
+            <DatePicker fx:id="dateNaissance" promptText="Date de Naissance" styleClass="champ" />
             <Text fx:id="errorText" fill="red" />
             <Button fx:id="boutonInscrire" text="S'inscrire" onAction="#handleButtonRegister" styleClass="boutonBleu"/>
             <Label fx:id="labelConnexion" text="Retour à la connexion" onMouseClicked="#goToLogin" styleClass="lien"/>
