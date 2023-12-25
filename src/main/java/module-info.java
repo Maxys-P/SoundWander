@@ -6,6 +6,7 @@ module com.sw {
     requires mysql.connector.java;
     requires java.desktop;
     requires jlayer;
+    requires jbcrypt;
 
     exports com.sw;
 

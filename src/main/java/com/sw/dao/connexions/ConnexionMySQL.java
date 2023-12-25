@@ -15,9 +15,9 @@ public class ConnexionMySQL extends ConnexionDB {
      */
     private Connection connection;
 
-    private String url = "jdbc:mysql://localhost:3306/DBSoundWander";
+    private String url = "jdbc:mysql://localhost:3306/SoundWander";
     private String utilisateur = "root";
-    private String motDePasse = "se-database";
+    private String motDePasse = "se123";
 
     /*
     private String url = "jdbc:mysql://aws.connect.psdb.cloud/dbsoundwander?sslMode=VERIFY_IDENTITY";
