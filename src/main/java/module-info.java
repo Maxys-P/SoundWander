@@ -14,4 +14,5 @@ module com.sw {
     opens com.sw.controllers to javafx.fxml;
     opens com.sw.controllers.users to javafx.fxml;
     opens com.sw.controllers.musicPlay to javafx.fxml;
+    opens com.sw.controllers.proposal to javafx.fxml;
 }

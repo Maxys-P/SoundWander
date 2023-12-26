@@ -2,9 +2,9 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-
-<AnchorPane prefHeight="600.0" prefWidth="1200.0" stylesheets="@../../styles/Style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sw.controllers.proposal.ControllerCreateProposal">
+<AnchorPane fx:controller="com.sw.controllers.proposal.ControllerCreateProposal" xmlns:fx="http://javafx.com/fxml" stylesheets="@../../styles/Style.css" prefHeight="250.0" prefWidth="400.0">
         <VBox fx:id="conteneurCreateProposal" alignment="CENTER" layoutY="19.0" maxHeight="400" maxWidth="400" prefHeight="354.0" prefWidth="400.0" spacing="10" styleClass="conteneur" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="19.0">
             <HBox alignment="TOP_LEFT" >
                 <Button fx:id="closeButton" onAction="#closeWindow" styleClass="close-button" text="X" />
@@ -12,6 +12,7 @@
             <Label fx:id="musicLabel" styleClass="h1" text="Nom de la musique"/>
             <ComboBox fx:id="countryField" promptText="Pays" prefWidth="200" styleClass="champ" />
             <TextArea fx:id="descriptionField" promptText="Commentaires" styleClass="champ" />
+            <Text fx:id="errorText" fill="red" />
             <Button fx:id="submitButton" onAction="#handleCreateProposal" styleClass="boutonBleu" text="Proposer" />
         </VBox>
 </AnchorPane>

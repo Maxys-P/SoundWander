@@ -7,6 +7,16 @@
     <list default="true" id="488cdd30-80e1-4c58-a706-5bdc807ad006" name="Changes" comment="pull master">
       <change afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/boiteAOutils/Deuxieme_son.mp3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/classes/Proposal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/classes/Proposal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/controllers/proposal/ControllerCreateProposal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/proposal/ControllerCreateProposal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/controllers/proposal/ControllerProposal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/proposal/ControllerProposal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/controllers/users/ControllerUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/users/ControllerUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/boiteAOutils/AddMusicToBD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/boiteAOutils/AddMusicToBD.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/connexions/ConnexionMySQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/connexions/ConnexionMySQL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/daoMysql/DAOProposalMySQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/daoMysql/DAOProposalMySQL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/views/proposals/createProposal-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/views/proposals/createProposal-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/views/users/home-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/views/users/home-view.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/controllers/musicPlay/ControllerMusicPlay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/musicPlay/ControllerMusicPlay.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/boiteAOutils/AddMusicToBD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/boiteAOutils/AddMusicToBD.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/daoMysql/DAOMusicMySQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/daoMysql/DAOMusicMySQL.java" afterDir="false" />
@@ -64,7 +74,6 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "margaux",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",

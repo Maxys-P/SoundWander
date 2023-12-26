@@ -3,8 +3,11 @@ package com.sw.controllers.users;
 import com.sw.controllers.Controller;
 import com.sw.facades.FacadeUser;
 import com.sw.exceptions.ExceptionBadPage;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.control.Control;
-import com.sw.facades.FacadeProposal;
+import javafx.scene.control.Label;
+import javafx.scene.text.Text;
 
 /**
  * Controller générique pour les pages accessibles aux visiteurs
@@ -23,6 +26,8 @@ public class ControllerUser extends Controller {
      */
     private final String path = "users/";
 
+    private final String pathProposal = "proposals/";
+
     /**
      * Methode permettant de se rendre sur la page d'accueil visiteur
      * @param controlEl Control, élément de contrôle de la page
@@ -40,4 +45,6 @@ public class ControllerUser extends Controller {
         //TODO : rajouter un contexte en fonction du rôle pour afficher les bonnes pages
         goToPage(controlEl, path + "home-view.fxml", "Accueil");
     }
+
+
 }
