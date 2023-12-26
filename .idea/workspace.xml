@@ -5,13 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="488cdd30-80e1-4c58-a706-5bdc807ad006" name="Changes" comment="pull master">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/boiteAOutils/Deuxieme_son.mp3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/controllers/musicPlay/ControllerMusicPlay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/musicPlay/ControllerMusicPlay.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/boiteAOutils/PlayMusicFromBD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/boiteAOutils/PlayMusicFromBD.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/boiteAOutils/AddMusicToBD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/boiteAOutils/AddMusicToBD.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/daoMysql/DAOMusicMySQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/daoMysql/DAOMusicMySQL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/requetesDB/RequetesMySQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/requetesDB/RequetesMySQL.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/facades/FacadeMusicPlay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/facades/FacadeMusicPlay.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/views/users/music-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/views/users/music-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,6 +92,19 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.App">
+    <configuration name="AddMusicToBD" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.sw.dao.boiteAOutils.AddMusicToBD" />
+      <module name="SoundWander" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.sw.dao.boiteAOutils.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.sw.App" />
       <module name="SoundWander" />
@@ -132,6 +145,7 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Application.AddMusicToBD" />
       <item itemvalue="Application.CreateTableUserScript" />
       <item itemvalue="Application.Main" />
       <item itemvalue="Application.App" />
@@ -139,8 +153,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.App" />
-        <item itemvalue="Application.CreateTableUserScript" />
+        <item itemvalue="Application.AddMusicToBD" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.CreateTableUserScript" />
+        <item itemvalue="Application.App" />
       </list>
     </recent_temporary>
   </component>
@@ -233,21 +249,6 @@
     <MESSAGE value="Méthodes génériques login et inscription" />
     <MESSAGE value="pull master" />
     <option name="LAST_COMMIT_MESSAGE" value="pull master" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/com/sw/dao/DAOUser.java</url>
-          <line>38</line>
-          <properties class="com.sw.dao.DAOUser" method="createUser">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

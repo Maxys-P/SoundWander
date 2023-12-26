@@ -44,42 +44,46 @@ public class FacadeMusicPlay extends Facade{
     public void stopMusic(){
         PlayMusicFromBD.stopMusic();
     }
-
-    public Music playNextMusic(int id) throws Exception{
+    public Music playNextMusic(int currentId) throws Exception {
         try {
-            Music music = daoMusic.getNextMusic(id);
-            if (music != null){
-                byte[] musicData = music.getMusicFile();
+            Music nextMusic = daoMusic.getNextMusic(currentId);  // Attempt to get the next music
+            if (nextMusic != null) {
+                byte[] musicData = nextMusic.getMusicFile();
                 if (musicData != null) {
-                    PlayMusicFromBD.playMusicFromBD(musicData);
+                    PlayMusicFromBD.playMusicFromBD(musicData); // Play the next music
+                    currentMusic = nextMusic; // Update current music
+                    return nextMusic;
                 } else {
-                    System.out.println("No music data found for the selected music.");
+                    System.out.println("No music data found for the next music.");
                 }
             } else {
-                System.out.println("Music not found for the selected ID.");
+                System.out.println("Next music not found for the selected ID.");
             }
-            return music;
+            return null; // Return null or handle it as required
         } catch (Exception e) {
-            throw new Exception("Erreur lors de la lecture de la musique", e);
+            throw new Exception("Error when playing the next music", e);
         }
     }
 
+
     public Music playPreviousMusic(int id) throws Exception {
         try {
-            Music music = daoMusic.getPreviousMusic(id);
-            if (music != null){
-                byte[] musicData = music.getMusicFile();
+            Music previousMusic = daoMusic.getPreviousMusic(id);  // Attempt to get the previous music
+            if (previousMusic != null) {
+                byte[] musicData = previousMusic.getMusicFile();
                 if (musicData != null) {
-                    PlayMusicFromBD.playMusicFromBD(musicData);
+                    PlayMusicFromBD.playMusicFromBD(musicData); // Play the previous music
+                    currentMusic = previousMusic; // Update current music
+                    return previousMusic;
                 } else {
-                    System.out.println("No music data found for the selected music.");
+                    System.out.println("No music data found for the previous music.");
                 }
             } else {
-                System.out.println("Music not found for the selected ID.");
+                System.out.println("Previous music not found for the selected ID.");
             }
-            return music;
+            return null; // Return null or handle it as required
         } catch (Exception e) {
-            throw new Exception("Erreur lors de la lecture de la musique", e);
+            throw new Exception("Error when playing the previous music", e);
         }
     }
 
