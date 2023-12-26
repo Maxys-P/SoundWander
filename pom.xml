@@ -46,6 +46,33 @@
             <version>5.9.1</version>
             <scope>test</scope>
         </dependency>
+        <!-- MP3SPI for MP3 support -->
+        <dependency>
+            <groupId>com.googlecode.soundlibs</groupId>
+            <artifactId>mp3spi</artifactId>
+            <version>1.9.5-1</version>
+        </dependency>
+
+        <!-- Tritonus Share -->
+        <dependency>
+            <groupId>com.googlecode.soundlibs</groupId>
+            <artifactId>tritonus-share</artifactId>
+            <version>0.3.7-2</version>
+        </dependency>
+
+        <!-- JLayer for MP3 support -->
+        <dependency>
+            <groupId>javazoom</groupId>
+            <artifactId>jlayer</artifactId>
+            <version>1.0.1</version>
+        </dependency>
+
+        <!-- Dépendance pour JavaFX Web -->
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-web</artifactId>
+            <version>15</version>
+        </dependency>
     </dependencies>
 
 </project>

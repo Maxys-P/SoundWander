@@ -1,17 +1,19 @@
 package com.sw.dao.daoMysql;
 
 import com.sw.classes.Music;
+import com.sw.classes.MusicInfo;
 import com.sw.dao.DAOMusic;
 import com.sw.dao.boiteAOutils.MapperResultSet;
 import com.sw.dao.requetesDB.RequetesMySQL;
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class DAOMusicMySQL extends DAOMusic {
 
@@ -67,6 +69,76 @@ public class DAOMusicMySQL extends DAOMusic {
     @Override
     public void addPrivatePlaylist(String name) {
     }
+
+    @Override
+    public void addMusic(String name, int artist, int duration, String filePath) {
+        System.out.println("###########################");
+        System.out.println("DAOMusicMySQL : addMusic");
+        System.out.println("name : " + name);
+        System.out.println("artist : " + artist);
+        System.out.println("duration : " + duration);
+        System.out.println("filePath : " + filePath);
+
+        try {
+            Path path = Paths.get(filePath);
+            byte[] fileContent = Files.readAllBytes(path);
+
+            Map<String, Object> data = new HashMap<>();
+            data.put("musicFile", fileContent);
+            data.put("name", name);
+            data.put("artist", artist);
+            data.put("duration", duration);
+
+            System.out.println("data envoyé à la requete : " + data);
+            RequetesMySQL requetesMySQL = new RequetesMySQL();
+            int insertedId = requetesMySQL.create("music", data);
+
+            System.out.println("Le fichier audio a été inséré avec succès. ID inséré : " + insertedId);
+
+        } catch (IOException e) {
+            System.err.println("Erreur lors de la lecture du fichier MP3 : " + e.getMessage());
+        } catch (Exception e) {
+            System.err.println("Erreur lors de l'ajout de la musique : " + e.getMessage());
+        }
+    }
+
+    @Override
+    public void removeMusic(int id) {
+        try {
+            RequetesMySQL requetesMySQL = new RequetesMySQL();
+            Map<String, Object> conditions = new HashMap<>();
+            conditions.put("id", id);
+            requetesMySQL.delete("music", conditions);
+            System.out.println("Musique avec ID " + id + " supprimée de la base de données.");
+        } catch (Exception e) {
+            System.err.println("Erreur lors de la suppression de la musique : " + e.getMessage());
+        }
+    }
+
+    @Override
+    public List<MusicInfo> getMusicByUserId(int userId) throws Exception {
+        List<MusicInfo> userMusics = new ArrayList<>();
+        try {
+            Map<String, Object> conditions = new HashMap<>();
+            conditions.put("artist", userId);
+            MapperResultSet musicData = ((RequetesMySQL) requetesDB).selectWhere("music", conditions);
+
+            for (Map<String, Object> row : musicData.getListData()) {
+                int id = (Integer) row.get("id");
+                String name = (String) row.get("name");
+                int duration = (Integer) row.get("duration");
+                int artistId = (Integer) row.get("artist"); // Si vous avez besoin de l'ID de l'artiste
+
+                MusicInfo musicInfo = new MusicInfo(id, name, duration, artistId);
+                userMusics.add(musicInfo);
+            }
+        } catch (Exception e) {
+            throw new Exception("Erreur lors de la récupération des musiques de l'utilisateur", e);
+        }
+        return userMusics;
+    }
+
+
 
 
 }

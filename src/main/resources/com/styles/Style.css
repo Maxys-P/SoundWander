@@ -26,6 +26,16 @@
     -fx-font-size: 30px; /* La taille de la police du bouton */
 }
 
+.h2 {
+    -fx-text-fill: #143442; /* Définit la couleur du texte du label en rouge */
+    -fx-font-size: 20px; /* La taille de la police du bouton */
+}
+
+.h3 {
+    -fx-text-fill: #143442; /* Définit la couleur du texte du label en rouge */
+    -fx-font-size: 16px; /* La taille de la police du bouton */
+}
+
 
 /* ############ Bouton ############ */
 
@@ -91,3 +101,6 @@
 .lien:pressed {
     -fx-text-fill: #416569; /* Définit la couleur du texte du label en rouge */
 }
+
+
+/* ############ Liste ############ */
