@@ -4,14 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="488cdd30-80e1-4c58-a706-5bdc807ad006" name="Changes" comment="Méthodes génériques login et inscription">
+    <list default="true" id="488cdd30-80e1-4c58-a706-5bdc807ad006" name="Changes" comment="pull master">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/DAOUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/DAOUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/boiteAOutils/PasswordAuthentification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/boiteAOutils/AuthentificationManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/daoMysql/DAOUserMySQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/daoMysql/DAOUserMySQL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/facades/FacadeUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/facades/FacadeUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/controllers/musicPlay/ControllerMusicPlay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/musicPlay/ControllerMusicPlay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/boiteAOutils/PlayMusicFromBD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/boiteAOutils/PlayMusicFromBD.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/facades/FacadeMusicPlay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/facades/FacadeMusicPlay.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/views/users/music-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/views/users/music-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +64,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "margaux",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -201,7 +201,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701906608694</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="pull master">
+      <option name="closed" value="true" />
+      <created>1703530925284</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1703530925284</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -223,7 +231,8 @@
     <MESSAGE value="Création" />
     <MESSAGE value="Mateo Fonctionnel" />
     <MESSAGE value="Méthodes génériques login et inscription" />
-    <option name="LAST_COMMIT_MESSAGE" value="Méthodes génériques login et inscription" />
+    <MESSAGE value="pull master" />
+    <option name="LAST_COMMIT_MESSAGE" value="pull master" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

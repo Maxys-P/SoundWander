@@ -20,9 +20,6 @@ public class ControllerMusicPlay extends Controller {
     private Button boutonPlay;
 
     @FXML
-    private Button boutonPause;
-
-    @FXML
     private Button boutonNext;
 
     @FXML
@@ -31,50 +28,39 @@ public class ControllerMusicPlay extends Controller {
     @FXML
     private Button boutonAddPrivatePlaylist;
 
-    private boolean isPaused = false; // Tracks whether the music is paused
+    private boolean isPlaying = false; // Tracks whether the music is paused
 
     private FacadeMusicPlay musicPlayFacade;
 
     @FXML
     public void initialize() {
-        musicPlayFacade = FacadeMusicPlay.getInstance();
-    }
 
+        musicPlayFacade = FacadeMusicPlay.getInstance();
+        boutonPlay.setText(isPlaying ? "Pause" : "Play");
+    }
     @FXML
     private void handlePlay() {
         try {
-            if (isPaused) {
-                // Resume music if it's currently paused
-                musicPlayFacade.resumeMusic();
-                isPaused = false;
-                boutonPlay.setText("Pause");
+            // No need to reload music if we are just pausing or resuming
+            if (isPlaying) {
+                musicPlayFacade.pauseMusic();
+                boutonPlay.setText("Play");
+                isPlaying = false;
             } else {
-                // Play music if it's not paused
-                Music music = musicPlayFacade.playMusic(1); // Pass the desired music ID here
-                String artistName = String.valueOf(music.getArtist());
-                System.out.println("Playing music: " + artistName + " - " + music.getName());
-                songTitle.setText(music.getName() + " - " + artistName);
+                if(musicPlayFacade.getCurrentMusic() == null) {
+                    musicPlayFacade.playMusic(1); // Load the first song if nothing is loaded
+                } else {
+                    musicPlayFacade.resumeMusic(); // Resume the current song
+                }
                 boutonPlay.setText("Pause");
+                isPlaying = true;
             }
         } catch (Exception e) {
             e.printStackTrace();
-            // Handle the exception as needed
+            // Handle exception as needed
         }
     }
 
-
-    @FXML
-    private void handlePause() {
-        if (!isPaused) {
-            // Pause music if it's currently playing
-            musicPlayFacade.pauseMusic();
-            isPaused = true;
-            boutonPlay.setText("Play");
-        } else {
-            // Resume music if it's currently paused
-            handlePlay();
-        }
-    }
     @FXML
     private void handleNext() {
         try{
