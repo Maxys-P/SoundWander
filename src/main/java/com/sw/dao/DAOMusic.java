@@ -24,7 +24,6 @@ public abstract class DAOMusic extends DAO {
     }
     public void removeMusic(int id) {
     }
-
     public abstract List<MusicInfo> getMusicByUserId(int userId) throws Exception; {
     }
 

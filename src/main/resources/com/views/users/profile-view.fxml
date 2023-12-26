@@ -19,6 +19,7 @@
             <Label text="Mes musiques" styleClass="h2"/>
             <ListView fx:id="musicListView" prefHeight="100" prefWidth="200"
             maxHeight="300" maxWidth="300" minHeight="100" minWidth="200" styleClass="liste"/>
+            <Button fx:id="deleteButton" text="Supprimer" onAction="#handleDeleteMusic" styleClass="boutonBleu" visible="false"/>
             <VBox alignment="CENTER" spacing="20" styleClass="conteneur"
             prefWidth="500" maxWidth="500" prefHeight="250" maxHeight="250">
                 <Label text="Ajouter une musique" styleClass="h2"/>
@@ -27,7 +28,6 @@
                 <TextField fx:id="titleField" promptText="Titre de la musique" prefWidth="250" maxWidth="250" styleClass="champ"/>
                 <Button text="Valider" onAction="#handleUploadMusic" styleClass="boutonBleu"/>
             </VBox>
-            <Button fx:id="deleteButton" text="Supprimer" onAction="#handleDeleteMusic" styleClass="boutonBleu" visible="false"/>
         </VBox>
     </StackPane>
 </AnchorPane>

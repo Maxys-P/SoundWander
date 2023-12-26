@@ -17,7 +17,7 @@ import java.util.List;
 
 public class ControllerProfile {
     @FXML
-    private TextField musicPathField, titleField, deleteMusicIdField;
+    private TextField musicPathField, titleField;
 
     @FXML
     private ListView<MusicInfo> musicListView;
@@ -27,7 +27,6 @@ public class ControllerProfile {
 
     @FXML
     public void initialize() {
-        // Configurez le ListView pour utiliser une cellule personnalisée si vous voulez afficher les informations d'une certaine manière
         musicListView.setCellFactory(new Callback<ListView<MusicInfo>, ListCell<MusicInfo>>() {
             @Override
             public ListCell<MusicInfo> call(ListView<MusicInfo> listView) {
@@ -45,31 +44,25 @@ public class ControllerProfile {
             }
         });
 
-        // Chargez la musique de l'utilisateur lors de l'initialisation
         try {
             List<MusicInfo> musics = FacadeMusicBankManagement.getInstance().getMusicByUserId();
             musicListView.getItems().addAll(musics);
         } catch (Exception e) {
             e.printStackTrace();
-            // Gérer l'erreur
         }
 
-        // Ajoutez un écouteur de sélection sur votre ListView.
         musicListView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
-            // Si un élément est sélectionné, affichez le bouton de suppression, sinon cachez-le.
             deleteButton.setVisible(newSelection != null);
         });
     }
     @FXML
     private void handleUploadMusic() {
-        System.out.println("j'essaye d'ajouter une musique");
         String title = titleField.getText();
 
         File selectedFile = new File(musicPathField.getText());
         if (selectedFile.exists()) {
             long duration = MP3Utils.getMP3Duration(selectedFile);
             if (duration != -1) {
-                System.out.println("tout est pret ! j'envoie à la facade");
                 FacadeMusicBankManagement.getInstance().addMusic(title, (int) duration, selectedFile.getAbsolutePath());
                 updateMusicList();
             } else {
@@ -96,12 +89,9 @@ public class ControllerProfile {
 
     @FXML
     private void handleDeleteMusic() {
-        // Obtenez la musique sélectionnée.
         MusicInfo selectedMusic = musicListView.getSelectionModel().getSelectedItem();
         if (selectedMusic != null) {
-            // Supprimez la musique sélectionnée.
             FacadeMusicBankManagement.getInstance().removeMusic(selectedMusic.getId());
-            // Effacez la liste et rechargez les musiques.
             updateMusicList();
         }
     }
@@ -112,8 +102,6 @@ public class ControllerProfile {
             List<MusicInfo> musics = FacadeMusicBankManagement.getInstance().getMusicByUserId();
             musicListView.getItems().addAll(musics);
         } catch (Exception e) {
-            e.printStackTrace();
-            // Gérer l'erreur.
-        }
+            e.printStackTrace();}
     }
 }

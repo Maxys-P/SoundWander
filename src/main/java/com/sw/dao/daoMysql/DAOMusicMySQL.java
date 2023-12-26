@@ -72,12 +72,6 @@ public class DAOMusicMySQL extends DAOMusic {
 
     @Override
     public void addMusic(String name, int artist, int duration, String filePath) {
-        System.out.println("###########################");
-        System.out.println("DAOMusicMySQL : addMusic");
-        System.out.println("name : " + name);
-        System.out.println("artist : " + artist);
-        System.out.println("duration : " + duration);
-        System.out.println("filePath : " + filePath);
 
         try {
             Path path = Paths.get(filePath);
@@ -89,29 +83,26 @@ public class DAOMusicMySQL extends DAOMusic {
             data.put("artist", artist);
             data.put("duration", duration);
 
-            System.out.println("data envoyé à la requete : " + data);
-            RequetesMySQL requetesMySQL = new RequetesMySQL();
-            int insertedId = requetesMySQL.create("music", data);
+            int insertedId = ((RequetesMySQL) requetesDB).create("music", data);
 
-            System.out.println("Le fichier audio a été inséré avec succès. ID inséré : " + insertedId);
+            System.out.println("[DAOMusicMySQL] addMusic - fichier audio inséré avec succès. ID : " + insertedId);
 
         } catch (IOException e) {
-            System.err.println("Erreur lors de la lecture du fichier MP3 : " + e.getMessage());
+            System.err.println("[DAOMusicMySQL] addMusic - Erreur lors de la lecture du fichier MP3 : " + e.getMessage());
         } catch (Exception e) {
-            System.err.println("Erreur lors de l'ajout de la musique : " + e.getMessage());
+            System.err.println("[DAOMusicMySQL] addMusic - Erreur lors de l'ajout de la musique : " + e.getMessage());
         }
     }
 
     @Override
     public void removeMusic(int id) {
         try {
-            RequetesMySQL requetesMySQL = new RequetesMySQL();
             Map<String, Object> conditions = new HashMap<>();
             conditions.put("id", id);
-            requetesMySQL.delete("music", conditions);
-            System.out.println("Musique avec ID " + id + " supprimée de la base de données.");
+            ((RequetesMySQL) requetesDB).delete("music", conditions);
+            System.out.println("[DAOMusicMySQL] removeMusic - Musique avec ID " + id + " supprimée de la base de données.");
         } catch (Exception e) {
-            System.err.println("Erreur lors de la suppression de la musique : " + e.getMessage());
+            System.err.println("[DAOMusicMySQL] removeMusic - Erreur lors de la suppression de la musique : " + e.getMessage());
         }
     }
 
