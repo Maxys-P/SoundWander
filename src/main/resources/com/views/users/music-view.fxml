@@ -9,7 +9,6 @@
             <Label fx:id="songTitle" prefHeight="18.0" prefWidth="185.0" styleClass="lien" text="Aucune musique en cours" textFill="#fffdfd" />
             <Button fx:id="boutonPrevious" onAction="#handlePrevious" styleClass="musicBouton" text="prev" />
             <Button fx:id="boutonPlay" onAction="#handlePlay" styleClass="musicBouton" text="play" />
-            <Button fx:id="boutonPause" onAction="#handlePause" styleClass="musicBouton" text="pause" />
             <Button fx:id="boutonNext" onAction="#handleNext" styleClass="musicBouton" text="next" />
         </HBox>
     </VBox>

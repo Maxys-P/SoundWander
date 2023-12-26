@@ -12,7 +12,7 @@ import java.sql.SQLException;
 public class AddMusicToBD {
     public static void main(String[] args) {
         // Chemin vers le fichier MP3
-        String filePath = "src/main/java/com/sw/dao/boiteAOutils/Premier_son.mp3";
+        String filePath = "src/main/java/com/sw/dao/boiteAOutils/Deuxieme_son.mp3";
 
         // Utilisation de la classe de connexion pour obtenir une connexion à la base de données
         ConnexionMySQL connexionMySQL = new ConnexionMySQL();
@@ -29,8 +29,8 @@ public class AddMusicToBD {
 
             // Remplir les paramètres de la requête préparée
             pstmt.setBytes(1, fileContent);
-            pstmt.setString(2, "Premier son");
-            pstmt.setInt(3, 1);
+            pstmt.setString(2, "Deuxieme son");
+            pstmt.setInt(3, 2);
             pstmt.setInt(4, 10);
 
             // Exécuter la requête
