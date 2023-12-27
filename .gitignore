@@ -3,6 +3,9 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
+### Accès à la base de données ###
+src/main/java/com/sw/dao/connexions/ConnexionMySQL.java
+
 ### IntelliJ IDEA ###
 .idea/workspace.xml
 .idea/modules.xml
