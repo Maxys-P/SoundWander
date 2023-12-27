@@ -19,7 +19,27 @@ public class DAOMusicMySQL extends DAOMusic {
     }
     @Override
     public Music getMusicByName(String name) {
-        return null;
+        Map<String,Object> conditions = new HashMap<>();
+        conditions.put("name", name);
+        try {
+            MapperResultSet musicData = ((RequetesMySQL) requetesDB).selectWhere(table, conditions);
+            if (!musicData.getListData().isEmpty()) {
+                Map<String, Object> musicDetails = musicData.getListData().getFirst();
+
+                int id = (int) musicDetails.get("id");
+                int artist = (int) musicDetails.get("artist");
+                int duration = (int) musicDetails.get("duration");
+                byte[] musicFile = (byte[]) musicDetails.get("musicFile");
+
+                return new Music(id, name, artist, duration, musicFile);
+            } else {
+                System.out.println("Pb quand on appelle selectWhere");
+            }
+            return null;
+        } catch (Exception e) {
+            System.out.println("Erreur lors de la récupération de la musique par nom");
+            return null;
+        }
     }
 
     @Override
