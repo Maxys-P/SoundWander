@@ -72,6 +72,28 @@
     -fx-font-weight: bold; /* Mettre le texte en gras */
 }
 
+/* Bouton Play dans le profil */
+.play-button {
+    /* Define button styling */
+    -fx-background-color: #416569; /* La couleur de fond du bouton */
+    -fx-text-fill: #FFFFFF; /* La couleur du texte du bouton */
+    -fx-font-family: 'Mirza Regular'; /* La police du texte du bouton */
+    -fx-padding: 5px 10px; /* padding */
+    -fx-border-radius: 5px; /* rounded corners */
+    -fx-background-radius: 5px; /* rounded corners */
+    -fx-text-alignment: center; /* center the text */
+}
+.play-button:hover {
+    -fx-background-color: #143442; /* Couleur de fond au survol */
+    -fx-text-fill: #416569; /* Couleur du texte au survol */
+}
+
+.play-button:pressed {
+    -fx-background-color: #416569; /* Couleur de fond au clic */
+    -fx-text-fill: #FFFFFF; /* Couleur du texte au clic */
+}
+
+
 
 /* ############ Champs ############ */
 

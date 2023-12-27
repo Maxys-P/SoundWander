@@ -2,13 +2,17 @@ package com.sw.controllers.musicPlay;
 import com.sw.classes.Music;
 import com.sw.controllers.Controller;
 import com.sw.facades.FacadeMusic;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 
-public class ControllerMusicPlay extends Controller {
 
+public class ControllerMusicPlay extends Controller {
+    private StringProperty currentSongTitle = new SimpleStringProperty("No song playing");
     @FXML
     private Label songTitle;
 
@@ -32,7 +36,17 @@ public class ControllerMusicPlay extends Controller {
     public void initialize() {
 
         musicPlayFacade = FacadeMusic.getInstance();
-        boutonPlay.setText(isPlaying ? "Pause" : "Play");
+        musicPlayFacade.isPlayingProperty().addListener((ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) -> {
+            isPlaying = newValue; // Update local isPlaying status
+            boutonPlay.setText(newValue ? "Pause" : "Play"); // Update button text
+        });
+        songTitle.textProperty().bind(currentSongTitle);
+        musicPlayFacade.currentMusicProperty().addListener((obs, oldMusic, newMusic) -> {
+            updateSongDetails(newMusic);
+        });
+
+        updateSongDetails(musicPlayFacade.getCurrentMusic());
+
     }
     @FXML
     private void handlePlay() {
@@ -47,7 +61,7 @@ public class ControllerMusicPlay extends Controller {
             } else {
                 if(music == null) {
                     //pour tester puise que l'on a pas de musique affichée
-                    music = musicPlayFacade.playMusic(3); // Load the first song if nothing is loaded
+                    music = musicPlayFacade.playMusic(1); // Load the first song if nothing is loaded
                 } else {
                     musicPlayFacade.resumeMusic(); // Resume the current song
                 }
@@ -64,7 +78,9 @@ public class ControllerMusicPlay extends Controller {
         if (music != null) {
             String artistName = String.valueOf(music.getArtist());
             System.out.println("Playing music: artiste :" + artistName + " - nom de la music : " + music.getName());
-            songTitle.setText(music.getName() + " - " + artistName);
+            currentSongTitle.set(music.getName() + " - " + artistName);
+        }else {
+            currentSongTitle.set("No song playing");
         }
     }
 
@@ -107,7 +123,6 @@ try {
         }
     }
     @FXML
-    private void handleAddPrivatePlaylist() {
-    }
+    private void handleAddPrivatePlaylist() {}
 
 }
