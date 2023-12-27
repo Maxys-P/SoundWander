@@ -1,24 +1,27 @@
 package com.sw.facades;
 
 import com.sw.classes.Music;
+import com.sw.classes.MusicInfo;
 import com.sw.dao.DAOMusic;
 
 import com.sw.dao.boiteAOutils.PlayMusicFromBD;
 import com.sw.dao.factories.FactoryDAO;
 
-public class FacadeMusicPlay extends Facade{
+import java.util.List;
 
-    private static FacadeMusicPlay instance = null;
+public class FacadeMusic extends Facade{
+
+    private static FacadeMusic instance = null;
     private DAOMusic daoMusic;
     private Music currentMusic;
 
-    private FacadeMusicPlay(){
+    private FacadeMusic(){
         this.daoMusic = FactoryDAO.getInstanceofFactoryDAO().getInstanceofDAOMusic();
     }
 
-    public static FacadeMusicPlay getInstance() {
+    public static FacadeMusic getInstance() {
         if (instance == null) {
-            instance = new FacadeMusicPlay();
+            instance = new FacadeMusic();
         }
         return instance;
     }
@@ -109,6 +112,20 @@ public class FacadeMusicPlay extends Facade{
     public void addPrivatePlaylist(String name){
 
         daoMusic.addPrivatePlaylist(name);
+    }
+
+    public void addMusic(String name, int duration, String filePath) {
+        int artist = currentUser.getId();
+        daoMusic.addMusic(name, artist, duration, filePath);
+    }
+
+    public void removeMusic(int id) {
+        daoMusic.removeMusic(id);
+    }
+
+    public List<MusicInfo> getMusicByUserId() throws Exception {
+        int userId = currentUser.getId();
+        return daoMusic.getMusicByUserId(userId);
     }
 
 }

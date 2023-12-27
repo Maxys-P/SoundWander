@@ -1,11 +1,11 @@
 package com.sw.classes;
 
 
-import com.sw.facades.FacadeMusicPlay;
+import com.sw.facades.FacadeMusic;
 
 public class Music {
 
-    private FacadeMusicPlay facadeMusicPlay;
+    private FacadeMusic facadeMusic;
     private int id;
     private String name;
     private int artist;
@@ -15,8 +15,8 @@ public class Music {
      */
     private byte[] musicFile;
 
-    public void setFacadeMusicPlay(FacadeMusicPlay facadeMusicPlay){
-        this.facadeMusicPlay = facadeMusicPlay;
+    public void setFacadeMusicPlay(FacadeMusic facadeMusic){
+        this.facadeMusic = facadeMusic;
     }
 
     public Music(int id, String name, int artist, int duration, byte[] musicFile){
@@ -38,8 +38,8 @@ public class Music {
                 '}';
     }
 
-    public FacadeMusicPlay getFacadeMusicPlay(){
-        return facadeMusicPlay;
+    public FacadeMusic getFacadeMusicPlay(){
+        return facadeMusic;
     }
 
     public int getId(){return id;}

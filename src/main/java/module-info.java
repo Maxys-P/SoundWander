@@ -7,7 +7,6 @@ module com.sw {
     requires java.desktop;
     requires jlayer;
     requires jbcrypt;
-    requires java.desktop;
     requires javafx.media;
 
     exports com.sw;

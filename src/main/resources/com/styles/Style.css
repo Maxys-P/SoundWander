@@ -36,6 +36,11 @@
     -fx-font-size: 16px; /* La taille de la police du bouton */
 }
 
+.label-bold {
+    -fx-font-size: 16px; /* Taille du texte un peu plus grande */
+    -fx-font-family: 'Mirza-Bold'; /* La police du texte */
+}
+
 
 /* ############ Bouton ############ */
 
@@ -63,7 +68,7 @@
     -fx-background-color: transparent; /* Rendre le fond transparent */
     -fx-text-fill: #FFFFFF; /* Couleur du texte */
     -fx-border-color: transparent; /* Rendre la bordure transparente */
-    -fx-font-size: 16px; /* Augmenter la taille du texte */
+    -fx-font-size: 30px; /* Augmenter la taille du texte */
     -fx-font-weight: bold; /* Mettre le texte en gras */
 }
 
@@ -133,3 +138,11 @@
     -fx-padding: 5px 10px 5px; /* Haut, Droit, Bas, Gauche */
     }
 
+/* ############ Page admin ############ */
+.label-description {
+    -fx-background-color: #D9D9D9; /* Couleur de fond pour la description */
+    -fx-background-radius: 15px; /* Arrondir les coins */
+    -fx-padding: 10px; /* Espacement intérieur */
+    -fx-font-size: 14px; /* Taille de la police pour la description */
+    -fx-font-family: 'Mirza-Regular'; /* La police de la description */
+}
