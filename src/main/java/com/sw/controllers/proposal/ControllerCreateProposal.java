@@ -54,6 +54,7 @@ public class ControllerCreateProposal extends ControllerProposal {
 
 
     private Music getSelectedMusic(String name) {
+        // TODO : modifier pour que ça récupère la musique sélectionnée dans la page profil
         Music selectedMusic = null;
         try {
             // Establish a database connection

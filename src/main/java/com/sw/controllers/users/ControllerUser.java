@@ -26,8 +26,6 @@ public class ControllerUser extends Controller {
      */
     private final String path = "users/";
 
-    private final String pathProposal = "proposals/";
-
     /**
      * Methode permettant de se rendre sur la page d'accueil visiteur
      * @param controlEl Control, élément de contrôle de la page
@@ -38,13 +36,22 @@ public class ControllerUser extends Controller {
     }
 
     /**
-     * Méthode pour aller à la page d'accueil
-     * @throws ExceptionBadPage si problème pendant le chargement de la page
+     * Méthode pour aller à la page d'accueil appropriée en fonction de l'email de l'utilisateur.
+     * @param controlEl Le composant de contrôle à partir duquel l'action est initiée.
+     * @param userEmail L'email de l'utilisateur.
+     * @throws ExceptionBadPage si problème pendant le chargement de la page.
      */
-    void goToHome(Control controlEl) throws ExceptionBadPage {
-        //TODO : rajouter un contexte en fonction du rôle pour afficher les bonnes pages
-        goToPage(controlEl, path + "home-view.fxml", "Accueil");
+    void goToHome(Control controlEl, String userEmail) throws ExceptionBadPage {
+        String viewPath;
+        if ("expert@musical.fr".equals(userEmail)) {
+            viewPath = "users/homeMusicalExpert-view.fxml"; // Chemin pour les experts musicaux
+        } else {
+            viewPath = "users/home-view.fxml"; // Chemin par défaut pour les autres utilisateurs
+        }
+        goToPage(controlEl,  viewPath, "Accueil");
     }
+
+
 
 
 }
