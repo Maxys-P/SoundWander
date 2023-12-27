@@ -7,6 +7,7 @@
     <list default="true" id="488cdd30-80e1-4c58-a706-5bdc807ad006" name="Changes" comment="pull master">
       <change afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/boiteAOutils/Deuxieme_son.mp3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/classes/Proposal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/classes/Proposal.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/controllers/proposal/ControllerCreateProposal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/proposal/ControllerCreateProposal.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/controllers/proposal/ControllerProposal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/proposal/ControllerProposal.java" afterDir="false" />
@@ -32,8 +33,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="module-info" />
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -62,6 +64,7 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
@@ -88,9 +91,10 @@
     "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/images" />
       <recent name="C:\Users\maxys\Desktop\SoundWander\src\main\java\com\sw\controllers" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">

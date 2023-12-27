@@ -2,10 +2,12 @@ package com.sw.facades;
 
 import com.sw.classes.Music;
 import com.sw.dao.DAOMusic;
+
 import com.sw.dao.boiteAOutils.PlayMusicFromBD;
 import com.sw.dao.factories.FactoryDAO;
 
 public class FacadeMusicPlay extends Facade{
+
     private static FacadeMusicPlay instance = null;
     private DAOMusic daoMusic;
     private Music currentMusic;
@@ -14,8 +16,8 @@ public class FacadeMusicPlay extends Facade{
         this.daoMusic = FactoryDAO.getInstanceofFactoryDAO().getInstanceofDAOMusic();
     }
 
-    public static FacadeMusicPlay getInstance(){
-        if(instance == null){
+    public static FacadeMusicPlay getInstance() {
+        if (instance == null) {
             instance = new FacadeMusicPlay();
         }
         return instance;
@@ -41,6 +43,7 @@ public class FacadeMusicPlay extends Facade{
     }
 
 
+
     public void stopMusic(){
         PlayMusicFromBD.stopMusic();
     }
@@ -63,6 +66,7 @@ public class FacadeMusicPlay extends Facade{
         } catch (Exception e) {
             throw new Exception("Error when playing the next music", e);
         }
+
     }
 
 
@@ -91,6 +95,7 @@ public class FacadeMusicPlay extends Facade{
         return currentMusic;
     }
 
+
     public void pauseMusic(){
         PlayMusicFromBD.pauseMusic();
     }
@@ -102,6 +107,8 @@ public class FacadeMusicPlay extends Facade{
 
 
     public void addPrivatePlaylist(String name){
+
         daoMusic.addPrivatePlaylist(name);
     }
+
 }
