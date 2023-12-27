@@ -146,9 +146,11 @@
 
 /* ############ Page admin ############ */
 .label-description {
-    -fx-background-color: #D9D9D9; /* Couleur de fond pour la description */
-    -fx-background-radius: 15px; /* Arrondir les coins */
-    -fx-padding: 10px; /* Espacement intérieur */
-    -fx-font-size: 14px; /* Taille de la police pour la description */
-    -fx-font-family: 'Mirza-Regular'; /* La police de la description */
+    -fx-background-color: #D9D9D9;
+    -fx-background-radius: 15px;
+    -fx-padding: 10px 20px; /* Ajout d'un padding horizontal */
+    -fx-font-size: 14px;
+    -fx-font-family: 'Mirza-Regular';
+    -fx-max-width: infinity; /* Permet à la description de s'étendre */
+    -fx-pref-width: 100%; /* Définit la largeur préférée à 100% */
 }

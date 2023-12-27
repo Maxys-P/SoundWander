@@ -166,15 +166,5 @@ public class FacadeUser extends Facade {
         daoUser.updateUserPhoto(idUser, newPhoto);
     }
 
-    //TODO
-    /*
-    public void addMusicToPrivatePlaylist(int idClient, int idMusic) throws Exception {
-        daoUser.addMusicToPrivatePlaylist(idClient, idMusic);
-    }
-
-    public void removeMusicFromPrivatePlaylist(int idClient, int idMusic) throws Exception {
-        daoUser.removeMusicFromPrivatePlaylist(idClient, idMusic);
-    }
-    */
 }
 
