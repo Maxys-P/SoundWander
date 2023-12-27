@@ -9,6 +9,9 @@ import javafx.scene.control.Control;
 import javafx.scene.control.Label;
 import javafx.scene.text.Text;
 
+
+import java.net.URL;
+
 /**
  * Controller générique pour les pages accessibles aux visiteurs
  * @see Controller
@@ -28,6 +31,7 @@ public class ControllerUser extends Controller {
 
     private final String pathProposal = "proposals/";
 
+
     /**
      * Methode permettant de se rendre sur la page d'accueil visiteur
      * @param controlEl Control, élément de contrôle de la page
@@ -45,6 +49,20 @@ public class ControllerUser extends Controller {
         //TODO : rajouter un contexte en fonction du rôle pour afficher les bonnes pages
         goToPage(controlEl, path + "home-view.fxml", "Accueil");
     }
+
+
+    /**
+     * Méthode pour aller à la page de profil
+     * @param actionEvent ActionEvent, l'événement de l'action qui a été déclenchée
+     * @throws ExceptionBadPage si problème pendant le chargement de la page
+     */
+    public void goToProfile(ActionEvent actionEvent) throws ExceptionBadPage {
+        // Vous devez adapter la méthode goToPage pour qu'elle prenne un ActionEvent
+        // Ou trouver une autre façon de récupérer le control à partir de l'ActionEvent si nécessaire
+        Control controlEl = (Control) actionEvent.getSource();
+        goToPage(controlEl, path + "profile-view.fxml", "Votre Profil");
+    }
+
 
 
 }
