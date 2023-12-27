@@ -9,7 +9,7 @@
 
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.HBox?>
-<AnchorPane fx:controller="com.sw.controllers.artists.ControllerProfile" prefHeight="600.0" prefWidth="1200.0" stylesheets="@../../styles/Style.css" xmlns:fx="http://javafx.com/fxml">
+<AnchorPane fx:controller="com.sw.controllers.artists.ControllerProfile" prefHeight="300.0" prefWidth="500.0" stylesheets="@../../styles/Style.css" xmlns:fx="http://javafx.com/fxml">
     <StackPane alignment="CENTER"
                AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0"
                AnchorPane.topAnchor="20.0" AnchorPane.bottomAnchor="20.0"

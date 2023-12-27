@@ -11,19 +11,22 @@
             xmlns:fx="http://javafx.com/fxml"
             fitToWidth="true"
             stylesheets="@../../styles/Style.css"
-            prefHeight="400.0" prefWidth="600.0">
+            prefHeight="600.0" prefWidth="1200.0">
+    <StackPane alignment="CENTER" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0"
+               AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0" prefHeight="500.0" prefWidth="800.0">
     <VBox alignment="TOP_CENTER" spacing="10">
         <Text fx:id="headerText" text="On mettra le header ici après" />
         <Text text="C'est la page artist"/>
         <AnchorPane prefWidth="600" prefHeight="200">
             <fx:include source="../../components/profil/info.fxml"/>
         </AnchorPane>
-        <AnchorPane prefWidth="600" prefHeight="200">
+        <AnchorPane>
             <fx:include source="../../components/artist/artist-mateo.fxml"/>
         </AnchorPane>
-        <AnchorPane prefWidth="600" prefHeight="200">
+        <AnchorPane>
             <fx:include source="../../components/artist/subcriptionButton.fxml"/>
         </AnchorPane>
         <fx:include source="../../components/music-play/music-view.fxml" />
     </VBox>
+</StackPane>
 </ScrollPane>

@@ -3,12 +3,16 @@ package com.sw.controllers.artists;
 import com.sw.facades.FacadeMusic;
 import com.sw.dao.boiteAOutils.MP3Utils;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Priority;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
 import com.sw.classes.MusicInfo;
 import javafx.util.Callback;
 
@@ -27,20 +31,36 @@ public class ControllerProfile {
 
     @FXML
     public void initialize() {
-        musicListView.setCellFactory(new Callback<ListView<MusicInfo>, ListCell<MusicInfo>>() {
-            @Override
-            public ListCell<MusicInfo> call(ListView<MusicInfo> listView) {
-                return new ListCell<MusicInfo>() {
-                    @Override
-                    protected void updateItem(MusicInfo music, boolean empty) {
-                        super.updateItem(music, empty);
-                        if (empty || music == null) {
-                            setText(null);
-                        } else {
-                            setText(music.getName());
-                        }
+        musicListView.setCellFactory(listView -> new ListCell<MusicInfo>() {
+            private final Button playButton = new Button("Play");
+            private final HBox content = new HBox();
+            private final Label label = new Label();
+            {
+                content.getChildren().addAll(label, playButton);
+                content.setSpacing(10);
+                playButton.getStyleClass().add("play-button");
+                //obliger de mettre ça pour que le bouton play soit à droite
+                HBox.setHgrow(label, Priority.ALWAYS);  // This will make the label grow and push the button to the right
+                label.setMaxWidth(Double.MAX_VALUE);  // Allow the label to grow as needed
+                content.setAlignment(Pos.CENTER_RIGHT);  // Align content to the right
+                playButton.setOnAction(event -> {
+                    MusicInfo music = getItem();
+                    if (music != null) {
+                        playSelectedMusic(music.getId());
                     }
-                };
+                });
+            }
+            @Override
+            protected void updateItem(MusicInfo music, boolean empty) {
+                super.updateItem(music, empty);
+
+                if (empty || music == null) {
+                    setGraphic(null);
+                    setText(null);
+                } else {
+                    label.setText(music.getName());
+                    setGraphic(content);
+                }
             }
         });
 
@@ -54,6 +74,17 @@ public class ControllerProfile {
         musicListView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             deleteButton.setVisible(newSelection != null);
         });
+    }
+
+    private void playSelectedMusic(int musicId) {
+        try {
+            // You might need to communicate with ControllerMusicPlay or directly use FacadeMusic here
+            FacadeMusic.getInstance().playMusic(musicId);
+            // Update the UI as necessary
+        } catch (Exception e) {
+            e.printStackTrace();
+            // Handle exceptions
+        }
     }
     @FXML
     private void handleUploadMusic() {
