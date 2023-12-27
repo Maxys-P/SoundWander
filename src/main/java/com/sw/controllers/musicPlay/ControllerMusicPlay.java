@@ -1,5 +1,7 @@
 package com.sw.controllers.musicPlay;
 import com.sw.classes.Music;
+import com.sw.classes.Artist;
+import com.sw.facades.FacadeArtist;
 import com.sw.controllers.Controller;
 import com.sw.facades.FacadeMusic;
 import javafx.beans.property.SimpleStringProperty;
@@ -31,11 +33,13 @@ public class ControllerMusicPlay extends Controller {
     private boolean isPlaying = false; // Tracks whether the music is paused
 
     private FacadeMusic musicPlayFacade;
+    private FacadeArtist artistFacade;
 
     @FXML
     public void initialize() {
 
         musicPlayFacade = FacadeMusic.getInstance();
+        artistFacade = FacadeArtist.getInstance();
         musicPlayFacade.isPlayingProperty().addListener((ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) -> {
             isPlaying = newValue; // Update local isPlaying status
             boutonPlay.setText(newValue ? "Pause" : "Play"); // Update button text
@@ -76,9 +80,15 @@ public class ControllerMusicPlay extends Controller {
     }
     private void updateSongDetails(Music music) {
         if (music != null) {
-            String artistName = String.valueOf(music.getArtist());
+            try {
+            int artistId = music.getArtist();
+            Artist artist = artistFacade.getArtistById(artistId);
+            String artistName = artist.getPseudo();
             System.out.println("Playing music: artiste :" + artistName + " - nom de la music : " + music.getName());
             currentSongTitle.set(music.getName() + " - " + artistName);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }else {
             currentSongTitle.set("No song playing");
         }
