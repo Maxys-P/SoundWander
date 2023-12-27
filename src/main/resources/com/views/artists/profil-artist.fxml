@@ -26,7 +26,7 @@
         <AnchorPane>
             <fx:include source="../../components/artist/subcriptionButton.fxml"/>
         </AnchorPane>
-        <fx:include source="../../components/music-play/music-view.fxml" />
+        <fx:include source="../../components/music-play/music-footer.fxml" />
     </VBox>
 </StackPane>
 </ScrollPane>
