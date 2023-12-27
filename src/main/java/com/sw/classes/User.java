@@ -1,18 +1,31 @@
 package com.sw.classes;
 
 import com.sw.facades.FacadeUser;
+import javafx.scene.image.Image;
 
 import java.time.LocalDate;
+import java.util.*;
 
 /**
  * Classe représentant un user
  */
 public class User {
 
-    /**
-     * La facade du user pour accéder aux méthodes de la facade
-     */
-    private FacadeUser facadeUser;
+    /*
+    Pas sûr que ce soit utile en fait
+     //La facade du user pour accéder aux méthodes de la facade
+     private FacadeUser facadeUser;
+
+     //Getter de la facade du user
+    public FacadeUser getFacadeUser() {
+        return facadeUser;
+    }
+
+    //Setter de la facade du user
+    public void setFacadeUser(FacadeUser facadeUser) {
+        this.facadeUser = facadeUser;
+    }
+    */
 
     private int id;
 
@@ -24,50 +37,74 @@ public class User {
 
     private LocalDate dateNaissance;
 
+    private String photo;
 
-    //public List<Musique> liste_perso;
+    //il faudra créer une table user_music pour la playlist privée avec un truc du genre
+    //pas ici bien sûr hein
+    /*
+    CREATE TABLE IF NOT EXISTS user_music (
+        userId INT,
+        musicId INT,
+        PRIMARY KEY (userId, musicId),
+        FOREIGN KEY (userId) REFERENCES user(id),
+        FOREIGN KEY (musicId) REFERENCES music(id)
+    );
+    */
+    private List<Music> privatePlaylist;
+
+    private String role;
+
 
 
     //public List<Notification> notifs;
 
-  
     //public <List<Discussion> discussions;
-
-
-    //public Image photo_profil;
-
 
     /**
      * Default constructor
      */
-    public User(int id, String pseudo, String mail, String motDePasse, LocalDate dateNaissance) {
+    public User(int id, String pseudo, String mail, String motDePasse, LocalDate dateNaissance, String photo, String role) {
         this.id = id;
         this.pseudo = pseudo;
         this.mail = mail;
         this.motDePasse = motDePasse;
         this.dateNaissance = dateNaissance;
+        this.photo = photo;
+        this.role = role;
+        this.privatePlaylist = new ArrayList<>();
     }
+
+    /**
+     * Constructeur avec les données du user
+     */
+    public User(int id, String pseudo, String mail, String motDePasse, LocalDate dateNaissance, String photo, String role, List<Music> privatePlaylist) {
+        this.id = id;
+        this.pseudo = pseudo;
+        this.mail = mail;
+        this.motDePasse = motDePasse;
+        this.dateNaissance = dateNaissance;
+        this.photo = photo;
+        this.role = role;
+        this.privatePlaylist = privatePlaylist;
+    }
+
 
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
+                "id=" + id + '\'' +
                 ", pseudo='" + pseudo + '\'' +
                 ", mail='" + mail + '\'' +
                 ", motDePasse='" + motDePasse + '\'' +
                 ", dateNaissance=" + dateNaissance + '\'' +
-                '}';
+                ", photo=" + photo + '\'' +
+                ", role=" + role + '\'' +
+                ", privatePlaylist=" + privatePlaylist + '\'' +
+                '}' + "\n";
     }
 
     //Getters :
 
-    /**
-     * Getter de la facade du user
-     * @return la facade du user
-     */
-    public FacadeUser getFacadeUser() {
-        return facadeUser;
-    }
 
     /**
      * Getter de l'id du user
@@ -103,23 +140,37 @@ public class User {
 
     /**
      * Getter de la date de naissance du user
-     *
      * @return la date de naissance du user
      */
     public LocalDate getDateNaissance() {
         return dateNaissance;
     }
 
-    //Setters :
-
+    /**
+     * Getter de la photo du user
+     * @return la photo du user
+     */
+    public String getPhoto() {
+        return photo;
+    }
 
     /**
-     * Setter de la facade du user
-     * @param facadeUser la facade du user
+     * Getter de la playlist privée du user
+     * @return la playlist privée du user
      */
-    public void setFacadeUser(FacadeUser facadeUser) {
-        this.facadeUser = facadeUser;
+    public List<Music> getPrivatePlaylist() {
+        return privatePlaylist;
     }
+
+    /**
+     * Getter du rôle du user
+     * @return le rôle du user
+     */
+    public String getRole() {
+        return role;
+    }
+
+    //Setters :
 
     /**
      * Setter de l'id du user
@@ -161,5 +212,28 @@ public class User {
         this.dateNaissance = dateNaissance;
     }
 
+    /**
+     * Setter de la photo du user
+     * @param photo la photo du user
+     */
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
+    /**
+     * Setter de la playlist privée du user
+     * @param privatePlaylist la playlist privée du user
+     */
+    public void setPrivatePlaylist(List<Music> privatePlaylist) {
+        this.privatePlaylist = privatePlaylist;
+    }
+
+    /**
+     * Setter du rôle du user
+     * @param role le rôle du user
+     */
+    public void setRole(String role) {
+        this.role = role;
+    }
 
 }

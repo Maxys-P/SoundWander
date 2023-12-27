@@ -9,8 +9,7 @@ import com.sw.exceptions.ExceptionBadPage;
 import com.sw.exceptions.ExceptionFormIncomplete;
 
 import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.Date;
+
 
 
 /**
@@ -77,7 +76,7 @@ public class ControllerRegister extends ControllerUser {
     private void goToHome() {
         try {
             super.hideError(errorText);
-            super.goToHome(boutonInscrire);
+            super.goToHome(boutonInscrire, "user");
         } catch (ExceptionBadPage e) {
             super.displayError(errorText, e.getMessage());
         }
@@ -126,6 +125,9 @@ public class ControllerRegister extends ControllerUser {
     private void verifForm() throws ExceptionFormIncomplete {
         if (mail.getText().isEmpty() || pseudo.getText().isEmpty() || motDePasse.getText().isEmpty() || motDePasseConfirm.getText().isEmpty()) {
             throw new ExceptionFormIncomplete("Veuillez remplir tous les champs");
+        }
+        if (!mail.getText().matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
+            throw new ExceptionFormIncomplete("Adresse mail non valide");
         }
     }
 

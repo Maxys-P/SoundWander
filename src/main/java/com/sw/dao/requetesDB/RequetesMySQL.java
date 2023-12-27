@@ -227,4 +227,51 @@ public class RequetesMySQL extends RequetesDB {
             throw new ExceptionDB("Erreur lors de la suppression des données", e);
         }
     }
+
+
+    /**
+     * Méthode générique pour effectuer des requêtes SELECT avec des jointures.
+     * @param mainTable Le nom de la table principale.
+     * @param joinTables Liste des tables à joindre avec la table principale.
+     * @param onConditions Liste des conditions pour les jointures (par exemple, "mainTable.id = joinTable.foreignId").
+     * @param whereConditions Map des conditions WHERE, où chaque clé est le nom de la colonne et chaque valeur est la valeur à utiliser dans la condition.
+     * @return MapperResultSet, le résultat de la requête.
+     * @throws ExceptionDB si une exception SQL se produit.
+     */
+    public MapperResultSet selectWithJoin(String mainTable, List<String> joinTables, List<String> onConditions, Map<String, Object> whereConditions) throws ExceptionDB {
+        StringBuilder sql = new StringBuilder("SELECT * FROM ").append(mainTable);
+
+        // Ajouter les jointures
+        for (int i = 0; i < joinTables.size(); i++) {
+            sql.append(" JOIN ").append(joinTables.get(i)).append(" ON ").append(onConditions.get(i));
+        }
+
+        // Ajouter les conditions WHERE
+        if (!whereConditions.isEmpty()) {
+            sql.append(" WHERE ");
+            int i = 0;
+            for (Map.Entry<String, Object> entry : whereConditions.entrySet()) {
+                sql.append(entry.getKey()).append(" = ?");
+                if (i < whereConditions.size() - 1) {
+                    sql.append(" AND ");
+                }
+                i++;
+            }
+        }
+
+        try (Connection connection = this.getConnexion();
+             PreparedStatement requete = connection.prepareStatement(sql.toString())) {
+
+            int index = 1;
+            for (Object value : whereConditions.values()) {
+                requete.setObject(index++, value);
+            }
+
+            ResultSet rs = requete.executeQuery();
+            return new MapperResultSet(rs);
+        } catch (SQLException e) {
+            throw new ExceptionDB("Erreur lors de la sélection des données avec jointure", e);
+        }
+    }
+
 }

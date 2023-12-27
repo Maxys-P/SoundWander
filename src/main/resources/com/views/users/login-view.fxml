@@ -29,9 +29,6 @@
             <!-- Label lien pour la registration page. -->
             <Label fx:id="labelRegistration" text="Je n'ai pas encore de compte" visible="true" onMouseClicked="#goToRegister" styleClass="lien"/>
 
-            <!-- Label lien pour la mdp oublié page. -->
-            <Label fx:id="labelMdpOublie" text="J'ai oublié mon mot de passe" visible="true" styleClass="lien"/>
-
             <!-- Label pour afficher les messages d'erreur. Initialement caché. -->
             <Text fx:id="errorText" fill="RED" text="Pseudo ou mot de passe incorrect"/>
         </VBox>

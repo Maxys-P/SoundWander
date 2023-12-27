@@ -4,14 +4,45 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="488cdd30-80e1-4c58-a706-5bdc807ad006" name="Changes" comment="Méthodes génériques login et inscription">
+    <list default="true" id="488cdd30-80e1-4c58-a706-5bdc807ad006" name="Changes" comment="cryptage mdp">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sw/classes/Admin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sw/classes/Artist.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sw/classes/MusicalExpert.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/admins/ControllerAdmin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/artists/ControllerArtist.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/profil/ControllerProfil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/profil/ControllerProfilAdmin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/profil/ControllerProfilArtist.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/profil/ControllerProfilUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sw/facades/FacadeAdmin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sw/facades/FacadeArtist.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/components/admin/listUsers.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/components/admin/transformationAdmin.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/components/artist/subcriptionButton.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/components/artist/transformationArtist.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/components/musical-expert/listPlaylist.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/components/profil/info.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/views/admins/profil-admin.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/views/artists/profil-artist.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/views/artists/subscription-view.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/views/musical-experts/profil-musical-expert.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/views/users/profil-user.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/photodeprofil.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/classes/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/classes/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/controllers/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/controllers/users/ControllerLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/users/ControllerLogin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/controllers/users/ControllerRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/users/ControllerRegister.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/controllers/users/ControllerUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/users/ControllerUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/CreateTableUserScript.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/CreateTableUserScript.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/DAOUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/DAOUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/boiteAOutils/PasswordAuthentification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/boiteAOutils/AuthentificationManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/daoMysql/DAOUserMySQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/daoMysql/DAOUserMySQL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/factories/FactoryDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/factories/FactoryDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/requetesDB/RequetesMySQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/requetesDB/RequetesMySQL.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/facades/FacadeUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/facades/FacadeUser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/styles/Style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/styles/Style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/views/users/login-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/views/users/login-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,8 +53,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="module-info" />
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -66,6 +98,7 @@
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/maxys/Desktop/SoundWander/src/main/resources/com/components/admin",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -81,7 +114,15 @@
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\maxys\Desktop\SoundWander\src\main\resources\com\components\admin" />
+      <recent name="C:\Users\maxys\Desktop\SoundWander\src\main\resources\com\views\admins" />
+      <recent name="C:\Users\maxys\Desktop\SoundWander\src\main\resources\images" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\maxys\Desktop\SoundWander\src\main\resources\com\views\musicalExperts" />
+      <recent name="C:\Users\maxys\Desktop\SoundWander\src\main\resources\com\views\artists" />
+      <recent name="C:\Users\maxys\Desktop\SoundWander\src\main\resources\com\components\profil" />
       <recent name="C:\Users\maxys\Desktop\SoundWander\src\main\java\com\sw\controllers" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
@@ -91,7 +132,7 @@
       <recent name="com.sw.dao.boiteAOutils" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.App">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.sw.App" />
       <module name="SoundWander" />
@@ -138,9 +179,9 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.App" />
-        <item itemvalue="Application.CreateTableUserScript" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.CreateTableUserScript" />
+        <item itemvalue="Application.App" />
       </list>
     </recent_temporary>
   </component>
@@ -176,6 +217,8 @@
       <workItem from="1703281196015" duration="6528000" />
       <workItem from="1703294437762" duration="413000" />
       <workItem from="1703432328006" duration="1522000" />
+      <workItem from="1703611010699" duration="17930000" />
+      <workItem from="1703670595139" duration="15575000" />
     </task>
     <task id="LOCAL-00001" summary="Création">
       <option name="closed" value="true" />
@@ -224,21 +267,6 @@
     <MESSAGE value="Mateo Fonctionnel" />
     <MESSAGE value="Méthodes génériques login et inscription" />
     <option name="LAST_COMMIT_MESSAGE" value="Méthodes génériques login et inscription" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/com/sw/dao/DAOUser.java</url>
-          <line>38</line>
-          <properties class="com.sw.dao.DAOUser" method="createUser">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

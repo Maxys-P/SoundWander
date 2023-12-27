@@ -12,8 +12,11 @@ import javafx.scene.control.Control;
 
 import java.io.IOException;
 
-
+/**
+ * Controller générique
+ */
 public abstract class Controller {
+
 
 
     //Méthodes :

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.shape.Circle?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.sw.controllers.profil.ControllerProfilUser"
+            prefHeight="800.0" prefWidth="1000.0">
+    <StackPane alignment="CENTER" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0"
+               AnchorPane.topAnchor="20.0" AnchorPane.bottomAnchor="20.0" prefHeight="500.00" prefWidth="800.00">
+        <VBox spacing="20" alignment="TOP_CENTER" prefHeight="300" prefWidth="300" maxHeight="400" maxWidth="400" styleClass="conteneur">
+            <Label text="Informations User" styleClass="h1"/>
+            <ImageView fx:id="imageProfil" fitHeight="150" fitWidth="150" preserveRatio="true" onMouseClicked="#handleChangePhoto">
+                <clip>
+                    <Circle/>
+                </clip>
+            </ImageView>
+            <HBox spacing="10" alignment="CENTER" >
+                <Label text="Pseudo" />
+                <TextField fx:id="pseudo" text="pseudo" editable="false" styleClass="champ" HBox.hgrow="ALWAYS"/>
+            </HBox>
+            <HBox spacing="10" alignment="CENTER">
+                <Label text="Mail" />
+                <TextField fx:id="mail" text="mail" editable="false" styleClass="champ" HBox.hgrow="ALWAYS"/>
+            </HBox>
+            <HBox spacing="10" alignment="CENTER">
+                <Label text="Date de Naissance" />
+                <DatePicker fx:id="dateNaissance" editable="false" styleClass="champ" HBox.hgrow="ALWAYS"/>
+            </HBox>
+            <Text fx:id="errorText" fill="red" />
+            <StackPane alignment="CENTER" >
+                <Button fx:id="boutonModifier" text="Modifier" onAction="#handleEditAction" styleClass="boutonBleu"/>
+                <Button fx:id="boutonSave" text="Enregistrer" onAction="#handleButtonSave" styleClass="boutonBleu" visible="false"/>
+            </StackPane>
+        </VBox>
+    </StackPane>
+</AnchorPane>

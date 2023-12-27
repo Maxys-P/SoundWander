@@ -1,7 +1,9 @@
 package com.sw.dao;
 
+import com.sw.classes.Admin;
+import com.sw.classes.Artist;
+import com.sw.classes.MusicalExpert;
 import com.sw.classes.User;
-import com.sw.dao.boiteAOutils.AuthentificationManager;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -20,18 +22,12 @@ public abstract class DAOUser extends DAO {
         super("user");
     }
 
-    /**
-     * Instance de la classe utilitaire pour l'authentification du mot de passe
-     * Elle permet de hasher et vérifier le mot de passe
-     */
-    protected AuthentificationManager passwordAuthentification = new AuthentificationManager();
-
 
     /**
      * Méthode pour créer un utilisateur
-     * @param pseudo String, le pseudo de l'utilisateur
-     * @param mail String, l'email de l'utilisateur
-     * @param motDePasse String, le mot de passe de l'utilisateur
+     * @param pseudo        String, le pseudo de l'utilisateur
+     * @param mail          String, l'email de l'utilisateur
+     * @param motDePasse    String, le mot de passe de l'utilisateur
      * @param dateNaissance Date, la date de naissance de l'utilisateur
      * @return User, l'utilisateur créé
      * @throws Exception si problème pendant la création du user
@@ -65,14 +61,54 @@ public abstract class DAOUser extends DAO {
     public abstract User getUserById(int id) throws Exception;
 
     /**
-     * Met à jour les informations d'un utilisateur et retourne l'utilisateur mis à jour.
-     * @param id L'identifiant de l'utilisateur à mettre à jour.
+     * Méthode qui met à jour les informations d'un user et retourne le user mis à jour.
+     * @param id L'identifiant du user à mettre à jour.
      * @param updates Map contenant les champs à mettre à jour et leurs nouvelles valeurs.
      * @return User L'utilisateur mis à jour.
      * @throws Exception En cas d'erreur lors de la mise à jour ou de récupération des données.
      */
     public abstract User updateUser(int id, Map<String, Object> updates) throws Exception;
 
+
+        /**
+         * Met à jour le pseudo de l'utilisateur.
+         * @param idUser int, l'id de l'utilisateur
+         * @param newPseudo String, le nouveau pseudo de l'utilisateur
+         * @throws Exception si problème pendant la mise à jour du pseudo
+         */
+    public abstract void updateUserPseudo(int idUser, String newPseudo) throws Exception;
+
+    /**
+     * Met à jour le mail de l'utilisateur.
+     * @param idUser int, l'id de l'utilisateur
+     * @param newMail String, le nouveau mail de l'utilisateur
+     * @throws Exception si problème pendant la mise à jour du mail
+     */
+    public abstract void updateUserMail(int idUser, String newMail) throws Exception;
+
+    /**
+     * Met à jour le mot de passe de l'utilisateur.
+     * @param idUser int, l'id de l'utilisateur
+     * @param newMotDePasse String, le nouveau mot de passe de l'utilisateur
+     * @throws Exception si problème pendant la mise à jour du mot de passe
+     */
+    public abstract void updateUserMotDePasse(int idUser, String newMotDePasse) throws Exception;
+
+    /**
+     * Met à jour la date de naissance de l'utilisateur.
+     * @param idUser int, l'id de l'utilisateur
+     * @param newDateNaissance LocalDate, la nouvelle date de naissance de l'utilisateur
+     * @throws Exception si problème pendant la mise à jour de la date de naissance
+     */
+    public abstract void updateUserDateNaissance(int idUser, LocalDate newDateNaissance) throws Exception;
+
+    /**
+     * Met à jour la photo de l'utilisateur.
+     * @param idUser int, l'id de l'utilisateur
+     * @param newPhoto String, la nouvelle photo de l'utilisateur
+     * @throws Exception si problème pendant la mise à jour de la photo
+     */
+    public abstract void updateUserPhoto(int idUser, String newPhoto) throws Exception;
 
     /**
      * Supprimer le user de la base de donnée
@@ -81,7 +117,22 @@ public abstract class DAOUser extends DAO {
      */
     public abstract boolean deleteUser(int id) throws Exception;
 
+    protected abstract User setUserRole(Map<String, Object> userData) throws Exception;
 
+    /**
+     * Méthode qui permet à un user de devenir artiste
+     * @param idUser int, l'id de l'utilisateur
+     * @return Artist, l'artiste créé
+     * @throws Exception si une erreur survient lors de la création de l'artiste
+     */
+    public abstract Artist userBecomeArtist(int idUser) throws Exception;
 
+    /**
+     * Méthode qui permet à un user de devenir expert musical
+     * @param idUser int, l'id de l'utilisateur
+     * @return MusicalExpert, l'expert musical créé
+     */
+    public abstract MusicalExpert userBecomeMusicalExpert(int idUser) throws Exception;
 
+    public abstract Admin userBecomeAdmin(int idUser) throws Exception;
 }

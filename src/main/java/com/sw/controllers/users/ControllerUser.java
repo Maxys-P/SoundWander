@@ -9,10 +9,10 @@ import javafx.scene.control.Control;
  * Controller générique pour les pages accessibles aux visiteurs
  * @see Controller
  */
-public class ControllerUser extends Controller {
+public abstract class ControllerUser extends Controller {
 
     /**
-     * Facade pour les utilisateurs non connectés
+     * Facade pour les users
      */
     final FacadeUser userFacade = FacadeUser.getInstance();
 
@@ -32,10 +32,12 @@ public class ControllerUser extends Controller {
 
     /**
      * Méthode pour aller à la page d'accueil
+     * @param controlEl Control, élément de contrôle de la page
+     * @param scope String, le scope de l'utilisateur (role en gros)
      * @throws ExceptionBadPage si problème pendant le chargement de la page
      */
-    void goToHome(Control controlEl) throws ExceptionBadPage {
-        //TODO : rajouter un contexte en fonction du rôle pour afficher les bonnes pages
-        goToPage(controlEl, path + "home-view.fxml", "Accueil");
+    void goToHome(Control controlEl, String scope) throws ExceptionBadPage {
+        String pathUser = scope + "s/";
+        goToPage(controlEl, pathUser + "profil-" + scope + ".fxml", "Mon Profil");
     }
 }

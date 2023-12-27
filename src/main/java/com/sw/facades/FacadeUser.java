@@ -58,6 +58,7 @@ public class FacadeUser extends Facade {
      */
     public User connexion(String mail, String motDePasse) throws Exception {
         try {
+            System.out.println(daoUser.getAllUsers());
             User user = daoUser.getUserByMail(mail);
             if (AuthentificationManager.checkPassword(motDePasse, user.getMotDePasse())) {
                 Facade.currentUser = user;
@@ -87,8 +88,7 @@ public class FacadeUser extends Facade {
         }
         // Si le mail n'existe pas, créer le nouvel utilisateur
         try {
-            daoUser.createUser(pseudo, mail, motDePasse, dateNaissance);
-            User newUser = daoUser.getUserByMail(mail);
+            User newUser = daoUser.createUser(pseudo, mail, motDePasse, dateNaissance);
             Facade.currentUser = newUser;
             return newUser;
         } catch (SQLException e) {
@@ -96,5 +96,85 @@ public class FacadeUser extends Facade {
         }
     }
 
+    /**
+     * Méthode pour récupérer un user par son id
+     * @param id int, l'id de l'utilisateur
+     * @return User, l'utilisateur récupéré
+     * @throws Exception si problème pendant la récupération du user
+     */
+    public User getUserById(int id) throws Exception {
+        return daoUser.getUserById(id);
+    }
+
+    /**
+     * Méthode pour récupérer un user par son mail
+     * @param mail String, le mail de l'utilisateur
+     * @return User, l'utilisateur récupéré
+     * @throws Exception si problème pendant la récupération du user
+     */
+    public User getUserByMail(String mail) throws Exception {
+        return daoUser.getUserByMail(mail);
+    }
+
+    /**
+     * Méthode pour mettre à jour le pseudo d'un user
+     * @param idUser int, l'id de l'utilisateur
+     * @param newPseudo String, le nouveau pseudo de l'utilisateur
+     * @throws Exception si problème pendant la mise à jour du pseudo
+     */
+    public void updateUserPseudo(int idUser, String newPseudo) throws Exception {
+        daoUser.updateUserPseudo(idUser, newPseudo);
+    }
+
+    /**
+     * Méthode pour mettre à jour le mail d'un user
+     * @param idUser int, l'id de l'utilisateur
+     * @param newMail String, le nouveau mail de l'utilisateur
+     * @throws Exception si problème pendant la mise à jour du mail
+     */
+    public void updateUserMail(int idUser, String newMail) throws Exception {
+        daoUser.updateUserMail(idUser, newMail);
+    }
+
+    /**
+     * Méthode pour mettre à jour le mot de passe d'un user
+     * @param idUser int, l'id de l'utilisateur
+     * @param newMotDePasse String, le nouveau mot de passe de l'utilisateur
+     * @throws Exception si problème pendant la mise à jour du mot de passe
+     */
+    public void updateUserMotDePasse(int idUser, String newMotDePasse) throws Exception {
+        daoUser.updateUserMotDePasse(idUser, newMotDePasse);
+    }
+
+    /**
+     * Méthode pour mettre à jour la date de naissance d'un user
+     * @param idUser int, l'id de l'utilisateur
+     * @param newDateNaissance Date, la nouvelle date de naissance de l'utilisateur
+     * @throws Exception si problème pendant la mise à jour de la date de naissance
+     */
+    public void updateUserDateNaissance(int idUser, LocalDate newDateNaissance) throws Exception {
+        daoUser.updateUserDateNaissance(idUser, newDateNaissance);
+    }
+
+    /**
+     * Méthode pour mettre à jour la photo d'un user
+     * @param idUser int, l'id de l'utilisateur
+     * @param newPhoto String, la nouvelle photo de l'utilisateur
+     * @throws Exception si problème pendant la mise à jour de la photo
+     */
+    public void updateUserPhoto(int idUser, String newPhoto) throws Exception {
+        daoUser.updateUserPhoto(idUser, newPhoto);
+    }
+
+    //TODO
+    /*
+    public void addMusicToPrivatePlaylist(int idClient, int idMusic) throws Exception {
+        daoUser.addMusicToPrivatePlaylist(idClient, idMusic);
+    }
+
+    public void removeMusicFromPrivatePlaylist(int idClient, int idMusic) throws Exception {
+        daoUser.removeMusicFromPrivatePlaylist(idClient, idMusic);
+    }
+    */
 }
 
