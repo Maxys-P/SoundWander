@@ -6,6 +6,8 @@ import com.sw.exceptions.ExceptionBadPage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Control;
+import javafx.scene.control.Label;
+import javafx.scene.text.Text;
 
 
 import java.net.URL;
@@ -21,11 +23,13 @@ public class ControllerUser extends Controller {
      */
     final FacadeUser userFacade = FacadeUser.getInstance();
 
+
     /**
      * Chemin du dossier dans lequel se trouve les ressources pour les pages accessibles aux utilisateurs
      */
     private final String path = "users/";
 
+    private final String pathProposal = "proposals/";
 
 
     /**
@@ -45,6 +49,7 @@ public class ControllerUser extends Controller {
         //TODO : rajouter un contexte en fonction du rôle pour afficher les bonnes pages
         goToPage(controlEl, path + "home-view.fxml", "Accueil");
     }
+
 
     /**
      * Méthode pour aller à la page de profil

@@ -8,6 +8,14 @@
     <artifactId>SoundWander</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <build>
+    <resources>
+        <resource>
+            <directory>src/main/resources</directory>
+        </resource>
+    </resources>
+    </build>
+
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
@@ -20,6 +28,12 @@
             <artifactId>javafx-controls</artifactId>
             <version>19.0.2</version>
         </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-media</artifactId>
+            <version>19.0.2</version>
+        </dependency>
+
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
@@ -46,6 +60,7 @@
             <version>5.9.1</version>
             <scope>test</scope>
         </dependency>
+
         <!-- MP3SPI for MP3 support -->
         <dependency>
             <groupId>com.googlecode.soundlibs</groupId>
@@ -61,6 +76,7 @@
         </dependency>
 
         <!-- JLayer for MP3 support -->
+
         <dependency>
             <groupId>javazoom</groupId>
             <artifactId>jlayer</artifactId>
@@ -73,6 +89,7 @@
             <artifactId>javafx-web</artifactId>
             <version>15</version>
         </dependency>
+
     </dependencies>
 
 </project>

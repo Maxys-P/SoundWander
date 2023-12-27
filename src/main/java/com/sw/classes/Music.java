@@ -32,7 +32,7 @@ public class Music {
         return "Music{" +
                 "id=" + id + '\'' +
                 ", name=" + name + '\'' +
-                ", artist=" + artist + '\'' +
+                 ", artist=" + artist + '\'' +
                 ", duration=" + '\'' + duration +
                 ", musicFile=" + musicFile + '\'' +
                 '}';

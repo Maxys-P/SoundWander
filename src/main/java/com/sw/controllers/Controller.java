@@ -2,6 +2,7 @@ package com.sw.controllers;
 
 import com.sw.App;
 import com.sw.exceptions.ExceptionBadPage;
+import com.sw.facades.FacadeProposal;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
