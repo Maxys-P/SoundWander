@@ -2,6 +2,7 @@ package com.sw.facades;
 
 import com.sw.classes.Music;
 import com.sw.classes.MusicInfo;
+import com.sw.classes.User;
 import com.sw.dao.DAOMusic;
 
 import com.sw.dao.boiteAOutils.PlayMusicFromBD;
@@ -126,6 +127,21 @@ public class FacadeMusic extends Facade{
     public List<MusicInfo> getMusicByUserId() throws Exception {
         int userId = currentUser.getId();
         return daoMusic.getMusicByUserId(userId);
+    }
+
+    /**
+     * Récupère une music par son ID.
+     * @param id L'identifiant de la music à récupérer.
+     * @return music correspondant, ou null si aucune proposition avec cet ID n'existe.
+     * @throws Exception si une erreur survient pendant la récupération.
+     */
+    public Music getMusicById(int id) throws Exception {
+        try {
+            return daoMusic.getMusicById(id);
+        } catch (Exception e) {
+            // Gérer l'exception ou la propager
+            throw new Exception("Erreur lors de la récupération de la musique : " + e.getMessage(), e);
+        }
     }
 
 }

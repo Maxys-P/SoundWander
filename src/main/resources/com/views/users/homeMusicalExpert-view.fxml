@@ -7,12 +7,11 @@
 <?import javafx.scene.layout.*?>
 
 <AnchorPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.sw.controllers.users.ControllerUser" stylesheets="@../../styles/Style.css" prefHeight="400.0" prefWidth="600.0">
-    <StackPane alignment="CENTER" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0" AnchorPane.bottomAnchor="20.0">
+    <StackPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../../styles/Style.css">
         <VBox fx:id="accueilExpert" alignment="CENTER" spacing="20">
             <fx:include source="../proposals/listAllProposals-view.fxml" />
             <fx:include source="music-view.fxml" />
         </VBox>
-
     </StackPane>
 
 </AnchorPane>
