@@ -26,6 +26,21 @@
     -fx-font-size: 30px; /* La taille de la police du bouton */
 }
 
+.h2 {
+    -fx-text-fill: #143442; /* Définit la couleur du texte du label en rouge */
+    -fx-font-size: 20px; /* La taille de la police du bouton */
+}
+
+.h3 {
+    -fx-text-fill: #143442; /* Définit la couleur du texte du label en rouge */
+    -fx-font-size: 16px; /* La taille de la police du bouton */
+}
+
+.label-bold {
+    -fx-font-size: 16px; /* Taille du texte un peu plus grande */
+    -fx-font-family: 'Mirza-Bold'; /* La police du texte */
+}
+
 
 /* ############ Bouton ############ */
 
@@ -40,13 +55,21 @@
 }
 
 .boutonBleu:hover {
-    -fx-background-color: #FFFFFF; /* Couleur de fond au survol */
+    -fx-background-color: #143442; /* Couleur de fond au survol */
     -fx-text-fill: #416569; /* Couleur du texte au survol */
 }
 
 .boutonBleu:pressed {
     -fx-background-color: #416569; /* Couleur de fond au clic */
     -fx-text-fill: #FFFFFF; /* Couleur du texte au clic */
+}
+
+.close-button {
+    -fx-background-color: transparent; /* Rendre le fond transparent */
+    -fx-text-fill: #FFFFFF; /* Couleur du texte */
+    -fx-border-color: transparent; /* Rendre la bordure transparente */
+    -fx-font-size: 30px; /* Augmenter la taille du texte */
+    -fx-font-weight: bold; /* Mettre le texte en gras */
 }
 
 
@@ -96,4 +119,36 @@
 
 .lien:pressed {
     -fx-text-fill: #416569; /* Définit la couleur du texte du label en rouge */
+}
+
+
+/* ############ Bandeau Music ############ */
+
+.container-Bandeau-Music {
+    -fx-background-color: #142F3E; /* Couleur de fond */
+    -fx-padding: 10px;
+    -fx-alignment: center;
+}
+
+.bandeau-music{
+    -fx-background-color: #D9D9D9; /* Couleur de fond */
+    -fx-background-radius: 20px; /* Rayon du fond pour les coins arrondis */
+    -fx-padding: 5px 10px 5px; /* Haut, Droit, Bas, Gauche */
+    -fx-font-family: 'Mirza Regular'; /* La police du texte du bouton */
+    -fx-font-size: 12px; /* La taille de la police du bouton */
+}
+
+.musicBouton{
+        -fx-background-radius: 15;
+        -fx-background-color: #ffffff;
+    -fx-padding: 5px 10px 5px; /* Haut, Droit, Bas, Gauche */
+    }
+
+/* ############ Page admin ############ */
+.label-description {
+    -fx-background-color: #D9D9D9; /* Couleur de fond pour la description */
+    -fx-background-radius: 15px; /* Arrondir les coins */
+    -fx-padding: 10px; /* Espacement intérieur */
+    -fx-font-size: 14px; /* Taille de la police pour la description */
+    -fx-font-family: 'Mirza-Regular'; /* La police de la description */
 }

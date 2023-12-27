@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="300.0" prefWidth="560.0" stylesheets="@../../styles/Style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sw.controllers.musicPlay.ControllerMusicPlay">
+    <VBox styleClass="container-Bandeau-Music" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+        <HBox alignment="CENTER" styleClass="bandeau-music">
+            <Label fx:id="songTitle" prefHeight="18.0" prefWidth="185.0" styleClass="lien" text="Aucune musique en cours" textFill="#fffdfd" />
+            <Button fx:id="boutonPrevious" onAction="#handlePrevious" styleClass="musicBouton" text="prev" />
+            <Button fx:id="boutonPlay" onAction="#handlePlay" styleClass="musicBouton" text="play" />
+            <Button fx:id="boutonNext" onAction="#handleNext" styleClass="musicBouton" text="next" />
+        </HBox>
+    </VBox>
+</AnchorPane>

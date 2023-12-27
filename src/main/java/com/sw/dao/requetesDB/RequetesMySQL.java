@@ -127,7 +127,8 @@ public class RequetesMySQL extends RequetesDB {
                 }
             }
         } catch (SQLException e) {
-            throw new ExceptionDB("Erreur lors de l'insertion des données", e);
+            e.printStackTrace();
+            throw new ExceptionDB("Erreur lors de l'insertion des données" + e.getMessage(), e);
         }
     }
 
@@ -273,5 +274,31 @@ public class RequetesMySQL extends RequetesDB {
             throw new ExceptionDB("Erreur lors de la sélection des données avec jointure", e);
         }
     }
+
+
+    /**
+     * Executes a SQL query with the given parameters and returns the result.
+     * @param sql the SQL query to execute.
+     * @param params the parameters for the SQL query.
+     * @return a MapperResultSet containing the result of the query.
+     * @throws ExceptionDB if an error occurs during query execution.
+     */
+    //Pas compris l'intérêt mais je laisse au cas où
+    public MapperResultSet executeQueryWithParams(String sql, Object... params) throws ExceptionDB {
+        try (Connection connection = this.getConnexion();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            // Set the parameters on the PreparedStatement
+            for (int i = 0; i < params.length; i++) {
+                statement.setObject(i + 1, params[i]);
+            }
+
+            ResultSet resultSet = statement.executeQuery();
+            return new MapperResultSet(resultSet);
+        } catch (SQLException e) {
+            throw new ExceptionDB("Erreur lors de l'exécution de la requête avec paramètres", e);
+        }
+    }
+
 
 }

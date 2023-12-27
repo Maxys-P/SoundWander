@@ -5,44 +5,46 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="488cdd30-80e1-4c58-a706-5bdc807ad006" name="Changes" comment="cryptage mdp">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sw/classes/Admin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sw/classes/Artist.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sw/classes/MusicalExpert.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/admins/ControllerAdmin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/artists/ControllerArtist.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/profil/ControllerProfil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/profil/ControllerProfilAdmin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/profil/ControllerProfilArtist.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/profil/ControllerProfilUser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sw/facades/FacadeAdmin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sw/facades/FacadeArtist.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/components/admin/listUsers.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/components/admin/transformationAdmin.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/components/artist/subcriptionButton.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/components/artist/transformationArtist.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/components/musical-expert/listPlaylist.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/components/profil/info.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/views/admins/profil-admin.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/views/artists/profil-artist.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/views/artists/subscription-view.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/views/musical-experts/profil-musical-expert.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/views/users/profil-user.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/photodeprofil.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sw/classes/MusicInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/artists/ControllerProfile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/proposal/ControllerCreateProposal.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/proposal/ControllerListAllProposals.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/proposal/ControllerProposal.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/boiteAOutils/Deuxieme_son.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/boiteAOutils/MP3Utils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/boiteAOutils/PlayMusicFromBD.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sw/facades/FacadeMusic.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/components/artist/artist-mateo.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/components/music-play/music-view.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/components/proposal/createProposal-view.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/components/proposal/listAllProposals-view.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/carte du monde.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/music-next.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/music-pause.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/music-play.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/music-previous.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/classes/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/classes/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/controllers/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/controllers/users/ControllerLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/users/ControllerLogin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/controllers/users/ControllerRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/users/ControllerRegister.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/controllers/users/ControllerUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/users/ControllerUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/CreateTableUserScript.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/CreateTableUserScript.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/DAOUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/DAOUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/daoMysql/DAOUserMySQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/daoMysql/DAOUserMySQL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/factories/FactoryDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/factories/FactoryDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/classes/Music.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/classes/Music.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/classes/Proposal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/classes/Proposal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/controllers/musicPlay/ControllerMusicPlay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/musicPlay/ControllerMusicPlay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/DAOMusic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/DAOMusic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/DAOProposal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/DAOProposal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/boiteAOutils/AddMusicToBD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/boiteAOutils/AddMusicToBD.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/daoMysql/DAOMusicMySQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/daoMysql/DAOMusicMySQL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/daoMysql/DAOProposalMySQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/daoMysql/DAOProposalMySQL.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/requetesDB/RequetesMySQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/requetesDB/RequetesMySQL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/facades/FacadeUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/facades/FacadeUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/facades/Facade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/facades/Facade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/facades/FacadeMusicPlay.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/facades/FacadeProposal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/facades/FacadeProposal.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/components/profil/info.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/components/profil/info.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/styles/Style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/styles/Style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/views/users/login-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/views/users/login-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/views/artists/profil-artist.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/views/artists/profil-artist.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/views/musical-experts/profil-musical-expert.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/views/musical-experts/profil-musical-expert.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/views/users/home-view.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/views/users/profil-user.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/views/users/profil-user.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/views/users/register-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/views/users/register-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,6 +60,9 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="master" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -88,6 +93,7 @@
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Application.AddMusicToBD.executor": "Run",
     "Application.App.executor": "Run",
     "Application.CreateTableUserScript.executor": "Run",
     "Application.Main.executor": "Run",
@@ -120,10 +126,11 @@
       <recent name="C:\Users\maxys\Desktop\SoundWander\src\main\resources\images" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\maxys\Desktop\SoundWander\src\main\resources\com\views\musicalExperts" />
+      <recent name="C:\Users\maxys\Desktop\SoundWander\src\main\resources\com\components\artist" />
       <recent name="C:\Users\maxys\Desktop\SoundWander\src\main\resources\com\views\artists" />
-      <recent name="C:\Users\maxys\Desktop\SoundWander\src\main\resources\com\components\profil" />
-      <recent name="C:\Users\maxys\Desktop\SoundWander\src\main\java\com\sw\controllers" />
+      <recent name="C:\Users\maxys\Desktop\SoundWander\src\main\resources\com\components\proposal" />
+      <recent name="C:\Users\maxys\Desktop\SoundWander\src\main\resources\com\components\music" />
+      <recent name="C:\Users\maxys\Desktop\SoundWander\src\main\resources\com\views\musicalExperts" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -132,7 +139,7 @@
       <recent name="com.sw.dao.boiteAOutils" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Application.App">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.sw.App" />
       <module name="SoundWander" />
@@ -179,9 +186,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.App" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.CreateTableUserScript" />
-        <item itemvalue="Application.App" />
       </list>
     </recent_temporary>
   </component>
@@ -266,7 +273,8 @@
     <MESSAGE value="Création" />
     <MESSAGE value="Mateo Fonctionnel" />
     <MESSAGE value="Méthodes génériques login et inscription" />
-    <option name="LAST_COMMIT_MESSAGE" value="Méthodes génériques login et inscription" />
+    <MESSAGE value="cryptage mdp" />
+    <option name="LAST_COMMIT_MESSAGE" value="cryptage mdp" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

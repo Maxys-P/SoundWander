@@ -20,4 +20,5 @@
     <fx:include source="../../components/artist/transformationArtist.fxml" />
     <fx:include source="../../components/admin/transformationAdmin.fxml" />
 
+    <fx:include source="../../components/music-play/music-view.fxml" />
 </VBox>

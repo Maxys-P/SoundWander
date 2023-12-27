@@ -65,10 +65,10 @@ public class DAOProposalMySQL extends DAOProposal {
 
                 String country = (String) proposalDetails.get("country");
                 String description = (String) proposalDetails.get("description");
-                Music music = (Music) proposalDetails.get("music");
-                User artist = (User) proposalDetails.get("artist");
+                int musicId = (int) proposalDetails.get("music");
+                int artistId = (int) proposalDetails.get("artist");
 
-                return new Proposal(id, country, description, music, artist);
+                return new Proposal(id, country, description, musicId, artistId);
             }
             return null;
         } catch (Exception e) {
@@ -92,10 +92,10 @@ public class DAOProposalMySQL extends DAOProposal {
                     Integer id = (Integer) row.get("id");
                     String country = (String) row.get("country");
                     String description = (String) row.get("description");
-                    Music music = (Music) row.get("music");
-                    User artist = (User) row.get("artist");
+                    int musicId = (int) row.get("music");
+                    int artistId = (int) row.get("artist");
 
-                    Proposal proposal = new Proposal(id, country, description, music, artist);
+                    Proposal proposal = new Proposal(id, country, description, musicId, artistId);
                     proposals.add(proposal);
                 } catch (Exception e) {
                     System.out.println("Erreur lors de la récupération d'une proposition : " + e.getMessage());
@@ -128,10 +128,10 @@ public class DAOProposalMySQL extends DAOProposal {
             for (Map<String, Object> proposalDetails : listData) {
                 Integer id = (Integer) proposalDetails.get("id");
                 String description = (String) proposalDetails.get("description");
-                Music music = (Music) proposalDetails.get("music");
-                User artist = (User) proposalDetails.get("artist");
+                int musicId = (int) proposalDetails.get("music");
+                int artistId = (int) proposalDetails.get("artist");
 
-                Proposal proposal = new Proposal(id, country, description, music, artist);
+                Proposal proposal = new Proposal(id, country, description, musicId, artistId);
                 proposals.add(proposal);
             }
         } catch (Exception e) {
@@ -169,15 +169,16 @@ public class DAOProposalMySQL extends DAOProposal {
             throw new Exception("La proposition avec l'ID spécifié n'existe pas.");
         }
 
-        // 2. Ajouter la musique à la liste/playlist du pays
-        // Simuler l'ajout à une liste à modifier lorsque les playlists seront implémentées
-        String country = proposal.getCountry();
-        Music musicToAdd = proposal.getMusic();
-        List<Music> playlist = new ArrayList<>();
-        playlist.add(musicToAdd);
-        // TODO : ajouter la musique à la playlist du pays
-        // TODO : notifier l'artiste que sa proposition est acceptée
-        // 3. Supprimer la proposition de la base de données
+        // 2. Récupérer l'ID de la musique associée à la proposition
+        int musicId = proposal.getMusic();
+
+        // 3. Récupérer l'ID de l'artiste de la proposition
+        int artistId = proposal.getArtist();
+
+        // TODO: Mettez en œuvre la logique pour ajouter la musique à la playlist du pays.
+        // TODO: Mettez en œuvre la logique pour notifier l'artiste de l'acceptation de sa proposition.
+
+        // 6. Supprimer la proposition de la base de données
         boolean isDeleted = deleteProposal(id);
         if (!isDeleted) {
             throw new Exception("Échec de la suppression de la proposition après acceptation.");
@@ -185,6 +186,7 @@ public class DAOProposalMySQL extends DAOProposal {
 
         return true;
     }
+
 
     public boolean refuseProposal(int id) throws Exception {
         // 1. Récupérer la proposition à partir de son ID

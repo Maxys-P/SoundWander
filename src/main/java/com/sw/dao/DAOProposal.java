@@ -13,21 +13,15 @@ public abstract class DAOProposal extends DAO{
     public DAOProposal() {
         super("proposal");
     }
+
     /**
      * Méthode pour créer une proposition
      * @param country String, le country de la proposition
      * @param description String, la description de la proposition
-<<<<<<< HEAD
      * @param music String, la music de la proposition
      * @param artist Date, l'auteur de la proposition
      * @return Proposal, la proposition créé
      * @throws Exception si problème pendant la création de la proposal
-=======
-     * @param music Music, la music de la  proposition
-     * @param artist User, l'artist de la proposition
-     * @return Proposal, la proposition créé
-     * @throws Exception si problème pendant la création de la proposition
->>>>>>> auriane
      */
     public abstract Proposal createProposal(String country, String description, Music music, User artist) throws Exception;
 
