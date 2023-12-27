@@ -9,11 +9,11 @@
 
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.HBox?>
-<AnchorPane fx:controller="com.sw.controllers.users.ControllerProfile" prefHeight="600.0" prefWidth="1200.0" stylesheets="@../../styles/Style.css" xmlns:fx="http://javafx.com/fxml">
+<AnchorPane fx:controller="com.sw.controllers.artists.ControllerProfile" prefHeight="600.0" prefWidth="1200.0" stylesheets="@../../styles/Style.css" xmlns:fx="http://javafx.com/fxml">
     <StackPane alignment="CENTER"
                AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0"
                AnchorPane.topAnchor="20.0" AnchorPane.bottomAnchor="20.0"
-               prefHeight="500.0" prefWidth="600.0">
+               prefHeight="400.0" prefWidth="600.0">
         <VBox alignment="CENTER" spacing="20" styleClass="conteneur" prefWidth="400" prefHeight="400">
             <Label text="Votre Profil" styleClass="h1"/>
             <Label text="Mes musiques" styleClass="h2"/>

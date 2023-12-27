@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Text?>
+<ScrollPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fitToWidth="true"
+            stylesheets="@../../styles/Style.css"
+            prefHeight="400.0" prefWidth="600.0">
+    <VBox alignment="TOP_CENTER" spacing="10">
+        <Text fx:id="headerText" text="On mettra le header ici après" />
+        <Text text="C'est la page artist"/>
+        <AnchorPane prefWidth="600" prefHeight="200">
+            <fx:include source="../../components/profil/info.fxml"/>
+        </AnchorPane>
+        <AnchorPane prefWidth="600" prefHeight="200">
+            <fx:include source="../../components/artist/artist-mateo.fxml"/>
+        </AnchorPane>
+        <AnchorPane prefWidth="600" prefHeight="200">
+            <fx:include source="../../components/artist/subcriptionButton.fxml"/>
+        </AnchorPane>
+        <fx:include source="../../components/music-play/music-view.fxml" />
+    </VBox>
+</ScrollPane>

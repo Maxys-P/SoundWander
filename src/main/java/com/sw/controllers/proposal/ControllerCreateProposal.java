@@ -221,8 +221,7 @@ public class ControllerCreateProposal extends ControllerProposal {
 
     @FXML
     private void closeWindow() throws ExceptionBadPage {
-        super.goToPage(closeButton, "users/home-view.fxml", "Accueil");
-        //TODO: modifier pour que ça ramène à la page profil
+        super.goToPage(closeButton, "users/profil-artist.fxml", "Profil Artiste");
     }
 
 

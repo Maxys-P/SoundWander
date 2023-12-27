@@ -1,4 +1,4 @@
-package com.sw.controllers.users;
+package com.sw.controllers.artists;
 
 import com.sw.facades.FacadeMusic;
 import com.sw.dao.boiteAOutils.MP3Utils;

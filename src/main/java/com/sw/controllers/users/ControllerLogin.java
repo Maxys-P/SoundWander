@@ -1,5 +1,8 @@
 package com.sw.controllers.users;
 
+import com.sw.classes.Admin;
+import com.sw.classes.Artist;
+import com.sw.classes.MusicalExpert;
 import com.sw.classes.User;
 import com.sw.exceptions.ExceptionBadPage;
 import com.sw.exceptions.ExceptionFormIncomplete;
@@ -66,9 +69,19 @@ public class ControllerLogin extends ControllerUser {
             User user = super.userFacade.connexion(mail.getText(), motDePasse.getText());
             if (user != null) {
                 super.hideError(errorText);
-                //TODO donner le rôle de l'utilisateur et l'ajouter en paramètre à goToHome
+                String scope;
+                if (user instanceof Artist) {
+                    scope = "artist";
+                } else if (user instanceof MusicalExpert) {
+                    scope = "musical-expert";
+                } else if (user instanceof Admin) {
+                    scope = "admin";
+                } else {
+                    scope = "user";
+                }
+
                 Facade.currentUser = user;
-                goToHome();
+                goToHome(scope);
             }
         } catch (Exception e) {
             super.displayError(errorText, e.getMessage());
@@ -79,11 +92,10 @@ public class ControllerLogin extends ControllerUser {
      * Redirige vers la page d'accueil.
      */
     @FXML
-    private void goToHome() {
+    private void goToHome(String scope) {
         try {
             super.hideError(errorText);
-            String userEmail = mail.getText(); // Get the email from the TextField
-            super.goToHome(boutonValider, userEmail); // Pass it as a parameter
+            super.goToHome(boutonValider, scope);
         } catch (ExceptionBadPage e) {
             super.displayError(errorText, e.getMessage());
         }
@@ -126,7 +138,7 @@ public class ControllerLogin extends ControllerUser {
 
                 Stage currentStage = (Stage) currentScene.getWindow();
                 currentStage.close();
-                super.goToPage("users/visitor-view.fxml", "Bienvue sur SoundWander");
+                super.goToPage("users/visitor-view.fxml", "Bienvenue sur SoundWander");
             } catch (ExceptionBadPage e) {
                 super.displayError(errorText, e.getMessage());
             }

@@ -81,10 +81,16 @@
     -fx-padding: 5px 10px 5px; /* Haut, Droit, Bas, Gauche */
     -fx-font-family: 'Mirza Regular'; /* La police du texte du bouton */
     -fx-font-size: 12px; /* La taille de la police du bouton */
+    -fx-max-width: 200px; /* La largeur maximale du champ */
 }
 
 .champ:hover {
     -fx-background-color: #FFFFFF80; /* Couleur de fond au survol */
+}
+
+.date-picker:disabled {
+    -fx-opacity: 1;
+    -fx-background-color: transparent;
 }
 
 /* ############ Conteneurs ############ */

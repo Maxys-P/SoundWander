@@ -45,6 +45,7 @@ public abstract class FactoryDAO {
      * @return l'instance du DAOClient
      */
     public abstract DAOUser getInstanceofDAOUser();
+
     public abstract DAOProposal getInstanceofDAOProposal();
 
     public abstract DAOMusic getInstanceofDAOMusic();

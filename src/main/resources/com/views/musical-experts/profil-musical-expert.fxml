@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Text?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      stylesheets="@../../styles/Style.css"
+      alignment="TOP_CENTER"
+      spacing="10"
+      prefHeight="400.0" prefWidth="600.0">
+    <Text fx:id="headerText" strokeType="OUTSIDE" strokeWidth="0.0" text="On mettra le header ici après" VBox.vgrow="NEVER" />
+    <Text text="C'est la page musical expert"/>
+    <fx:include source="../../components/proposal/listAllProposals-view.fxml" />
+    <fx:include source="../../components/music-play/music-view.fxml" />
+</VBox>

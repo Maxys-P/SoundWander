@@ -15,13 +15,14 @@ public class CreateTableUserScript {
              Statement statement = connexion.createStatement()) {
 
             // Requête SQL pour créer la table
-            String requeteSQL = "CREATE TABLE IF NOT EXISTS user (" +
-                    "id INT AUTO_INCREMENT PRIMARY KEY," +
-                    "pseudo VARCHAR(255) NOT NULL," +
-                    "mail VARCHAR(255) NOT NULL," +
-                    "dateNaissance DATE," +
-                    "motDePasse VARCHAR(255) NOT NULL" +
-                    ");";
+            String requeteSQL = "CREATE TABLE IF NOT EXISTS user (\n" +
+                    "    id INT AUTO_INCREMENT PRIMARY KEY,\n" +
+                    "    pseudo VARCHAR(255) NOT NULL,\n" +
+                    "    mail VARCHAR(255) NOT NULL UNIQUE,\n" +
+                    "    motDePasse VARCHAR(255) NOT NULL,\n" +
+                    "    dateNaissance DATE,\n" +
+                    "    photo VARCHAR(255)\n" +
+                    ");\n";
 
             // Exécution de la requête SQL
             statement.executeUpdate(requeteSQL);
