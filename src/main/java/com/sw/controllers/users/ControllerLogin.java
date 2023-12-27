@@ -82,7 +82,8 @@ public class ControllerLogin extends ControllerUser {
     private void goToHome() {
         try {
             super.hideError(errorText);
-            super.goToHome(boutonValider);
+            String userEmail = mail.getText(); // Get the email from the TextField
+            super.goToHome(boutonValider, userEmail); // Pass it as a parameter
         } catch (ExceptionBadPage e) {
             super.displayError(errorText, e.getMessage());
         }
