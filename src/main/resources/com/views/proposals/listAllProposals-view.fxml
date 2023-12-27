@@ -4,13 +4,13 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.sw.controllers.proposal.ControllerListAllProposals" prefHeight="400.0" prefWidth="300.0">
-    <VBox fx:id="conteneurListAllProposals" alignment="CENTER" spacing="20" styleClass="conteneur">
+<AnchorPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.sw.controllers.proposal.ControllerListAllProposals" prefHeight="400.0" prefWidth="600.0">
+    <VBox fx:id="conteneurListAllProposals" alignment="CENTER" spacing="20" styleClass="conteneur" AnchorPane.rightAnchor="40" AnchorPane.leftAnchor="40" AnchorPane.topAnchor="50">
         <Label text="Liste des propositions" styleClass="h2"/>
         <Separator />
-        <ScrollPane fitToWidth="true">
-            <VBox fx:id="proposalsContainer" spacing="10">
-            </VBox>
+        <ComboBox fx:id="countryFilterComboBox" promptText="Select Country" prefWidth="200" styleClass="champ"/>
+        <ScrollPane fitToWidth="true" prefHeight="300" style="-fx-padding: 0 20px 0 20px;">
+            <VBox fx:id="proposalsContainer" spacing="10" alignment="CENTER" />
         </ScrollPane>
     </VBox>
 </AnchorPane>

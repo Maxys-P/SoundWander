@@ -108,7 +108,7 @@ public class FacadeUser extends Facade {
             return daoUser.getUserById(id);
         } catch (Exception e) {
             // Gérer l'exception ou la propager
-            throw new Exception("Erreur lors de la récupération de la proposition : " + e.getMessage(), e);
+            throw new Exception("Erreur lors de la récupération du user : " + e.getMessage(), e);
         }
     }
 
