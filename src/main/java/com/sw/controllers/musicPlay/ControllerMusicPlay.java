@@ -1,14 +1,10 @@
 package com.sw.controllers.musicPlay;
 import com.sw.classes.Music;
 import com.sw.controllers.Controller;
-import com.sw.facades.FacadeMusicPlay;
+import com.sw.facades.FacadeMusic;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-
-import java.util.Objects;
 
 
 public class ControllerMusicPlay extends Controller {
@@ -30,12 +26,12 @@ public class ControllerMusicPlay extends Controller {
 
     private boolean isPlaying = false; // Tracks whether the music is paused
 
-    private FacadeMusicPlay musicPlayFacade;
+    private FacadeMusic musicPlayFacade;
 
     @FXML
     public void initialize() {
 
-        musicPlayFacade = FacadeMusicPlay.getInstance();
+        musicPlayFacade = FacadeMusic.getInstance();
         boutonPlay.setText(isPlaying ? "Pause" : "Play");
     }
     @FXML

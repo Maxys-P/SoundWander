@@ -54,7 +54,7 @@ public class ControllerCreateProposal extends ControllerProposal {
 
 
     private Music getSelectedMusic(String name) {
-        // TODO : modifier pour que ça récupère la musique sélectionnée dans la page profil
+        // TODO : modifier pour que ça récupère la musique sélectionnée dans la page profil, la requete sql va virer, no panique Maxys
         Music selectedMusic = null;
         try {
             // Establish a database connection

@@ -1,6 +1,6 @@
 package com.sw.controllers.users;
 
-import com.sw.facades.FacadeMusicBankManagement;
+import com.sw.facades.FacadeMusic;
 import com.sw.dao.boiteAOutils.MP3Utils;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -45,7 +45,7 @@ public class ControllerProfile {
         });
 
         try {
-            List<MusicInfo> musics = FacadeMusicBankManagement.getInstance().getMusicByUserId();
+            List<MusicInfo> musics = FacadeMusic.getInstance().getMusicByUserId();
             musicListView.getItems().addAll(musics);
         } catch (Exception e) {
             e.printStackTrace();
@@ -63,7 +63,7 @@ public class ControllerProfile {
         if (selectedFile.exists()) {
             long duration = MP3Utils.getMP3Duration(selectedFile);
             if (duration != -1) {
-                FacadeMusicBankManagement.getInstance().addMusic(title, (int) duration, selectedFile.getAbsolutePath());
+                FacadeMusic.getInstance().addMusic(title, (int) duration, selectedFile.getAbsolutePath());
                 updateMusicList();
             } else {
                 System.out.println("Impossible de calculer la durée de la musique.");
@@ -91,7 +91,7 @@ public class ControllerProfile {
     private void handleDeleteMusic() {
         MusicInfo selectedMusic = musicListView.getSelectionModel().getSelectedItem();
         if (selectedMusic != null) {
-            FacadeMusicBankManagement.getInstance().removeMusic(selectedMusic.getId());
+            FacadeMusic.getInstance().removeMusic(selectedMusic.getId());
             updateMusicList();
         }
     }
@@ -99,7 +99,7 @@ public class ControllerProfile {
     private void updateMusicList() {
         musicListView.getItems().clear();
         try {
-            List<MusicInfo> musics = FacadeMusicBankManagement.getInstance().getMusicByUserId();
+            List<MusicInfo> musics = FacadeMusic.getInstance().getMusicByUserId();
             musicListView.getItems().addAll(musics);
         } catch (Exception e) {
             e.printStackTrace();}
