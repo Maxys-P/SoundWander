@@ -77,7 +77,8 @@ public class ControllerRegister extends ControllerUser {
     private void goToHome() {
         try {
             super.hideError(errorText);
-            super.goToHome(boutonInscrire);
+            String userEmail = mail.getText(); // Get the email from the TextField
+            super.goToHome(boutonInscrire, userEmail); // Pass it as a parameter
         } catch (ExceptionBadPage e) {
             super.displayError(errorText, e.getMessage());
         }

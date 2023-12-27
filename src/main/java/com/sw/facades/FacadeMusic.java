@@ -1,22 +1,28 @@
 package com.sw.facades;
 
 import com.sw.classes.Music;
+import com.sw.classes.MusicInfo;
+import com.sw.classes.User;
 import com.sw.dao.DAOMusic;
+
 import com.sw.dao.boiteAOutils.PlayMusicFromBD;
 import com.sw.dao.factories.FactoryDAO;
 
-public class FacadeMusicPlay extends Facade{
-    private static FacadeMusicPlay instance = null;
+import java.util.List;
+
+public class FacadeMusic extends Facade{
+
+    private static FacadeMusic instance = null;
     private DAOMusic daoMusic;
     private Music currentMusic;
 
-    private FacadeMusicPlay(){
+    private FacadeMusic(){
         this.daoMusic = FactoryDAO.getInstanceofFactoryDAO().getInstanceofDAOMusic();
     }
 
-    public static FacadeMusicPlay getInstance(){
-        if(instance == null){
-            instance = new FacadeMusicPlay();
+    public static FacadeMusic getInstance() {
+        if (instance == null) {
+            instance = new FacadeMusic();
         }
         return instance;
     }
@@ -41,6 +47,7 @@ public class FacadeMusicPlay extends Facade{
     }
 
 
+
     public void stopMusic(){
         PlayMusicFromBD.stopMusic();
     }
@@ -63,6 +70,7 @@ public class FacadeMusicPlay extends Facade{
         } catch (Exception e) {
             throw new Exception("Error when playing the next music", e);
         }
+
     }
 
 
@@ -91,6 +99,7 @@ public class FacadeMusicPlay extends Facade{
         return currentMusic;
     }
 
+
     public void pauseMusic(){
         PlayMusicFromBD.pauseMusic();
     }
@@ -102,6 +111,37 @@ public class FacadeMusicPlay extends Facade{
 
 
     public void addPrivatePlaylist(String name){
+
         daoMusic.addPrivatePlaylist(name);
     }
+
+    public void addMusic(String name, int duration, String filePath) {
+        int artist = currentUser.getId();
+        daoMusic.addMusic(name, artist, duration, filePath);
+    }
+
+    public void removeMusic(int id) {
+        daoMusic.removeMusic(id);
+    }
+
+    public List<MusicInfo> getMusicByUserId() throws Exception {
+        int userId = currentUser.getId();
+        return daoMusic.getMusicByUserId(userId);
+    }
+
+    /**
+     * Récupère une music par son ID.
+     * @param id L'identifiant de la music à récupérer.
+     * @return music correspondant, ou null si aucune proposition avec cet ID n'existe.
+     * @throws Exception si une erreur survient pendant la récupération.
+     */
+    public Music getMusicById(int id) throws Exception {
+        try {
+            return daoMusic.getMusicById(id);
+        } catch (Exception e) {
+            // Gérer l'exception ou la propager
+            throw new Exception("Erreur lors de la récupération de la musique : " + e.getMessage(), e);
+        }
+    }
+
 }

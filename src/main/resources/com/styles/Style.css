@@ -26,6 +26,21 @@
     -fx-font-size: 30px; /* La taille de la police du bouton */
 }
 
+.h2 {
+    -fx-text-fill: #143442; /* Définit la couleur du texte du label en rouge */
+    -fx-font-size: 20px; /* La taille de la police du bouton */
+}
+
+.h3 {
+    -fx-text-fill: #143442; /* Définit la couleur du texte du label en rouge */
+    -fx-font-size: 16px; /* La taille de la police du bouton */
+}
+
+.label-bold {
+    -fx-font-size: 16px; /* Taille du texte un peu plus grande */
+    -fx-font-family: 'Mirza-Bold'; /* La police du texte */
+}
+
 
 /* ############ Bouton ############ */
 
@@ -53,7 +68,7 @@
     -fx-background-color: transparent; /* Rendre le fond transparent */
     -fx-text-fill: #FFFFFF; /* Couleur du texte */
     -fx-border-color: transparent; /* Rendre la bordure transparente */
-    -fx-font-size: 16px; /* Augmenter la taille du texte */
+    -fx-font-size: 30px; /* Augmenter la taille du texte */
     -fx-font-weight: bold; /* Mettre le texte en gras */
 }
 
@@ -100,6 +115,7 @@
     -fx-text-fill: #416569; /* Définit la couleur du texte du label en rouge */
 }
 
+
 /* ############ Bandeau Music ############ */
 
 .container-Bandeau-Music {
@@ -121,3 +137,14 @@
         -fx-background-color: #ffffff;
     -fx-padding: 5px 10px 5px; /* Haut, Droit, Bas, Gauche */
     }
+
+/* ############ Page admin ############ */
+.label-description {
+    -fx-background-color: #D9D9D9;
+    -fx-background-radius: 15px;
+    -fx-padding: 10px 20px; /* Ajout d'un padding horizontal */
+    -fx-font-size: 14px;
+    -fx-font-family: 'Mirza-Regular';
+    -fx-max-width: infinity; /* Permet à la description de s'étendre */
+    -fx-pref-width: 100%; /* Définit la largeur préférée à 100% */
+}

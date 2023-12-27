@@ -3,8 +3,14 @@ package com.sw.controllers.users;
 import com.sw.controllers.Controller;
 import com.sw.facades.FacadeUser;
 import com.sw.exceptions.ExceptionBadPage;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.control.Control;
-import com.sw.facades.FacadeProposal;
+import javafx.scene.control.Label;
+import javafx.scene.text.Text;
+
+
+import java.net.URL;
 
 /**
  * Controller générique pour les pages accessibles aux visiteurs
@@ -33,11 +39,34 @@ public class ControllerUser extends Controller {
     }
 
     /**
-     * Méthode pour aller à la page d'accueil
+     * Méthode pour aller à la page d'accueil appropriée en fonction de l'email de l'utilisateur.
+     * @param controlEl Le composant de contrôle à partir duquel l'action est initiée.
+     * @param userEmail L'email de l'utilisateur.
+     * @throws ExceptionBadPage si problème pendant le chargement de la page.
+     */
+    void goToHome(Control controlEl, String userEmail) throws ExceptionBadPage {
+        String viewPath;
+        if ("expert@musical.fr".equals(userEmail)) {
+            viewPath = "users/homeMusicalExpert-view.fxml"; // Chemin pour les experts musicaux
+        } else {
+            viewPath = "users/home-view.fxml"; // Chemin par défaut pour les autres utilisateurs
+        }
+        goToPage(controlEl,  viewPath, "Accueil");
+    }
+
+    /**
+     * Méthode pour aller à la page de profil
+     * @param actionEvent ActionEvent, l'événement de l'action qui a été déclenchée
      * @throws ExceptionBadPage si problème pendant le chargement de la page
      */
-    void goToHome(Control controlEl) throws ExceptionBadPage {
-        //TODO : rajouter un contexte en fonction du rôle pour afficher les bonnes pages
-        goToPage(controlEl, path + "home-view.fxml", "Accueil");
+    public void goToProfile(ActionEvent actionEvent) throws ExceptionBadPage {
+        // Vous devez adapter la méthode goToPage pour qu'elle prenne un ActionEvent
+        // Ou trouver une autre façon de récupérer le control à partir de l'ActionEvent si nécessaire
+        Control controlEl = (Control) actionEvent.getSource();
+        goToPage(controlEl, path + "profile-view.fxml", "Votre Profil");
     }
+
+
+
+
 }

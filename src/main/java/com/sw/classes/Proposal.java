@@ -8,20 +8,20 @@ public class Proposal {
      */
     private FacadeProposal facadeProposal;
     private int id;
-    private Music music;
-    private User artist;
+    private int musicId;
+    private int artistId;
     private String country;
     private String description;
 
     /**
      * Default constructor
      */
-    public Proposal(int id, String country, String description, Music music, User artist) {
+    public Proposal(int id, String country, String description, int musicId, int artistId) {
         this.id = id;
         this.country = country;
         this.description = description;
-        this.music = music;
-        this.artist = artist;
+        this.musicId = musicId;
+        this.artistId = artistId;
     }
 
     //Getters :
@@ -53,12 +53,12 @@ public class Proposal {
      * Getter de la music de la proposal
      * @return la music de la proposal
      */
-    public Music getMusic() {return music;}
+    public int getMusic() {return musicId;}
     /**
      * Getter de l'artist de la proposal
      * @return l'artist' de la proposal
      */
-    public User getArtist() {return artist;}
+    public int getArtist() {return artistId;}
 
     //Setters :
 
@@ -92,12 +92,12 @@ public class Proposal {
     }
     /**
      * Setter de la music de la proposal
-     * @param music la music de la proposal
+     * @param id l'id de la music de la proposal
      */
-    public void setMusic(Music music) {this.music = music;}
+    public void setMusic(int id) {this.id = musicId;}
     /**
      * Setter de l'artist de la proposal
-     * @param artist l'artist de la proposal
+     * @param id de l'artist de la proposal
      */
-    public void setArtist(User artist) {this.artist = artist;}
+    public void setArtist(int id) {this.id = artistId;}
 }

@@ -99,6 +99,7 @@ public class RequetesMySQL extends RequetesDB {
      * @throws ExceptionDB, SQLException si une exception SQL se produit.
      */
     public int create(String table, Map<String, Object> data) throws ExceptionDB, SQLException {
+
         if (data.isEmpty()) {
             throw new ExceptionDB("Aucune donnée à insérer");
         }
@@ -121,13 +122,15 @@ public class RequetesMySQL extends RequetesDB {
 
             try (ResultSet generatedKeys = requete.getGeneratedKeys()) {
                 if (generatedKeys.next()) {
+                    System.out.println("La requête a été exécutée avec succès. ID inséré : " + generatedKeys.getInt(1));
                     return generatedKeys.getInt(1);
                 } else {
                     throw new SQLException("La création a échoué, aucun ID n'a été retourné.");
                 }
             }
         } catch (SQLException e) {
-            throw new ExceptionDB("Erreur lors de l'insertion des données", e);
+            e.printStackTrace();
+            throw new ExceptionDB("Erreur lors de l'insertion des données" + e.getMessage(), e);
         }
     }
 

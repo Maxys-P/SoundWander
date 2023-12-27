@@ -1,5 +1,6 @@
 package com.sw.facades;
 
+import com.sw.classes.Proposal;
 import com.sw.classes.User;
 import com.sw.dao.DAOUser;
 import com.sw.dao.factories.FactoryDAO;
@@ -93,6 +94,21 @@ public class FacadeUser extends Facade {
             return newUser;
         } catch (SQLException e) {
             throw new ExceptionDB(e.getMessage());
+        }
+    }
+
+    /**
+     * Récupère un user par son ID.
+     * @param id L'identifiant du user à récupérer.
+     * @return user correspondant, ou null si aucune proposition avec cet ID n'existe.
+     * @throws Exception si une erreur survient pendant la récupération.
+     */
+    public User getUserById(int id) throws Exception {
+        try {
+            return daoUser.getUserById(id);
+        } catch (Exception e) {
+            // Gérer l'exception ou la propager
+            throw new Exception("Erreur lors de la récupération du user : " + e.getMessage(), e);
         }
     }
 

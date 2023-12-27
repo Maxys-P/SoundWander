@@ -1,6 +1,7 @@
 package com.sw.controllers.proposal;
 
 import com.sw.classes.Proposal;
+import com.sw.exceptions.ExceptionBadPage;
 import com.sw.exceptions.ExceptionFormIncomplete;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -11,14 +12,21 @@ import com.sw.classes.Music;
 import com.sw.dao.DAOMusic;
 import com.sw.classes.User;
 import com.sw.facades.Facade;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+
+import java.lang.reflect.InvocationTargetException;
+import java.sql.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class ControllerCreateProposal extends ControllerProposal {
+
+    @FXML
+    private VBox conteneurCreateProposal;
 
     private User getCurrentUser() {
         return Facade.currentUser;
@@ -45,15 +53,48 @@ public class ControllerCreateProposal extends ControllerProposal {
     }
 
 
-    private Music getSelectedMusic() {
-        // TODO: Implémentez la méthode getSelectedMusic() qui retourne un objet Music
-          /*  int id = 1;
-            String name = "Premier Son Bis";
-            int artist = 1;
-            int duration = 10;
-            return new Music(id, name, artist, duration);*/
-    return null;
+    private Music getSelectedMusic(String name) {
+        // TODO : modifier pour que ça récupère la musique sélectionnée dans la page profil, la requete sql va virer, no panique Maxys
+        Music selectedMusic = null;
+        try {
+            // Establish a database connection
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/DBSoundWander", "root", "se-database");
+
+            // SQL query to select the music
+            String sql = "SELECT id, name, artist, duration, musicFile FROM music WHERE name = ?";
+
+            // Prepare the statement
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, name);
+
+            // Execute the query
+            ResultSet resultSet = statement.executeQuery();
+
+            // Process the result
+            if (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String musicName = resultSet.getString("name");
+                int artist = resultSet.getInt("artist");
+                int duration = resultSet.getInt("duration");
+                byte[] musicFile = resultSet.getBytes("musicFile");
+
+                selectedMusic = new Music(id, musicName, artist, duration, musicFile);
+            }
+
+            // Close resources
+            resultSet.close();
+            statement.close();
+            connection.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Handle exceptions such as no driver, no connection, etc.
+        }
+
+        return selectedMusic;
     }
+
+
 
     @FXML
     public void initialize() {
@@ -117,8 +158,16 @@ public class ControllerCreateProposal extends ControllerProposal {
 
         countryField.getItems().addAll(countries);
 
-        Music selectedMusic = getSelectedMusic();
-        musicLabel.setText(selectedMusic.getName());
+        // Assuming you have the name of the music you want to get
+        String musicName = "Premier Son"; // Replace with the actual name or retrieve it dynamically
+        Music selectedMusic = getSelectedMusic(musicName);
+
+        // Check if a music object was returned and update the label accordingly
+        if (selectedMusic != null) {
+            musicLabel.setText(selectedMusic.getName());
+        } else {
+            musicLabel.setText("Music not found");
+        }
     }
 
     private void verifForm() throws ExceptionFormIncomplete {
@@ -135,32 +184,45 @@ public class ControllerCreateProposal extends ControllerProposal {
     @FXML
     private void handleCreateProposal() {
         super.hideError(errorText);
-
         try {
             verifForm();
 
             String country = countryField.getValue();
             String description = descriptionField.getText();
             User artist = getCurrentUser();
-            Music music = getSelectedMusic();
+
+            // Specify the music name to retrieve
+            String musicName = "Premier Son"; // Replace with the actual music name or get it dynamically
+            Music music = getSelectedMusic(musicName);
+
+            // Ensure that a music object was actually returned
+            if (music == null) {
+                throw new ExceptionFormIncomplete("Music not found");
+            }
 
             Proposal proposal = super.proposalFacade.createProposal(artist, music, country, description);
 
             closeWindow();
 
         } catch (ExceptionFormIncomplete e) {
-            // Afficher un message d'erreur spécifique à l'utilisateur
+            // Display a specific error message to the user
             displayError(errorText, e.getMessage());
         } catch (Exception e) {
-            // Afficher un message d'erreur générique à l'utilisateur
+            // Display a generic error message to the user
+            e.printStackTrace();
             displayError(errorText, "Une erreur inattendue est survenue.");
+            // Ajoutez un bloc catch pour l'InvocationTargetException pour l'analyser
+            if (e instanceof InvocationTargetException) {
+                Throwable targetException = ((InvocationTargetException) e).getTargetException();
+                targetException.printStackTrace();
+            }
         }
     }
 
     @FXML
-    private void closeWindow() {
-        Stage stage = (Stage) closeButton.getScene().getWindow();
-        stage.close();
+    private void closeWindow() throws ExceptionBadPage {
+        super.goToPage(closeButton, "users/home-view.fxml", "Accueil");
+        //TODO: modifier pour que ça ramène à la page profil
     }
 
 
