@@ -1,7 +1,6 @@
 package com.sw.facades;
 
 import com.sw.classes.Music;
-import com.sw.classes.MusicInfo;
 import com.sw.dao.DAOMusic;
 import com.sw.dao.boiteAOutils.PlayMusicFromBD;
 import com.sw.dao.factories.FactoryDAO;
@@ -143,7 +142,7 @@ public class FacadeMusic extends Facade{
         daoMusic.removeMusic(id);
     }
 
-    public List<MusicInfo> getMusicByUserId() throws Exception {
+    public List<Music> getMusicByUserId() throws Exception {
         int userId = currentUser.getId();
         return daoMusic.getMusicByUserId(userId);
     }

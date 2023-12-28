@@ -1,7 +1,6 @@
 package com.sw.dao;
 
 import com.sw.classes.Music;
-import com.sw.classes.MusicInfo;
 
 import java.util.List;
 
@@ -24,7 +23,7 @@ public abstract class DAOMusic extends DAO {
     }
     public void removeMusic(int id) {
     }
-    public abstract List<MusicInfo> getMusicByUserId(int userId) throws Exception; {
+    public abstract List<Music> getMusicByUserId(int userId) throws Exception; {
     }
 
 }
