@@ -6,12 +6,12 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.sw.controllers.profil.ControllerProfilArtist"
-            prefHeight="400.0" prefWidth="600.0">
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.sw.controllers.profil.ControllerProfilArtist"
+      spacing="20" alignment="TOP_CENTER">
     <Button fx:id="subscriptionButton"
-            text="Prendre un abonnement"
+            text="S'abonner"
             onAction="#goToSubscription"
             styleClass="boutonBleu" />
-</AnchorPane>
+</VBox>

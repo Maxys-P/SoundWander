@@ -1,15 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<VBox stylesheets="@../../styles/Style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sw.controllers.musicPlay.ControllerMusicPlay" styleClass="container-Bandeau-Music">
+    <HBox alignment="CENTER" styleClass="bandeau-music" HBox.hgrow="ALWAYS" spacing="10">
+        <Label fx:id="songTitle" styleClass="h2" text="Aucune musique en cours"/>
 
-<AnchorPane prefHeight="300.0" prefWidth="560.0" stylesheets="@../../styles/Style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sw.controllers.musicPlay.ControllerMusicPlay">
-    <VBox styleClass="container-Bandeau-Music" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
-        <HBox alignment="CENTER" styleClass="bandeau-music">
-            <Label fx:id="songTitle" prefHeight="18.0" prefWidth="185.0" styleClass="lien" text="Aucune musique en cours" textFill="#fffdfd" />
-            <Button fx:id="boutonPrevious" onAction="#handlePrevious" styleClass="musicBouton" text="prev" />
-            <Button fx:id="boutonPlay" onAction="#handlePlay" styleClass="musicBouton" text="play" />
-            <Button fx:id="boutonNext" onAction="#handleNext" styleClass="musicBouton" text="next" />
-        </HBox>
-    </VBox>
-</AnchorPane>
+        <!-- Bouton previous avec image -->
+        <Button fx:id="boutonPrevious" onAction="#handlePrevious" styleClass="musicBouton">
+            <graphic>
+                <ImageView fitWidth="20" fitHeight="20" preserveRatio="true">
+                    <Image url="@../../../images/playPrev.png" />
+                </ImageView>
+            </graphic>
+        </Button>
+
+        <!-- Bouton play avec image -->
+        <Button fx:id="boutonPlay" onAction="#handlePlay" styleClass="musicBouton">
+            <graphic>
+                <ImageView fx:id="playImageView" fitWidth="20" fitHeight="20" preserveRatio="true">
+                    <Image url="@../../../images/play.png" />
+                </ImageView>
+            </graphic>
+        </Button>
+
+        <!-- Bouton pause avec image, initialement non visible -->
+        <Button fx:id="boutonPause" onAction="#handlePlay" styleClass="musicBouton" visible="false">
+            <graphic>
+                <ImageView fx:id="pauseImageView" fitWidth="20" fitHeight="20" preserveRatio="true">
+                    <Image url="@../../../images/pause.png" />
+                </ImageView>
+            </graphic>
+        </Button>
+
+
+        <!-- Bouton next avec image -->
+        <Button fx:id="boutonNext" onAction="#handleNext" styleClass="musicBouton">
+            <graphic>
+                <ImageView fitWidth="20" fitHeight="20" preserveRatio="true">
+                    <Image url="@../../../images/playNext.png" />
+                </ImageView>
+            </graphic>
+        </Button>
+
+    </HBox>
+</VBox>
