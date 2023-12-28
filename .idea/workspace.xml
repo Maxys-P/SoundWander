@@ -4,10 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="488cdd30-80e1-4c58-a706-5bdc807ad006" name="Changes" comment="ajout nouvelle page music-view.fxml">
+    <list default="true" id="488cdd30-80e1-4c58-a706-5bdc807ad006" name="Changes" comment="Méthodes génériques login et inscription propres">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/music-play2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/pause.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/play.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/playNext.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/playPrev.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/controllers/artists/ControllerProfile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/artists/ControllerProfile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/controllers/musicPlay/ControllerMusicPlay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/musicPlay/ControllerMusicPlay.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/connexions/ConnexionMySQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/connexions/ConnexionMySQL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/views/users/music-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/views/users/music-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/components/admin/transformationAdmin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/components/admin/transformationAdmin.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/components/artist/artist-mateo.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/components/artist/musicBank.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/components/artist/subcriptionButton.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/components/artist/subcriptionButton.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/components/artist/transformationArtist.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/components/artist/transformationArtist.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/components/music-play/music-footer.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/components/music-play/music-footer.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/components/profil/info.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/components/profil/info.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/styles/Style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/styles/Style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/views/artists/profil-artist.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/views/artists/profil-artist.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/views/users/profil-user.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/views/users/profil-user.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,7 +45,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="margaux" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -65,7 +80,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "margaux",
+    "git-widget-placeholder": "22-mateo-style-des-pages-profils",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/maxys/Desktop/SoundWander/src/main/resources/com/components/admin",
     "node.js.detected.package.eslint": "true",
@@ -89,11 +104,11 @@
       <recent name="C:\Users\maxys\Desktop\SoundWander\src\main\resources\images" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/images" />
       <recent name="C:\Users\maxys\Desktop\SoundWander\src\main\resources\com\components\artist" />
       <recent name="C:\Users\maxys\Desktop\SoundWander\src\main\resources\com\views\artists" />
       <recent name="C:\Users\maxys\Desktop\SoundWander\src\main\resources\com\components\proposal" />
       <recent name="C:\Users\maxys\Desktop\SoundWander\src\main\resources\com\components\music" />
-      <recent name="C:\Users\maxys\Desktop\SoundWander\src\main\resources\com\views\musicalExperts" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -152,8 +167,6 @@
         <item itemvalue="Application.App" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.CreateTableUserScript" />
-        <item itemvalue="Application.App" />
-        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -216,23 +229,7 @@
       <option name="project" value="LOCAL" />
       <updated>1701906608694</updated>
     </task>
-    <task id="LOCAL-00004" summary="ajout ConnexionMySQL en gitignore">
-      <option name="closed" value="true" />
-      <created>1703705244239</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1703705244239</updated>
-    </task>
-    <task id="LOCAL-00005" summary="ajout nouvelle page music-view.fxml">
-      <option name="closed" value="true" />
-      <created>1703705312185</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1703705312185</updated>
-    </task>
-    <option name="localTasksCounter" value="6" />
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -256,9 +253,8 @@
     <MESSAGE value="Méthodes génériques login et inscription" />
     <MESSAGE value="cryptage mdp" />
     <MESSAGE value="conflits réglés" />
-    <MESSAGE value="ajout ConnexionMySQL en gitignore" />
-    <MESSAGE value="ajout nouvelle page music-view.fxml" />
-    <option name="LAST_COMMIT_MESSAGE" value="ajout nouvelle page music-view.fxml" />
+    <MESSAGE value="Méthodes génériques login et inscription propres" />
+    <option name="LAST_COMMIT_MESSAGE" value="Méthodes génériques login et inscription propres" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -6,12 +6,11 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
+<VBox xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.sw.controllers.admins.ControllerAdmin"
-            prefHeight="100.0" prefWidth="150.0">
+            fx:controller="com.sw.controllers.admins.ControllerAdmin">
     <Button fx:id="becomeAdminButton"
             text="Devenir Admin"
             onAction="#handleBecomeAdmin"
             styleClass="boutonBleu" />
-</AnchorPane>
+</VBox>

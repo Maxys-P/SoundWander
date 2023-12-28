@@ -29,6 +29,11 @@ public class ControllerProfile {
     @FXML
     private Button deleteButton;
 
+
+    private final int itemHeight = 35;
+
+
+
     @FXML
     public void initialize() {
         musicListView.setCellFactory(listView -> new ListCell<MusicInfo>() {
@@ -50,6 +55,8 @@ public class ControllerProfile {
                     }
                 });
             }
+
+
             @Override
             protected void updateItem(MusicInfo music, boolean empty) {
                 super.updateItem(music, empty);
@@ -62,6 +69,8 @@ public class ControllerProfile {
                     setGraphic(content);
                 }
             }
+
+
         });
 
         try {
@@ -134,5 +143,10 @@ public class ControllerProfile {
             musicListView.getItems().addAll(musics);
         } catch (Exception e) {
             e.printStackTrace();}
+    }
+
+    private void updateListViewHeight() {
+        int size = musicListView.getItems().size();
+        musicListView.setMinHeight(size * itemHeight);
     }
 }

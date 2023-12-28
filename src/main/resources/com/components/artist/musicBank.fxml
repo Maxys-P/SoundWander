@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.control.ListView?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.sw.controllers.artists.ControllerProfile"
+      alignment="CENTER" spacing="20">
+    <Label text="Mes musiques" styleClass="h2"/>
+    <ListView fx:id="musicListView" prefHeight="138" prefWidth="200"
+              maxHeight="800" maxWidth="300" minHeight="138" minWidth="200"
+              styleClass="liste"/>
+    <Label fx:id="noSelectionLabel" text="Sélectionne une musique avant de pouvoir la supprimer" visible="true" styleClass="h3"/>
+
+    <Button fx:id="deleteButton" text="Supprimer" onAction="#handleDeleteMusic" styleClass="boutonBleu" visible="false"/>
+
+    <VBox alignment="CENTER" spacing="20" styleClass="conteneur"
+          prefWidth="500" maxWidth="500" prefHeight="250" maxHeight="250">
+        <Label text="Ajouter une musique" styleClass="h2"/>
+        <Button text="Selectionner fichier" onAction="#handlePath" styleClass="boutonBleu"/>
+        <TextField fx:id="musicPathField" promptText="Chemin de la musique" prefWidth="250" maxWidth="250" styleClass="champ"/>
+        <TextField fx:id="titleField" promptText="Titre de la musique" prefWidth="250" maxWidth="250" styleClass="champ"/>
+        <Button text="Valider" onAction="#handleUploadMusic" styleClass="boutonBleu"/>
+    </VBox>
+</VBox>

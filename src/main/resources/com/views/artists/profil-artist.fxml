@@ -1,32 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
-<ScrollPane xmlns="http://javafx.com/javafx"
+
+<?import javafx.scene.control.Label?>
+<BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fitToWidth="true"
             stylesheets="@../../styles/Style.css"
             prefHeight="600.0" prefWidth="1200.0">
-    <StackPane alignment="CENTER" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0"
-               AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0" prefHeight="500.0" prefWidth="800.0">
-    <VBox alignment="TOP_CENTER" spacing="10">
-        <Text fx:id="headerText" text="On mettra le header ici après" />
-        <Text text="C'est la page artist"/>
-        <AnchorPane prefWidth="600" prefHeight="200">
-            <fx:include source="../../components/profil/info.fxml"/>
-        </AnchorPane>
-        <AnchorPane>
-            <fx:include source="../../components/artist/artist-mateo.fxml"/>
-        </AnchorPane>
-        <AnchorPane>
-            <fx:include source="../../components/artist/subcriptionButton.fxml"/>
-        </AnchorPane>
+
+    <!-- Contenu principal dans le centre -->
+    <center>
+        <ScrollPane fitToWidth="true">
+            <VBox alignment="CENTER" spacing="20">
+                <Text text="Header de la page artiste" styleClass="h1" />
+
+                <VBox alignment="CENTER" spacing="20" styleClass="conteneurProfile"
+                      prefWidth="-1">
+                    <Label text="Mon Profil d'artiste" styleClass="h1"/>
+                    <fx:include source="../../components/profil/info.fxml"/>
+                    <fx:include source="../../components/artist/musicBank.fxml"/>
+                    <fx:include source="../../components/artist/subcriptionButton.fxml"/>
+                </VBox>
+            </VBox>
+        </ScrollPane>
+    </center>
+
+    <!-- Pied de page toujours visible en bas -->
+    <bottom>
         <fx:include source="../../components/music-play/music-footer.fxml" />
-    </VBox>
-</StackPane>
-</ScrollPane>
+    </bottom>
+</BorderPane>
