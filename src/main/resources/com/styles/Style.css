@@ -115,6 +115,10 @@
     -fx-background-color: transparent;
 }
 
+.champ:disabled {
+    -fx-opacity: 1;
+    -fx-background-color: #FFFFFF80;}
+
 /* ############ Conteneurs ############ */
 
 .conteneur {
@@ -125,6 +129,18 @@
     -fx-padding: 10px 15px 0px 15px; /* Haut, Droit, Bas, Gauche */
     -fx-border-radius: 20px; /* Rayon de la bordure pour les coins arrondis */
     -fx-background-radius: 20px; /* Rayon du fond pour les coins arrondis */
+}
+
+.conteneurProfile {
+    -fx-padding: 20px; /* Ajoute 20px de padding autour du contenu */
+    -fx-background-color: #5A93A480; /* Couleur de fond */
+    -fx-border-color: #416569; /* Couleur de la bordure */
+    -fx-border-width: 2px; /* Largeur de la bordure */
+    -fx-border-style: solid; /* Style de la bordure */
+    -fx-border-radius: 20px; /* Rayon de la bordure pour les coins arrondis */
+    -fx-background-radius: 20px; /* Rayon du fond pour les coins arrondis */
+    -fx-max-width: 700px; /* Largeur maximale */
+
 }
 
 

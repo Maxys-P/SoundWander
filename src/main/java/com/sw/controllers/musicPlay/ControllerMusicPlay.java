@@ -14,12 +14,15 @@ import javafx.scene.control.Label;
 
 
 public class ControllerMusicPlay extends Controller {
-    private StringProperty currentSongTitle = new SimpleStringProperty("No song playing");
+    private StringProperty currentSongTitle = new SimpleStringProperty("Aucune chanson à l'écoute");
     @FXML
     private Label songTitle;
 
     @FXML
     private Button boutonPlay;
+
+    @FXML
+    private Button boutonPause;
 
     @FXML
     private Button boutonNext;
@@ -53,44 +56,39 @@ public class ControllerMusicPlay extends Controller {
 
     }
     @FXML
-    private void handlePlay() {
-        try {
-            Music music = musicPlayFacade.getCurrentMusic();
-            // No need to reload music if we are just pausing or resuming
-            if (isPlaying) {
-                musicPlayFacade.pauseMusic();
-                boutonPlay.setText("Play");
-                System.out.println("Music paused.");
-                isPlaying = false;
+    private void handlePlay() throws Exception {
+        Music music = musicPlayFacade.getCurrentMusic();
+        if (isPlaying) {
+            musicPlayFacade.pauseMusic();
+            boutonPlay.setVisible(true);
+            boutonPause.setVisible(false);
+            isPlaying = false;
+        } else {
+            if (music == null) {
+                // Charger et jouer la première chanson
+                music = musicPlayFacade.playMusic(1);
             } else {
-                if(music == null) {
-                    //pour tester puise que l'on a pas de musique affichée
-                    music = musicPlayFacade.playMusic(1); // Load the first song if nothing is loaded
-                } else {
-                    musicPlayFacade.resumeMusic(); // Resume the current song
-                }
-                boutonPlay.setText("Pause");
-                isPlaying = true;
+                musicPlayFacade.resumeMusic();
             }
-            updateSongDetails(music);
-        } catch (Exception e) {
-            e.printStackTrace();
-            // Handle exception as needed
+            boutonPlay.setVisible(false);
+            boutonPause.setVisible(true);
+            isPlaying = true;
         }
+        updateSongDetails(music);
     }
     private void updateSongDetails(Music music) {
         if (music != null) {
             try {
-            int artistId = music.getArtist();
-            Artist artist = artistFacade.getArtistById(artistId);
-            String artistName = artist.getPseudo();
-            System.out.println("Playing music: artiste :" + artistName + " - nom de la music : " + music.getName());
-            currentSongTitle.set(music.getName() + " - " + artistName);
+                int artistId = music.getArtist();
+                Artist artist = artistFacade.getArtistById(artistId);
+                String artistName = artist.getPseudo();
+                System.out.println("Playing music: artiste :" + artistName + " - nom de la music : " + music.getName());
+                currentSongTitle.set(music.getName() + " - " + artistName);
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }else {
-            currentSongTitle.set("No song playing");
+            currentSongTitle.set("Aucune musique à l'écoute");
         }
     }
 
@@ -104,7 +102,8 @@ public class ControllerMusicPlay extends Controller {
             if (nextMusic != null) {
                 updateSongDetails(nextMusic);  // Update the song details on UI
                 isPlaying = true;  // Set the state to playing
-                boutonPlay.setText("Pause");  // Change the button text to indicate playing state
+                boutonPlay.setVisible(false);
+                boutonPause.setVisible(true);;  // Change the button text to indicate playing state
             } else {
                 System.out.println("No next music to play.");  // Handle end of playlist or error
             }
@@ -115,7 +114,7 @@ public class ControllerMusicPlay extends Controller {
     }
     @FXML
     private void handlePrevious() {
-try {
+        try {
             // Get the ID of the currently playing music
             int currentMusicId = musicPlayFacade.getCurrentMusic() != null ? musicPlayFacade.getCurrentMusic().getId() : 0;
             // Call playPreviousMusic with the correct ID
@@ -123,7 +122,8 @@ try {
             if (previousMusic != null) {
                 updateSongDetails(previousMusic);  // Update the song details on UI
                 isPlaying = true;  // Set the state to playing
-                boutonPlay.setText("Pause");  // Change the button text to indicate playing state
+                boutonPlay.setVisible(false);
+                boutonPause.setVisible(true);  // Change the button text to indicate playing state
             } else {
                 System.out.println("No previous music to play.");  // Handle end of playlist or error
             }
