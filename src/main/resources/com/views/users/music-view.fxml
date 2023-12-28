@@ -10,6 +10,17 @@
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.sw.controllers.musicPlay.ControllerMusicPlay"
             prefHeight="400.0" prefWidth="600.0">
+    <StackPane alignment="CENTER"
+               AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0"
+               AnchorPane.topAnchor="20.0" AnchorPane.bottomAnchor="20.0"
+               prefHeight="400.0" prefWidth="600.0">
+        <VBox alignment="CENTER" spacing="20" styleClass="conteneur" prefWidth="400" prefHeight="400">
+            <Label fx:id="songTitle" prefHeight="18.0" prefWidth="185.0" styleClass="h1" text="Aucune musique en cours" textFill="#fffdfd" />
+            <Button fx:id="boutonPrevious" onAction="#handlePrevious" styleClass="musicBouton" text="prev" />
+            <Button fx:id="boutonPlay" onAction="#handlePlay" styleClass="musicBouton" text="play" />
+            <Button fx:id="boutonNext" onAction="#handleNext" styleClass="musicBouton" text="next" />
+        </VBox>
+    </StackPane>
 
 
 </AnchorPane>

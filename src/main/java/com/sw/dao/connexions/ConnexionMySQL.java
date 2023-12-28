@@ -15,7 +15,7 @@ public class ConnexionMySQL extends ConnexionDB {
      */
     private Connection connection;
 
-    private String url = "jdbc:mysql://localhost:3306/DBSoundWander";
+    private String url = "jdbc:mysql://localhost:3306/SoundWander";
     private String utilisateur = "root";
     private String motDePasse = "se123";
 
