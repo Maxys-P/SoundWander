@@ -1,7 +1,6 @@
 package com.sw.dao.daoMysql;
 
 import com.sw.classes.Music;
-import com.sw.classes.MusicInfo;
 import com.sw.dao.DAOMusic;
 import com.sw.dao.boiteAOutils.MapperResultSet;
 import com.sw.dao.requetesDB.RequetesMySQL;
@@ -171,8 +170,8 @@ public class DAOMusicMySQL extends DAOMusic {
     }
 
     @Override
-    public List<MusicInfo> getMusicByUserId(int userId) throws Exception {
-        List<MusicInfo> userMusics = new ArrayList<>();
+    public List<Music> getMusicByUserId(int userId) throws Exception {
+        List<Music> userMusics = new ArrayList<>();
         try {
             Map<String, Object> conditions = new HashMap<>();
             conditions.put("artist", userId);
@@ -181,10 +180,11 @@ public class DAOMusicMySQL extends DAOMusic {
             for (Map<String, Object> row : musicData.getListData()) {
                 int id = (Integer) row.get("id");
                 String name = (String) row.get("name");
-                int duration = (Integer) row.get("duration");
                 int artistId = (Integer) row.get("artist"); // Si vous avez besoin de l'ID de l'artiste
+                int duration = (Integer) row.get("duration");
+                byte[] musicFile = (byte[]) row.get("musicFile");
 
-                MusicInfo musicInfo = new MusicInfo(id, name, duration, artistId);
+                Music musicInfo = new Music(id, name, artistId, duration, musicFile);
                 userMusics.add(musicInfo);
             }
         } catch (Exception e) {

@@ -1,5 +1,6 @@
 package com.sw.controllers.artists;
 
+import com.sw.classes.Music;
 import com.sw.facades.FacadeMusic;
 import com.sw.dao.boiteAOutils.MP3Utils;
 import javafx.fxml.FXML;
@@ -13,8 +14,6 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
-import com.sw.classes.MusicInfo;
-import javafx.util.Callback;
 
 import java.io.File;
 import java.util.List;
@@ -24,7 +23,7 @@ public class ControllerProfile {
     private TextField musicPathField, titleField;
 
     @FXML
-    private ListView<MusicInfo> musicListView;
+    private ListView<Music> musicListView;
 
     @FXML
     private Button deleteButton;
@@ -36,7 +35,7 @@ public class ControllerProfile {
 
     @FXML
     public void initialize() {
-        musicListView.setCellFactory(listView -> new ListCell<MusicInfo>() {
+        musicListView.setCellFactory(listView -> new ListCell<Music>() {
             private final Button playButton = new Button("Play");
             private final HBox content = new HBox();
             private final Label label = new Label();
@@ -49,7 +48,7 @@ public class ControllerProfile {
                 label.setMaxWidth(Double.MAX_VALUE);  // Allow the label to grow as needed
                 content.setAlignment(Pos.CENTER_RIGHT);  // Align content to the right
                 playButton.setOnAction(event -> {
-                    MusicInfo music = getItem();
+                    Music music = getItem();
                     if (music != null) {
                         playSelectedMusic(music.getId());
                     }
@@ -58,7 +57,7 @@ public class ControllerProfile {
 
 
             @Override
-            protected void updateItem(MusicInfo music, boolean empty) {
+            protected void updateItem(Music music, boolean empty) {
                 super.updateItem(music, empty);
 
                 if (empty || music == null) {
@@ -74,7 +73,7 @@ public class ControllerProfile {
         });
 
         try {
-            List<MusicInfo> musics = FacadeMusic.getInstance().getMusicByUserId();
+            List<Music> musics = FacadeMusic.getInstance().getMusicByUserId();
             musicListView.getItems().addAll(musics);
         } catch (Exception e) {
             e.printStackTrace();
@@ -129,7 +128,7 @@ public class ControllerProfile {
 
     @FXML
     private void handleDeleteMusic() {
-        MusicInfo selectedMusic = musicListView.getSelectionModel().getSelectedItem();
+        Music selectedMusic = musicListView.getSelectionModel().getSelectedItem();
         if (selectedMusic != null) {
             FacadeMusic.getInstance().removeMusic(selectedMusic.getId());
             updateMusicList();
@@ -139,7 +138,7 @@ public class ControllerProfile {
     private void updateMusicList() {
         musicListView.getItems().clear();
         try {
-            List<MusicInfo> musics = FacadeMusic.getInstance().getMusicByUserId();
+            List<Music> musics = FacadeMusic.getInstance().getMusicByUserId();
             musicListView.getItems().addAll(musics);
         } catch (Exception e) {
             e.printStackTrace();}

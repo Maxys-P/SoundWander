@@ -4,25 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="488cdd30-80e1-4c58-a706-5bdc807ad006" name="Changes" comment="Méthodes génériques login et inscription propres">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/music-play2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/pause.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/play.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/playNext.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/playPrev.png" afterDir="false" />
+    <list default="true" id="488cdd30-80e1-4c58-a706-5bdc807ad006" name="Changes" comment="ya plus de musicInfo">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/controllers/artists/ControllerProfile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/artists/ControllerProfile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/controllers/musicPlay/ControllerMusicPlay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/musicPlay/ControllerMusicPlay.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/connexions/ConnexionMySQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/connexions/ConnexionMySQL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/components/admin/transformationAdmin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/components/admin/transformationAdmin.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/components/artist/artist-mateo.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/components/artist/musicBank.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/components/artist/subcriptionButton.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/components/artist/subcriptionButton.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/components/artist/transformationArtist.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/components/artist/transformationArtist.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/components/music-play/music-footer.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/components/music-play/music-footer.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/components/profil/info.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/components/profil/info.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/styles/Style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/styles/Style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/views/artists/profil-artist.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/views/artists/profil-artist.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/views/users/profil-user.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/views/users/profil-user.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/components/admin/listUsers.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/components/admin/listUsers.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/views/admins/profil-admin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/views/admins/profil-admin.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +65,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "22-mateo-style-des-pages-profils",
+    "git-widget-placeholder": "27-page-admin-style",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/maxys/Desktop/SoundWander/src/main/resources/com/components/admin",
     "node.js.detected.package.eslint": "true",
@@ -229,7 +214,23 @@
       <option name="project" value="LOCAL" />
       <updated>1701906608694</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="issue styles des pages profils ok">
+      <option name="closed" value="true" />
+      <created>1703773839361</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1703773839361</updated>
+    </task>
+    <task id="LOCAL-00005" summary="ya plus de musicInfo">
+      <option name="closed" value="true" />
+      <created>1703775375970</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1703775375970</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -254,7 +255,9 @@
     <MESSAGE value="cryptage mdp" />
     <MESSAGE value="conflits réglés" />
     <MESSAGE value="Méthodes génériques login et inscription propres" />
-    <option name="LAST_COMMIT_MESSAGE" value="Méthodes génériques login et inscription propres" />
+    <MESSAGE value="issue styles des pages profils ok" />
+    <MESSAGE value="ya plus de musicInfo" />
+    <option name="LAST_COMMIT_MESSAGE" value="ya plus de musicInfo" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
