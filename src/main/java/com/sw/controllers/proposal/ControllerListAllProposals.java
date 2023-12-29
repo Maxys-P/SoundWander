@@ -173,6 +173,8 @@ public class ControllerListAllProposals extends ControllerProposal {
             boolean success = proposalFacade.acceptProposal(proposal.getId());
             if (success) {
                 removeProposalFromUI(proposal.getId());
+                //TODO : Envoyer une notif à l'artiste pour lui dire que sa proposition a été acceptée
+                //TODO : Ajouter la musique à la playlist
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -189,6 +191,7 @@ public class ControllerListAllProposals extends ControllerProposal {
             boolean success = proposalFacade.refuseProposal(proposal.getId());
             if (success) {
                 removeProposalFromUI(proposal.getId());
+                //TODO : Envoyer une notif à l'artiste pour lui dire que sa proposition a été refusée
             }
         } catch (Exception e) {
             e.printStackTrace();

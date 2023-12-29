@@ -8,6 +8,7 @@ module com.sw {
     requires jlayer;
     requires jbcrypt;
     requires javafx.media;
+    requires nv.i18n;
 
     exports com.sw;
 

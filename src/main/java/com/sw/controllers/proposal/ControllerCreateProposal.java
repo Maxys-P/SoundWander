@@ -9,18 +9,17 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.Label;
 import com.sw.classes.Music;
-import com.sw.dao.DAOMusic;
+import com.sw.commons.DataHolder;
 import com.sw.classes.User;
 import com.sw.facades.Facade;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 
 import java.lang.reflect.InvocationTargetException;
-import java.sql.*;
-
-import java.util.ArrayList;
 import java.util.List;
+import com.neovisionaries.i18n.CountryCode;
+import java.util.ArrayList;
+import java.util.Collections;
 
 
 public class ControllerCreateProposal extends ControllerProposal {
@@ -46,128 +45,38 @@ public class ControllerCreateProposal extends ControllerProposal {
     @FXML
     private Button closeButton;
 
-    // Cette méthode permet de mettre à jour le texte du Label en fonction de la musique sélectionnée
-    public void setSelectedMusic(String musicTitle) {
-        musicLabel.setText(musicTitle);
-        //TODO: méthode handleMusicSelection() qui appelle setSelectedMusicTitle dans page profil à implémenter
-    }
-
-
-    private Music getSelectedMusic(String name) {
-        // TODO : modifier pour que ça récupère la musique sélectionnée dans la page profil, la requete sql va virer, no panique Maxys
-        Music selectedMusic = null;
-        try {
-            // Establish a database connection
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/DBSoundWander", "root", "se-database");
-
-            // SQL query to select the music
-            String sql = "SELECT id, name, artist, duration, musicFile FROM music WHERE name = ?";
-
-            // Prepare the statement
-            PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setString(1, name);
-
-            // Execute the query
-            ResultSet resultSet = statement.executeQuery();
-
-            // Process the result
-            if (resultSet.next()) {
-                int id = resultSet.getInt("id");
-                String musicName = resultSet.getString("name");
-                int artist = resultSet.getInt("artist");
-                int duration = resultSet.getInt("duration");
-                byte[] musicFile = resultSet.getBytes("musicFile");
-
-                selectedMusic = new Music(id, musicName, artist, duration, musicFile);
-            }
-
-            // Close resources
-            resultSet.close();
-            statement.close();
-            connection.close();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-            // Handle exceptions such as no driver, no connection, etc.
+    public void setMusicInfo (Music music) {
+        if (music != null) {
+            musicLabel.setText(music.getName());
         }
-
-        return selectedMusic;
     }
-
-
 
     @FXML
     public void initialize() {
-        List<String> countries = new ArrayList<>();
-        countries.add("Afghanistan");
-        countries.add("Albania");
-        countries.add("Algeria");
-        countries.add("Angola");
-        countries.add("Argentina");
-        countries.add("Armenia");
-        countries.add("Australia");
-        countries.add("Austria");
-        countries.add("Azerbaijan");
-        countries.add("Bangladesh");
-        countries.add("Barbados");
-        countries.add("Belgium");
-        countries.add("Belize");
-        countries.add("Benin");
-        countries.add("Bolivia");
-        countries.add("Bosnia and Herzegovina");
-        countries.add("Botswana");
-        countries.add("Brazil");
-        countries.add("Bulgaria");
-        countries.add("Burkina Faso");
-        countries.add("Cambodia");
-        countries.add("Cameroon");
-        countries.add("Canada");
-        countries.add("Central African Republic");
-        countries.add("Chad");
-        countries.add("Chile");
-        countries.add("China");
-        countries.add("Colombia");
-        countries.add("Congo");
-        countries.add("Costa Rica");
-        countries.add("Croatia");
-        countries.add("Cuba");
-        countries.add("Cyprus");
-        countries.add("Czech Republic");
-        countries.add("Denmark");
-        countries.add("Dominican Republic");
-        countries.add("Ecuador");
-        countries.add("Egypt");
-        countries.add("Estonia");
-        countries.add("Ethiopia");
-        countries.add("Finland");
-        countries.add("France");
-        countries.add("Gabon");
-        countries.add("Germany");
-        countries.add("Ghana");
-        countries.add("Greece");
-        countries.add("Guatemala");
-        countries.add("Guinea");
-        countries.add("Haiti");
-        countries.add("Hungary");
-        countries.add("Iceland");
-        countries.add("India");
-        countries.add("Indonesia");
-        countries.add("Iran");
-        countries.add("Iraq");
-        countries.add("Ireland");
+        // Initialiser la liste des pays
+        initializeCountries();
 
-        countryField.getItems().addAll(countries);
-
-        // Assuming you have the name of the music you want to get
-        String musicName = "Premier Son"; // Replace with the actual name or retrieve it dynamically
-        Music selectedMusic = getSelectedMusic(musicName);
-
-        // Check if a music object was returned and update the label accordingly
-        if (selectedMusic != null) {
-            musicLabel.setText(selectedMusic.getName());
+        // Récupérer la musique sélectionnée et mettre à jour le label
+        Music music = DataHolder.getCurrentMusic();
+        if (music != null) {
+            musicLabel.setText(music.getName()); // Assurez-vous que Music a une méthode getTitle ou l'équivalent
         } else {
-            musicLabel.setText("Music not found");
+            musicLabel.setText("Select a music");
         }
+    }
+
+    private void initializeCountries() {
+        List<String> countries = new ArrayList<>();
+
+        for (CountryCode code : CountryCode.values()) {
+            countries.add(code.getName()); // getName() retourne le nom du pays en anglais
+        }
+
+        // Trie la liste des pays par ordre alphabétique
+        Collections.sort(countries);
+
+        // Ajoute la liste des pays à votre ComboBox
+        countryField.getItems().addAll(countries);
     }
 
     private void verifForm() throws ExceptionFormIncomplete {
@@ -191,27 +100,24 @@ public class ControllerCreateProposal extends ControllerProposal {
             String description = descriptionField.getText();
             User artist = getCurrentUser();
 
-            // Specify the music name to retrieve
-            String musicName = "Premier Son"; // Replace with the actual music name or get it dynamically
-            Music music = getSelectedMusic(musicName);
+            // Récupérer la musique sélectionnée à partir de DataHolder
+            Music music = DataHolder.getCurrentMusic();
 
-            // Ensure that a music object was actually returned
             if (music == null) {
                 throw new ExceptionFormIncomplete("Music not found");
             }
 
             Proposal proposal = super.proposalFacade.createProposal(artist, music, country, description);
 
+            // Il est généralement recommandé de nettoyer après utilisation si l'objet n'est plus nécessaire.
+            DataHolder.setCurrentMusic(null);
+
             closeWindow();
 
         } catch (ExceptionFormIncomplete e) {
-            // Display a specific error message to the user
             displayError(errorText, e.getMessage());
         } catch (Exception e) {
-            // Display a generic error message to the user
             e.printStackTrace();
-            displayError(errorText, "Une erreur inattendue est survenue.");
-            // Ajoutez un bloc catch pour l'InvocationTargetException pour l'analyser
             if (e instanceof InvocationTargetException) {
                 Throwable targetException = ((InvocationTargetException) e).getTargetException();
                 targetException.printStackTrace();
@@ -221,7 +127,7 @@ public class ControllerCreateProposal extends ControllerProposal {
 
     @FXML
     private void closeWindow() throws ExceptionBadPage {
-        super.goToPage(closeButton, "users/profil-artist.fxml", "Profil Artiste");
+        super.goToPage("artists/profil-artist.fxml", "Profil Artiste");
     }
 
 

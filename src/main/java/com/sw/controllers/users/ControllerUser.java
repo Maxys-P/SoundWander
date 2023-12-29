@@ -40,4 +40,6 @@ public abstract class ControllerUser extends Controller {
         String pathUser = scope + "s/";
         goToPage(controlEl, pathUser + "profil-" + scope + ".fxml", "Mon Profil");
     }
+
+
 }
