@@ -95,6 +95,14 @@
             <version>19.0.2</version>
         </dependency>
 
+        <!-- Dépendance pour JavaFX Media (pour pas avoir à rentrer la liste des pays à la main pour les proposals-->
+        <dependency>
+            <groupId>com.neovisionaries</groupId>
+            <artifactId>nv-i18n</artifactId>
+            <version>1.29</version>
+        </dependency>
+
+
     </dependencies>
 
 </project>

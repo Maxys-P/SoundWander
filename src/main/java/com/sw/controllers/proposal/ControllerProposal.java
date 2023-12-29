@@ -1,7 +1,7 @@
 package com.sw.controllers.proposal;
 
 import com.sw.classes.Music;
-import com.sw.classes.MusicInfo;
+import com.sw.classes.Music;
 import com.sw.controllers.Controller;
 import com.sw.exceptions.ExceptionBadPage;
 import com.sw.facades.FacadeProposal;
