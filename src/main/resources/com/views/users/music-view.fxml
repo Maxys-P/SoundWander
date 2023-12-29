@@ -8,9 +8,17 @@
 
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
-<AnchorPane prefHeight="400.0" prefWidth="800.0" stylesheets="@../../styles/Style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sw.controllers.musicPlay.ControllerMusicPlay">
-    <VBox fx:id="musicFooter" styleClass="conteneur" alignment="CENTER" spacing="10.0"  prefHeight="200.0" prefWidth="600.0">
-        <Button fx:id="boutonRetour" onAction="#handleRetour" styleClass="close-button"> retour </Button>
+<AnchorPane prefHeight="600.0" prefWidth="1200.0"
+            stylesheets="@../../styles/Style.css"
+            xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.sw.controllers.musicPlay.ControllerMusicPlay">
+    <Button fx:id="boutonRetour" onAction="#handleRetour" styleClass="close-button">retour</Button>
+    <StackPane alignment="CENTER" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0"
+               AnchorPane.topAnchor="100.0" AnchorPane.bottomAnchor="100.0" prefHeight="500.0" prefWidth="800.0">
+    <VBox fx:id="musicFooter" styleClass="conteneur" alignment="CENTER"  spacing="20">
+        <ImageView fx:id="imageProfil" fitHeight="150" fitWidth="150" preserveRatio="true">
+                <Image url="@../../../images/photodeprofil.png" />
+        </ImageView>
         <Label fx:id="songTitle" styleClass="h2" text="Aucune musique en cours"/>
         <HBox alignment="CENTER" spacing="20.0">
             <!-- Bouton previous avec image -->
@@ -50,7 +58,8 @@
                 </graphic>
             </Button>
         </HBox>
-        <ProgressBar fx:id="songProgressBar" prefWidth="200.0"/>
+        <ProgressBar fx:id="songProgressBar" prefWidth="300.0" styleClass="progress-bar"/>
         <Button fx:id="musicFooterButton" visible="false"/>
     </VBox>
+    </StackPane>
 </AnchorPane>
