@@ -5,8 +5,9 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.ProgressBar?>
 
-<VBox stylesheets="@../../styles/Style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sw.controllers.musicPlay.ControllerMusicPlay" styleClass="container-Bandeau-Music">
+<VBox fx:id="musicFooter" stylesheets="@../../styles/Style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sw.controllers.musicPlay.ControllerMusicPlay" styleClass="container-Bandeau-Music">
     <HBox alignment="CENTER" styleClass="bandeau-music" HBox.hgrow="ALWAYS" spacing="10">
         <Label fx:id="songTitle" styleClass="h2" text="Aucune musique en cours"/>
 
@@ -42,10 +43,17 @@
         <Button fx:id="boutonNext" onAction="#handleNext" styleClass="musicBouton">
             <graphic>
                 <ImageView fitWidth="20" fitHeight="20" preserveRatio="true">
+
                     <Image url="@../../../images/playNext.png" />
                 </ImageView>
             </graphic>
         </Button>
-
+        <ProgressBar fx:id="songProgressBar" prefWidth="200.0" visible="false"/>
+        <Button fx:id="boutonAddPrivatePlaylist" visible="false" />
+        <Button fx:id="musicFooterButton" onAction="#handleMusicFooterClick" >
+            plus
+        </Button>
     </HBox>
 </VBox>
+
+

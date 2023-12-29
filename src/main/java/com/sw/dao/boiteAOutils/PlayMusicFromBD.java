@@ -2,6 +2,8 @@ package com.sw.dao.boiteAOutils;
 
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.util.Duration;
+
 import java.nio.file.Files;
 import java.nio.file.Path;
 
@@ -46,5 +48,18 @@ public class PlayMusicFromBD {
             mediaPlayer = null;
             tempMp3 = null; // Reset the temp file reference
         }
+    }
+
+    public static void seek(double seconds) {
+        if (mediaPlayer != null) {
+            mediaPlayer.seek(Duration.seconds(seconds));
+        }
+    }
+
+    public static double getCurrentTime() {
+        if (mediaPlayer != null && mediaPlayer.getStatus() == MediaPlayer.Status.PLAYING) {
+            return mediaPlayer.getCurrentTime().toSeconds();
+        }
+        return 0; // or an appropriate value indicating that the player is not active or playing
     }
 }

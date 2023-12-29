@@ -5,19 +5,21 @@ import com.sw.exceptions.ExceptionBadPage;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.scene.control.Control;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Controller générique
  */
 public abstract class Controller {
 
-
+    //Attributs :
+    private static List<String> pageHistory = new ArrayList<>();
 
     //Méthodes :
 
@@ -57,6 +59,9 @@ public abstract class Controller {
         Scene scene;
         try {
             scene = getScene(viewName);
+            // Ajoutez la page actuelle à l'historique
+            pageHistory.add(viewName);
+            System.out.println("goToPage(Control controlEl, String viewName, String pageName) - dernière page visitée : " + viewName);
         } catch (IOException e) {
             e.printStackTrace();
             throw new ExceptionBadPage("La page " + pageName + " n'existe pas");
@@ -66,6 +71,7 @@ public abstract class Controller {
         stage.setScene(scene);
         stage.show();
     }
+
 
     /**
      * Méthode static pour changer de page sans élément de controle
@@ -78,6 +84,8 @@ public abstract class Controller {
         Scene scene;
         try {
             scene = getScene(viewName);
+            pageHistory.add(viewName);
+            System.out.println("goToPage(String viewName, String pageName) - dernière page visitée : "+viewName);
         } catch (IOException e) {
             e.printStackTrace();
             throw new ExceptionBadPage("La page " + pageName + " n'existe pas");
@@ -97,7 +105,7 @@ public abstract class Controller {
      */
     private Scene getScene(String viewName) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("/com/views/" + viewName));
-        System.out.println("views/" + viewName);
+        System.out.println("GetScene : views" + viewName);
         return new Scene(fxmlLoader.load());
     }
 
@@ -118,8 +126,20 @@ public abstract class Controller {
         textEl.setText("");
     }
 
+    public static String getPreviousPage() {
+        if (pageHistory.size() >= 2) {
+            return pageHistory.get(pageHistory.size() - 2);
+        } else {
+            return "Il n'y a pas de page précédente"; // ou une valeur par défaut appropriée si l'historique est trop court
+        }
+    }
 
+    protected void returnToLastScene(Control controlEl) throws ExceptionBadPage {
+        String previousPage = getPreviousPage();
+        if (previousPage != null) {
+            goToPage(controlEl, previousPage, previousPage);
+        } else {
+            throw new ExceptionBadPage("Il n'y a pas de page précédente");
+        }
+    }
 }
-
-
-
