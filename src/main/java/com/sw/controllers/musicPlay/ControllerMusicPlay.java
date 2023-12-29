@@ -1,16 +1,26 @@
 package com.sw.controllers.musicPlay;
+
 import com.sw.classes.Music;
 import com.sw.classes.Artist;
+import com.sw.exceptions.ExceptionBadPage;
 import com.sw.facades.FacadeArtist;
 import com.sw.controllers.Controller;
 import com.sw.facades.FacadeMusic;
+import com.sw.dao.boiteAOutils.PlayMusicFromBD;
+import javafx.animation.AnimationTimer;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-
+import javafx.scene.control.ProgressBar;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 
 public class ControllerMusicPlay extends Controller {
@@ -33,6 +43,18 @@ public class ControllerMusicPlay extends Controller {
     @FXML
     private Button boutonAddPrivatePlaylist;
 
+    @FXML
+    private Button boutonRetour;
+
+    @FXML
+    private ProgressBar songProgressBar;
+    private AnimationTimer progressTimer;
+    @FXML
+    private VBox musicFooter;
+    @FXML
+    private Button musicFooterButton;
+
+
     private boolean isPlaying = false; // Tracks whether the music is paused
 
     private FacadeMusic musicPlayFacade;
@@ -54,7 +76,45 @@ public class ControllerMusicPlay extends Controller {
 
         updateSongDetails(musicPlayFacade.getCurrentMusic());
 
+        musicFooter.setOnMouseClicked(event -> {
+            try {
+                // Appelez la méthode goToPage pour accéder à music-view.fxml
+                goToPage(musicFooterButton, "users/music-view.fxml", "Music View");
+            } catch (ExceptionBadPage e) {
+                e.printStackTrace();
+                // Gérez les exceptions de manière appropriée
+            }
+        });
+
+        try {
+            songProgressBar.setOnMouseClicked(event -> {
+            if (musicPlayFacade.getCurrentMusic() != null) {
+                double mousePosition = event.getX();
+                double progressBarWidth = songProgressBar.getWidth();
+                double progress = mousePosition / progressBarWidth;
+                musicPlayFacade.seek(progress * musicPlayFacade.getCurrentMusic().getDuration()); // Vous devrez implémenter la méthode seek dans votre façade
+            }
+        });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        // Démarrer le timer ici aussi si nécessaire
+        startProgressTimer();
+
     }
+
+    @FXML
+    private void handleMusicFooterClick(ActionEvent event) {
+        Button clickedButton = (Button) event.getSource();
+        try {
+            // Appelez la méthode goToPage pour accéder à music-view.fxml
+            goToPage(clickedButton, "users/music-view.fxml", "Music View");
+        } catch (ExceptionBadPage e) {
+            e.printStackTrace();
+            // Gérez les exceptions de manière appropriée
+        }
+    }
+
     @FXML
     private void handlePlay() throws Exception {
         Music music = musicPlayFacade.getCurrentMusic();
@@ -62,6 +122,7 @@ public class ControllerMusicPlay extends Controller {
             musicPlayFacade.pauseMusic();
             boutonPlay.setVisible(true);
             boutonPause.setVisible(false);
+            progressTimer.stop();
             isPlaying = false;
         } else {
             if (music == null) {
@@ -72,6 +133,7 @@ public class ControllerMusicPlay extends Controller {
             }
             boutonPlay.setVisible(false);
             boutonPause.setVisible(true);
+            progressTimer.start();
             isPlaying = true;
         }
         updateSongDetails(music);
@@ -133,6 +195,48 @@ public class ControllerMusicPlay extends Controller {
         }
     }
     @FXML
-    private void handleAddPrivatePlaylist() {}
+    private void handleAddPrivatePlaylist() {
+        FacadeMusic facadeMusic = FacadeMusic.getInstance();
+        facadeMusic.addPrivatePlaylist("Ma playlist");
+    }
+
+    public void updateProgress(double currentTime, double totalDuration) {
+        if (songProgressBar != null && totalDuration > 0) {
+            songProgressBar.setProgress(currentTime / totalDuration);
+        }
+    }
+
+    public void startProgressTimer() {
+        progressTimer = new AnimationTimer() {
+            @Override
+            public void handle(long now) {
+                Music currentMusic = musicPlayFacade.getCurrentMusic();
+                if (currentMusic != null && isPlaying) {
+                    // Ici, vous devez obtenir la position actuelle de la lecture
+                    double currentTime = PlayMusicFromBD.getCurrentTime();
+                    double totalDuration = currentMusic.getDuration();
+                    updateProgress(currentTime, totalDuration);
+                }
+            }
+        };
+        progressTimer.start();
+    }
+
+    @FXML
+    private void songProgress() {
+        System.out.println("click sur la barre de progression");
+        songProgressBar.setOnMouseClicked(event -> {
+            double mousePosition = event.getX();
+            double progressBarWidth = songProgressBar.getWidth();
+            double progress = mousePosition / progressBarWidth;
+            PlayMusicFromBD.seek(progress * musicPlayFacade.getCurrentMusic().getDuration());
+        });
+    }
+
+    @FXML
+    private void handleRetour() throws Exception {
+        System.out.println("click sur retour");
+        returnToLastScene(boutonRetour);
+    }
 
 }

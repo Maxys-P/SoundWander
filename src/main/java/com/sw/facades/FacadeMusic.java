@@ -112,12 +112,7 @@ public class FacadeMusic extends Facade{
             throw new Exception("Error when playing the previous music", e);
         }
     }
-
-
-
-
     public void pauseMusic(){
-
         PlayMusicFromBD.pauseMusic();
         isPlayingProperty.set(false);
     }
@@ -126,12 +121,17 @@ public class FacadeMusic extends Facade{
         PlayMusicFromBD.resumeMusic();
     }
 
+    public void addPrivatePlaylist(String name){daoMusic.addPrivatePlaylist(name);}
 
-
-    public void addPrivatePlaylist(String name){
-
-        daoMusic.addPrivatePlaylist(name);
+    public void seek(double seconds) {
+        if (currentMusic != null) {
+            PlayMusicFromBD.seek(seconds);
+        }
     }
+
+
+
+
 
     public void addMusic(String name, int duration, String filePath) {
         int artist = currentUser.getId();

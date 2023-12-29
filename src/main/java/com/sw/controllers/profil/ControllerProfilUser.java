@@ -108,6 +108,8 @@ public class ControllerProfilUser extends ControllerProfil {
     private void setFieldsEditable(boolean editable) {
         pseudo.setEditable(editable);
         mail.setEditable(editable);
+        pseudo.setDisable(!editable);
+        mail.setDisable(!editable); // Disable the field if not editable
         dateNaissance.setEditable(editable);
         dateNaissance.setDisable(!editable);
     }
