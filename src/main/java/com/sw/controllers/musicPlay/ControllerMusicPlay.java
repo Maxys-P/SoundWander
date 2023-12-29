@@ -13,14 +13,10 @@ import javafx.beans.property.StringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 
 
 public class ControllerMusicPlay extends Controller {
@@ -67,7 +63,6 @@ public class ControllerMusicPlay extends Controller {
         artistFacade = FacadeArtist.getInstance();
         musicPlayFacade.isPlayingProperty().addListener((ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) -> {
             isPlaying = newValue; // Update local isPlaying status
-            boutonPlay.setText(newValue ? "Pause" : "Play"); // Update button text
         });
         songTitle.textProperty().bind(currentSongTitle);
         musicPlayFacade.currentMusicProperty().addListener((obs, oldMusic, newMusic) -> {
@@ -88,13 +83,13 @@ public class ControllerMusicPlay extends Controller {
 
         try {
             songProgressBar.setOnMouseClicked(event -> {
-            if (musicPlayFacade.getCurrentMusic() != null) {
-                double mousePosition = event.getX();
-                double progressBarWidth = songProgressBar.getWidth();
-                double progress = mousePosition / progressBarWidth;
-                musicPlayFacade.seek(progress * musicPlayFacade.getCurrentMusic().getDuration()); // Vous devrez implémenter la méthode seek dans votre façade
-            }
-        });
+                if (musicPlayFacade.getCurrentMusic() != null) {
+                    double mousePosition = event.getX();
+                    double progressBarWidth = songProgressBar.getWidth();
+                    double progress = mousePosition / progressBarWidth;
+                    musicPlayFacade.seek(progress * musicPlayFacade.getCurrentMusic().getDuration()); // Implement the seek method in your facade
+                }
+            });
         } catch (Exception e) {
             e.printStackTrace();
         }

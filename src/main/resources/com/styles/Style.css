@@ -128,6 +128,7 @@
     -fx-padding: 10px 15px 0px 15px; /* Haut, Droit, Bas, Gauche */
     -fx-border-radius: 20px; /* Rayon de la bordure pour les coins arrondis */
     -fx-background-radius: 20px; /* Rayon du fond pour les coins arrondis */
+    -fx-margin: 20px;
 }
 
 .conteneurProfile {
@@ -159,7 +160,8 @@
 }
 
 
-/* ############ Bandeau Music ############ */
+/* ############ Music ############ */
+/*Bandeau Music*/
 
 .container-Bandeau-Music {
     -fx-background-color: #142F3E; /* Couleur de fond */
@@ -180,6 +182,20 @@
         -fx-background-color: #ffffff;
     -fx-padding: 5px 10px 5px; /* Haut, Droit, Bas, Gauche */
     }
+
+/*Music view*/
+.progress-bar .track {
+    -fx-background-color: transparent;
+}
+
+.progress-bar .bar {
+    -fx-background-color: #142F3E;
+    -fx-background-radius: 5; /* Gives rounded edges */
+}
+
+.progress-bar {
+    -fx-padding: 5; /* If you want to add some padding */
+}
 
 /* ############ Page admin ############ */
 .label-description {
