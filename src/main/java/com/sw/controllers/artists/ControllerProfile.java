@@ -102,8 +102,14 @@ public class ControllerProfile {
         if (selectedFile.exists()) {
             long duration = MP3Utils.getMP3Duration(selectedFile);
             if (duration != -1) {
-                FacadeMusic.getInstance().addMusic(title, (int) duration, selectedFile.getAbsolutePath());
-                updateMusicList();
+                try {
+                    FacadeMusic.getInstance().addMusic(title, (int) duration, selectedFile.getAbsolutePath());
+                    updateMusicList();
+                    titleField.setText("");
+                    musicPathField.setText("");
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
             } else {
                 System.out.println("Impossible de calculer la durée de la musique.");
             }
