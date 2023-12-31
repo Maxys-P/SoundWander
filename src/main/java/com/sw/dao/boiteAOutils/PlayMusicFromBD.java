@@ -52,6 +52,7 @@ public class PlayMusicFromBD {
 
     public static void seek(double seconds) {
         if (mediaPlayer != null) {
+            System.out.println("Seeking to: " + seconds);
             mediaPlayer.seek(Duration.seconds(seconds));
         }
     }

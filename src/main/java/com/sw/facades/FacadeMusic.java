@@ -19,6 +19,7 @@ public class FacadeMusic extends Facade{
     private static FacadeMusic instance = null;
     private DAOMusic daoMusic;
     private Music currentMusic;
+    private double lastPosition = 0.0;
 
     private FacadeMusic(){
         this.daoMusic = FactoryDAO.getInstanceofFactoryDAO().getInstanceofDAOMusic();
@@ -112,13 +113,23 @@ public class FacadeMusic extends Facade{
             throw new Exception("Error when playing the previous music", e);
         }
     }
-    public void pauseMusic(){
-        PlayMusicFromBD.pauseMusic();
-        isPlayingProperty.set(false);
+    public void pauseMusic() {
+        if (currentMusic != null) {
+            lastPosition = PlayMusicFromBD.getCurrentTime(); // Save the current time before pausing
+            PlayMusicFromBD.pauseMusic();
+            isPlayingProperty.set(false);
+        }
     }
 
-    public void resumeMusic(){
-        PlayMusicFromBD.resumeMusic();
+    public void resumeMusic() {
+        if (currentMusic != null) {
+            // Only seek if the player is not at the correct position already
+            if (Math.abs(PlayMusicFromBD.getCurrentTime() - lastPosition) > 1) {
+                PlayMusicFromBD.seek(lastPosition);
+            }
+            PlayMusicFromBD.resumeMusic();
+            isPlayingProperty.set(true);
+        }
     }
 
     public void addPrivatePlaylist(String name){daoMusic.addPrivatePlaylist(name);}

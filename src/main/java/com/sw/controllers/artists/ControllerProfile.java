@@ -117,7 +117,6 @@ public class ControllerProfile extends ControllerArtist {
         try {
             // You might need to communicate with ControllerMusicPlay or directly use FacadeMusic here
             FacadeMusic.getInstance().playMusic(musicId);
-            // Update the UI as necessary
         } catch (Exception e) {
             e.printStackTrace();
             // Handle exceptions

@@ -47,8 +47,6 @@ public class ControllerMusicPlay extends Controller {
     private AnimationTimer progressTimer;
     @FXML
     private VBox musicFooter;
-    @FXML
-    private Button musicFooterButton;
 
 
     private boolean isPlaying = false; // Tracks whether the music is paused
@@ -71,16 +69,6 @@ public class ControllerMusicPlay extends Controller {
 
         updateSongDetails(musicPlayFacade.getCurrentMusic());
 
-        musicFooter.setOnMouseClicked(event -> {
-            try {
-                // Appelez la méthode goToPage pour accéder à music-view.fxml
-                goToPage(musicFooterButton, "users/music-view.fxml", "Music View");
-            } catch (ExceptionBadPage e) {
-                e.printStackTrace();
-                // Gérez les exceptions de manière appropriée
-            }
-        });
-
         try {
             songProgressBar.setOnMouseClicked(event -> {
                 if (musicPlayFacade.getCurrentMusic() != null) {
@@ -98,17 +86,6 @@ public class ControllerMusicPlay extends Controller {
 
     }
 
-    @FXML
-    private void handleMusicFooterClick(ActionEvent event) {
-        Button clickedButton = (Button) event.getSource();
-        try {
-            // Appelez la méthode goToPage pour accéder à music-view.fxml
-            goToPage(clickedButton, "users/music-view.fxml", "Music View");
-        } catch (ExceptionBadPage e) {
-            e.printStackTrace();
-            // Gérez les exceptions de manière appropriée
-        }
-    }
 
     @FXML
     private void handlePlay() throws Exception {
