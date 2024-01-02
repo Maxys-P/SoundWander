@@ -93,6 +93,11 @@
     -fx-text-fill: #FFFFFF; /* Couleur du texte au clic */
 }
 
+.play-button.button-disabled {
+    -fx-background-color: grey; /* Couleur de fond grise */
+    -fx-text-fill: darkgrey; /* Texte en gris foncé */
+    -fx-border-color: darkgrey; /* Bordure en gris foncé */
+}
 
 
 /* ############ Champs ############ */

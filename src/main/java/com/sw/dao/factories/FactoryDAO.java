@@ -50,6 +50,8 @@ public abstract class FactoryDAO {
 
     public abstract DAOMusic getInstanceofDAOMusic();
 
+    public abstract DAOPayment getInstanceofDAOPayment();
+
 }
 
 
