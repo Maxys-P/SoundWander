@@ -3,18 +3,17 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.control.ListView?>
 
+<?import javafx.scene.text.Text?>
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.sw.controllers.artists.ControllerProfile"
+      fx:controller="com.sw.controllers.artists.ControllerArtist"
       alignment="CENTER" spacing="20">
     <Label text="Mes musiques" styleClass="h2"/>
     <ListView fx:id="musicListView" prefHeight="138" prefWidth="200"
-              maxHeight="800" maxWidth="300" minHeight="138" minWidth="200"
-              styleClass="liste"/>
+              maxHeight="800" maxWidth="300" minHeight="138" minWidth="200"/>
+    <Text fx:id="errorText"/>
     <Label fx:id="noSelectionLabel" text="Sélectionne une musique avant de pouvoir la supprimer" visible="true" styleClass="h3"/>
 
     <Button fx:id="deleteButton" text="Supprimer" onAction="#handleDeleteMusic" styleClass="boutonBleu" visible="false"/>

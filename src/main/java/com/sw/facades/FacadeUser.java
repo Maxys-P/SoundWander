@@ -58,7 +58,7 @@ public class FacadeUser extends Facade {
      */
     public User connexion(String mail, String motDePasse) throws Exception {
         try {
-            System.out.println(daoUser.getAllUsers());
+            //System.out.println(daoUser.getAllUsers());
             User user = daoUser.getUserByMail(mail);
             if (AuthentificationManager.checkPassword(motDePasse, user.getMotDePasse())) {
                 Facade.currentUser = user;

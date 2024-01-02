@@ -66,7 +66,6 @@ public class RequetesMySQL extends RequetesDB {
      */
     public MapperResultSet selectWhere(String table, Map<String, Object> whereConditions) throws ExceptionDB {
         StringBuilder wherePart = new StringBuilder();
-        // Construction de la partie WHERE de la requête
         int i = 0;
         for (Map.Entry<String, Object> entry : whereConditions.entrySet()) {
             wherePart.append(entry.getKey()).append(" = ?");

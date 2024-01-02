@@ -46,4 +46,8 @@ public class FacadeArtist extends Facade {
         public Artist getArtistById(int id) throws Exception {
             return (Artist) daoUser.getUserById(id);
         }
+
+        public boolean isArtistSubscribed(int id) throws Exception {
+            return daoUser.isArtistSubscribed(id);
+        }
 }

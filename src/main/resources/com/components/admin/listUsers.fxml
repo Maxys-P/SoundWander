@@ -11,5 +11,7 @@
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.sw.controllers.profil.ControllerProfilAdmin">
     <Text text = "Liste des users" styleClass="h1"/>
-    <ListView fx:id="userListView" layoutX="10" layoutY="10" prefHeight="380.0" prefWidth="580.0" />
+    <ScrollPane fitToWidth="true" fitToHeight="true">
+        <ListView fx:id="userListView" prefHeight="380.0" prefWidth="580.0"/>
+    </ScrollPane>
 </VBox>

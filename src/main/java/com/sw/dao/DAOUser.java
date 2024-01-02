@@ -4,6 +4,7 @@ import com.sw.classes.Admin;
 import com.sw.classes.Artist;
 import com.sw.classes.MusicalExpert;
 import com.sw.classes.User;
+import com.sw.exceptions.ExceptionDB;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -135,4 +136,6 @@ public abstract class DAOUser extends DAO {
     public abstract MusicalExpert userBecomeMusicalExpert(int idUser) throws Exception;
 
     public abstract Admin userBecomeAdmin(int idUser) throws Exception;
+
+    public abstract boolean isArtistSubscribed(int id) throws Exception;
 }
