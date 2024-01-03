@@ -1,10 +1,14 @@
 package com.sw.dao.daoMysql;
 
 import com.sw.classes.Music;
+import com.sw.commons.SearchCriteria;
 import com.sw.dao.DAOMusic;
 import com.sw.dao.boiteAOutils.MapperResultSet;
 import com.sw.dao.requetesDB.RequetesMySQL;
+import com.sw.exceptions.ExceptionDB;
+
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -193,7 +197,29 @@ public class DAOMusicMySQL extends DAOMusic {
         return userMusics;
     }
 
+    @Override
+    public List<Object> search(SearchCriteria criteria) {
+        List<Object> resultList = new ArrayList<>();
+        Map<String, Object> whereConditions = new HashMap<>();
+        whereConditions.put("name", criteria.getSearchTerm());
 
-
+        try {
+            MapperResultSet mapperResultSet = ((RequetesMySQL) requetesDB).selectWhere("music", whereConditions);
+            for (Map<String, Object> rowData : mapperResultSet.getListData()) {
+                Music music = new Music(
+                        (Integer) rowData.get("id"),
+                        (String) rowData.get("name"),
+                        (int) rowData.get("artist"),
+                        (int) rowData.get("duration"),
+                        (byte[]) rowData.get("musicFile")
+                );
+                resultList.add(music);
+            }
+        } catch (ExceptionDB e) {
+            // Handle the exception properly
+            e.printStackTrace();
+        }
+        return resultList;
+    }
 
 }

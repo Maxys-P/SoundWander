@@ -59,4 +59,5 @@ public class MapperResultSet {
     public List<Map<Integer, Object>> getListDataByIndex() {
         return listDataByIndex;
     }
+
 }
