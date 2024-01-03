@@ -30,8 +30,6 @@ public class ClickableMapController extends Controller {
             goToPage("home/continent-view.fxml", continentName); // Assurez-vous d'avoir une vue FXML correspondante
         } catch (ExceptionBadPage e) {
             e.printStackTrace();
-            // Gérer l'exception si la page n'existe pas
-            // Par exemple, afficher un message d'erreur ou naviguer vers une page d'erreur
         }
     }
 

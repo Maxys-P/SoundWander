@@ -4,25 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="488cdd30-80e1-4c58-a706-5bdc807ad006" name="Changes" comment="workspace">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/home/ClicableMap.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/home/ClickableMapController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/home/ContinentController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/components/home/clicable-map.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/views/home/continent-view.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/views/home/home-view.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/World-html.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/World-html.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/carte-du-monde2.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/carte-du-monde3.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/map.html" afterDir="false" />
+    <list default="true" id="488cdd30-80e1-4c58-a706-5bdc807ad006" name="Changes" comment="carte">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/controllers/profil/ControllerProfilUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/profil/ControllerProfilUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/controllers/home/ClickableMapController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/home/ClickableMapController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/connexions/ConnexionMySQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/connexions/ConnexionMySQL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/components/profil/info.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/components/profil/info.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/carte du monde.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/carte-du-monde.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/components/home/clicable-map.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/components/home/clicable-map.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/views/artists/profil-artist.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/views/artists/profil-artist.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/views/home/home-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/views/home/home-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/views/users/privatePlaylistView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/views/users/privatePlaylistView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/views/users/profil-user.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/views/users/profil-user.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,7 +81,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "39-page-daccueil-pays",
+    "git-widget-placeholder": "44-un-peu-de-style",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/maxys/Desktop/SoundWander/src/main/resources/com/components/admin",
     "node.js.detected.package.eslint": "true",
@@ -296,7 +286,15 @@
       <option name="project" value="LOCAL" />
       <updated>1703845103741</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="carte">
+      <option name="closed" value="true" />
+      <created>1704304784751</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1704304784751</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -325,7 +323,9 @@
     <MESSAGE value="ya plus de musicInfo" />
     <MESSAGE value="page profil admin" />
     <MESSAGE value="Payment" />
-    <option name="LAST_COMMIT_MESSAGE" value="Payment" />
+    <MESSAGE value="workspace" />
+    <MESSAGE value="carte" />
+    <option name="LAST_COMMIT_MESSAGE" value="carte" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
