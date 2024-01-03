@@ -12,22 +12,6 @@ import java.util.*;
  */
 public class User {
 
-    /*
-    Pas sûr que ce soit utile en fait
-     //La facade du user pour accéder aux méthodes de la facade
-     private FacadeUser facadeUser;
-
-     //Getter de la facade du user
-    public FacadeUser getFacadeUser() {
-        return facadeUser;
-    }
-
-    //Setter de la facade du user
-    public void setFacadeUser(FacadeUser facadeUser) {
-        this.facadeUser = facadeUser;
-    }
-    */
-
     private int id;
 
     private String pseudo;
@@ -100,9 +84,10 @@ public class User {
                 ", dateNaissance=" + dateNaissance + '\'' +
                 ", photo=" + photo + '\'' +
                 ", role=" + role + '\'' +
-                ", privatePlaylist=" + privatePlaylist + '\'' +
-                '}' + "\n";
+                ", privatePlaylist=" + privatePlaylist +
+                '}';
     }
+
 
     //Getters :
 

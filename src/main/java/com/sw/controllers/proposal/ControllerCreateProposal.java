@@ -3,6 +3,7 @@ package com.sw.controllers.proposal;
 import com.sw.classes.Proposal;
 import com.sw.exceptions.ExceptionBadPage;
 import com.sw.exceptions.ExceptionFormIncomplete;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -41,6 +42,7 @@ public class ControllerCreateProposal extends ControllerProposal {
     private Label musicLabel;
     @FXML
     private Text errorText;
+    @FXML public Button boutonRetour;
 
     @FXML
     private Button closeButton;
@@ -131,5 +133,8 @@ public class ControllerCreateProposal extends ControllerProposal {
     }
 
 
+    @FXML private void goBack(ActionEvent actionEvent) throws ExceptionBadPage {
+        goToPage(boutonRetour,"artists/profil-artist.fxml", "Mon Profil d'Artiste");
+    }
 
 }

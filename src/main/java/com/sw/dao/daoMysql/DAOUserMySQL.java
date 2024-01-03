@@ -91,7 +91,7 @@ public class DAOUserMySQL extends DAOUser {
                         dateNaissance = ((java.sql.Date) row.get("dateNaissance")).toLocalDate();
                     }
 
-                    String photo = null;
+                    String photo = (String) row.get("photo");
 
                     String role = (String) row.get("role");
 
@@ -508,6 +508,32 @@ public class DAOUserMySQL extends DAOUser {
             }
         }
         return playlist;
+    }
+
+
+    /**
+     * Méthode qui permet de savoir si un artiste est abonné
+     * @param id int, l'id de l'artiste
+     * @return boolean, true si l'artiste est abonné, false sinon
+     */
+    @Override
+    public boolean isArtistSubscribed(int id) throws Exception {
+        Map<String, Object> conditions = new HashMap<>();
+        conditions.put("userId", id);
+
+        try {
+            MapperResultSet paymentData = ((RequetesMySQL) requetesDB).selectWhere("payment", conditions);
+            for (Map<String, Object> payment : paymentData.getListData()) {
+                Object cancellationDate = payment.get("cancellationDate");
+                if (cancellationDate == null || ((java.sql.Date)cancellationDate).toLocalDate().isAfter(LocalDate.now())) {
+                    return true;
+                }
+            }
+            return false;
+        } catch (ExceptionDB e) {
+            e.printStackTrace();
+            throw new ExceptionDB("Erreur lors de la vérification de l'abonnement de l'artiste", e);
+        }
     }
 
 

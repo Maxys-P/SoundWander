@@ -33,6 +33,7 @@ public class FactoryDAOMySQL extends FactoryDAO {
     public DAOMusic getInstanceofDAOMusic() {return new DAOMusicMySQL();}
 
 
-    //Autres méthodes ici plus tard pour les autres classes
+    @Override
+    public DAOPayment getInstanceofDAOPayment() {return new DAOPaymentMySQL();}
 
 }
