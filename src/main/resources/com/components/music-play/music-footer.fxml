@@ -6,8 +6,8 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.ProgressBar?>
-
 <?import javafx.scene.layout.StackPane?>
+
 <VBox fx:id="musicFooter" stylesheets="@../../styles/Style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sw.controllers.musicPlay.ControllerMusicPlay" styleClass="container-Bandeau-Music">
     <HBox alignment="CENTER" styleClass="bandeau-music" HBox.hgrow="ALWAYS" spacing="10">
         <Label fx:id="songTitle" styleClass="h2" text="Aucune musique en cours"/>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.sw.controllers.search.ControllerSearch"
+            prefHeight="400.0" prefWidth="600.0"
+            stylesheets="@../../styles/Style.css">
+    <VBox fx:id="conteneurSearch" alignment="CENTER" spacing="20" styleClass="conteneur" AnchorPane.rightAnchor="150" AnchorPane.leftAnchor="150">
+        <Button text="X" styleClass="close-button" AnchorPane.rightAnchor="0" onAction="#closeSearch"/>
+        <ComboBox fx:id="comboBoxType" prefWidth="200.0" promptText="Que cherchez-vous ?" styleClass="champ"/>
+        <HBox spacing="10">
+            <TextField fx:id="searchTerm" HBox.hgrow="ALWAYS" promptText="Tapez votre recherche ici" styleClass="champ"/>
+            <Button text="🔍"/>
+        </HBox>
+        <Label fx:id="resultLabel" text="Chansons" />
+        <ListView fx:id="resultList" VBox.vgrow="ALWAYS"/>
+    </VBox>
+
+</AnchorPane>

@@ -176,13 +176,4 @@ public class ControllerProfilUser extends ControllerProfil {
         }
     }
 
-    @FXML
-    private void handleGoToPlaylist(ActionEvent event) {
-        try {
-            super.goToPage(goToPlaylistButton, "users/privatePlaylistView.fxml", "playlist privée");
-        } catch (Exception e) {
-            e.printStackTrace(); // Handle the exception appropriately
-        }
-    }
-
 }

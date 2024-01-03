@@ -4,7 +4,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1200.0" stylesheets="@../../styles/Style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sw.controllers.proposal.ControllerCreateProposal">
+<BorderPane prefHeight="600.0" prefWidth="1200.0" stylesheets="@../../styles/Style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sw.controllers.proposal.ControllerCreateProposal">
+    <top>
+        <fx:include source="../../components/user/header.fxml" />
+    </top>
+    <center>
     <HBox>
         <Button fx:id="boutonRetour" text="Retour" onAction="#goBack" styleClass="boutonBleu"/>
         <Pane HBox.hgrow="ALWAYS" />
@@ -16,4 +20,8 @@
                 <Text fx:id="errorText" fill="red" />
                 <Button fx:id="submitButton" onAction="#handleCreateProposal" styleClass="boutonBleu" text="Proposer" />
         </VBox>
-</AnchorPane>
+    </center>
+    <bottom>
+        <fx:include source="../../components/music-play/music-footer.fxml" />
+    </bottom>
+</BorderPane>

@@ -98,9 +98,9 @@ public class ControllerArtist extends Controller {
         try {
             DataHolder.setCurrentMusic(music); // CORRECTED: Stocker la musique sélectionnée
             Stage stage = (Stage) musicListView.getScene().getWindow();
-            URL url = getClass().getResource("/com/views/artists/createProposal-view.fxml");
+            URL url = getClass().getResource("/com/components/artists/createProposal.fxml");
             FXMLLoader loader = new FXMLLoader(url);
-            //FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/views/artists/createProposal-view.fxml"));
+            //FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/views/artists/createProposal.fxml"));
             Parent root = loader.load();
 
             // Passer l'information à ControllerCreateProposal si nécessaire
