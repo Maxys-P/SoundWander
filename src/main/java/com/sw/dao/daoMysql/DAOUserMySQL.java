@@ -1,6 +1,7 @@
 package com.sw.dao.daoMysql;
 
 import com.sw.classes.*;
+import com.sw.commons.SearchCriteria;
 import com.sw.dao.DAOUser;
 import com.sw.dao.boiteAOutils.MapperResultSet;
 import com.sw.dao.requetesDB.RequetesMySQL;
@@ -430,5 +431,31 @@ public class DAOUserMySQL extends DAOUser {
         }
     }
 
+    @Override
+    public List<Object> search(SearchCriteria criteria) {
+        List<Object> resultList = new ArrayList<>();
+        Map<String, Object> whereConditions = new HashMap<>();
+        whereConditions.put("pseudo", criteria.getSearchTerm());
+
+        try {
+            MapperResultSet mapperResultSet = ((RequetesMySQL) requetesDB).selectWhere("user", whereConditions);
+            for (Map<String, Object> rowData : mapperResultSet.getListData()) {
+                User artist = new User(
+                        (Integer) rowData.get("id"),
+                        (String) rowData.get("pseudo"),
+                        (String) rowData.get("mail"),
+                        (String) rowData.get("motDePasse"),
+                        (LocalDate) rowData.get("dateNaissance"),
+                        (String) rowData.get("photo"),
+                        (String) rowData.get("role")
+                );
+                resultList.add(artist);
+            }
+        } catch (ExceptionDB e) {
+            // Handle the exception properly
+            e.printStackTrace();
+        }
+        return resultList;
+    }
 
 }

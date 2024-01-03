@@ -4,6 +4,7 @@ import com.sw.classes.Admin;
 import com.sw.classes.Artist;
 import com.sw.classes.MusicalExpert;
 import com.sw.classes.User;
+import com.sw.commons.Searchable;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.Map;
  *  Classe abstraite définissant les opérations standard pour interagir avec les données utilisateur, indépendamment du SGBD.
  * @see DAO
  */
-public abstract class DAOUser extends DAO {
+public abstract class DAOUser extends DAO implements Searchable{
 
     /**
      * Default constructor

@@ -15,7 +15,11 @@
 <!-- Contenu principal dans le centre -->
 <center>
         <VBox spacing="20" alignment="TOP_CENTER">
-            <Text fx:id="headerText" strokeType="OUTSIDE" strokeWidth="0.0" text="On mettra le header ici après" VBox.vgrow="NEVER" />
+            <HBox spacing="50">
+                <Label text="PROFIL"/>
+                <Text fx:id="headerText" strokeType="OUTSIDE" strokeWidth="0.0" text="On mettra le header ici après" VBox.vgrow="NEVER" />
+            </HBox>
+
             <Text text="C'est la page musical expert"/>
             <fx:include source="../../components/proposal/listAllProposals-view.fxml" />
         </VBox>
