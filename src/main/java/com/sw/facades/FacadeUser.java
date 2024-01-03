@@ -1,5 +1,6 @@
 package com.sw.facades;
 
+import com.sw.classes.Music;
 import com.sw.classes.User;
 import com.sw.dao.DAOUser;
 import com.sw.dao.factories.FactoryDAO;
@@ -97,6 +98,14 @@ public class FacadeUser extends Facade {
     }
 
     /**
+     * Obtient l'utilisateur actuellement connecté.
+     * @return L'utilisateur connecté.
+     */
+    public User getCurrentUser() {
+        return currentUser;
+    }
+
+    /**
      * Méthode pour récupérer un user par son id
      * @param id int, l'id de l'utilisateur
      * @return User, l'utilisateur récupéré
@@ -165,6 +174,12 @@ public class FacadeUser extends Facade {
     public void updateUserPhoto(int idUser, String newPhoto) throws Exception {
         daoUser.updateUserPhoto(idUser, newPhoto);
     }
+
+    public List<Music> getPrivatePlaylist(int idUser) throws Exception {
+        return daoUser.getPrivatePlaylist(idUser);
+    }
+
+
 
 }
 

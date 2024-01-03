@@ -51,6 +51,14 @@
         </Button>
         <ProgressBar fx:id="songProgressBar" prefWidth="200.0"/>
         <Button fx:id="boutonAddPrivatePlaylist" />
+
+        <Button fx:id="boutonAddRemovePrivatePlaylist" onAction="#handleAddRemovePrivatePlaylist" styleClass="musicBouton">
+            <graphic>
+                <ImageView fx:id="imageAddRemovePrivatePlaylist" fitWidth="20" fitHeight="20" preserveRatio="true">
+                    <!-- The image will be set programmatically in the controller -->
+                </ImageView>
+            </graphic>
+        </Button>
     </HBox>
 </VBox>
 

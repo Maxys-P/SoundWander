@@ -4,10 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="488cdd30-80e1-4c58-a706-5bdc807ad006" name="Changes" comment="page profil admin">
+    <list default="true" id="488cdd30-80e1-4c58-a706-5bdc807ad006" name="Changes" comment="clear fields + disabled fields dans info.fxml">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/users/ControllerPrivatePlaylist.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sw/facades/FacadePrivatePlaylist.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/components/buttons/goToPrivatePlaylistButton.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/components/user/privatePlaylist.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/views/users/privatePlaylistView.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/likePlein.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/likeVide.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/classes/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/classes/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/controllers/musicPlay/ControllerMusicPlay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/musicPlay/ControllerMusicPlay.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/controllers/profil/ControllerProfilUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/profil/ControllerProfilUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/DAOUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/DAOUser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/connexions/ConnexionMySQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/connexions/ConnexionMySQL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/daoMysql/DAOUserMySQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/daoMysql/DAOUserMySQL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/requetesDB/RequetesMySQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/requetesDB/RequetesMySQL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/facades/FacadeUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/facades/FacadeUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/components/music-play/music-footer.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/components/music-play/music-footer.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/components/profil/info.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/components/profil/info.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,8 +34,8 @@
       <list>
         <option value="module-info" />
         <option value="JUnit5 Test Class" />
-        <option value="FxmlFile" />
         <option value="Class" />
+        <option value="FxmlFile" />
       </list>
     </option>
   </component>
@@ -38,6 +53,9 @@
   <component name="KubernetesApiProvider">{
   &quot;isMigrated&quot;: true
 }</component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -65,7 +83,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "30-test",
+    "git-widget-placeholder": "36-private-playlist-v2",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/maxys/Desktop/SoundWander/src/main/resources/com/components/admin",
     "node.js.detected.package.eslint": "true",
@@ -158,7 +176,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-21.0.1-openjdk-21.0.1-3183f394aec4-7d648f2c" />
+        <option value="jdk-21.0.1-openjdk-21.0.1-249ae16d76d6-69315bf7" />
       </set>
     </attachedChunks>
   </component>
@@ -238,7 +256,15 @@
       <option name="project" value="LOCAL" />
       <updated>1703778608064</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="clear fields + disabled fields dans info.fxml">
+      <option name="closed" value="true" />
+      <created>1703845103741</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1703845103741</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -266,7 +292,8 @@
     <MESSAGE value="issue styles des pages profils ok" />
     <MESSAGE value="ya plus de musicInfo" />
     <MESSAGE value="page profil admin" />
-    <option name="LAST_COMMIT_MESSAGE" value="page profil admin" />
+    <MESSAGE value="clear fields + disabled fields dans info.fxml" />
+    <option name="LAST_COMMIT_MESSAGE" value="clear fields + disabled fields dans info.fxml" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
