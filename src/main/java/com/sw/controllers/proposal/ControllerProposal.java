@@ -15,9 +15,4 @@ public class ControllerProposal extends Controller{
      */
     final FacadeProposal proposalFacade = FacadeProposal.getInstance();
 
-    /**
-     * Chemin du dossier dans lequel se trouve les ressources pour les pages liés aux propositions
-     */
-    private final String path = "";
-
 }

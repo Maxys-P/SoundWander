@@ -23,4 +23,5 @@ module com.sw {
     opens com.sw.controllers.admins to javafx.fxml;
     opens com.sw.controllers.payments to javafx.fxml;
     opens com.sw.controllers.home to javafx.fxml, javafx.web;
+
 }

@@ -1,6 +1,7 @@
 package com.sw.dao.daoMysql;
 
 import com.sw.classes.*;
+import com.sw.commons.SearchCriteria;
 import com.sw.dao.DAOUser;
 import com.sw.dao.boiteAOutils.MapperResultSet;
 import com.sw.dao.requetesDB.RequetesMySQL;
@@ -437,7 +438,39 @@ public class DAOUserMySQL extends DAOUser {
         }
     }
 
+  /**
+     * Méthode pour lister les musics lorsque qu'on cherche un titre.
+     * @param criteria SearchCriteria, le critère entré dans la barre de recherche
+     * @return liste des musics correspondantes à la recherche
+     * @throws ExceptionDB en cas d'échec
+     */
     @Override
+    public List<Object> search(SearchCriteria criteria) {
+        List<Object> resultList = new ArrayList<>();
+        Map<String, Object> whereConditions = new HashMap<>();
+        whereConditions.put("pseudo", criteria.getSearchTerm());
+
+        try {
+            MapperResultSet mapperResultSet = ((RequetesMySQL) requetesDB).selectWhere("user", whereConditions);
+            for (Map<String, Object> rowData : mapperResultSet.getListData()) {
+                User artist = new User(
+                        (Integer) rowData.get("id"),
+                        (String) rowData.get("pseudo"),
+                        (String) rowData.get("mail"),
+                        (String) rowData.get("motDePasse"),
+                        (LocalDate) rowData.get("dateNaissance"),
+                        (String) rowData.get("photo"),
+                        (String) rowData.get("role")
+                );
+                resultList.add(artist);
+            }
+        } catch (ExceptionDB e) {
+            e.printStackTrace();
+        }
+        return resultList;
+    }
+
+  
     public List<Music> addMusicToPrivatePlaylist(User user, Music music) throws Exception {
         // vérification
         System.out.println("[DAOMySQL] Vérification si la musique est déjà dans la playlist privée");

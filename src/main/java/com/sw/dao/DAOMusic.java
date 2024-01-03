@@ -1,10 +1,11 @@
 package com.sw.dao;
 
 import com.sw.classes.Music;
-
+import com.sw.commons.SearchCriteria;
+import com.sw.commons.Searchable;
 import java.util.List;
 
-public abstract class DAOMusic extends DAO {
+public abstract class DAOMusic extends DAO implements Searchable {
 
     public DAOMusic() {super("music");}
 
@@ -25,5 +26,8 @@ public abstract class DAOMusic extends DAO {
     }
     public abstract List<Music> getMusicByUserId(int userId) throws Exception; {
     }
+
+    @Override
+    public abstract List<Object> search(SearchCriteria criteria);
 
 }

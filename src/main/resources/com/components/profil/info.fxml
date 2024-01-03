@@ -52,6 +52,7 @@
     <Button fx:id="goToHome" text="Aller à la page d'accueil" onAction="#handleGoToHome" />
 
 
+
     <Text fx:id="errorText" fill="red" />
 
 </VBox>
