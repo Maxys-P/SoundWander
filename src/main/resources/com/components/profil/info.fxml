@@ -47,9 +47,6 @@
         <Button fx:id="boutonSave" text="Enregistrer" onAction="#handleButtonSave" styleClass="boutonBleu" visible="false"/>
     </StackPane>
 
-    <Button fx:id="goToPlaylistButton" text="Aller à la playlist" onAction="#handleGoToPlaylist" />
-
-
     <Text fx:id="errorText" fill="red" />
 
 </VBox>

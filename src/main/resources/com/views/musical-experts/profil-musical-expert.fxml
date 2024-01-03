@@ -5,23 +5,21 @@
 
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.Text?>
+<?import javafx.scene.control.Label?>
 
-        <?import javafx.scene.control.Label?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             stylesheets="@../../styles/Style.css"
             prefHeight="600.0" prefWidth="1200.0">
 
-<!-- Contenu principal dans le centre -->
+<top>
+    <fx:include source="../../components/user/header.fxml" />
+</top>
+
 <center>
         <VBox spacing="20" alignment="TOP_CENTER">
-            <HBox spacing="50">
-                <Label text="PROFIL"/>
-                <Text fx:id="headerText" strokeType="OUTSIDE" strokeWidth="0.0" text="On mettra le header ici après" VBox.vgrow="NEVER" />
-            </HBox>
-
             <Text text="C'est la page musical expert"/>
-            <fx:include source="../../components/proposal/listAllProposals-view.fxml" />
+            <fx:include source="../../components/proposal/listAllProposals.fxml" />
         </VBox>
 </center>
 

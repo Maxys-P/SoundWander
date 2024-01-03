@@ -27,6 +27,17 @@ public class FacadeSearch extends Facade {
      */
     private static FacadeSearch instance = null;
 
+    /**
+     * Getter de l'instance de la facade pour le singleton
+     * @return FacadeSearch, l'instance de la facade
+     */
+    public static FacadeSearch getInstance() {
+        if (instance == null) {
+            instance = new FacadeSearch();
+        }
+        return instance;
+    }
+
     public List<Object> performSearch(SearchCriteria criteria) {
         switch (criteria.getType()) {
             case "music":
