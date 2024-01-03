@@ -5,6 +5,10 @@
 <?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="600.0" prefWidth="1200.0" stylesheets="@../../styles/Style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sw.controllers.proposal.ControllerCreateProposal">
+    <HBox>
+        <Button fx:id="boutonRetour" text="Retour" onAction="#goBack" styleClass="boutonBleu"/>
+        <Pane HBox.hgrow="ALWAYS" />
+    </HBox>
     <VBox fx:id="conteneurCreateProposal" alignment="CENTER" maxHeight="450.0" maxWidth="400.0" prefHeight="450.0" prefWidth="400.0" spacing="20" styleClass="conteneur" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="75.0" AnchorPane.bottomAnchor="75.0">
                 <Label fx:id="musicLabel" styleClass="h1" text="Nom de la musique" alignment="TOP_CENTER" />
                 <ComboBox fx:id="countryField" prefWidth="200.0" promptText="Pays" styleClass="champ" />

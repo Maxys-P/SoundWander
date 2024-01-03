@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Text?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      alignment="CENTER"
+      spacing="20"
+      stylesheets="@../../styles/Style.css"
+      fx:controller="com.sw.controllers.payments.ControllerUnsubscribe"
+      prefHeight="400.0" prefWidth="600.0">
+    <HBox>
+        <Button fx:id="boutonRetour" text="Retour" onAction="#goBack" styleClass="boutonBleu"/>
+        <Pane HBox.hgrow="ALWAYS" />
+    </HBox>
+    <VBox alignment="CENTER" spacing="20" styleClass="conteneur" maxWidth="400">
+        <Text text="Êtes-vous sûr de vouloir vous désabonner ?" styleClass="h2" />
+        <Text fx:id="subscriptionText" wrappingWidth="400" styleClass="h3"/>
+        <Text fx:id="delaiText" wrappingWidth="400" styleClass="h3" />
+        <Button text="Confirmer" onAction="#cancelSubscription" styleClass="boutonBleu"/>
+        <Region VBox.vgrow="ALWAYS" />
+    </VBox>
+</VBox>

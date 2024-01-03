@@ -2,25 +2,26 @@ package com.sw.controllers.musicPlay;
 
 import com.sw.classes.Music;
 import com.sw.classes.Artist;
+import com.sw.classes.User;
 import com.sw.exceptions.ExceptionBadPage;
 import com.sw.facades.FacadeArtist;
 import com.sw.controllers.Controller;
 import com.sw.facades.FacadeMusic;
 import com.sw.dao.boiteAOutils.PlayMusicFromBD;
+import com.sw.facades.FacadePrivatePlaylist;
+import com.sw.facades.FacadeUser;
 import javafx.animation.AnimationTimer;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 
 
 public class ControllerMusicPlay extends Controller {
@@ -51,69 +52,63 @@ public class ControllerMusicPlay extends Controller {
     private AnimationTimer progressTimer;
     @FXML
     private VBox musicFooter;
+
     @FXML
-    private Button musicFooterButton;
+    private Button boutonAddRemovePrivatePlaylist;
+
+    @FXML
+    private ImageView imageAddRemovePrivatePlaylist;
 
 
     private boolean isPlaying = false; // Tracks whether the music is paused
 
+    private boolean isMusicInPrivatePlaylist(Music music) {
+        return userFacade.getCurrentUser().getPrivatePlaylist().contains(music);
+    }
+
     private FacadeMusic musicPlayFacade;
     private FacadeArtist artistFacade;
+
+    private FacadeUser userFacade;
+    private FacadePrivatePlaylist privatePlaylistFacade;
 
     @FXML
     public void initialize() {
 
         musicPlayFacade = FacadeMusic.getInstance();
         artistFacade = FacadeArtist.getInstance();
+        userFacade = FacadeUser.getInstance();
+        privatePlaylistFacade = FacadePrivatePlaylist.getInstance();
         musicPlayFacade.isPlayingProperty().addListener((ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) -> {
             isPlaying = newValue; // Update local isPlaying status
-            boutonPlay.setText(newValue ? "Pause" : "Play"); // Update button text
         });
         songTitle.textProperty().bind(currentSongTitle);
         musicPlayFacade.currentMusicProperty().addListener((obs, oldMusic, newMusic) -> {
             updateSongDetails(newMusic);
+            updateAddRemoveButton();
         });
 
         updateSongDetails(musicPlayFacade.getCurrentMusic());
 
-        musicFooter.setOnMouseClicked(event -> {
-            try {
-                // Appelez la méthode goToPage pour accéder à music-view.fxml
-                goToPage(musicFooterButton, "users/music-view.fxml", "Music View");
-            } catch (ExceptionBadPage e) {
-                e.printStackTrace();
-                // Gérez les exceptions de manière appropriée
-            }
-        });
-
         try {
             songProgressBar.setOnMouseClicked(event -> {
-            if (musicPlayFacade.getCurrentMusic() != null) {
-                double mousePosition = event.getX();
-                double progressBarWidth = songProgressBar.getWidth();
-                double progress = mousePosition / progressBarWidth;
-                musicPlayFacade.seek(progress * musicPlayFacade.getCurrentMusic().getDuration()); // Vous devrez implémenter la méthode seek dans votre façade
-            }
-        });
+                if (musicPlayFacade.getCurrentMusic() != null) {
+                    double mousePosition = event.getX();
+                    double progressBarWidth = songProgressBar.getWidth();
+                    double progress = mousePosition / progressBarWidth;
+                    musicPlayFacade.seek(progress * musicPlayFacade.getCurrentMusic().getDuration()); // Implement the seek method in your facade
+                }
+            });
         } catch (Exception e) {
             e.printStackTrace();
         }
         // Démarrer le timer ici aussi si nécessaire
         startProgressTimer();
+        updateAddRemoveButton();
+
 
     }
 
-    @FXML
-    private void handleMusicFooterClick(ActionEvent event) {
-        Button clickedButton = (Button) event.getSource();
-        try {
-            // Appelez la méthode goToPage pour accéder à music-view.fxml
-            goToPage(clickedButton, "users/music-view.fxml", "Music View");
-        } catch (ExceptionBadPage e) {
-            e.printStackTrace();
-            // Gérez les exceptions de manière appropriée
-        }
-    }
 
     @FXML
     private void handlePlay() throws Exception {
@@ -161,6 +156,7 @@ public class ControllerMusicPlay extends Controller {
             int currentMusicId = musicPlayFacade.getCurrentMusic() != null ? musicPlayFacade.getCurrentMusic().getId() : 0;
             // Call playNextMusic with the correct ID
             Music nextMusic = musicPlayFacade.playNextMusic(currentMusicId);
+            updateProgress(0, 0);
             if (nextMusic != null) {
                 updateSongDetails(nextMusic);  // Update the song details on UI
                 isPlaying = true;  // Set the state to playing
@@ -181,6 +177,7 @@ public class ControllerMusicPlay extends Controller {
             int currentMusicId = musicPlayFacade.getCurrentMusic() != null ? musicPlayFacade.getCurrentMusic().getId() : 0;
             // Call playPreviousMusic with the correct ID
             Music previousMusic = musicPlayFacade.playPreviousMusic(currentMusicId);
+            updateProgress(0, 0);
             if (previousMusic != null) {
                 updateSongDetails(previousMusic);  // Update the song details on UI
                 isPlaying = true;  // Set the state to playing
@@ -238,5 +235,53 @@ public class ControllerMusicPlay extends Controller {
         System.out.println("click sur retour");
         returnToLastScene(boutonRetour);
     }
+
+    private void updateAddRemoveButton() {
+        System.out.println("[controller] updateAddRemoveButton");
+        Music currentMusic = musicPlayFacade.getCurrentMusic();
+        User currentUser = userFacade.getCurrentUser();
+
+        if (currentMusic != null && currentUser != null) {
+            boolean musicInPlaylist = currentUser.getPrivatePlaylist().stream()
+                    .anyMatch(music -> music.getId() == currentMusic.getId());
+
+            Image image;
+            if (musicInPlaylist) {
+                System.out.println("[controller] La musique est dans la playlist privée : il faut afficher Supprimer");
+                image = new Image(getClass().getResourceAsStream("/images/likePlein.png"));
+            } else {
+                System.out.println("[controller] La musique n'est pas dans la playlist privée : il faut afficher Ajouter");
+                image = new Image(getClass().getResourceAsStream("/images/likeVide.png"));
+            }
+            imageAddRemovePrivatePlaylist.setImage(image);
+        }
+    }
+
+    @FXML
+    private void handleAddRemovePrivatePlaylist() {
+        Music currentMusic = musicPlayFacade.getCurrentMusic();
+        User currentUser = userFacade.getCurrentUser();
+        if (currentMusic != null && currentUser != null) {
+            try {
+                boolean musicInPlaylist = currentUser.getPrivatePlaylist().stream()
+                        .anyMatch(music -> music.getId() == currentMusic.getId());
+
+                if (musicInPlaylist) {
+                    System.out.println("[controller] Suppression de la musique " + currentMusic + " de la playlist privée de " + currentUser);
+                    privatePlaylistFacade.deleteMusicInPrivatePlaylist(currentUser, currentMusic);
+                    System.out.println("[controller] Musique supprimée de la playlist privée");
+                } else {
+                    System.out.println("[controller] Ajout de la musique " + currentMusic + " à la playlist privée de " + currentUser);
+                    privatePlaylistFacade.addMusicToPrivatePlaylist(currentUser, currentMusic);
+                    System.out.println("[controller] Musique ajoutée à la playlist privée");
+                }
+                System.out.println("[controller] Mise à jour du bouton");
+                updateAddRemoveButton();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
 
 }

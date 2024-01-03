@@ -1,5 +1,6 @@
 package com.sw.classes;
 
+import com.sw.dao.daoMysql.DAOUserMySQL;
 import com.sw.facades.FacadeUser;
 import javafx.scene.image.Image;
 
@@ -10,22 +11,6 @@ import java.util.*;
  * Classe représentant un user
  */
 public class User {
-
-    /*
-    Pas sûr que ce soit utile en fait
-     //La facade du user pour accéder aux méthodes de la facade
-     private FacadeUser facadeUser;
-
-     //Getter de la facade du user
-    public FacadeUser getFacadeUser() {
-        return facadeUser;
-    }
-
-    //Setter de la facade du user
-    public void setFacadeUser(FacadeUser facadeUser) {
-        this.facadeUser = facadeUser;
-    }
-    */
 
     private int id;
 
@@ -99,9 +84,10 @@ public class User {
                 ", dateNaissance=" + dateNaissance + '\'' +
                 ", photo=" + photo + '\'' +
                 ", role=" + role + '\'' +
-                ", privatePlaylist=" + privatePlaylist + '\'' +
-                '}' + "\n";
+                ", privatePlaylist=" + privatePlaylist +
+                '}';
     }
+
 
     //Getters :
 

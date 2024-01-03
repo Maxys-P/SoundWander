@@ -7,6 +7,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.ProgressBar?>
 
+<?import javafx.scene.layout.StackPane?>
 <VBox fx:id="musicFooter" stylesheets="@../../styles/Style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sw.controllers.musicPlay.ControllerMusicPlay" styleClass="container-Bandeau-Music">
     <HBox alignment="CENTER" styleClass="bandeau-music" HBox.hgrow="ALWAYS" spacing="10">
         <Label fx:id="songTitle" styleClass="h2" text="Aucune musique en cours"/>
@@ -19,25 +20,25 @@
                 </ImageView>
             </graphic>
         </Button>
+        <StackPane alignment="CENTER">
+            <!-- Bouton play avec image -->
+            <Button fx:id="boutonPlay" onAction="#handlePlay" styleClass="musicBouton">
+                <graphic>
+                    <ImageView fx:id="playImageView" fitWidth="20" fitHeight="20" preserveRatio="true">
+                        <Image url="@../../../images/play.png" />
+                    </ImageView>
+                </graphic>
+            </Button>
 
-        <!-- Bouton play avec image -->
-        <Button fx:id="boutonPlay" onAction="#handlePlay" styleClass="musicBouton">
-            <graphic>
-                <ImageView fx:id="playImageView" fitWidth="20" fitHeight="20" preserveRatio="true">
-                    <Image url="@../../../images/play.png" />
-                </ImageView>
-            </graphic>
-        </Button>
-
-        <!-- Bouton pause avec image, initialement non visible -->
-        <Button fx:id="boutonPause" onAction="#handlePlay" styleClass="musicBouton" visible="false">
-            <graphic>
-                <ImageView fx:id="pauseImageView" fitWidth="20" fitHeight="20" preserveRatio="true">
-                    <Image url="@../../../images/pause.png" />
-                </ImageView>
-            </graphic>
-        </Button>
-
+            <!-- Bouton pause avec image, initialement non visible -->
+            <Button fx:id="boutonPause" onAction="#handlePlay" styleClass="musicBouton" visible="false">
+                <graphic>
+                    <ImageView fx:id="pauseImageView" fitWidth="20" fitHeight="20" preserveRatio="true">
+                        <Image url="@../../../images/pause.png" />
+                    </ImageView>
+                </graphic>
+            </Button>
+        </StackPane>
 
         <!-- Bouton next avec image -->
         <Button fx:id="boutonNext" onAction="#handleNext" styleClass="musicBouton">
@@ -48,10 +49,15 @@
                 </ImageView>
             </graphic>
         </Button>
-        <ProgressBar fx:id="songProgressBar" prefWidth="200.0" visible="false"/>
-        <Button fx:id="boutonAddPrivatePlaylist" visible="false" />
-        <Button fx:id="musicFooterButton" onAction="#handleMusicFooterClick" >
-            plus
+        <ProgressBar fx:id="songProgressBar" prefWidth="200.0"/>
+        <Button fx:id="boutonAddPrivatePlaylist" />
+
+        <Button fx:id="boutonAddRemovePrivatePlaylist" onAction="#handleAddRemovePrivatePlaylist" styleClass="musicBouton">
+            <graphic>
+                <ImageView fx:id="imageAddRemovePrivatePlaylist" fitWidth="20" fitHeight="20" preserveRatio="true">
+                    <!-- The image will be set programmatically in the controller -->
+                </ImageView>
+            </graphic>
         </Button>
     </HBox>
 </VBox>

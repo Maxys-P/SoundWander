@@ -1,5 +1,6 @@
 package com.sw.facades;
 
+import com.sw.classes.Music;
 import com.sw.classes.User;
 import com.sw.dao.DAOUser;
 import com.sw.dao.factories.FactoryDAO;
@@ -58,7 +59,7 @@ public class FacadeUser extends Facade {
      */
     public User connexion(String mail, String motDePasse) throws Exception {
         try {
-            System.out.println(daoUser.getAllUsers());
+            //System.out.println(daoUser.getAllUsers());
             User user = daoUser.getUserByMail(mail);
             if (AuthentificationManager.checkPassword(motDePasse, user.getMotDePasse())) {
                 Facade.currentUser = user;
@@ -94,6 +95,14 @@ public class FacadeUser extends Facade {
         } catch (SQLException e) {
             throw new ExceptionDB(e.getMessage());
         }
+    }
+
+    /**
+     * Obtient l'utilisateur actuellement connecté.
+     * @return L'utilisateur connecté.
+     */
+    public User getCurrentUser() {
+        return currentUser;
     }
 
     /**
@@ -165,6 +174,12 @@ public class FacadeUser extends Facade {
     public void updateUserPhoto(int idUser, String newPhoto) throws Exception {
         daoUser.updateUserPhoto(idUser, newPhoto);
     }
+
+    public List<Music> getPrivatePlaylist(int idUser) throws Exception {
+        return daoUser.getPrivatePlaylist(idUser);
+    }
+
+
 
 }
 

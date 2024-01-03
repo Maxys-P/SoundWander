@@ -1,10 +1,12 @@
 package com.sw.dao;
 
+import com.sw.classes.*;
 import com.sw.classes.Admin;
 import com.sw.classes.Artist;
 import com.sw.classes.MusicalExpert;
 import com.sw.classes.User;
 import com.sw.commons.Searchable;
+import com.sw.exceptions.ExceptionDB;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -136,4 +138,36 @@ public abstract class DAOUser extends DAO implements Searchable{
     public abstract MusicalExpert userBecomeMusicalExpert(int idUser) throws Exception;
 
     public abstract Admin userBecomeAdmin(int idUser) throws Exception;
+
+  /**
+     * Ajoute une musique à une playlist privée.
+     *
+     * @param user  int, l'ID de l'utilisateur propriétaire de la playlist.
+     * @param music int, l'ID de la musique à ajouter.
+     * @return
+     * @throws Exception Si un problème survient lors de l'ajout.
+     */
+    public abstract List<Music> addMusicToPrivatePlaylist(User user, Music music) throws Exception;
+
+    /**
+     * Supprime une musique d'une playlist privée.
+     *
+     * @param user  int, l'ID de l'utilisateur propriétaire de la playlist.
+     * @param music int, l'ID de la musique à supprimer.
+     * @return
+     * @throws Exception Si un problème survient lors de la suppression.
+     */
+    public abstract List<Music> deleteMusicInPrivatePlaylist(User user, Music music) throws Exception;
+
+    /**
+     * Méthode pour récupérer la playlist privée d'un user
+     * @param idUser int, l'id de l'utilisateur
+     * @return List<Music>, la playlist privée de l'utilisateur
+     * @throws Exception si problème pendant la récupération de la playlist privée
+     */
+    public abstract List<Music> getPrivatePlaylist(int idUser) throws Exception;
+
+
+    public abstract boolean isArtistSubscribed(int id) throws Exception;
+
 }

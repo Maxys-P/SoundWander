@@ -1,18 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<?import javafx.scene.text.Text?>
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.sw.controllers.profil.ControllerProfilArtist"
-            prefHeight="400.0" prefWidth="600.0">
-    <VBox spacing="20" alignment="TOP_CENTER" prefHeight="300" prefWidth="300" maxHeight="400" maxWidth="400" styleClass="conteneur">
-            <Text text="Paie ton abonnement" styleClass="h1"/>
-
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      alignment="CENTER"
+      spacing="20"
+      stylesheets="@../../styles/Style.css"
+      fx:controller="com.sw.controllers.payments.ControllerPayment"
+      prefHeight="400" prefWidth="600">
+    <HBox>
+        <Button fx:id="boutonRetour" text="Retour" onAction="#goBack" styleClass="boutonBleu"/>
+        <Pane HBox.hgrow="ALWAYS" />
+    </HBox>
+    <VBox alignment="CENTER" spacing="20" styleClass="conteneur" maxWidth="400">
+        <Text text="Pour seulement 4,99€/mois, vous pourrez proposer vos musiques aux experts musicaux pour quelles soient publiées dans les playlists publiques."
+              wrappingWidth="400" />
+        <TextField fx:id="nameField" promptText="Nom Prénom" styleClass="champ"/>
+        <TextField fx:id="cardNumberField" promptText="Numéro carte" styleClass="champ"/>
+        <HBox spacing="10">
+            <TextField fx:id="expirationDateField" promptText="Date d'expiration" styleClass="champ"/>
+            <TextField fx:id="securityCodeField" promptText="CVV" styleClass="champ"/>
+        </HBox>
+        <Text text="Je ne fais rien des données, mettez des faux numéros au cas où."
+              wrappingWidth="400" />
+        <Button text="Confirmer" onAction="#confirmSubscription" styleClass="boutonBleu"/>
+        <Text fx:id="errorText" />
     </VBox>
-</AnchorPane>
+</VBox>
