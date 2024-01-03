@@ -19,7 +19,7 @@ public class ConnexionMySQL extends ConnexionDB {
     private String utilisateur = "root";
 
 
-    private String motDePasse = "se-database";
+    private String motDePasse = "Mateo3945";
 
 
     /*

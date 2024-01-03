@@ -16,11 +16,10 @@
     <center>
         <ScrollPane fitToWidth="true">
             <VBox alignment="CENTER" spacing="20">
-                <Text text="Header de la page artiste" styleClass="h1" />
 
                 <VBox alignment="CENTER" spacing="20" styleClass="conteneurProfile"
                       prefWidth="-1">
-                    <Label text="Mon Profil d'artiste" styleClass="h1"/>
+                    <Label text="Ton Profil d'artiste" styleClass="h1"/>
                     <fx:include source="../../components/profil/info.fxml"/>
                     <fx:include source="../../components/artist/musicBank.fxml"/>
                     <fx:include source="../../components/artist/subcriptionButton.fxml"/>
