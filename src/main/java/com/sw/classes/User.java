@@ -1,5 +1,6 @@
 package com.sw.classes;
 
+import com.sw.dao.daoMysql.DAOUserMySQL;
 import com.sw.facades.FacadeUser;
 import javafx.scene.image.Image;
 

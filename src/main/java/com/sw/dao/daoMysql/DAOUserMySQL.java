@@ -6,6 +6,7 @@ import com.sw.dao.boiteAOutils.MapperResultSet;
 import com.sw.dao.requetesDB.RequetesMySQL;
 import com.sw.dao.boiteAOutils.AuthentificationManager;
 import com.sw.exceptions.ExceptionDB;
+import com.sw.facades.FacadeMusic;
 
 import java.time.LocalDate;
 import java.util.*;
@@ -23,6 +24,11 @@ public class DAOUserMySQL extends DAOUser {
         super();
         this.requetesDB = new RequetesMySQL();
     }
+
+
+    private FacadeMusic facadeMusic = FacadeMusic.getInstance();
+
+
 
     /**
      * Méthode pour créer un utilisateur
@@ -157,14 +163,14 @@ public class DAOUserMySQL extends DAOUser {
     public User getUserByMail(String mail) throws Exception {
         Map<String,Object> conditions = new HashMap<>();
         conditions.put("mail", mail);
-        //on ajoute ici d'autres conditions si besoin pour vos usecases
+
         try {
-            // Appel de selectWhere
             MapperResultSet userData = ((RequetesMySQL) requetesDB).selectWhere(table, conditions);
             if (!userData.getListData().isEmpty()) {
                 Map<String, Object> userDetails = userData.getListData().getFirst();
-                System.out.println("userDetails" + userDetails);
-                return setUserRole(userDetails);
+                User user = setUserRole(userDetails);
+                user.setPrivatePlaylist(getPrivatePlaylist(user.getId()));
+                return user;
             }
             else {
                 return null;
@@ -185,13 +191,14 @@ public class DAOUserMySQL extends DAOUser {
     public User getUserById(int id) throws Exception {
         Map<String, Object> conditions = new HashMap<>();
         conditions.put("id", id);
-        // Ajoutez d'autres conditions si nécessaire
 
         try {
             MapperResultSet userData = ((RequetesMySQL) requetesDB).selectWhere(table, conditions);
             if (!userData.getListData().isEmpty()) {
                 Map<String, Object> userDetails = userData.getListData().getFirst();
-                return setUserRole(userDetails);
+                User user = setUserRole(userDetails);
+                user.setPrivatePlaylist(getPrivatePlaylist(id));
+                return user;
             } else {
                 throw new ExceptionDB("Aucun utilisateur trouvé avec l'id " + id);
             }
@@ -430,6 +437,80 @@ public class DAOUserMySQL extends DAOUser {
         }
     }
 
+    @Override
+    public List<Music> addMusicToPrivatePlaylist(User user, Music music) throws Exception {
+        // vérification
+        System.out.println("[DAOMySQL] Vérification si la musique est déjà dans la playlist privée");
+        try {
+            Map<String, Object> whereConditions = new HashMap<>();
+            whereConditions.put("userId", user.getId());
+            whereConditions.put("musicId", music.getId());
+
+            MapperResultSet resultSet = ((RequetesMySQL) requetesDB).selectWhere("user_music", whereConditions);
+            if (!resultSet.getListData().isEmpty()) { // Si la musique est déjà dans la playlist
+                System.out.println("[DAOMySQL] La musique est déjà dans la playlist, ajout non effectué.");
+                return null;
+            }
+            System.out.println("[DAOMySQL] La musique n'est pas dans la playlist, ajout en cours ...");
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new ExceptionDB("[DAOMySQL] Erreur lors de la vérification : " + e.getMessage());
+        }
+
+        // ajout
+        try {
+            Map<String, Object> data = new HashMap<>();
+            data.put("userId", user.getId());
+            data.put("musicId", music.getId());
+            ((RequetesMySQL) requetesDB).createNoReturn("user_music", data);
+
+            System.out.println("[DAOMySQL] Musique ajoutée à la playlist privée");
+            return getPrivatePlaylist(user.getId());
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new ExceptionDB("[DAOMySQL] Erreur lors de l'ajout de la musique à la playlist privée : " + e.getMessage());
+        }
+    }
+
+    @Override
+    public List<Music> deleteMusicInPrivatePlaylist(User user, Music music) throws Exception {
+        try {
+            System.out.println("[DAOMySQL] Suppression de la musique de la playlist privée");
+            Map<String, Object> whereConditions = new HashMap<>();
+            whereConditions.put("userId", user.getId());
+            whereConditions.put("musicId", music.getId());
+
+            int rowsAffected = ((RequetesMySQL) requetesDB).delete("user_music", whereConditions);
+            if (rowsAffected > 0) {
+                System.out.println("[DAOMySQL] Musique supprimée de la playlist privée");
+                return getPrivatePlaylist(user.getId());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new ExceptionDB("[DAOMySQL] Erreur lors de la suppression de la musique de la playlist privée : " + e.getMessage());
+        }
+        return null;
+    }
+
+    public List<Music> getPrivatePlaylist(int userId) throws Exception {
+        List<Music> playlist = new ArrayList<>();
+        Map<String, Object> whereConditions = new HashMap<>();
+        whereConditions.put("userId", userId);
+
+        MapperResultSet userData = ((RequetesMySQL) requetesDB).selectWithJoin("user_music", List.of("music"), List.of("user_music.musicId = music.id"), whereConditions);
+
+        List<Map<String, Object>> listData = userData.getListData();
+        for (Map<String, Object> row : listData) {
+            Integer musicId = (Integer) row.get("musicId");
+            Music music = facadeMusic.getMusicById(musicId);
+            if (music != null) {
+                playlist.add(music);
+            }
+        }
+        return playlist;
+    }
+
+
     /**
      * Méthode qui permet de savoir si un artiste est abonné
      * @param id int, l'id de l'artiste
@@ -454,5 +535,6 @@ public class DAOUserMySQL extends DAOUser {
             throw new ExceptionDB("Erreur lors de la vérification de l'abonnement de l'artiste", e);
         }
     }
+
 
 }

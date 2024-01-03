@@ -299,5 +299,32 @@ public class RequetesMySQL extends RequetesDB {
         }
     }
 
+    public void createNoReturn(String table, Map<String, Object> data) throws ExceptionDB, SQLException {
+        if (data.isEmpty()) {
+            throw new ExceptionDB("Aucune donnée à insérer");
+        }
+
+        String columnPart = String.join(", ", data.keySet());
+        String valuePart = String.join(", ", Collections.nCopies(data.size(), "?"));
+        String sql = "INSERT INTO " + table + " (" + columnPart + ") VALUES (" + valuePart + ")";
+
+        try (Connection connection = this.getConnexion();
+             PreparedStatement requete = connection.prepareStatement(sql)) {
+            int index = 1;
+            for (Object value : data.values()) {
+                requete.setObject(index++, value);
+            }
+
+            int affectedRows = requete.executeUpdate();
+            if (affectedRows == 0) {
+                throw new SQLException("La création a échoué, aucune ligne n'a été modifiée.");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new ExceptionDB("Erreur lors de l'insertion des données: " + e.getMessage(), e);
+        }
+    }
+
+
 
 }

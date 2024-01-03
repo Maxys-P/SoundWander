@@ -28,6 +28,8 @@ public class ControllerProfilUser extends ControllerProfil {
     @FXML private Button boutonModifier;
     @FXML private Button boutonSave;
     @FXML private Text errorText;
+    @FXML private Button goToPlaylistButton;
+
 
     private User currentUser;
     private String tempImagePath;
@@ -171,6 +173,15 @@ public class ControllerProfilUser extends ControllerProfil {
                     applyCircleClip(imageProfil);
                 }
             });
+        }
+    }
+
+    @FXML
+    private void handleGoToPlaylist(ActionEvent event) {
+        try {
+            super.goToPage(goToPlaylistButton, "users/privatePlaylistView.fxml", "playlist privée");
+        } catch (Exception e) {
+            e.printStackTrace(); // Handle the exception appropriately
         }
     }
 
