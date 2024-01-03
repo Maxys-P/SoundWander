@@ -49,6 +49,8 @@
 
     <Button fx:id="goToPlaylistButton" text="Aller à la playlist" onAction="#handleGoToPlaylist" />
 
+    <Button fx:id="goToHome" text="Aller à la page d'accueil" onAction="#handleGoToHome" />
+
 
     <Text fx:id="errorText" fill="red" />
 

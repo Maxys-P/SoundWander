@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Carte Interactive du Monde</title>
+</head>
+<body>
+<div id="svg-container">
+    <object id="svgObject" type="image/svg+xml" data="carte-du-monde3.svg" width="1200" height="600"></object>
+</div>
+
+<script>
+    console.log("Le script est chargé et actif.");
+
+    // Cette fonction sera appelée une fois que le SVG est chargé et prêt à interagir.
+    function onSVGReady() {
+        var svgObject = document.getElementById('svgObject');
+        var svgDocument = svgObject.contentDocument;
+
+        console.log("Le SVG est prêt pour interaction.");
+
+        // Ajouter des gestionnaires de clic pour chaque élément <path> dans le SVG.
+        var paths = svgDocument.querySelectorAll('path');
+        paths.forEach(function(path) {
+            path.addEventListener('click', function() {
+                console.log('Clic sur le pays avec ID:', path.id);
+                // Ligne commentée pour tester uniquement la partie JavaScript.
+                // window.javaController.onCountryClicked(path.id);
+            });
+        });
+    }
+
+    // Nous devons attendre que le SVG soit entièrement chargé pour y ajouter des gestionnaires d'événements.
+    window.addEventListener('load', function() {
+        console.log("La page est entièrement chargée.");
+        var svgObject = document.getElementById('svgObject');
+        svgObject.addEventListener('load', onSVGReady);
+    });
+</script>
+</body>
+</html>
