@@ -16,7 +16,6 @@
     <center>
         <ScrollPane fitToWidth="true">
             <VBox alignment="CENTER" spacing="20">
-
                 <VBox alignment="CENTER" spacing="20" styleClass="conteneurProfile"
                       prefWidth="-1">
                     <Label text="Ton Profil d'artiste" styleClass="h1"/>

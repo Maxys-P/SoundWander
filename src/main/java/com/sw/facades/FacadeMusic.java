@@ -152,9 +152,12 @@ public class FacadeMusic extends Facade{
     public void removeMusic(int id) {
         daoMusic.removeMusic(id);
     }
-
+    /*
     public List<Music> getMusicByUserId() throws Exception {
         int userId = currentUser.getId();
+        return daoMusic.getMusicByUserId(userId);
+    }*/
+    public List<Music> getMusicByUserId(int userId) throws Exception {
         return daoMusic.getMusicByUserId(userId);
     }
 
