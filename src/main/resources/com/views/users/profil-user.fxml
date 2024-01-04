@@ -16,8 +16,6 @@
     <center>
         <ScrollPane fitToWidth="true">
             <VBox alignment="CENTER" spacing="20">
-                <Text fx:id="headerText" text="On mettra le header ici après quoi" styleClass="h1"/>
-
                 <VBox alignment="CENTER" spacing="20" styleClass="conteneurProfile">
                     <fx:include source="../../components/profil/info.fxml"/>
                     <fx:include source="../../components/artist/transformationArtist.fxml" />

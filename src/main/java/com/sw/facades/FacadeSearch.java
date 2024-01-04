@@ -40,10 +40,10 @@ public class FacadeSearch extends Facade {
 
     public List<Object> performSearch(SearchCriteria criteria) {
         switch (criteria.getType()) {
-            case "music":
+            case "musique":
                 // Recherche par titre de musique
                 return daoMusic.search(criteria);
-            case "artist":
+            case "artiste":
                 // Recherche par pseudo d'artiste
                 return daoUser.search(criteria);
             default:
