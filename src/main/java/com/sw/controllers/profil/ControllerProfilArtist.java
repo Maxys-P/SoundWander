@@ -55,18 +55,21 @@ public class ControllerProfilArtist extends ControllerProfil {
     @FXML
     private void goToSubscription() throws ExceptionBadPage {
         try {
-            if (paymentFacade.isInDelayPeriod(Facade.currentUser.getId())) {
-                int daysRemaining = paymentFacade.getDaysRemainingInDelayPeriod(Facade.currentUser.getId());
+            int userId = Facade.currentUser.getId();
+            if (paymentFacade.getDaysRemainingInDelayPeriod(userId) > 0) {
+                // L'artiste est dans sa période de grâce et ne peut pas se réabonner pour le moment
+                int daysRemaining = paymentFacade.getDaysRemainingInDelayPeriod(userId);
                 showAlert("Vous avez résilié votre abonnement récemment. Vous ne pouvez pas vous réabonner pour le moment mais vous pouvez toujours proposer vos musiques aux playlists. Il vous reste " + daysRemaining + " jours avant de pouvoir vous réabonner.");
             } else {
+                // L'artiste peut s'abonner ou se réabonner
                 goToPage(subscriptionButton, "artists/subscription-view.fxml", "Abonnement");
             }
         } catch (Exception e) {
             e.printStackTrace();
             throw new ExceptionBadPage("Impossible d'accéder à la page d'abonnement");
-
         }
     }
+
 
 
     private Payment getPaymentByUserId(int userId) {

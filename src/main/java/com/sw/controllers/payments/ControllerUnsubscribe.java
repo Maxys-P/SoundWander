@@ -31,9 +31,11 @@ public class ControllerUnsubscribe extends Controller {
         String formattedDate = dateFormat.format(subscriptionDate);
         subscriptionText.setText("Vous avez démarré votre abonnement le : " + formattedDate);
 
-        if (facadePayment.isInDelayPeriod(Facade.currentUser.getId())) {
-            int daysRemaining = facadePayment.getDaysRemainingInDelayPeriod(Facade.currentUser.getId());
+        int daysRemaining = facadePayment.getDaysRemainingInDelayPeriod(Facade.currentUser.getId());
+        if (daysRemaining > 0) {
             delaiText.setText("En vous désabonnant aujourd'hui, vous pourrez donc proposer vos musiques encore " + daysRemaining + " jours.");
+        } else {
+            delaiText.setText("Vous n'êtes actuellement pas dans votre période de grâce. En vous désabonnant, votre abonnement prendra fin immédiatement.");
         }
     }
 

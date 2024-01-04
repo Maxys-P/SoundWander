@@ -98,9 +98,7 @@ public class ControllerArtist extends Controller {
         try {
             DataHolder.setCurrentMusic(music); // CORRECTED: Stocker la musique sélectionnée
             Stage stage = (Stage) musicListView.getScene().getWindow();
-            URL url = getClass().getResource("/com/components/artists/createProposal.fxml");
-            FXMLLoader loader = new FXMLLoader(url);
-            //FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/views/artists/createProposal.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/views/artists/createProposal-view.fxml"));
             Parent root = loader.load();
 
             // Passer l'information à ControllerCreateProposal si nécessaire
@@ -189,7 +187,7 @@ public class ControllerArtist extends Controller {
     // Cette méthode sera appelée pour chaque item de la liste pour définir si le bouton "+" doit être actif ou non.
     private void setAddButtonState(Button addButton, Music music) {
         try {
-            boolean canPropose = facadePayment.isInDelayPeriod(Facade.currentUser.getId());
+            boolean canPropose = facadePayment.canArtistProposeMusic(Facade.currentUser.getId());
             if (!canPropose) {
                 addButton.getStyleClass().add("button-disabled");
                 addButton.setOnAction(event -> super.displayError(errorText,"Vous ne pouvez pas proposer de musiques aux playlists sans un abonnement actif."));
