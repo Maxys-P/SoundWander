@@ -9,6 +9,8 @@ module com.sw {
     requires jbcrypt;
     requires javafx.media;
     requires nv.i18n;
+    requires javafx.web;
+    requires jdk.jsobject;
 
     exports com.sw;
 
@@ -20,5 +22,6 @@ module com.sw {
     opens com.sw.controllers.artists to javafx.fxml;
     opens com.sw.controllers.admins to javafx.fxml;
     opens com.sw.controllers.payments to javafx.fxml;
-    opens com.sw.controllers.search to javafx.fxml;
+    opens com.sw.controllers.home to javafx.fxml, javafx.web;
+
 }

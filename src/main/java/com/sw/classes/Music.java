@@ -4,8 +4,6 @@ package com.sw.classes;
 import com.sw.facades.FacadeMusic;
 
 public class Music {
-
-    private FacadeMusic facadeMusic;
     private int id;
     private String name;
     private int artist;
@@ -14,10 +12,6 @@ public class Music {
      * Le fichier de musique stocké sous forme de tableau d'octets.
      */
     private byte[] musicFile;
-
-    public void setFacadeMusicPlay(FacadeMusic facadeMusic){
-        this.facadeMusic = facadeMusic;
-    }
 
     public Music(int id, String name, int artist, int duration, byte[] musicFile){
         this.id = id;
@@ -36,10 +30,6 @@ public class Music {
                 ", duration=" + '\'' + duration +
                 ", musicFile=" + musicFile + '\'' +
                 '}';
-    }
-
-    public FacadeMusic getFacadeMusicPlay(){
-        return facadeMusic;
     }
 
     public int getId(){return id;}

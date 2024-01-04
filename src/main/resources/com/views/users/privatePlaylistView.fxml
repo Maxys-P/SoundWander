@@ -4,6 +4,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
+<?import javafx.scene.control.Label?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             stylesheets="@../../styles/Style.css"
@@ -16,6 +17,7 @@
     <center>
         <ScrollPane fitToWidth="true">
             <VBox alignment="CENTER" spacing="20">
+                <Label text="Mes favoris" styleClass="h1"/>
                 <VBox alignment="CENTER" spacing="20" styleClass="conteneurProfile">
                     <fx:include source="../../components/user/privatePlaylist.fxml"/>
                 </VBox>

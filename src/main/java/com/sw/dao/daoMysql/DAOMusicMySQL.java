@@ -24,9 +24,6 @@ public class DAOMusicMySQL extends DAOMusic {
         this.requetesDB = new RequetesMySQL();
     }
 
-    public Music createMusic(String name, String Artist, int duration){
-        return null;
-    }
     @Override
     public Music getMusicByName(String name) {
         Map<String,Object> conditions = new HashMap<>();
