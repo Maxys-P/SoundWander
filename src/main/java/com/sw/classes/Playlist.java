@@ -5,10 +5,13 @@ public class Playlist {
     private String name;
     private String country;
 
-    public Playlist(int id, String name, String country) {
+    private String continent;
+
+    public Playlist(int id, String name, String country, String continent) {
         this.id = id;
         this.name = name;
         this.country = country;
+        this.continent = continent;
     }
 
     public int getPlaylistId() {return id;}

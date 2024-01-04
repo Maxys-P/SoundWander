@@ -38,7 +38,8 @@ public class DAOPlaylistMusicMySQL extends DAOPlaylistMusic {
             return null;
         }
     }
-    private List<Music> getAllMusicByPlaylist(int playlistId) {
+    @Override
+    public List<Music> getAllMusicByPlaylist(int playlistId) {
         List<Music> musicList = new ArrayList<>();
         Map<String, Object> conditions = new HashMap<>();
         conditions.put("playlist_id", playlistId);
@@ -58,5 +59,28 @@ public class DAOPlaylistMusicMySQL extends DAOPlaylistMusic {
         return musicList;
     }
 
+    @Override
+    public boolean addMusicToPlaylist(String playlistCountry, int musicid) throws Exception {
+        try {
+            Playlist playlist = DAOPlaylistMySQL.getPlaylistByCountry(playlistCountry);
+            if (playlist == null) {
+                System.out.println("il n'existe pas de playlist pour ce pays");
+                return false;
+            }
+            Music music = DAOMusicMySQL.getMusicById(musicid);
+            if (music == null) {
+                System.out.println("il n'existe pas de musique pour cet id");
+                return false;
+            }
+            Map<String, Object> values = new HashMap<>();
+            values.put("playlist_id", playlist.getPlaylistId());
+            values.put("music_id", music.getId());
+            ((RequetesMySQL) requetesDB).create(table, values);
+            return true;
+        } catch (Exception e) {
+            System.out.println("Erreur lors de l'ajout de la musique à la playlist");
+            return false;
+        }
+    }
 
 }

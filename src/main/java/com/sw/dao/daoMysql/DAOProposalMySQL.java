@@ -172,10 +172,12 @@ public class DAOProposalMySQL extends DAOProposal {
         // 2. Récupérer l'ID de la musique associée à la proposition
         int musicId = proposal.getMusic();
 
-        // 3. Récupérer l'ID de l'artiste de la proposition
-        int artistId = proposal.getArtist();
+        // 3. Créer le pays de la proposition
+        String country = proposal.getCountry();
 
-        // TODO: Mettez en œuvre la logique pour ajouter la musique à la playlist du pays.
+        // 4. Ajouter la music a la playlist du pays en question
+        boolean isAddedToPlaylist = new DAOPlaylistMusicMySQL().addMusicToPlaylist(country, musicId);
+
         // TODO: Mettez en œuvre la logique pour notifier l'artiste de l'acceptation de sa proposition.
 
         // 6. Supprimer la proposition de la base de données

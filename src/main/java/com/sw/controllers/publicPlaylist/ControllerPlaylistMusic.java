@@ -3,7 +3,7 @@ package com.sw.controllers.publicPlaylist;
 import com.sw.classes.Music;
 import com.sw.classes.PlaylistMusic;
 import com.sw.controllers.Controller;
-import com.sw.facades.FacadePublicPlaylist;
+import com.sw.facades.FacadePlaylistMusic;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -12,13 +12,13 @@ import javafx.scene.control.ListView;
 
 import java.util.List;
 
-public class ControllerPublicPlaylist extends Controller {
-    private FacadePublicPlaylist publicPlaylistFacade;
+public class ControllerPlaylistMusic extends Controller {
+    private FacadePlaylistMusic publicPlaylistFacade;
     @FXML
     private ListView<Music> musicListView;
 
-    public ControllerPublicPlaylist() {
-        this.publicPlaylistFacade = FacadePublicPlaylist.getInstance();
+    public ControllerPlaylistMusic() {
+        this.publicPlaylistFacade = FacadePlaylistMusic.getInstance();
     }
 
     public void displayPlaylist(PlaylistMusic playlistMusic) {

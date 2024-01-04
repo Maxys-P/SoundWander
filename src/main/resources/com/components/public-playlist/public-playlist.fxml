@@ -8,7 +8,7 @@
 
 <VBox xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.sw.controllers.publicPlaylist.ControllerPublicPlaylist"
+            fx:controller="com.sw.controllers.publicPlaylist.ControllerPlaylistMusic"
             prefHeight="400.0" prefWidth="600.0">
     <Label text="Playlist publique" styleClass="h2"/>
     <ListView fx:id="musicListView" prefHeight="138" prefWidth="200"

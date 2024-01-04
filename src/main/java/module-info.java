@@ -22,6 +22,7 @@ module com.sw {
     opens com.sw.controllers.artists to javafx.fxml;
     opens com.sw.controllers.admins to javafx.fxml;
     opens com.sw.controllers.payments to javafx.fxml;
+    opens com.sw.controllers.publicPlaylist to javafx.fxml;
     opens com.sw.controllers.home to javafx.fxml, javafx.web;
 
 }

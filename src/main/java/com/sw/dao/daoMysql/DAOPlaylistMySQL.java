@@ -26,8 +26,9 @@ public class DAOPlaylistMySQL extends DAOPlaylist {
                 int id = (int) playlistDetails.get("id");
                 String Playlistname = (String) playlistDetails.get("name");
                 String country = (String) playlistDetails.get("country");
+                String continent = (String) playlistDetails.get("continent");
 
-                return new Playlist(id, Playlistname, country);
+                return new Playlist(id, Playlistname, country, continent);
             } else {
                 System.out.println("Pb quand on appelle selectWhere");
             }
@@ -39,7 +40,32 @@ public class DAOPlaylistMySQL extends DAOPlaylist {
     }
 
     @Override
-    public void addPublicPlaylist(String name, String country) throws Exception {
+    public Playlist getPlaylistByCountry(String country) throws Exception {
+        Map<String, Object> conditions = new HashMap<>();
+        conditions.put("country", country);
+        try{
+            MapperResultSet playlistData = ((RequetesMySQL) requetesDB).selectWhere(table, conditions);
+            if (!playlistData.getListData().isEmpty()) {
+                Map<String, Object> playlistDetails = playlistData.getListData().getFirst();
+
+                int id = (int) playlistDetails.get("id");
+                String Playlistname = (String) playlistDetails.get("name");
+                String countryName = (String) playlistDetails.get("country");
+                String continent = (String) playlistDetails.get("continent");
+
+                return new Playlist(id, Playlistname, countryName, continent);
+            } else {
+                System.out.println("Pb quand on appelle selectWhere");
+            }
+            return null;
+        } catch (Exception e) {
+            System.out.println("Erreur lors de la récupération de la playlist par nom");
+            return null;
+        }
+    }
+
+    @Override
+    public void addPlaylist(String name, String country) throws Exception {
         try {
 
             Map<String, Object> values = new HashMap<>();
