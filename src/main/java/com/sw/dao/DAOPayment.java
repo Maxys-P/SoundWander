@@ -21,7 +21,7 @@ public abstract class DAOPayment extends DAO{
 
     public abstract Payment cancelSubscription(int paymentId) throws Exception;
 
-    public abstract boolean isInDelayPeriod(int userId) throws Exception;
+    public abstract boolean canArtistProposeMusic(int userId) throws Exception;
 
     public abstract int getDaysRemainingInDelayPeriod(int userId) throws Exception;
 }
