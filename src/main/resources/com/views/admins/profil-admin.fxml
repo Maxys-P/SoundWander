@@ -14,10 +14,7 @@
 
     <!-- Header de la page dans le haut -->
     <top>
-        <VBox alignment="TOP_CENTER" spacing="10" styleClass="header">
-            <Text fx:id="headerText" strokeType="OUTSIDE" strokeWidth="0.0" text="On mettra le header ici après" />
-            <Text text="C'est la page admin"/>
-        </VBox>
+        <fx:include source="../../components/user/header.fxml" />
     </top>
 
     <!-- Contenu principal dans le centre -->

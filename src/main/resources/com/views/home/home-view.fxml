@@ -4,6 +4,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
+<?import javafx.scene.control.Label?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             stylesheets="@../../styles/Style.css"
@@ -13,15 +14,14 @@
         <fx:include source="../../components/user/header.fxml" />
     </top>
 
+    <!-- Contenu principal dans le centre -->
     <center>
         <ScrollPane fitToWidth="true">
-            <VBox alignment="CENTER" spacing="20">
-                <VBox alignment="CENTER" spacing="20" styleClass="conteneurProfile">
-                    <fx:include source="../../components/profil/info.fxml"/>
-                    <fx:include source="../../components/artist/transformationArtist.fxml" />
-                    <fx:include source="../../components/admin/transformationAdmin.fxml" />
+                <VBox alignment="CENTER" spacing="20">
+                    <Label text="Accueil" styleClass="h1"/>
+                    <Label text="Où souhaites tu voyager ?" styleClass="h2"/>
+                    <fx:include source="../../components/home/clicable-map.fxml"/>
                 </VBox>
-            </VBox>
         </ScrollPane>
     </center>
 

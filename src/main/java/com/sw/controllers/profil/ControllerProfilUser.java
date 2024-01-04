@@ -29,6 +29,7 @@ public class ControllerProfilUser extends ControllerProfil {
     @FXML private Button boutonSave;
     @FXML private Text errorText;
     @FXML private Button goToPlaylistButton;
+    @FXML private Button goToHome;
 
 
     private User currentUser;
@@ -180,6 +181,15 @@ public class ControllerProfilUser extends ControllerProfil {
     private void handleGoToPlaylist(ActionEvent event) {
         try {
             super.goToPage(goToPlaylistButton, "users/privatePlaylistView.fxml", "playlist privée");
+        } catch (Exception e) {
+            e.printStackTrace(); // Handle the exception appropriately
+        }
+    }
+
+    @FXML
+    private void handleGoToHome(ActionEvent event) {
+        try {
+            super.goToPage(goToHome, "home/home-view.fxml", "page d'accueil");
         } catch (Exception e) {
             e.printStackTrace(); // Handle the exception appropriately
         }

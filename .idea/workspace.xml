@@ -4,24 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="488cdd30-80e1-4c58-a706-5bdc807ad006" name="Changes" comment="conflits réglés">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sw/classes/Playlist.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sw/classes/PlaylistMusic.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/publicPlaylist/ControllerPlaylist.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/publicPlaylist/ControllerPublicPlaylist.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/DAOPlaylist.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/DAOPlaylistMusic.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/daoMysql/DAOPlaylistMusicMySQL.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/daoMysql/DAOPlaylistMySQL.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sw/facades/FacadePlaylist.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sw/facades/FacadePublicPlaylist.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/components/public-playlist/public-playlist.fxml" afterDir="false" />
+    <list default="true" id="488cdd30-80e1-4c58-a706-5bdc807ad006" name="Changes" comment="carte">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/classes/Music.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/classes/Music.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/controllers/home/ClickableMapController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/home/ClickableMapController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/connexions/ConnexionMySQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/connexions/ConnexionMySQL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/daoMysql/DAOMusicMySQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/daoMysql/DAOMusicMySQL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/factories/FactoryDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/factories/FactoryDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/factories/FactoryDAOMySQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/factories/FactoryDAOMySQL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/components/home/clicable-map.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/components/home/clicable-map.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/views/artists/profil-artist.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/views/artists/profil-artist.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/views/home/home-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/views/home/home-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/views/users/privatePlaylistView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/views/users/privatePlaylistView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/views/users/profil-user.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/views/users/profil-user.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,8 +24,9 @@
       <list>
         <option value="module-info" />
         <option value="JUnit5 Test Class" />
-        <option value="FxmlFile" />
+        <option value="HTML File" />
         <option value="Class" />
+        <option value="FxmlFile" />
       </list>
     </option>
   </component>
@@ -48,6 +40,9 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="jar://$USER_HOME$/Library/Java/JavaVirtualMachines/openjdk-21.0.1/Contents/Home/lib/src.zip!/java.base/java/lang/UnsatisfiedLinkError.java" root0="SKIP_INSPECTION" />
   </component>
   <component name="KubernetesApiProvider">{
   &quot;isMigrated&quot;: true
@@ -77,6 +72,7 @@
     "Application.App.executor": "Run",
     "Application.CreateTableUserScript.executor": "Run",
     "Application.Main.executor": "Run",
+    "DefaultHtmlFileTemplate": "HTML File",
     "JUnit.DAOUserMySQLTest.executor": "Run",
     "JUnit.UserTest.executor": "Run",
     "JUnit.UserTest.testToString.executor": "Run",
@@ -85,7 +81,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "44-un-peu-de-style",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/maxys/Desktop/SoundWander/src/main/resources/com/components/admin",
     "node.js.detected.package.eslint": "true",
@@ -109,8 +105,8 @@
       <recent name="C:\Users\maxys\Desktop\SoundWander\src\main\resources\images" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\maxys\Desktop\SoundWander\src\main\resources\com\views\artists" />
       <recent name="$PROJECT_DIR$/src/main/resources/images" />
+      <recent name="C:\Users\maxys\Desktop\SoundWander\src\main\resources\com\views\artists" />
       <recent name="C:\Users\maxys\Desktop\SoundWander\src\main\resources\com\components\artist" />
       <recent name="C:\Users\maxys\Desktop\SoundWander\src\main\resources\com\components\proposal" />
       <recent name="C:\Users\maxys\Desktop\SoundWander\src\main\resources\com\components\music" />
@@ -290,7 +286,15 @@
       <option name="project" value="LOCAL" />
       <updated>1703845103741</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="carte">
+      <option name="closed" value="true" />
+      <created>1704304784751</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1704304784751</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -319,7 +323,9 @@
     <MESSAGE value="ya plus de musicInfo" />
     <MESSAGE value="page profil admin" />
     <MESSAGE value="Payment" />
-    <option name="LAST_COMMIT_MESSAGE" value="Payment" />
+    <MESSAGE value="workspace" />
+    <MESSAGE value="carte" />
+    <option name="LAST_COMMIT_MESSAGE" value="carte" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

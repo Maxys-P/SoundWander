@@ -212,3 +212,11 @@
     -fx-max-width: infinity; /* Permet à la description de s'étendre */
     -fx-pref-width: 100%; /* Définit la largeur préférée à 100% */
 }
+
+/* ############ HEADER ############ */
+
+.header {
+    -fx-background-color: #142F3E; /* Couleur de fond */
+    -fx-padding: 10px;
+    -fx-alignment: center;
+}
