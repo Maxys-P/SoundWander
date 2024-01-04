@@ -439,38 +439,52 @@ public class DAOUserMySQL extends DAOUser {
     }
 
   /**
-     * Méthode pour lister les musics lorsque qu'on cherche un titre.
+     * Méthode pour récupérer l'artiste qui correspond à la recherche.
      * @param criteria SearchCriteria, le critère entré dans la barre de recherche
-     * @return liste des musics correspondantes à la recherche
+     * @return l'Artist qui correspond à la recherche
      * @throws ExceptionDB en cas d'échec
      */
-    @Override
-    public List<Object> search(SearchCriteria criteria) {
-        List<Object> resultList = new ArrayList<>();
-        Map<String, Object> whereConditions = new HashMap<>();
-        whereConditions.put("pseudo", criteria.getSearchTerm());
+  @Override
+  public List<Object> search(SearchCriteria criteria) {
+      List<Object> matchingArtists = new ArrayList<>();
+      Map<String, Object> whereConditions = new HashMap<>();
+      whereConditions.put("pseudo", criteria.getSearchTerm());
 
-        try {
-            MapperResultSet mapperResultSet = ((RequetesMySQL) requetesDB).selectWhere("user", whereConditions);
-            for (Map<String, Object> rowData : mapperResultSet.getListData()) {
-                User artist = new User(
-                        (Integer) rowData.get("id"),
-                        (String) rowData.get("pseudo"),
-                        (String) rowData.get("mail"),
-                        (String) rowData.get("motDePasse"),
-                        (LocalDate) rowData.get("dateNaissance"),
-                        (String) rowData.get("photo"),
-                        (String) rowData.get("role")
-                );
-                resultList.add(artist);
-            }
-        } catch (ExceptionDB e) {
-            e.printStackTrace();
-        }
-        return resultList;
-    }
+      try {
+          // Recherchez d'abord les artistes par leur pseudo
+          MapperResultSet mapperResultSet = ((RequetesMySQL) requetesDB).selectWhere("user", whereConditions);
+          for (Map<String, Object> rowData : mapperResultSet.getListData()) {
+              int id = (int) rowData.get("id");
+              String pseudo = (String) rowData.get("pseudo");
+              String mail = (String) rowData.get("mail");
+              String motDePasse = (String) rowData.get("motDePasse");
+              LocalDate dateNaissance = ((java.sql.Date) rowData.get("dateNaissance")).toLocalDate();
+              String photo = (String) rowData.get("photo");
+              String role = (String) rowData.get("role");
 
-  
+              // Récupérez également la liste de musiques de l'artiste ici
+
+               // Remplacez cela par votre logique pour récupérer les musiques
+
+              // Créez l'objet Artist avec les données récupérées, y compris les musiques
+              Artist artist = new Artist(id, pseudo, mail, motDePasse, dateNaissance, photo, role);
+              List<Music> musics = artist.getMusics();
+              artist.setMusics(musics);
+              System.out.println("artist du dao" + artist);
+
+              // Ajoutez l'artiste à la liste
+              matchingArtists.add(artist);
+          }
+      } catch (ExceptionDB e) {
+          e.printStackTrace();
+      }
+      return matchingArtists;
+  }
+
+
+
+
+
     public List<Music> addMusicToPrivatePlaylist(User user, Music music) throws Exception {
         // vérification
         System.out.println("[DAOMySQL] Vérification si la musique est déjà dans la playlist privée");

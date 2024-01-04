@@ -138,12 +138,18 @@ public class DAOPaymentMySQL extends DAOPayment {
      * @throws Exception si un problème survient lors de la récupération.
      */
     @Override
-    public boolean isInDelayPeriod(int userId) throws Exception {
+    public boolean canArtistProposeMusic(int userId) throws Exception {
         Payment latestPayment = getLatestPaymentByUserId(userId);
-        if (latestPayment == null || latestPayment.getExpirationDate() == null) {
-            return false;
+
+        if (latestPayment == null) {
+            return false; // Aucun paiement trouvé, l'artiste ne peut pas proposer de musiques
         }
 
+        if (latestPayment.getExpirationDate() == null) {
+            return true; // L'artiste a un abonnement actif et peut proposer des musiques
+        }
+
+        // Vérifier si l'artiste est dans sa période de grâce
         Date cancellationDate = latestPayment.getExpirationDate();
         Calendar calCancellation = Calendar.getInstance();
         calCancellation.setTime(cancellationDate);
@@ -153,14 +159,12 @@ public class DAOPaymentMySQL extends DAOPayment {
         calSubscription.setTime(subscriptionDate);
         calSubscription.set(Calendar.MONTH, calCancellation.get(Calendar.MONTH));
         calSubscription.set(Calendar.YEAR, calCancellation.get(Calendar.YEAR));
-
-        // Adjust to the last day of the subscription month
         calSubscription.set(Calendar.DAY_OF_MONTH, calSubscription.getActualMaximum(Calendar.DAY_OF_MONTH));
 
         Date currentDate = new Date(System.currentTimeMillis());
-        // The user is in the delay period if the current date is before the last day of the subscription month
         return currentDate.before(calSubscription.getTime());
     }
+
 
     /**
      * Récupère le nombre de jours restants pour proposer
@@ -171,31 +175,29 @@ public class DAOPaymentMySQL extends DAOPayment {
     @Override
     public int getDaysRemainingInDelayPeriod(int userId) throws Exception {
         Payment latestPayment = getLatestPaymentByUserId(userId);
-        if (latestPayment == null || latestPayment.getExpirationDate() == null) {
-            return 0;
+        if (latestPayment == null) {
+            return 0; // Pas de paiement trouvé
         }
 
-        Date cancellationDate = latestPayment.getExpirationDate();
-        Calendar calCancellation = Calendar.getInstance();
-        calCancellation.setTime(cancellationDate);
+        // Obtenir la date d'aujourd'hui et la date de souscription
+        Calendar currentDate = Calendar.getInstance();
+        Calendar subscriptionDate = Calendar.getInstance();
+        subscriptionDate.setTime(latestPayment.getSubscriptionDate());
 
-        Date subscriptionDate = latestPayment.getSubscriptionDate();
-        Calendar calSubscription = Calendar.getInstance();
-        calSubscription.setTime(subscriptionDate);
-        calSubscription.set(Calendar.MONTH, calCancellation.get(Calendar.MONTH));
-        calSubscription.set(Calendar.YEAR, calCancellation.get(Calendar.YEAR));
-        calSubscription.set(Calendar.DAY_OF_MONTH, calSubscription.getActualMaximum(Calendar.DAY_OF_MONTH));
+        // Régler le mois et l'année de la date de souscription au mois et à l'année actuels
+        subscriptionDate.set(Calendar.YEAR, currentDate.get(Calendar.YEAR));
+        subscriptionDate.set(Calendar.MONTH, currentDate.get(Calendar.MONTH));
 
+        // Si la date anniversaire est déjà passée ce mois-ci, utiliser le mois suivant
+        if (subscriptionDate.before(currentDate)) {
+            subscriptionDate.add(Calendar.MONTH, 1);
+        }
+
+        // Calculer la différence en jours
         long millisInDay = 24 * 60 * 60 * 1000;
-        long currentTimeMillis = System.currentTimeMillis();
-        long endOfDelayPeriodMillis = calSubscription.getTimeInMillis();
-        long diffMillis = endOfDelayPeriodMillis - currentTimeMillis;
+        long diffMillis = subscriptionDate.getTimeInMillis() - currentDate.getTimeInMillis();
 
-        if (diffMillis < 0) {
-            return 0; // The delay period is over
-        }
-
-        return (int) (diffMillis / millisInDay);
+        return (int) (diffMillis / millisInDay) + 1; // Ajouter 1 pour inclure le jour actuel
     }
 
 }
