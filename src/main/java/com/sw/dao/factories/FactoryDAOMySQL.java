@@ -36,4 +36,10 @@ public class FactoryDAOMySQL extends FactoryDAO {
     @Override
     public DAOPayment getInstanceofDAOPayment() {return new DAOPaymentMySQL();}
 
+    @Override
+    public DAOPlaylistMusic getDAOPlaylistMusic() {return new DAOPlaylistMusicMySQL();}
+
+    @Override
+    public DAOPlaylist getDAOPlaylist() {return new DAOPlaylistMySQL();}
+
 }

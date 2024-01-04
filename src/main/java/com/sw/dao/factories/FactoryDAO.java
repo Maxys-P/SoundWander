@@ -52,6 +52,9 @@ public abstract class FactoryDAO {
 
     public abstract DAOPayment getInstanceofDAOPayment();
 
+    public abstract DAOPlaylistMusic getDAOPlaylistMusic();
+
+    public abstract DAOPlaylist getDAOPlaylist();
 }
 
 
