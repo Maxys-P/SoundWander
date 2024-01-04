@@ -17,17 +17,16 @@ public class FacadePlaylistMusic extends Facade{
         return instance;
     }
 
-    public PlaylistMusic getPlaylistMusicByName(String name) throws Exception {
+    public PlaylistMusic addPlaylistMusic(String playlistName, int music) throws Exception {
         try {
-            return daoPlaylistMusic.getPlaylistMusicByName(name);
+            return daoPlaylistMusic.addMusicToPlaylist(playlistName, music);
         } catch (Exception e) {
             throw e;
         }
     }
-
-    public boolean addPlaylistMusic(String playlistName, int music) throws Exception {
+    public int getPlaylistMusicByCountry(String country) throws Exception {
         try {
-            return daoPlaylistMusic.addMusicToPlaylist(playlistName, music);
+            return daoPlaylistMusic.getPlaylistMusicIdByCountry(country);
         } catch (Exception e) {
             throw e;
         }

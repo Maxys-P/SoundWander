@@ -29,7 +29,7 @@ public class RequetesMySQL extends RequetesDB {
      * @return Connection, la connexion à la base de données
      * @throws ExceptionDB si la connexion ne peut pas être établie
      */
-    private Connection getConnexion() throws ExceptionDB, SQLException {
+    public Connection getConnexion() throws ExceptionDB, SQLException {
         return this.connexionDB.getConnection();
     }
 

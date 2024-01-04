@@ -14,6 +14,16 @@ public class Playlist {
         this.continent = continent;
     }
 
+    @Override
+    public String toString(){
+        return "Playlist{" +
+                "id=" + id + '\'' +
+                ", name=" + name + '\'' +
+                ", country=" + country + '\'' +
+                ", continent=" + continent + '\'' +
+                '}';
+    }
+
     public int getPlaylistId() {return id;}
     public String getPlaylistName() {return name;}
     public String getPlaylistCountry() {return country;}

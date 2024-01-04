@@ -38,6 +38,29 @@ public class DAOPlaylistMySQL extends DAOPlaylist {
             return null;
         }
     }
+    @Override
+    public Playlist getPlaylistById(int id) throws Exception {
+        Map<String, Object> conditions = new HashMap<>();
+        conditions.put("id", id);
+        try{
+            MapperResultSet playlistData = ((RequetesMySQL) requetesDB).selectWhere(table, conditions);
+            if (!playlistData.getListData().isEmpty()) {
+                Map<String, Object> playlistDetails = playlistData.getListData().getFirst();
+
+                String Playlistname = (String) playlistDetails.get("name");
+                String country = (String) playlistDetails.get("country");
+                String continent = (String) playlistDetails.get("continent");
+
+                return new Playlist(id, Playlistname, country, continent);
+            } else {
+                System.out.println("Pb quand on appelle selectWhere");
+            }
+            return null;
+        } catch (Exception e) {
+            System.out.println("Erreur lors de la récupération de la playlist par nom");
+            return null;
+        }
+    }
 
     @Override
     public Playlist getPlaylistByCountry(String country) throws Exception {
