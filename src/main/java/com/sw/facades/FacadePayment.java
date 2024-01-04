@@ -76,8 +76,8 @@ public class FacadePayment extends Facade{
      * @return true si l'utilisateur est dans sa période de grâce, false sinon.
      * @throws Exception si il y a un problème lors de la récupération.
      */
-    public boolean isInDelayPeriod(int userId) throws Exception {
-        return daoPayment.isInDelayPeriod(userId);
+    public boolean canArtistProposeMusic(int userId) throws Exception {
+        return daoPayment.canArtistProposeMusic(userId);
     }
 
     /**

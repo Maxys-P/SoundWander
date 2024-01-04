@@ -12,12 +12,12 @@ import javafx.scene.control.ListView;
 
 import java.util.List;
 
-public class ControllerPublicPlaylist extends Controller {
+public class ControllerPlaylistMusic extends Controller {
     private FacadePublicPlaylist publicPlaylistFacade;
     @FXML
     private ListView<Music> musicListView;
 
-    public ControllerPublicPlaylist() {
+    public ControllerPlaylistMusic() {
         this.publicPlaylistFacade = FacadePublicPlaylist.getInstance();
     }
 
