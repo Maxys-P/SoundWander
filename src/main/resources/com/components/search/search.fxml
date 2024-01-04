@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
@@ -10,12 +12,21 @@
     <VBox fx:id="conteneurSearch" alignment="CENTER" spacing="20" styleClass="conteneur" AnchorPane.rightAnchor="150" AnchorPane.leftAnchor="150">
         <Button text="X" styleClass="close-button" AnchorPane.rightAnchor="0" onAction="#closeSearch"/>
         <ComboBox fx:id="comboBoxType" prefWidth="200.0" promptText="Que cherchez-vous ?" styleClass="champ"/>
-        <HBox spacing="10">
+        <HBox alignment="BASELINE_CENTER">
             <TextField fx:id="searchTerm" HBox.hgrow="ALWAYS" promptText="Tapez votre recherche ici" styleClass="champ"/>
-            <Button text="🔍"/>
+            <Button fx:id="doSearch" onAction="#performSearch" style="-fx-background-color: transparent;">
+                <graphic>
+                    <ImageView fitHeight="30" fitWidth="30" pickOnBounds="true" preserveRatio="true">
+                        <Image url="@../../../images/loupeIcon.png" />
+                    </ImageView>
+                </graphic>
+            </Button>
         </HBox>
-        <Label fx:id="resultLabel" text="Chansons" />
-        <ListView fx:id="resultList" VBox.vgrow="ALWAYS"/>
+        <VBox fx:id="result" VBox.vgrow="ALWAYS"/>
+        <!-- Label pour afficher les messages d'erreur. Initialement caché. -->
+        <Text fx:id="errorText" fill="RED" text="Aucun élément trouvé"/>
+        <ListView fx:id="musicListView" VBox.vgrow="ALWAYS" />
+
     </VBox>
 
 </AnchorPane>
