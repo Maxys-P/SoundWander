@@ -2,8 +2,9 @@ package com.sw.dao;
 
 
 import com.sw.classes.Playlist;
+import com.sw.commons.Searchable;
 
-public abstract class DAOPlaylist extends DAO{
+public abstract class DAOPlaylist extends DAO implements Searchable {
     public DAOPlaylist() {super("Playlist");}
 
     public abstract Playlist getPLaylistByName(String name) throws Exception;
