@@ -10,7 +10,7 @@ public abstract class DAOPlaylistMusic extends DAO {
 
     public abstract PlaylistMusic getPlaylistMusicById(int id) throws Exception;
     public abstract PlaylistMusic addMusicToPlaylist(String playlistName, int music) throws Exception;
-    public abstract int getPlaylistMusicIdByCountry(String country) throws Exception;
+    public abstract List<PlaylistMusic> getPlaylistMusicByContinent(String continent) throws Exception;
 
     public abstract List<Music> getAllMusicByPlaylist(int playlistId) throws Exception;
 }

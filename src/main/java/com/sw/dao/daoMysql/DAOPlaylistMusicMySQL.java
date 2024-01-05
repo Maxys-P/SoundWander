@@ -7,14 +7,12 @@ import com.sw.dao.DAOPlaylist;
 import com.sw.dao.DAOPlaylistMusic;
 import com.sw.dao.boiteAOutils.MapperResultSet;
 import com.sw.dao.requetesDB.RequetesMySQL;
+import com.sw.exceptions.ExceptionDB;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class DAOPlaylistMusicMySQL extends DAOPlaylistMusic {
 
@@ -29,27 +27,57 @@ public class DAOPlaylistMusicMySQL extends DAOPlaylistMusic {
     }
 
 
-    @Override
-    public int getPlaylistMusicIdByCountry(String country) throws Exception {
-        Map<String, Object> conditions = new HashMap<>();
-        conditions.put("country", country);
+    /**
+     * Retrieves a list of PlaylistMusic for a specific continent.
+     * @param continent The continent for which to retrieve the PlaylistMusic.
+     * @return A list of PlaylistMusic objects.
+     * @throws ExceptionDB If a database exception occurs.
+     */
+    public List<PlaylistMusic> getPlaylistMusicByContinent(String continent) throws Exception {
+        // Set up the JOIN and WHERE conditions for the SQL query
+        String mainTable = "PlaylistMusic";
+        List<String> joinTables = Arrays.asList("Playlist", "Music");
+        List<String> onConditions = Arrays.asList(
+                "PlaylistMusic.playlist_id = Playlist.id",
+                "PlaylistMusic.music_id = Music.id"
+        );
+        Map<String, Object> whereConditions = new HashMap<>();
+        whereConditions.put("Playlist.continent", continent);
+
+        // Execute the query
+        MapperResultSet result;
         try {
-            MapperResultSet playlistData = ((RequetesMySQL) requetesDB).selectWhere(table, conditions);
-            if (!playlistData.getListData().isEmpty()) {
-                Map<String, Object> playlistDetails = playlistData.getListData().getFirst();
-                int id = (int) playlistDetails.get("id");
-                return id;
-            } else {
-                System.out.println("Aucune PlaylistMusic trouvée pour ce pays");
-            }
-            return 0;
+            result = requetesDB.selectWithJoin(mainTable, joinTables, onConditions, whereConditions);
         } catch (Exception e) {
-            System.out.println("Erreur lors de la récupération de la PlaylistMusic par pays");
-            return 0;
+            e.printStackTrace();
+            throw new ExceptionDB("Error retrieving PlaylistMusic by continent: " + e.getMessage(), e);
         }
 
+        // Map to hold Playlist and its associated list of Music
+        Map<Integer, PlaylistMusic> playlistMusicMap = new HashMap<>();
+        for (Map<String, Object> row : result.getListData()) {
+            int playlistId = (int) row.get("playlist_id");
+            // Assuming you have methods to create playlist and music objects from the row data
+            Playlist playlist = DAOPlaylistMySQL.getPlaylistById(playlistId);
+            Music music = DAOMusicMySQL.getMusicById((int) row.get("music_id"));
 
+            // Check if the playlist already has an entry in the map
+            PlaylistMusic playlistMusic = playlistMusicMap.get(playlistId);
+            if (playlistMusic == null) {
+                playlistMusic = new PlaylistMusic(playlist, new ArrayList<>());
+                playlistMusicMap.put(playlistId, playlistMusic);
+            }
+            // Add the music to the playlist's music list
+            playlistMusic.getMusic().add(music);
+        }
+
+        // Extract the PlaylistMusic objects from the map
+        List<PlaylistMusic> playlistMusics = new ArrayList<>(playlistMusicMap.values());
+
+        return playlistMusics;
     }
+
+
     /**
      * Méthode pour récupérer une PlaylistMusic par son ID.
      * @param id int, l'ID de la PlaylistMusic
@@ -60,7 +88,7 @@ public class DAOPlaylistMusicMySQL extends DAOPlaylistMusic {
         Map<String, Object> conditions = new HashMap<>();
         conditions.put("id", id);
         try {
-            MapperResultSet playlistData = ((RequetesMySQL) requetesDB).selectWhere(table, conditions);
+            MapperResultSet playlistData = requetesDB.selectWhere(table, conditions);
             if (!playlistData.getListData().isEmpty()) {
                 Map<String, Object> playlistDetails = playlistData.getListData().getFirst();
 
@@ -89,13 +117,12 @@ public class DAOPlaylistMusicMySQL extends DAOPlaylistMusic {
         conditions.put("playlist_id", playlistId);
 
         try {
-            MapperResultSet playlistMusicData = ((RequetesMySQL) requetesDB).selectWhere(table, conditions);
+            MapperResultSet playlistMusicData = requetesDB.selectWhere(table, conditions);
             // Itérez sur les résultats pour créer des objets Music et les ajouter à la liste
             for (Map<String, Object> playlistMusicDetails : playlistMusicData.getListData()) {
                 int musicId = (int) playlistMusicDetails.get("music_id");
                 musicList.add(DAOMusicMySQL.getMusicById(musicId));
             }
-
         } catch (Exception e) {
             System.out.println("Erreur lors de la récupération des musiques pour la playlist : " + e.getMessage());
         }

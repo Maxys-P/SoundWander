@@ -9,7 +9,7 @@ public abstract class DAOPlaylist extends DAO{
     public abstract Playlist getPLaylistByName(String name) throws Exception;
     public abstract Playlist getPlaylistByCountry(String country) throws Exception;
     public abstract Playlist getPlaylistById(int id) throws Exception;
-    public abstract void addPlaylist(String name, String country) throws Exception;
+    public abstract void addPlaylist(String name, String country, String continent) throws Exception;
 
 
 

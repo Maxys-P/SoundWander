@@ -88,12 +88,14 @@ public class DAOPlaylistMySQL extends DAOPlaylist {
     }
 
     @Override
-    public void addPlaylist(String name, String country) throws Exception {
+    public void addPlaylist(String name, String country, String continent) throws Exception {
         try {
 
             Map<String, Object> values = new HashMap<>();
             values.put("name", name);
             values.put("country", country);
+            values.put("continent", continent);
+
 
             int insertedId = ((RequetesMySQL) requetesDB).create("playlist", values);
             System.out.println("Playlist ajoutée avec l'id : " + insertedId);

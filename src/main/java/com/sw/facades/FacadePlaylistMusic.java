@@ -4,6 +4,8 @@ import com.sw.dao.DAOPlaylistMusic;
 import com.sw.classes.PlaylistMusic;
 import com.sw.dao.factories.FactoryDAO;
 
+import java.util.List;
+
 public class FacadePlaylistMusic extends Facade{
     protected FactoryDAO f = FactoryDAO.getInstanceofFactoryDAO();
     private DAOPlaylistMusic daoPlaylistMusic = f.getDAOPlaylistMusic();
@@ -24,9 +26,9 @@ public class FacadePlaylistMusic extends Facade{
             throw e;
         }
     }
-    public int getPlaylistMusicByCountry(String country) throws Exception {
+    public List<PlaylistMusic> getPlaylistMusicByContinent(String continent) throws Exception {
         try {
-            return daoPlaylistMusic.getPlaylistMusicIdByCountry(country);
+            return daoPlaylistMusic.getPlaylistMusicByContinent(continent);
         } catch (Exception e) {
             throw e;
         }
