@@ -14,9 +14,11 @@ public class DAOProposalMySQL extends DAOProposal {
     /**
      * Default constructor
      */
+    private DAOPlaylistMusicMySQL daoPlaylistMusicMySQL;
     public DAOProposalMySQL() {
         super();
         this.requetesDB = new RequetesMySQL();
+        this.daoPlaylistMusicMySQL = new DAOPlaylistMusicMySQL();
     }
 
     /**
@@ -176,16 +178,14 @@ public class DAOProposalMySQL extends DAOProposal {
         String country = proposal.getCountry();
 
         // 4. Ajouter la music a la playlist du pays en question
-        boolean isAddedToPlaylist = new DAOPlaylistMusicMySQL().addMusicToPlaylist(country, musicId);
-
-        // TODO: Mettez en œuvre la logique pour notifier l'artiste de l'acceptation de sa proposition.
-
-        // 6. Supprimer la proposition de la base de données
-        boolean isDeleted = deleteProposal(id);
-        if (!isDeleted) {
-            throw new Exception("Échec de la suppression de la proposition après acceptation.");
+        try {
+            daoPlaylistMusicMySQL.addMusicToPlaylist(country, musicId);
+            // 6. Supprimer la proposition de la base de données
+            boolean isDeleted = deleteProposal(id);
+        } catch (Exception e) {
+            throw new Exception("Erreur inattendue lors de l'ajout de la musique à la playlist", e);
         }
-
+        // TODO: Mettez en œuvre la logique pour notifier l'artiste de l'acceptation de sa proposition.
         return true;
     }
 

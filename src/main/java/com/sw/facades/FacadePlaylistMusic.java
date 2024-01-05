@@ -4,12 +4,13 @@ import com.sw.dao.DAOPlaylistMusic;
 import com.sw.classes.PlaylistMusic;
 import com.sw.dao.factories.FactoryDAO;
 
+import java.util.List;
+import java.util.Map;
+
 public class FacadePlaylistMusic extends Facade{
+    private static FacadePlaylistMusic instance = null;
     protected FactoryDAO f = FactoryDAO.getInstanceofFactoryDAO();
     private DAOPlaylistMusic daoPlaylistMusic = f.getDAOPlaylistMusic();
-
-    private static FacadePlaylistMusic instance = null;
-
     public static FacadePlaylistMusic getInstance() {
         if (instance == null) {
             instance = new FacadePlaylistMusic();
@@ -17,15 +18,7 @@ public class FacadePlaylistMusic extends Facade{
         return instance;
     }
 
-    public PlaylistMusic getPlaylistMusicByName(String name) throws Exception {
-        try {
-            return daoPlaylistMusic.getPlaylistMusicByName(name);
-        } catch (Exception e) {
-            throw e;
-        }
-    }
-
-    public boolean addPlaylistMusic(String playlistName, int music) throws Exception {
+    public PlaylistMusic addPlaylistMusic(String playlistName, int music) throws Exception {
         try {
             return daoPlaylistMusic.addMusicToPlaylist(playlistName, music);
         } catch (Exception e) {
@@ -33,4 +26,22 @@ public class FacadePlaylistMusic extends Facade{
         }
     }
 
+    public List<PlaylistMusic> loadPlaylistMusic(String continent) throws Exception {
+        try {
+            daoPlaylistMusic.getPlaylistMusicByContinent(continent);
+        } catch (Exception e) {
+            throw e;
+        }
+        return null;
+    }
+
+    public Map<String, List<PlaylistMusic>> getPlaylistMusicByContinent(String continent) throws Exception {
+        try {
+            // Call the DAO method to get the playlist music by continent
+            return daoPlaylistMusic.getPlaylistMusicByContinent(continent);
+        } catch (Exception e) {
+            // Handle or throw the exception as needed
+            throw new Exception("Error retrieving playlist music by continent: " + e.getMessage(), e);
+        }
+    }
 }

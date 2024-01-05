@@ -26,7 +26,7 @@ public class FacadePlaylist extends Facade{
 
     public void addPublicPlaylist(String name, String country, String continent) throws Exception {
         try {
-            daoPlaylist.addPlaylist(name, country);
+            daoPlaylist.addPlaylist(name, country, continent);
         } catch (Exception e) {
             throw e;
         }

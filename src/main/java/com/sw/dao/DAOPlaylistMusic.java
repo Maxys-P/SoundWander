@@ -4,13 +4,14 @@ import com.sw.classes.Music;
 import com.sw.classes.PlaylistMusic;
 
 import java.util.List;
+import java.util.Map;
 
 public abstract class DAOPlaylistMusic extends DAO {
     public DAOPlaylistMusic() {super("PlaylistMusic");}
 
-    public abstract PlaylistMusic getPlaylistMusicByName(String name) throws Exception;
-
-    public abstract boolean addMusicToPlaylist(String playlistName, int music) throws Exception;
+    public abstract PlaylistMusic getPlaylistMusicById(int id) throws Exception;
+    public abstract PlaylistMusic addMusicToPlaylist(String playlistName, int music) throws Exception;
+    public abstract Map<String, List<PlaylistMusic>> getPlaylistMusicByContinent(String continent) throws Exception;
 
     public abstract List<Music> getAllMusicByPlaylist(int playlistId) throws Exception;
 }
