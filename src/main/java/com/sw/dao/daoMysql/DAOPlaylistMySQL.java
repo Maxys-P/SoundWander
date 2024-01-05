@@ -1,11 +1,18 @@
 package com.sw.dao.daoMysql;
 
+import com.sw.classes.Artist;
+import com.sw.classes.Music;
 import com.sw.classes.Playlist;
+import com.sw.commons.SearchCriteria;
 import com.sw.dao.DAOPlaylist;
 import com.sw.dao.boiteAOutils.MapperResultSet;
 import com.sw.dao.requetesDB.RequetesMySQL;
+import com.sw.exceptions.ExceptionDB;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class DAOPlaylistMySQL extends DAOPlaylist {
@@ -103,5 +110,14 @@ public class DAOPlaylistMySQL extends DAOPlaylist {
         } catch (Exception e) {
             System.out.println("Erreur lors de l'ajout de la playlist");
         }
+    }
+
+    @Override
+    public List<Object> search(SearchCriteria criteria) {
+        List<Object> matchingPlaylist = new ArrayList<>();
+        Map<String, Object> whereConditions = new HashMap<>();
+        whereConditions.put("name", criteria.getSearchTerm());
+
+        return null;
     }
 }
