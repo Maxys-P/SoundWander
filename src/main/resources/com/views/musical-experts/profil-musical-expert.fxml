@@ -18,7 +18,6 @@
 
 <center>
         <VBox spacing="20" alignment="TOP_CENTER">
-            <Text text="C'est la page musical expert"/>
             <fx:include source="../../components/proposal/listAllProposals.fxml" />
             <fx:include source="../../components/public-playlist/button-create-public-playlist.fxml" />
         </VBox>

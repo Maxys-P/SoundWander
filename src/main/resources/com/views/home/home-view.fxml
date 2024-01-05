@@ -18,7 +18,6 @@
     <center>
         <ScrollPane fitToWidth="true">
                 <VBox alignment="CENTER" spacing="20">
-                    <Label text="Accueil" styleClass="h1"/>
                     <Label text="Où souhaites tu voyager ?" styleClass="h2"/>
                     <fx:include source="../../components/home/clicable-map.fxml"/>
                 </VBox>
