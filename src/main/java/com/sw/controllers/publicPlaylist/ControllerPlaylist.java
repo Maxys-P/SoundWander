@@ -1,25 +1,27 @@
 package com.sw.controllers.publicPlaylist;
 
+import com.neovisionaries.i18n.CountryCode;
 import com.sw.controllers.Controller;
 import com.sw.exceptions.ExceptionBadPage;
 import com.sw.facades.FacadePlaylist;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextFormatter;
+import javafx.scene.control.ComboBox;
 import javafx.scene.text.Text;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import java.awt.event.ActionEvent;
-import java.util.function.UnaryOperator;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class ControllerPlaylist extends Controller {
     private FacadePlaylist playlistFacade;
 
     @FXML private Button boutonCreatePublicPlaylist;
     @FXML public TextField PlaylistName;
-    @FXML public TextField Country;
-    @FXML public TextField Continent;
+    @FXML public ComboBox<String> Country;
+    @FXML public ComboBox<String> Continent;
     @FXML public Text errorText;
     @FXML public Button boutonRetour;
 
@@ -30,7 +32,19 @@ public class ControllerPlaylist extends Controller {
 
     @FXML
     public void initialize() {
+
         super.hideError(errorText);
+
+        List<String> countries = new ArrayList<>();
+
+        for (CountryCode code : CountryCode.values()) {
+            countries.add(code.getName());
+        }
+
+        Collections.sort(countries);
+        Country.getItems().addAll(countries);
+
+        Continent.getItems().addAll("Afrique", "Amérique du Nord", "Amérique du Sud", "Asie", "Europe", "Océanie"); //ligne 47
     }
     @FXML
     public void gotoCreatePublicPlaylist() throws ExceptionBadPage {
@@ -47,13 +61,13 @@ public class ControllerPlaylist extends Controller {
 
     @FXML
     private void createPublicPlaylist() throws ExceptionBadPage {
-        if (PlaylistName.getText().isEmpty() || Country.getText().isEmpty()) {
+        if (PlaylistName.getText().isEmpty() || Country.getValue().isEmpty() || Continent.getValue().isEmpty()) {
             super.displayError(errorText, "Veuillez remplir tous les champs");
         } else {
             try {
                 String name = PlaylistName.getText();
-                String country = Country.getText();
-                String continent = Continent.getText();
+                String country = Country.getValue();
+                String continent = Continent.getValue();
                 playlistFacade.addPublicPlaylist(name, country, continent);
                 Stage currentStage = (Stage) PlaylistName.getScene().getWindow();
                 currentStage.close();
@@ -67,7 +81,7 @@ public class ControllerPlaylist extends Controller {
 
     @FXML
     private void goBack() throws ExceptionBadPage {
-            goToPage(boutonRetour,"musical-experts/profil-musical-expert.fxml", "Mon profil");
+        goToPage(boutonRetour,"musical-experts/profil-musical-expert.fxml", "Mon profil");
     }
 
 }

@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
@@ -24,8 +21,8 @@
         <VBox alignment="CENTER" spacing="20" styleClass="conteneur" maxWidth="400">
             <Label text="Créer une playlist publique" styleClass="h2"/>
             <TextField fx:id="PlaylistName" promptText="Nom de la playlist" styleClass="champ" />
-            <TextField fx:id="Country" promptText="Pays" styleClass="champ" />
-            <TextField fx:id="Continent" promptText="Continent" styleClass="champ" />
+            <ComboBox fx:id="Country" promptText="Pays" styleClass="champ" />
+            <ComboBox fx:id="Continent" promptText="Continent" styleClass="champ" />
             <Button text="Créer" onAction="#createPublicPlaylist" styleClass="boutonBleu"/>
             <Text fx:id="errorText" />
         </VBox>

@@ -21,6 +21,7 @@
     </VBox>
     </center>
     <TextField fx:id="PlaylistName" promptText="Nom de la playlist" visible="false"/>
-    <TextField fx:id="Country" promptText="Pays" visible="false"/>
+    <ComboBox fx:id="Country" promptText="Pays" visible="false"/>
+    <ComboBox fx:id="Continent" promptText="Continent" visible="false"/>
     <Text fx:id="errorText" />
 </BorderPane>

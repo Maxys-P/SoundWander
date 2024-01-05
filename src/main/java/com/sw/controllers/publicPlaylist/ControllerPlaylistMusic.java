@@ -41,6 +41,4 @@ public class ControllerPlaylistMusic extends Controller {
             }
         });
     }
-
-
 }

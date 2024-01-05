@@ -25,7 +25,8 @@
         <VBox fx:id="result" VBox.vgrow="ALWAYS"/>
         <!-- Label pour afficher les messages d'erreur. Initialement caché. -->
         <Text fx:id="errorText" fill="RED" text="Aucun élément trouvé"/>
-        <ListView fx:id="musicListView" VBox.vgrow="ALWAYS" />
+        <ListView fx:id="searchResultsListView" VBox.vgrow="ALWAYS" />
+
 
     </VBox>
 

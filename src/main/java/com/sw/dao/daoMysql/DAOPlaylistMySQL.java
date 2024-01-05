@@ -114,10 +114,25 @@ public class DAOPlaylistMySQL extends DAOPlaylist {
 
     @Override
     public List<Object> search(SearchCriteria criteria) {
-        List<Object> matchingPlaylist = new ArrayList<>();
+        List<Object> matchingPlaylists = new ArrayList<>();
         Map<String, Object> whereConditions = new HashMap<>();
-        whereConditions.put("name", criteria.getSearchTerm());
+        whereConditions.put("country", criteria.getSearchTerm());
 
-        return null;
+        try {
+            MapperResultSet mapperResultSet = ((RequetesMySQL) requetesDB).selectWhere("playlist", whereConditions);
+            for (Map<String, Object> rowData : mapperResultSet.getListData()) {
+                int id = (int) rowData.get("id");
+                String name = (String) rowData.get("name");
+                String country = (String) rowData.get("country");
+                String continent = (String) rowData.get("continent");
+
+                Playlist playlist = new Playlist(id, name, country, continent);
+
+                matchingPlaylists.add(playlist);
+            }
+        } catch (ExceptionDB e) {
+            e.printStackTrace();
+        }
+        return matchingPlaylists;
     }
 }
