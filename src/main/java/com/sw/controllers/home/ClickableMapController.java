@@ -27,7 +27,7 @@ public class ClickableMapController extends Controller {
     public void onContinentClicked(String continentName) {
         System.out.println("Continent cliqué: " + continentName);
         try {
-            goToPage("home/continent-view.fxml", continentName);
+            goToPage("public-playlist/public-playlist.fxml", continentName);
         } catch (ExceptionBadPage e) {
             e.printStackTrace();
         }

@@ -13,14 +13,17 @@ import javafx.scene.control.ListView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class ControllerPlaylistMusic extends Controller {
     private FacadePlaylistMusic playlistMusicFacade;
-    @FXML
-    private ListView<Music> musicListView;
-    @FXML
-    private Text continentNameText;
+    @FXML private ListView<String> playlistListView = new ListView<>();
+    @FXML private ListView<String> countryListView = new ListView<>();
+    @FXML private Text continentNameText;
 
     public ControllerPlaylistMusic() {
         this.playlistMusicFacade = FacadePlaylistMusic.getInstance();
@@ -28,14 +31,14 @@ public class ControllerPlaylistMusic extends Controller {
 
     public void initialize() {
         continentNameText.sceneProperty().addListener((observable, oldValue, newValue) -> {
-            System.out.println("ContinentController scene vaut : " + newValue);
+            System.out.println("ControllerPlaylistMusic scene vaut : " + newValue);
             if (newValue != null) {
                 newValue.windowProperty().addListener((obs, oldWindow, newWindow) -> {
-                    System.out.println("ContinentController stage vaut : " + newWindow);
+                    System.out.println("ControllerPlaylistMusic stage vaut : " + newWindow);
                     if (newWindow instanceof Stage){
                         Stage stage = (Stage) newWindow;
                         String continentName = stage.getTitle();
-                        System.out.println("ContinentController continentName vaut : " + continentName);
+                        System.out.println("ControllerPlaylistMusic continentName vaut : " + continentName);
                         if(continentName != null) {
                             setContinentName(continentName);
                         }
@@ -45,47 +48,44 @@ public class ControllerPlaylistMusic extends Controller {
         });
     }
 
-    public void displayPlaylist(PlaylistMusic playlistMusic) {
-        List<Music> musics = playlistMusic.getMusic();
-
-        // Mettre à jour le ListView avec les musiques
-        ObservableList<Music> musicList = FXCollections.observableArrayList(musics);
-        musicListView.setItems(musicList);
-
-        // Assurez-vous que le ListView affiche correctement les informations des musiques
-        musicListView.setCellFactory(param -> new ListCell<Music>() {
-            @Override
-            protected void updateItem(Music music, boolean empty) {
-                super.updateItem(music, empty);
-                if (empty || music == null) {
-                    setText(null);
-                } else {
-                    setText(music.getName()); // Vous pouvez personnaliser l'affichage ici
-                }
+    public void displayPlaylist(Map<String, List<PlaylistMusic>> playlistsByCountry) {
+        ObservableList<String> displayList = FXCollections.observableArrayList();
+        for (Map.Entry<String, List<PlaylistMusic>> entry : playlistsByCountry.entrySet()) {
+            String country = entry.getKey();
+            List<PlaylistMusic> playlists = entry.getValue();
+            for (PlaylistMusic playlist : playlists) {
+                displayList.add(country + ": " + playlist.getPlaylist().getPlaylistName() + " - " + musicToString(playlist.getMusic()));
             }
-        });
+        }
+        playlistListView.setItems(displayList);
     }
 
-
+    private String musicToString(List<Music> musics) {
+        return musics.stream().map(Music::getName).collect(Collectors.joining(", "));
+    }
     private void loadPlaylistMusic(String continent) {
         try {
-            List<PlaylistMusic> playlistMusics = playlistMusicFacade.getPlaylistMusicByContinent(continent);
-            System.out.println(playlistMusics);
-            for (PlaylistMusic playlistMusic : playlistMusics) {
-                displayPlaylist(playlistMusic);
-            }
+            Map<String, List<PlaylistMusic>> playlistMusicsByCountry = playlistMusicFacade.getPlaylistMusicByContinent(continent);
+
+            ObservableList<String> countries = FXCollections.observableArrayList(playlistMusicsByCountry.keySet());
+            countryListView.setItems(countries);
+            countryListView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+                displayPlaylists(newValue, playlistMusicsByCountry.get(newValue));
+            });
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
-
+    private void displayPlaylists(String country, List<PlaylistMusic> playlists) {
+        ObservableList<String> playlistNames = FXCollections.observableArrayList();
+        for (PlaylistMusic pm : playlists) {
+            playlistNames.add(pm.getPlaylist().getPlaylistName() + " - " + musicToString(pm.getMusic()));
+        }
+        playlistListView.setItems(playlistNames);
+    }
     public void setContinentName(String name) {
         continentNameText.setText(name);
         loadPlaylistMusic(name);
     }
-
-
-
 }

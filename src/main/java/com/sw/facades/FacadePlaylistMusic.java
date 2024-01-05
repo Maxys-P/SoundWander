@@ -5,6 +5,7 @@ import com.sw.classes.PlaylistMusic;
 import com.sw.dao.factories.FactoryDAO;
 
 import java.util.List;
+import java.util.Map;
 
 public class FacadePlaylistMusic extends Facade{
     private static FacadePlaylistMusic instance = null;
@@ -24,20 +25,23 @@ public class FacadePlaylistMusic extends Facade{
             throw e;
         }
     }
-    public List<PlaylistMusic> getPlaylistMusicByContinent(String continent) throws Exception {
-        try {
-            return daoPlaylistMusic.getPlaylistMusicByContinent(continent);
-        } catch (Exception e) {
-            throw e;
-        }
-    }
 
-    public void loadPlaylistMusic(String continent) throws Exception {
+    public List<PlaylistMusic> loadPlaylistMusic(String continent) throws Exception {
         try {
             daoPlaylistMusic.getPlaylistMusicByContinent(continent);
         } catch (Exception e) {
             throw e;
         }
+        return null;
     }
 
+    public Map<String, List<PlaylistMusic>> getPlaylistMusicByContinent(String continent) throws Exception {
+        try {
+            // Call the DAO method to get the playlist music by continent
+            return daoPlaylistMusic.getPlaylistMusicByContinent(continent);
+        } catch (Exception e) {
+            // Handle or throw the exception as needed
+            throw new Exception("Error retrieving playlist music by continent: " + e.getMessage(), e);
+        }
+    }
 }

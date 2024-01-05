@@ -33,7 +33,8 @@ public class DAOPlaylistMusicMySQL extends DAOPlaylistMusic {
      * @return A list of PlaylistMusic objects.
      * @throws ExceptionDB If a database exception occurs.
      */
-    public List<PlaylistMusic> getPlaylistMusicByContinent(String continent) throws Exception {
+    @Override
+    public Map<String, List<PlaylistMusic>> getPlaylistMusicByContinent(String continent) throws Exception {
         // Set up the JOIN and WHERE conditions for the SQL query
         String mainTable = "PlaylistMusic";
         List<String> joinTables = Arrays.asList("Playlist", "Music");
@@ -48,35 +49,29 @@ public class DAOPlaylistMusicMySQL extends DAOPlaylistMusic {
         MapperResultSet result;
         try {
             result = requetesDB.selectWithJoin(mainTable, joinTables, onConditions, whereConditions);
+            System.out.println("Result: " + result.getListData());
         } catch (Exception e) {
             e.printStackTrace();
             throw new ExceptionDB("Error retrieving PlaylistMusic by continent: " + e.getMessage(), e);
         }
 
-        // Map to hold Playlist and its associated list of Music
-        Map<Integer, PlaylistMusic> playlistMusicMap = new HashMap<>();
+        // Map to hold country as key and its associated list of PlaylistMusic as value
+        Map<String, List<PlaylistMusic>> playlistMusicByCountry = new HashMap<>();
         for (Map<String, Object> row : result.getListData()) {
             int playlistId = (int) row.get("playlist_id");
-            // Assuming you have methods to create playlist and music objects from the row data
+            String country = (String) row.get("country"); // Assuming country is part of the returned row
             Playlist playlist = DAOPlaylistMySQL.getPlaylistById(playlistId);
             Music music = DAOMusicMySQL.getMusicById((int) row.get("music_id"));
 
-            // Check if the playlist already has an entry in the map
-            PlaylistMusic playlistMusic = playlistMusicMap.get(playlistId);
-            if (playlistMusic == null) {
-                playlistMusic = new PlaylistMusic(playlist, new ArrayList<>());
-                playlistMusicMap.put(playlistId, playlistMusic);
-            }
-            // Add the music to the playlist's music list
-            playlistMusic.getMusic().add(music);
+            // Check if the country already has an entry in the map
+            PlaylistMusic playlistMusic = new PlaylistMusic(playlist, Collections.singletonList(music));
+            playlistMusicByCountry.computeIfAbsent(country, k -> new ArrayList<>()).add(playlistMusic);
         }
+        System.out.println("PlaylistMusic by country: " + playlistMusicByCountry);
+        // Return the map
+        return playlistMusicByCountry;
 
-        // Extract the PlaylistMusic objects from the map
-        List<PlaylistMusic> playlistMusics = new ArrayList<>(playlistMusicMap.values());
-
-        return playlistMusics;
     }
-
 
     /**
      * Méthode pour récupérer une PlaylistMusic par son ID.
