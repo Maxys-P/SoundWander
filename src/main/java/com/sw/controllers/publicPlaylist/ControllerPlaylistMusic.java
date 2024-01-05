@@ -3,22 +3,46 @@ package com.sw.controllers.publicPlaylist;
 import com.sw.classes.Music;
 import com.sw.classes.PlaylistMusic;
 import com.sw.controllers.Controller;
+import com.sw.dao.daoMysql.DAOPlaylistMusicMySQL;
 import com.sw.facades.FacadePlaylistMusic;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 import java.util.List;
 
 public class ControllerPlaylistMusic extends Controller {
-    private FacadePlaylistMusic publicPlaylistFacade;
+    private FacadePlaylistMusic playlistMusicFacade;
     @FXML
     private ListView<Music> musicListView;
+    @FXML
+    private Text continentNameText;
 
     public ControllerPlaylistMusic() {
-        this.publicPlaylistFacade = FacadePlaylistMusic.getInstance();
+        this.playlistMusicFacade = FacadePlaylistMusic.getInstance();
+    }
+
+    public void initialize() {
+        continentNameText.sceneProperty().addListener((observable, oldValue, newValue) -> {
+            System.out.println("ContinentController scene vaut : " + newValue);
+            if (newValue != null) {
+                newValue.windowProperty().addListener((obs, oldWindow, newWindow) -> {
+                    System.out.println("ContinentController stage vaut : " + newWindow);
+                    if (newWindow instanceof Stage){
+                        Stage stage = (Stage) newWindow;
+                        String continentName = stage.getTitle();
+                        System.out.println("ContinentController continentName vaut : " + continentName);
+                        if(continentName != null) {
+                            setContinentName(continentName);
+                        }
+                    }
+                });
+            }
+        });
     }
 
     public void displayPlaylist(PlaylistMusic playlistMusic) {
@@ -41,6 +65,27 @@ public class ControllerPlaylistMusic extends Controller {
             }
         });
     }
+
+
+    private void loadPlaylistMusic(String continent) {
+        try {
+            List<PlaylistMusic> playlistMusics = playlistMusicFacade.getPlaylistMusicByContinent(continent);
+            System.out.println(playlistMusics);
+            for (PlaylistMusic playlistMusic : playlistMusics) {
+                displayPlaylist(playlistMusic);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public void setContinentName(String name) {
+        continentNameText.setText(name);
+        loadPlaylistMusic(name);
+    }
+
 
 
 }
