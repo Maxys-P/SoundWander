@@ -14,4 +14,5 @@ public abstract class DAOPlaylistMusic extends DAO {
     public abstract Map<String, List<PlaylistMusic>> getPlaylistMusicByContinent(String continent) throws Exception;
 
     public abstract List<Music> getAllMusicByPlaylist(int playlistId) throws Exception;
+    public abstract PlaylistMusic getPlaylistMusicByCountry(String country) throws Exception;
 }

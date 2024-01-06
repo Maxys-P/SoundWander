@@ -6,22 +6,20 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<?import javafx.scene.text.Text?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            stylesheets="@../../styles/Style.css"
-            fx:controller="com.sw.controllers.publicPlaylist.ControllerPlaylistMusic"
+            fx:controller="com.sw.controllers.publicPlaylist.ControllerPlaylistCountry"
             prefHeight="400.0" prefWidth="600.0">
 
-    <Text fx:id="continentNameText" />
     <center>
         <ScrollPane fitToWidth="true">
             <VBox alignment="CENTER" spacing="20">
                 <Label text="Playlist Public" styleClass="h1"/>
                 <VBox alignment="CENTER" spacing="20" styleClass="conteneurProfile">
-                    <ListView fx:id="countryListView" onMouseClicked="#handleCountrySelection" />
+                    <ListView fx:id="musicListView" />
                 </VBox>
             </VBox>
         </ScrollPane>
     </center>
+
 </BorderPane>
