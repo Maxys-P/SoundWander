@@ -1,5 +1,6 @@
 package com.sw.facades;
 
+import com.sw.classes.Music;
 import com.sw.dao.DAOPlaylistMusic;
 import com.sw.classes.PlaylistMusic;
 import com.sw.dao.factories.FactoryDAO;
@@ -42,6 +43,16 @@ public class FacadePlaylistMusic extends Facade{
         } catch (Exception e) {
             // Handle or throw the exception as needed
             throw new Exception("Error retrieving playlist music by continent: " + e.getMessage(), e);
+        }
+    }
+
+    public PlaylistMusic getPlaylistMusicByCountry(String country) throws Exception {
+        try {
+            // Call the DAO method to get the music by country
+            return daoPlaylistMusic.getPlaylistMusicByCountry(country);
+        } catch (Exception e) {
+            // Handle or throw the exception as needed
+            throw new Exception("Error retrieving music by country: " + e.getMessage(), e);
         }
     }
 }

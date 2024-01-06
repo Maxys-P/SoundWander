@@ -3,7 +3,6 @@ package com.sw.dao.daoMysql;
 import com.sw.classes.Music;
 import com.sw.classes.Playlist;
 import com.sw.classes.PlaylistMusic;
-import com.sw.dao.DAOPlaylist;
 import com.sw.dao.DAOPlaylistMusic;
 import com.sw.dao.boiteAOutils.MapperResultSet;
 import com.sw.dao.requetesDB.RequetesMySQL;
@@ -156,6 +155,46 @@ public class DAOPlaylistMusicMySQL extends DAOPlaylistMusic {
         System.out.println("Musique ajoutée avec succès à la playlist.");
         return new PlaylistMusic(playlist, getAllMusicByPlaylist(playlist.getPlaylistId()));
     }
+    @Override
+    public PlaylistMusic getPlaylistMusicByCountry(String country) throws Exception {
+        // Set up the JOIN and WHERE conditions for the SQL query
+        String mainTable = "PlaylistMusic";
+        List<String> joinTables = Arrays.asList("Playlist", "Music");
+        List<String> onConditions = Arrays.asList(
+                "PlaylistMusic.playlist_id = Playlist.id",
+                "PlaylistMusic.music_id = Music.id"
+        );
+        Map<String, Object> whereConditions = new HashMap<>();
+        whereConditions.put("Playlist.country", country); // Adjusted to filter by country
 
+        // Execute the query
+        MapperResultSet result;
+        try {
+            result = requetesDB.selectWithJoin(mainTable, joinTables, onConditions, whereConditions);
+            System.out.println("Result: " + result.getListData());
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new ExceptionDB("Error retrieving PlaylistMusic by country: " + e.getMessage(), e);
+        }
+
+        // Check the result and create PlaylistMusic if not empty
+        if (!result.getListData().isEmpty()) {
+            // Assuming that there is only one playlist per country, so we take the first one
+            Map<String, Object> firstRow = result.getListData().get(0);
+            int playlistId = (int) firstRow.get("playlist_id");
+            Playlist playlist = DAOPlaylistMySQL.getPlaylistById(playlistId); // Assuming this method exists and works properly
+
+            // Get the list of Music for this playlist
+            List<Music> musicList = getAllMusicByPlaylist(playlistId);
+
+            // Create the PlaylistMusic object
+            PlaylistMusic playlistMusic = new PlaylistMusic(playlist, musicList);
+            System.out.println("PlaylistMusic for country: " + country + " - " + playlistMusic);
+            return playlistMusic;
+        } else {
+            System.out.println("No PlaylistMusic found for country: " + country);
+            return null;
+        }
+    }
 
 }

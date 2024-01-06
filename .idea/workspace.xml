@@ -5,15 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="488cdd30-80e1-4c58-a706-5bdc807ad006" name="Changes" comment="un peu de style">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/publicPlaylist/ControllerPlaylistCountry.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/views/public-playlist/playlist-country-view.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/controllers/publicPlaylist/ControllerPlaylist.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/publicPlaylist/ControllerPlaylist.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/controllers/publicPlaylist/ControllerPlaylistMusic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/publicPlaylist/ControllerPlaylistMusic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/controllers/search/ControllerSearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/search/ControllerSearch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/daoMysql/DAOPlaylistMySQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/daoMysql/DAOPlaylistMySQL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/components/public-playlist/button-create-public-playlist.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/components/public-playlist/button-create-public-playlist.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/components/search/search.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/components/search/search.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/views/musical-experts/form-create-public-playlist.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/views/musical-experts/form-create-public-playlist.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/DAOPlaylistMusic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/DAOPlaylistMusic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/connexions/ConnexionMySQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/connexions/ConnexionMySQL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/daoMysql/DAOPlaylistMusicMySQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/daoMysql/DAOPlaylistMusicMySQL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/facades/FacadePlaylistMusic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/facades/FacadePlaylistMusic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/views/public-playlist/public-playlist.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/views/public-playlist/public-playlist.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,7 +37,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="margaux" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -82,7 +82,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "margaux",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/maxys/Desktop/SoundWander/src/main/resources/com/components/admin",
     "node.js.detected.package.eslint": "true",
@@ -190,6 +190,7 @@
         <item itemvalue="JUnit.UserTest.testToString" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.CreateTableUserScript" />
+        <item itemvalue="Application.App" />
       </list>
     </recent_temporary>
   </component>

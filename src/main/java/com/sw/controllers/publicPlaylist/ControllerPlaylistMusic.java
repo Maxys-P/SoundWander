@@ -3,18 +3,18 @@ package com.sw.controllers.publicPlaylist;
 import com.sw.classes.Music;
 import com.sw.classes.PlaylistMusic;
 import com.sw.controllers.Controller;
-import com.sw.dao.daoMysql.DAOPlaylistMusicMySQL;
 import com.sw.facades.FacadePlaylistMusic;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.ListCell;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.awt.event.MouseEvent;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -88,4 +88,39 @@ public class ControllerPlaylistMusic extends Controller {
         continentNameText.setText(name);
         loadPlaylistMusic(name);
     }
+
+    @FXML
+    public void goToPlaylist(String country) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/views/public-playlist/playlist-country-view.fxml"));
+            Parent root = loader.load();
+
+            // Access the controller of the playlist country view
+            ControllerPlaylistCountry playlistCountryController = loader.getController();
+            if (playlistCountryController == null) {
+                System.out.println("ControllerPlaylistMusic playlistCountryController est null");
+            } else {
+                System.out.println("ControllerPlaylistMusic playlistCountryController n'est pas null");
+            }
+            // Pass the selected country to the playlist country view controller
+            playlistCountryController.setCountry(country);
+            System.out.println("ControllerPlaylistMusic country vaut : " + country);
+
+            // Create a new scene and stage for the playlist country view
+            Scene playlistCountryScene = new Scene(root);
+            Stage playlistCountryStage = new Stage();
+            playlistCountryStage.setScene(playlistCountryScene);
+            playlistCountryStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    @FXML
+    public void handleCountrySelection() {
+        String selectedCountry = countryListView.getSelectionModel().getSelectedItem();
+        if (selectedCountry != null) {
+            goToPlaylist(selectedCountry);
+        }
+    }
+
 }
