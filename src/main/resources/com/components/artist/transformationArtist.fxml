@@ -9,8 +9,11 @@
 <VBox xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.sw.controllers.artists.ControllerTransformationArtist">
-    <Button fx:id="becomeArtistButton"
+    <VBox alignment="CENTER">
+        <Button fx:id="becomeArtistButton"
             text="Devenir Artiste"
             onAction="#handleBecomeArtist"
-            styleClass="boutonBleu" />
+            styleClass="boutonBleu"
+        />
+    </VBox>
 </VBox>

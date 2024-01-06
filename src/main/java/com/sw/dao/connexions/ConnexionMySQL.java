@@ -1,80 +1,66 @@
 package com.sw.dao.connexions;
 
 import com.sw.exceptions.ExceptionDB;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-
-/**
- * Classe qui permet de se connecter à une base de données de type MySQL et d'y exécuter des requêtes
- */
+import java.sql.*;
+import java.util.Properties;
+import io.github.cdimascio.dotenv.Dotenv;
 public class ConnexionMySQL extends ConnexionDB {
 
-    /**
-     * Objet de connexion à la base de données
-     */
-    private Connection connection;
-
-    private String url = "jdbc:mysql://localhost:3306/DBSoundWander";
-    private String utilisateur = "root";
-
-    private String motDePasse = "se123";
-
-
-    /*
-    private String url = "jdbc:mysql://aws.connect.psdb.cloud/dbsoundwander?sslMode=VERIFY_IDENTITY";
-    private String utilisateur = "dr8cwbphmc2l0gsg5tq7";
-    private String motDePasse = "pscale_pw_sLdtBIZE1bPbSjcnIyzYM8378edonNRWu3Bk6sjIy00";
-    */
-
-    /**
-     * Se connecte à la base de données MySQL
-     * @return Connection, un objet de connexion
-     * @throws ExceptionDB en cas d'erreur lors de la connexion
-     */
+    private Connection connection; // Variable de classe pour la connexion
+    private static final Dotenv dotenv = Dotenv.load();
     @Override
     public Connection connection() throws ExceptionDB {
-        try {
-            // Chargement du pilote JDBC pour MySQL
-            Class.forName("com.mysql.cj.jdbc.Driver");
+        // Load environment variables
+        String dbHost = dotenv.get("DB_HOST");
+        String dbUsername = dotenv.get("DB_USERNAME");
+        String dbPassword = dotenv.get("DB_PASSWORD");
+        String dbName = dotenv.get("DB_NAME");
 
-            // Établissement de la connexion
-            this.connection = DriverManager.getConnection(url, utilisateur, motDePasse);
-
-            if (this.connection != null) {
-                //System.out.println("Connecté à : " + this.connection.getMetaData().getURL());
-            } else {
-                System.out.println("Connexion échouée");
-            }
-        } catch (SQLException e) {
-            System.out.println("Échec de la connexion : Erreur SQL.");
-            throw new ExceptionDB("Erreur lors de la connexion à la base de données MySQL : Erreur SQL", e);
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
+        // Vérifiez si l'une d'elles est nulle
+        if (dbHost == null || dbUsername == null || dbPassword == null || dbName == null) {
+            throw new ExceptionDB("One or more environment variables required for the database connection are null.");
         }
-        return this.connection;
+
+        // Check if any of the environment variables are null
+        if (dbHost == null || dbUsername == null || dbPassword == null || dbName == null) {
+            throw new ExceptionDB("One or more environment variables required for the database connection are null.");
+        }
+
+        // JDBC connection properties
+        Properties props = new Properties();
+        props.setProperty("user", dbUsername);
+        props.setProperty("password", dbPassword);
+        props.setProperty("useSSL", "true"); // Enable SSL
+
+        try {
+            // Connect to the database
+            String url = "jdbc:mysql://" + dbHost + "/" + dbName + "?useSSL=false"; // Update this line if SSL is not used
+            this.connection = DriverManager.getConnection(url, props); // Use the class variable
+
+            // Return the connection object
+            return this.connection;
+        } catch (SQLException e) {
+            System.out.println("Failure in database connection: SQL Error.");
+            throw new ExceptionDB("Error connecting to the MySQL database: SQL Error", e);
+        }
     }
 
     @Override
     public Connection getConnection() throws ExceptionDB, SQLException {
-        // Vérification si la connexion est déjà établie et n'est pas fermée
+        // Check if the connection is already established and not closed
         if (this.connection == null || this.connection.isClosed()) {
-            //System.out.println("Connexion non établie ou fermée, tentative de reconnexion.");
-            connection();
+            connection(); // Establish a new connection if necessary
         }
         return this.connection;
     }
 
-
-    // Méthode pour fermer la connexion
     @Override
     public void closeConnection() throws ExceptionDB {
         if (this.connection != null) {
             try {
-                System.out.println("Fermeture de la connexion...");
                 this.connection.close();
             } catch (SQLException e) {
-                throw new ExceptionDB("Erreur lors de la fermeture de la connexion", e);
+                throw new ExceptionDB("Error closing the database connection", e);
             }
         }
     }

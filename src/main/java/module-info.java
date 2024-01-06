@@ -11,6 +11,7 @@ module com.sw {
     requires nv.i18n;
     requires javafx.web;
     requires jdk.jsobject;
+    requires java.dotenv;
 
     exports com.sw;
 
