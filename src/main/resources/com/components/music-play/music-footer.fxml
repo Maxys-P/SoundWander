@@ -50,7 +50,6 @@
             </graphic>
         </Button>
         <ProgressBar fx:id="songProgressBar" prefWidth="200.0"/>
-        <Button fx:id="boutonAddPrivatePlaylist" />
 
         <Button fx:id="boutonAddRemovePrivatePlaylist" onAction="#handleAddRemovePrivatePlaylist" styleClass="musicBouton">
             <graphic>

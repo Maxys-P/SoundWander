@@ -33,5 +33,4 @@ public class Playlist {
     public void setPlaylistCountry(String country) {this.country = country;}
     public void setPlaylistContinent(String continent) {this.continent = continent;}
 
-
 }

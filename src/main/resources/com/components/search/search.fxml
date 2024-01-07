@@ -14,6 +14,7 @@
         <ComboBox fx:id="comboBoxType" prefWidth="200.0" promptText="Que cherchez-vous ?" styleClass="champ"/>
         <HBox alignment="BASELINE_CENTER">
             <TextField fx:id="searchTerm" HBox.hgrow="ALWAYS" promptText="Tapez votre recherche ici" styleClass="champ"/>
+            <ComboBox fx:id="searchComboBox" HBox.hgrow="ALWAYS" visible="false" promptText="Sélectionnez une playlist" styleClass="champ"/>
             <Button fx:id="doSearch" onAction="#performSearch" style="-fx-background-color: transparent;">
                 <graphic>
                     <ImageView fitHeight="30" fitWidth="30" pickOnBounds="true" preserveRatio="true">

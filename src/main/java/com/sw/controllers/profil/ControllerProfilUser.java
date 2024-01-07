@@ -18,6 +18,12 @@ import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import java.io.File;
+import java.io.IOException;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
 
 public class ControllerProfilUser extends ControllerProfil {
 
@@ -28,6 +34,7 @@ public class ControllerProfilUser extends ControllerProfil {
     @FXML private Button boutonModifier;
     @FXML private Button boutonSave;
     @FXML private Text errorText;
+    @FXML private Button boutonDeconnexion;
     @FXML private Button goToPlaylistButton;
     @FXML private Button goToHome;
 
@@ -70,6 +77,24 @@ public class ControllerProfilUser extends ControllerProfil {
             boutonSave.setVisible(false);
         }
     }
+
+    @FXML
+    private void handleButtonDeconnexion(ActionEvent event) throws Exception {
+        try {
+            // Charge le FXML pour la page de connexion
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/views/users/login-view.fxml"));
+            Parent root = loader.load();
+
+            // Récupère la scène actuelle et y place la nouvelle vue (login view)
+            Stage stage = (Stage) boutonDeconnexion.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            // Gestion des erreurs de chargement FXML
+            e.printStackTrace();
+        }
+    }
+
 
     private boolean validateInput() {
         try {
@@ -177,22 +202,5 @@ public class ControllerProfilUser extends ControllerProfil {
         }
     }
 
-    @FXML
-    private void handleGoToPlaylist(ActionEvent event) {
-        try {
-            super.goToPage(goToPlaylistButton, "users/privatePlaylistView.fxml", "playlist privée");
-        } catch (Exception e) {
-            e.printStackTrace(); // Handle the exception appropriately
-        }
-    }
-
-    @FXML
-    private void handleGoToHome(ActionEvent event) {
-        try {
-            super.goToPage(goToHome, "home/home-view.fxml", "page d'accueil");
-        } catch (Exception e) {
-            e.printStackTrace(); // Handle the exception appropriately
-        }
-    }
 
 }

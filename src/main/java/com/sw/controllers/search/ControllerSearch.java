@@ -1,8 +1,11 @@
 package com.sw.controllers.search;
 
+import com.neovisionaries.i18n.CountryCode;
 import com.sw.classes.Playlist;
 import com.sw.classes.PlaylistMusic;
+import com.sw.controllers.publicPlaylist.ControllerPlaylistCountry;
 import javafx.fxml.FXML;
+import javafx.scene.Parent;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
@@ -17,6 +20,8 @@ import com.sw.controllers.publicPlaylist.ControllerPlaylistMusic;
 import javafx.scene.control.Button;
 import javafx.fxml.FXMLLoader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
@@ -49,12 +54,16 @@ public class ControllerSearch extends Controller {
     @FXML
     private Text errorText;
 
+    @FXML
+    private ComboBox<String> searchComboBox;
+
     final FacadeSearch searchFacade = FacadeSearch.getInstance(); // Utilisez la méthode singleton pour obtenir l'instance
 
     @FXML
     public void initialize() {
         super.hideError(errorText);
         comboBoxType.getItems().addAll("Artiste", "Musique", "Playlist");
+        comboBoxType.valueProperty().addListener((obs, oldItem, newItem) -> toggleSearchInput(newItem));
         doSearch.setOnAction(event -> performSearch());
 
         searchResultsListView.setCellFactory(param -> new ListCell<Object>() {
@@ -68,7 +77,7 @@ public class ControllerSearch extends Controller {
                     if (item instanceof Music) {
                         setText(((Music) item).getName());
                     } else if (item instanceof Playlist) {
-                        setText(((Playlist) item).getPlaylistName());
+                        setText(((Playlist) item).getPlaylistCountry());
                     }
                 }
             }
@@ -89,11 +98,42 @@ public class ControllerSearch extends Controller {
         });
     }
 
+    private void toggleSearchInput(String type) {
+        if ("Playlist".equals(type)) {
+            searchTerm.setVisible(false);
+            searchTerm.setManaged(false);
+            searchComboBox.setVisible(true);
+            searchComboBox.setManaged(true);
+            searchComboBox.getItems().clear();
+
+            List<String> countries = new ArrayList<>();
+            for (CountryCode code : CountryCode.values()) {
+                countries.add(code.getName());
+            }
+            Collections.sort(countries);
+            searchComboBox.getItems().addAll(countries);
+
+        } else {
+            searchTerm.setVisible(true);
+            searchTerm.setManaged(true);
+            searchComboBox.setVisible(false);
+            searchComboBox.setManaged(false);
+        }
+    }
+
     @FXML
     private void performSearch() {
-        searchResultsListView.getItems().clear(); // Assurez-vous de nettoyer la ListView
+        searchResultsListView.getItems().clear(); // Nettoyer la ListView avant d'afficher de nouveaux résultats
         String type = comboBoxType.getValue().toLowerCase(); // Convertir en minuscule pour correspondre aux valeurs attendues
-        String term = searchTerm.getText();
+
+        // Déterminer le terme de recherche en fonction du type sélectionné (TextField ou ComboBox)
+        String term;
+        if ("playlist".equals(type)) {
+            term = searchComboBox.getValue(); // Utilisez la valeur de la ComboBox pour les playlists
+        } else {
+            term = searchTerm.getText(); // Utilisez la valeur du TextField pour les artistes et les musiques
+        }
+
         SearchCriteria criteria = new SearchCriteria(term, type);
         List<Object> searchResult = searchFacade.performSearch(criteria);
 
@@ -104,31 +144,14 @@ public class ControllerSearch extends Controller {
             errorText.setVisible(false);
 
             // Utilisez une seule ListView pour afficher les résultats
-            ListView<Object> listViewToUse;
+            ListView<Object> listViewToUse = searchResultsListView;
 
-            if (type.equals("musique")) {
-                // Si le type de recherche est artiste ou musique, utilisez musicListView
-                listViewToUse = searchResultsListView;
-            }
-            else if (type.equals("artiste")) {
-                displayArtistInfo((Artist) searchResult.get(0));
-                listViewToUse = searchResultsListView;
-            }
-            else if (type.equals("playlist")) {
-                listViewToUse = searchResultsListView;
-                ;
-            } else {
-                // Gérez d'autres types de recherche ici si nécessaire
-                listViewToUse = null; // Utilisez null ou toute autre logique appropriée
-            }
-
-            if (listViewToUse != null) {
-                for (Object result : searchResult) {
-                    listViewToUse.getItems().add(result);
-                }
+            for (Object result : searchResult) {
+                listViewToUse.getItems().add(result);
             }
         }
     }
+
 
     private void displayArtistInfo(Artist artist) {
         String pseudoInfo = "Pseudo: " + artist.getPseudo();
@@ -171,9 +194,27 @@ public class ControllerSearch extends Controller {
         stage.close();
     }
 
-    private void displayPlaylist(Playlist playlist) {
-        searchResultsListView.getItems().add(playlist);
+    public void displayPlaylist(Playlist selectedPlaylist) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/views/public-playlist/playlist-country-view.fxml")); // Ajustez le chemin d'accès
+            Parent root = loader.load();
+            ControllerPlaylistCountry playlistCountryController = loader.getController();
+
+            // Puisque vous voulez récupérer les musiques par pays, vous utilisez le pays de la playlist
+            String countryOfPlaylist = selectedPlaylist.getPlaylistCountry();
+
+            // Maintenant, utilisez le ControllerPlaylistCountry pour afficher les musiques de la playlist
+            playlistCountryController.setCountry(countryOfPlaylist);
+
+            // Affichez la vue dans une nouvelle fenêtre ou comme vous le souhaitez
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
 
     @FXML
     private void closeSearch() {

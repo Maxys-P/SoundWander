@@ -23,7 +23,6 @@
             <Text fx:id="errorText" fill="red" />
             <Button fx:id="boutonInscrire" text="S'inscrire" onAction="#handleButtonRegister" styleClass="boutonBleu"/>
             <Label fx:id="labelConnexion" text="Retour à la connexion" onMouseClicked="#goToLogin" styleClass="lien"/>
-            <Button fx:id="boutonVisitor" text="Retour" onAction="#goToVisitor" styleClass="boutonBleu"/>
         </VBox>
     </StackPane>
 </AnchorPane>
