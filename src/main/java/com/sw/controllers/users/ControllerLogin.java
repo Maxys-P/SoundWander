@@ -70,14 +70,12 @@ public class ControllerLogin extends ControllerUser {
             if (user != null) {
                 super.hideError(errorText);
                 String scope;
-                if (user instanceof Artist) {
-                    scope = "artist";
-                } else if (user instanceof MusicalExpert) {
+                if (user instanceof MusicalExpert) {
                     scope = "musical-expert";
                 } else if (user instanceof Admin) {
                     scope = "admin";
                 } else {
-                    scope = "user";
+                    scope = "view";
                 }
 
                 Facade.currentUser = user;

@@ -1,31 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.Text?>
-
-<?import javafx.scene.text.Text?>
-<?import javafx.scene.text.Text?>
-<?import javafx.scene.control.Label?>
 
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             stylesheets="@../../styles/Style.css"
             prefHeight="600.0" prefWidth="1200.0">
 
-<top>
-    <fx:include source="../../components/user/header.fxml" />
-</top>
+    <top>
+        <fx:include source="../../components/user/header.fxml" />
+    </top>
 
-<center>
-        <VBox spacing="20" alignment="TOP_CENTER">
-            <fx:include source="../../components/proposal/listAllProposals.fxml" />
-            <fx:include source="../../components/public-playlist/button-create-public-playlist.fxml" />
-        </VBox>
+    <center>
+        <ScrollPane fitToWidth="true">
+            <VBox alignment="CENTER" spacing="20">
+                <VBox alignment="CENTER" spacing="20" styleClass="conteneurProfile">
+                    <fx:include source="../../components/profil/info.fxml"/>
+                </VBox>
+            </VBox>
+        </ScrollPane>
+    </center>
 
-</center>
-
-<!-- Pied de page toujours visible en bas -->
-<bottom>
-    <fx:include source="../../components/music-play/music-footer.fxml" />
-</bottom>
+    <!-- Pied de page toujours visible en bas -->
+    <bottom>
+        <fx:include source="../../components/music-play/music-footer.fxml" />
+    </bottom>
 </BorderPane>
+

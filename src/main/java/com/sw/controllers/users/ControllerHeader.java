@@ -4,7 +4,10 @@ import com.sw.classes.Admin;
 import com.sw.classes.Artist;
 import com.sw.classes.MusicalExpert;
 import com.sw.classes.User;
+import com.sw.exceptions.ExceptionBadPage;
 import com.sw.facades.Facade;
+
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
@@ -12,6 +15,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
+import javafx.scene.text.Text;
 
 import java.io.IOException;
 
@@ -22,6 +26,10 @@ public class ControllerHeader extends ControllerUser {
     private Button profilButton;
     @FXML
     private Button privatePlaylistButton;
+    @FXML
+    private Button homeButton;
+    @FXML
+    private Text errorText;
 
 
     @FXML
@@ -80,6 +88,25 @@ public class ControllerHeader extends ControllerUser {
         }
     }
 
-    // Méthodes supplémentaires pour la navigation ou la logique de gestion des événements
+    @FXML
+    private void goToHome() {
+        User user = Facade.currentUser;
+        if (user != null) {
+            String scope;
+            if (user instanceof MusicalExpert) {
+                scope = "musical-expert";
+            } else if (user instanceof Admin) {
+                scope = "admin";
+            } else {
+                scope = "view";
+            }
 
+            try {
+                String pathUser = scope + "s/";
+                super.goToHome(homeButton, scope);
+            } catch (Exception e) {
+                e.printStackTrace(); // Handle the exception appropriately
+            }
+        }
+    }
 }

@@ -21,7 +21,7 @@ public class ControllerAdmin extends Controller {
     private void handleBecomeAdmin(ActionEvent actionEvent) throws Exception {
         try {
             Admin newAdmin = adminFacade.userBecomeAdmin(Facade.currentUser.getId());
-            goToPage(becomeAdminButton, "admins/profil-admin.fxml", "Mon Profil d'Admin");
+            goToPage(becomeAdminButton, "admins/home-admin.fxml", "Mon Profil d'Admin");
         } catch (Exception e) {
             e.printStackTrace();
         }

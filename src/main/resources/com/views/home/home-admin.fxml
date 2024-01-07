@@ -4,24 +4,29 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.Region?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             stylesheets="@../../styles/Style.css"
             prefHeight="600.0" prefWidth="1200.0">
 
+    <!-- Header de la page dans le haut -->
     <top>
         <fx:include source="../../components/user/header.fxml" />
     </top>
 
+    <!-- Contenu principal dans le centre -->
     <center>
-        <ScrollPane fitToWidth="true">
-            <VBox alignment="CENTER" spacing="20">
-                <VBox alignment="CENTER" spacing="20" styleClass="conteneurProfile">
-                    <fx:include source="../../components/profil/info.fxml"/>
-                </VBox>
-            </VBox>
-        </ScrollPane>
+        <VBox alignment="CENTER" spacing="20" styleClass="conteneurProfile" fillWidth="true" maxHeight="600">
+            <Region VBox.vgrow="ALWAYS" />
+            <StackPane alignment="CENTER" prefWidth="800" prefHeight="500">
+                <fx:include source="../../components/admin/listUsers.fxml"/>
+            </StackPane>
+            <Region VBox.vgrow="ALWAYS" />
+        </VBox>
+
     </center>
 
     <!-- Pied de page toujours visible en bas -->
@@ -29,4 +34,3 @@
         <fx:include source="../../components/music-play/music-footer.fxml" />
     </bottom>
 </BorderPane>
-

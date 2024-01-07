@@ -71,7 +71,7 @@ public class ControllerPlaylist extends Controller {
                 playlistFacade.addPublicPlaylist(name, country, continent);
                 Stage currentStage = (Stage) PlaylistName.getScene().getWindow();
                 currentStage.close();
-                goToPage("musical-experts/profil-musical-expert.fxml", "Mon profil");
+                goToPage("musical-experts/home-musical-expert.fxml", "Mon profil");
             } catch (Exception e) {
                 e.printStackTrace();
                 throw new ExceptionBadPage("Erreur lors de la création de la playlist publique");
@@ -81,7 +81,7 @@ public class ControllerPlaylist extends Controller {
 
     @FXML
     private void goBack() throws ExceptionBadPage {
-        goToPage(boutonRetour,"musical-experts/profil-musical-expert.fxml", "Mon profil");
+        goToPage(boutonRetour,"musical-experts/home-musical-expert.fxml", "Mon profil");
     }
 
 }
