@@ -180,8 +180,13 @@ public class DAOProposalMySQL extends DAOProposal {
         // 4. Ajouter la music a la playlist du pays en question
         try {
             daoPlaylistMusicMySQL.addMusicToPlaylist(country, musicId);
-            // 6. Supprimer la proposition de la base de données
-            boolean isDeleted = deleteProposal(id);
+            if (daoPlaylistMusicMySQL == null) {
+                throw new Exception("La proposition avec l'ID spécifié n'existe pas.");
+            } else {
+                System.out.println("La proposition a bien été ajoutée à la playlist");
+                // 6. Supprimer la proposition de la base de données
+                deleteProposal(id);
+            }
         } catch (Exception e) {
             throw new Exception("Erreur inattendue lors de l'ajout de la musique à la playlist", e);
         }

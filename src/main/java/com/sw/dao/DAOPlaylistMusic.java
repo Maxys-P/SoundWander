@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 public abstract class DAOPlaylistMusic extends DAO {
-    public DAOPlaylistMusic() {super("PlaylistMusic");}
+    public DAOPlaylistMusic() {super("playlistMusic");}
 
     public abstract PlaylistMusic getPlaylistMusicById(int id) throws Exception;
     public abstract PlaylistMusic addMusicToPlaylist(String playlistName, int music) throws Exception;

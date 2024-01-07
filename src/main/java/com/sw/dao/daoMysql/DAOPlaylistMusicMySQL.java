@@ -35,14 +35,14 @@ public class DAOPlaylistMusicMySQL extends DAOPlaylistMusic {
     @Override
     public Map<String, List<PlaylistMusic>> getPlaylistMusicByContinent(String continent) throws Exception {
         // Set up the JOIN and WHERE conditions for the SQL query
-        String mainTable = "PlaylistMusic";
-        List<String> joinTables = Arrays.asList("Playlist", "Music");
+        String mainTable = "playlistMusic";
+        List<String> joinTables = Arrays.asList("playlist", "music");
         List<String> onConditions = Arrays.asList(
-                "PlaylistMusic.playlist_id = Playlist.id",
-                "PlaylistMusic.music_id = Music.id"
+                "playlistMusic.playlist_id = playlist.id",
+                "playlistMusic.music_id = music.id"
         );
         Map<String, Object> whereConditions = new HashMap<>();
-        whereConditions.put("Playlist.continent", continent);
+        whereConditions.put("playlist.continent", continent);
 
         // Execute the query
         MapperResultSet result;
@@ -138,7 +138,7 @@ public class DAOPlaylistMusicMySQL extends DAOPlaylistMusic {
             return null;
         } else {System.out.println("Musique récupérée: " + music);}
 
-        String sql = "INSERT INTO PlaylistMusic (playlist_id, music_id) VALUES (?, ?)";
+        String sql = "INSERT INTO playlistMusic (playlist_id, music_id) VALUES (?, ?)";
         try (Connection connection = this.requetesDB.getConnexion(); // utilisez getConnexion ou une méthode équivalente
              PreparedStatement requete = connection.prepareStatement(sql)) {
             requete.setInt(1, playlist.getPlaylistId());
@@ -158,14 +158,14 @@ public class DAOPlaylistMusicMySQL extends DAOPlaylistMusic {
     @Override
     public PlaylistMusic getPlaylistMusicByCountry(String country) throws Exception {
         // Set up the JOIN and WHERE conditions for the SQL query
-        String mainTable = "PlaylistMusic";
-        List<String> joinTables = Arrays.asList("Playlist", "Music");
+        String mainTable = "playlistMusic";
+        List<String> joinTables = Arrays.asList("playlist", "music");
         List<String> onConditions = Arrays.asList(
-                "PlaylistMusic.playlist_id = Playlist.id",
-                "PlaylistMusic.music_id = Music.id"
+                "playlistMusic.playlist_id = playlist.id",
+                "playlistMusic.music_id = music.id"
         );
         Map<String, Object> whereConditions = new HashMap<>();
-        whereConditions.put("Playlist.country", country); // Adjusted to filter by country
+        whereConditions.put("playlist.country", country); // Adjusted to filter by country
 
         // Execute the query
         MapperResultSet result;
@@ -189,7 +189,7 @@ public class DAOPlaylistMusicMySQL extends DAOPlaylistMusic {
 
             // Create the PlaylistMusic object
             PlaylistMusic playlistMusic = new PlaylistMusic(playlist, musicList);
-            System.out.println("PlaylistMusic for country: " + country + " - " + playlistMusic);
+            System.out.println("playlistMusic for country: " + country + " - " + playlistMusic);
             return playlistMusic;
         } else {
             System.out.println("No PlaylistMusic found for country: " + country);

@@ -21,5 +21,7 @@
             </VBox>
         </ScrollPane>
     </center>
-
+    <bottom>
+        <fx:include source="../../components/music-play/music-footer.fxml" />
+    </bottom>
 </BorderPane>

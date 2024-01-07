@@ -5,7 +5,7 @@ import com.sw.classes.Playlist;
 import com.sw.commons.Searchable;
 
 public abstract class DAOPlaylist extends DAO implements Searchable {
-    public DAOPlaylist() {super("Playlist");}
+    public DAOPlaylist() {super("playlist");}
 
     public abstract Playlist getPLaylistByName(String name) throws Exception;
     public abstract Playlist getPlaylistByCountry(String country) throws Exception;

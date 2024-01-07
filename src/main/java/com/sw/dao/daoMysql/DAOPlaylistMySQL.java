@@ -104,7 +104,7 @@ public class DAOPlaylistMySQL extends DAOPlaylist {
             values.put("continent", continent);
 
 
-            int insertedId = ((RequetesMySQL) requetesDB).create("playlist", values);
+            int insertedId = ((RequetesMySQL) requetesDB).create(table, values);
             System.out.println("Playlist ajoutée avec l'id : " + insertedId);
 
         } catch (Exception e) {
@@ -119,7 +119,7 @@ public class DAOPlaylistMySQL extends DAOPlaylist {
         whereConditions.put("country", criteria.getSearchTerm());
 
         try {
-            MapperResultSet mapperResultSet = ((RequetesMySQL) requetesDB).selectWhere("playlist", whereConditions);
+            MapperResultSet mapperResultSet = ((RequetesMySQL) requetesDB).selectWhere(table, whereConditions);
             for (Map<String, Object> rowData : mapperResultSet.getListData()) {
                 int id = (int) rowData.get("id");
                 String name = (String) rowData.get("name");
