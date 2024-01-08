@@ -113,6 +113,8 @@ public class ControllerPlaylistMusic extends Controller {
             Stage playlistCountryStage = new Stage();
             playlistCountryStage.setScene(playlistCountryScene);
             playlistCountryStage.show();
+            Stage stage = (Stage) continentNameText.getScene().getWindow();
+            stage.close();
         } catch (IOException e) {
             e.printStackTrace();
         } catch (Exception e) {

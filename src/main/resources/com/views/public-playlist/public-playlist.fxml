@@ -11,18 +11,23 @@
             xmlns:fx="http://javafx.com/fxml"
             stylesheets="@../../styles/Style.css"
             fx:controller="com.sw.controllers.publicPlaylist.ControllerPlaylistMusic"
-            prefHeight="400.0" prefWidth="600.0">
+            prefHeight="600.0" prefWidth="1200.0">
 
     <Text fx:id="continentNameText" />
+    <top>
+        <fx:include source="../../components/user/header.fxml" />
+    </top>
     <center>
         <ScrollPane fitToWidth="true">
             <VBox alignment="CENTER" spacing="20">
-                <Label text="Playlist Public" styleClass="h1"/>
                 <VBox alignment="CENTER" spacing="20" styleClass="conteneurProfile">
                     <ListView fx:id="countryListView" onMouseClicked="#handleCountrySelection" />
                 </VBox>
             </VBox>
         </ScrollPane>
     </center>
+    <bottom>
+        <fx:include source="../../components/music-play/music-footer.fxml" />
+    </bottom>
 
 </BorderPane>
