@@ -126,9 +126,9 @@ public class ControllerRegister extends ControllerUser {
         if (mail.getText().isEmpty() || pseudo.getText().isEmpty() || motDePasse.getText().isEmpty() || motDePasseConfirm.getText().isEmpty()) {
             throw new ExceptionFormIncomplete("Veuillez remplir tous les champs");
         }
-        if (!mail.getText().matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
-            throw new ExceptionFormIncomplete("Adresse mail non valide");
-        }
+//        if (!mail.getText().matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
+//            throw new ExceptionFormIncomplete("Adresse mail non valide");
+//        }
     }
 
 

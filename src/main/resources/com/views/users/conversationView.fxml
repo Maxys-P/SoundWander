@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.ScrollPane?>
+
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.sw.controllers.users.ControllerConversationView"
+            stylesheets="@../../styles/Style.css"
+            prefHeight="500.0" prefWidth="700.0">
+
+
+
+    <center>
+        <BorderPane>
+            <top>
+                <VBox spacing="10" alignment="CENTER" style="-fx-padding: 15;">
+                    <Label fx:id="otherUserLabel" text=" " styleClass="h1"/>
+                </VBox>
+            </top>
+            <center>
+                <ScrollPane fx:id="scrollPane" fitToWidth="true">
+                    <VBox fx:id="messageBox" spacing="10" />
+                </ScrollPane>
+            </center>
+            <bottom>
+                <VBox fx:id="newMessage" alignment="CENTER" spacing="20" style="-fx-padding: 20;">
+                    <TextField fx:id="contentField" promptText="Contenu du message"/>
+                    <Button text="Envoyer" onAction="#handleSendNewMessage" styleClass="boutonBleu"/>
+                </VBox>
+            </bottom>
+        </BorderPane>
+    </center>
+
+
+</BorderPane>

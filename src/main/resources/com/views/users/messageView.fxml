@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            stylesheets="@../../styles/Style.css"
+            fx:controller="com.sw.controllers.users.ControllerMessageView"
+            prefHeight="600.0" prefWidth="1200.0">
+    <top>
+        <VBox style="-fx-padding: 0 0 10 0;">
+            <fx:include source="../../components/user/header.fxml" />
+        </VBox>
+    </top>
+
+    <center>
+        <VBox alignment="CENTER" spacing="20">
+            <Label text="Messagerie" styleClass="h1" />
+
+            <VBox alignment="CENTER" spacing="20" styleClass="conteneur" maxWidth="350" maxHeight="600" style="-fx-padding: 10;">
+                <Label text="Tes conversations" styleClass="h2"/>
+                <ScrollPane fitToWidth="true">
+                    <ListView fx:id="conversationListView" />
+                </ScrollPane>
+                <VBox alignment="CENTER" spacing="20" styleClass="conteneurProfile" >
+                    <!-- Créer un message -->
+                    <Label text="Nouveau message" styleClass="h2"/>
+                    <TextField fx:id="receiverField" promptText="Pseudo du destinataire" styleClass="champ"/>
+                    <TextField fx:id="contentField" promptText="Contenu du message" styleClass="champ"/>
+                    <Button text="Envoyer" onAction="#handleSendMessage" styleClass="boutonBleu"/>
+                </VBox>
+
+            </VBox>
+        </VBox>
+
+    </center>
+
+    <bottom>
+        <VBox style="-fx-padding: 10 0 0 0;">
+            <fx:include source="../../components/music-play/music-footer.fxml" />
+        </VBox>
+    </bottom>
+</BorderPane>
+

@@ -27,6 +27,8 @@ public class ControllerHeader extends ControllerUser {
     @FXML
     private Button privatePlaylistButton;
     @FXML
+    private Button messageButton;
+  @FXML
     private Button homeButton;
     @FXML
     private Text errorText;
@@ -89,6 +91,15 @@ public class ControllerHeader extends ControllerUser {
     }
 
     @FXML
+
+    private void goMessage() {
+        try {
+            super.goToPage(messageButton, "users/messageView.fxml", "messagerie");
+        } catch (Exception e) {
+            e.printStackTrace(); // Handle the exception appropriately
+        }
+    }
+
     private void goToHome() {
         User user = Facade.currentUser;
         if (user != null) {
@@ -100,6 +111,7 @@ public class ControllerHeader extends ControllerUser {
             } else {
                 scope = "view";
             }
+
 
             try {
                 String pathUser = scope + "s/";

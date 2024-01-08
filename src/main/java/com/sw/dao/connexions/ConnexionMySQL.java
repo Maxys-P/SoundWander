@@ -16,10 +16,14 @@ public class ConnexionMySQL extends ConnexionDB {
         String dbPassword = dotenv.get("DB_PASSWORD");
         String dbName = dotenv.get("DB_NAME");
 
+
+    //private String motDePasse = "Mateo3945";
+
         // Vérifiez si l'une d'elles est nulle
         if (dbHost == null || dbUsername == null || dbPassword == null || dbName == null) {
             throw new ExceptionDB("One or more environment variables required for the database connection are null.");
         }
+
 
         // Check if any of the environment variables are null
         if (dbHost == null || dbUsername == null || dbPassword == null || dbName == null) {

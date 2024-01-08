@@ -179,6 +179,9 @@ public class FacadeUser extends Facade {
         return daoUser.getPrivatePlaylist(idUser);
     }
 
+    public User getUserByPseudo(String pseudo) throws Exception {
+        return daoUser.getUserByPseudo(pseudo);
+    }
 
 
 }

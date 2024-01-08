@@ -42,4 +42,11 @@ public class FactoryDAOMySQL extends FactoryDAO {
     @Override
     public DAOPlaylist getDAOPlaylist() {return new DAOPlaylistMySQL();}
 
+    @Override
+    public DAOMessage getInstanceofDAOMessage() {return new DAOMessageMySQL();}
+
+    @Override
+    public DAOConversation getInstanceofDAOConversation() {return new DAOConversationMySQL();}
+
+
 }

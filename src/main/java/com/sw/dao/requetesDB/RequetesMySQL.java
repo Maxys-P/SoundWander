@@ -76,6 +76,7 @@ public class RequetesMySQL extends RequetesDB {
         }
 
         String sql = "SELECT * FROM " + table + " WHERE " + wherePart;
+
         try (Connection connection = this.getConnexion();
              PreparedStatement requete = connection.prepareStatement(sql)) {
             int index = 1;
@@ -214,6 +215,7 @@ public class RequetesMySQL extends RequetesDB {
 
         String sql = "DELETE FROM " + table + " WHERE " + wherePart;
 
+
         try (Connection connection = this.getConnexion();
              PreparedStatement requete = connection.prepareStatement(sql)) {
 
@@ -324,6 +326,23 @@ public class RequetesMySQL extends RequetesDB {
             throw new ExceptionDB("Erreur lors de l'insertion des données: " + e.getMessage(), e);
         }
     }
+
+
+    public MapperResultSet selectConversationsByUser(String table, int userId) throws ExceptionDB {
+        String sql = "SELECT * FROM " + table + " WHERE user1Id = ? OR user2Id = ?";
+
+        try (Connection connection = this.getConnexion();
+             PreparedStatement requete = connection.prepareStatement(sql)) {
+            requete.setInt(1, userId);
+            requete.setInt(2, userId);
+
+            ResultSet rs = requete.executeQuery();
+            return new MapperResultSet(rs);
+        } catch (SQLException e) {
+            throw new ExceptionDB("Erreur lors de la sélection des conversations par utilisateur", e);
+        }
+    }
+
 
 
 

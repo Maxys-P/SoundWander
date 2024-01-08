@@ -170,4 +170,5 @@ public abstract class DAOUser extends DAO implements Searchable{
 
     public abstract boolean isArtistSubscribed(int id) throws Exception;
 
+    public abstract User getUserByPseudo(String pseudo) throws Exception;
 }
