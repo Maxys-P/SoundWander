@@ -196,5 +196,34 @@ public class DAOPlaylistMusicMySQL extends DAOPlaylistMusic {
             return null;
         }
     }
+    @Override
+    public List<PlaylistMusic> getAllPlaylistMusic() throws Exception {
+        List<PlaylistMusic> playlistMusics = new ArrayList<>();
+        try {
+            //Appel de la méthode selectAll de RequetesMySQL
+            MapperResultSet playlistMusicData = ((RequetesMySQL) requetesDB).selectAll(table);
+            // Parcourir le MapperResultSet et construire la liste des users
+            List<Map<String, Object>> listData = playlistMusicData.getListData();
+            for (Map<String, Object> row : listData) {
+                try {
+                    Integer id = (Integer) row.get("id");
+                    Integer playlistId = (Integer) row.get("playlist_id");
+                    Integer musicId = (Integer) row.get("music_id");
+
+                    Playlist playlist = DAOPlaylistMySQL.getPlaylistById(playlistId);
+                    List<Music> music = getAllMusicByPlaylist(playlistId);
+
+                    PlaylistMusic playlistMusic = new PlaylistMusic(playlist, music);
+                    playlistMusics.add(playlistMusic);
+                } catch (Exception e) {
+                    System.out.println("Erreur lors de la récupération d'une playlistMusic : " + e.getMessage());
+                    e.printStackTrace();
+                }
+            }
+        } catch (Exception e) {
+            throw new Exception("Erreur lors de la récupération de la playlistMusic par nom", e);
+        }
+        return playlistMusics;
+    }
 
 }

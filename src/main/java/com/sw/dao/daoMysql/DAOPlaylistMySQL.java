@@ -135,4 +135,32 @@ public class DAOPlaylistMySQL extends DAOPlaylist {
         }
         return matchingPlaylists;
     }
+
+    @Override
+    public List<Playlist> getAllPlaylist() throws Exception {
+        List<Playlist> playlists = new ArrayList<>();
+        try {
+            //Appel de la méthode selectAll de RequetesMySQL
+            MapperResultSet playlistData = ((RequetesMySQL) requetesDB).selectAll(table);
+            // Parcourir le MapperResultSet et construire la liste des users
+            List<Map<String, Object>> listData = playlistData.getListData();
+            for (Map<String, Object> row : listData) {
+                try {
+                    Integer id = (Integer) row.get("id");
+                    String name = (String) row.get("name");
+                    String country = (String) row.get("country");
+                    String continent = (String) row.get("continent");
+
+                    Playlist playlist = new Playlist(id, name, country, continent);
+                    playlists.add(playlist);
+                } catch (Exception e) {
+                    System.out.println("Erreur lors de la récupération d'une playlist : " + e.getMessage());
+                    e.printStackTrace();
+                }
+            }
+        } catch (Exception e) {
+            throw new Exception("Erreur lors de la récupération de la playlist par nom", e);
+        }
+        return playlists;
+    }
 }

@@ -52,14 +52,8 @@ public class Music {
     public void setMusicFile(byte[] musicFile) {
         this.musicFile = musicFile;
     }
-
-
-
     public void setId(int id){this.id = id;}
-
     public void setName(String name){this.name = name;}
-
     public void setArtist(int artist){this.artist = artist;}
 
-    public void setDuration(int duration){this.duration = duration;}
 }

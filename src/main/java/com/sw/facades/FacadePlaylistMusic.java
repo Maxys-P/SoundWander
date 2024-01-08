@@ -55,4 +55,14 @@ public class FacadePlaylistMusic extends Facade{
             throw new Exception("Error retrieving music by country: " + e.getMessage(), e);
         }
     }
+
+    public List<PlaylistMusic> getAllPlaylistMusic() throws Exception {
+        try {
+            // Call the DAO method to get all the playlist music
+            return daoPlaylistMusic.getAllPlaylistMusic();
+        } catch (Exception e) {
+            // Handle or throw the exception as needed
+            throw new Exception("Error retrieving all playlist music: " + e.getMessage(), e);
+        }
+    }
 }

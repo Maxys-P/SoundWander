@@ -6,9 +6,10 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<?import javafx.scene.text.Text?>
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.sw.controllers.publicPlaylist.ControllerPlaylistMusic"
             prefHeight="400.0" prefWidth="600.0">
-    <Text text="On affiche les playlists qu'il peut gérer"/>
+    <Button text="Display Playlists" onAction="#displayAllPlaylist" />
+
 </AnchorPane>
