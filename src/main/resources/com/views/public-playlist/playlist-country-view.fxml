@@ -9,7 +9,11 @@
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.sw.controllers.publicPlaylist.ControllerPlaylistCountry"
-            prefHeight="400.0" prefWidth="600.0">
+            stylesheets="@../../styles/Style.css"
+            prefHeight="600.0" prefWidth="1200.0">
+    <top>
+        <fx:include source="../../components/user/header.fxml" />
+    </top>
 
     <center>
         <ScrollPane fitToWidth="true">
