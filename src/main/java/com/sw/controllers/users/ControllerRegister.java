@@ -76,7 +76,7 @@ public class ControllerRegister extends ControllerUser {
     private void goToHome() {
         try {
             super.hideError(errorText);
-            super.goToHome(boutonInscrire, "user");
+            super.goToHome(boutonInscrire, "view");
         } catch (ExceptionBadPage e) {
             super.displayError(errorText, e.getMessage());
         }

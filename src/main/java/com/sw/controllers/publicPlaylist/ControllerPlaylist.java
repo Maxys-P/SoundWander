@@ -1,12 +1,14 @@
 package com.sw.controllers.publicPlaylist;
 
 import com.neovisionaries.i18n.CountryCode;
+import com.sw.classes.Playlist;
 import com.sw.controllers.Controller;
 import com.sw.exceptions.ExceptionBadPage;
 import com.sw.facades.FacadePlaylist;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextArea;
 import javafx.scene.text.Text;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -24,6 +26,7 @@ public class ControllerPlaylist extends Controller {
     @FXML public ComboBox<String> Continent;
     @FXML public Text errorText;
     @FXML public Button boutonRetour;
+    @FXML private TextArea playlistTextArea;
 
     public ControllerPlaylist() {
         super();
@@ -44,7 +47,7 @@ public class ControllerPlaylist extends Controller {
         Collections.sort(countries);
         Country.getItems().addAll(countries);
 
-        Continent.getItems().addAll("Afrique", "Amérique du Nord", "Amérique du Sud", "Asie", "Europe", "Océanie"); //ligne 47
+        Continent.getItems().addAll("Afrique", "Amérique du Nord", "Amérique du Sud", "Asie", "Europe", "Océanie");
     }
     @FXML
     public void gotoCreatePublicPlaylist() throws ExceptionBadPage {
@@ -71,17 +74,16 @@ public class ControllerPlaylist extends Controller {
                 playlistFacade.addPublicPlaylist(name, country, continent);
                 Stage currentStage = (Stage) PlaylistName.getScene().getWindow();
                 currentStage.close();
-                goToPage("musical-experts/profil-musical-expert.fxml", "Mon profil");
+                goToPage("musical-experts/home-musical-expert.fxml", "Mon profil");
             } catch (Exception e) {
                 e.printStackTrace();
                 throw new ExceptionBadPage("Erreur lors de la création de la playlist publique");
             }
         }
     }
-
     @FXML
     private void goBack() throws ExceptionBadPage {
-        goToPage(boutonRetour,"musical-experts/profil-musical-expert.fxml", "Mon profil");
+        goToPage(boutonRetour,"musical-experts/home-musical-expert.fxml", "Mon profil");
     }
 
 }

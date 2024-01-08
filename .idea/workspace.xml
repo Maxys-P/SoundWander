@@ -4,32 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="488cdd30-80e1-4c58-a706-5bdc807ad006" name="Changes" comment="un peu de style">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sw/classes/Conversation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sw/classes/Message.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/users/ControllerConversationView.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/users/ControllerMessageView.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/DAOConversation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/DAOMessage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/daoMysql/DAOConversationMySQL.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/daoMysql/DAOMessageMySQL.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sw/facades/FacadeConversation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sw/facades/FacadeMessage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/views/users/conversationView.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/views/users/messageView.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/message.png" afterDir="false" />
+    <list default="true" id="488cdd30-80e1-4c58-a706-5bdc807ad006" name="Changes" comment="Payment réparé">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/controllers/users/ControllerHeader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/users/ControllerHeader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/controllers/users/ControllerRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/users/ControllerRegister.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/DAOUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/DAOUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/connexions/ConnexionMySQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/connexions/ConnexionMySQL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/daoMysql/DAOUserMySQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/daoMysql/DAOUserMySQL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/factories/FactoryDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/factories/FactoryDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/factories/FactoryDAOMySQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/factories/FactoryDAOMySQL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/requetesDB/RequetesMySQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/requetesDB/RequetesMySQL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/facades/FacadeUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/facades/FacadeUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/components/user/header.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/components/user/header.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/styles/Style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/styles/Style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/classes/Music.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/classes/Music.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/classes/Playlist.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/classes/Playlist.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/controllers/musicPlay/ControllerMusicPlay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/musicPlay/ControllerMusicPlay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/controllers/publicPlaylist/ControllerPlaylist.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/publicPlaylist/ControllerPlaylist.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/controllers/publicPlaylist/ControllerPlaylistMusic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/publicPlaylist/ControllerPlaylistMusic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/DAOPlaylist.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/DAOPlaylist.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/DAOPlaylistMusic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/DAOPlaylistMusic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/daoMysql/DAOPlaylistMusicMySQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/daoMysql/DAOPlaylistMusicMySQL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/daoMysql/DAOPlaylistMySQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/daoMysql/DAOPlaylistMySQL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/facades/FacadePlaylist.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/facades/FacadePlaylist.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/facades/FacadePlaylistMusic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/facades/FacadePlaylistMusic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/components/musical-expert/listPlaylist.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/components/musical-expert/display-playlist.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +41,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="margaux" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -122,11 +110,11 @@
       <recent name="C:\Users\maxys\Desktop\SoundWander\src\main\resources\images" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\thiri\Documents\1_POLYTECH\4A cours\SED\SoundWander\src\main\resources\com\components\musical-expert" />
+      <recent name="$PROJECT_DIR$/src/main/resources/com/views/home" />
       <recent name="$PROJECT_DIR$/src/main/resources/images" />
       <recent name="C:\Users\maxys\Desktop\SoundWander\src\main\resources\com\views\artists" />
       <recent name="C:\Users\maxys\Desktop\SoundWander\src\main\resources\com\components\artist" />
-      <recent name="C:\Users\maxys\Desktop\SoundWander\src\main\resources\com\components\proposal" />
-      <recent name="C:\Users\maxys\Desktop\SoundWander\src\main\resources\com\components\music" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -206,13 +194,14 @@
         <item itemvalue="JUnit.UserTest.testToString" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.CreateTableUserScript" />
+        <item itemvalue="Application.App" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-21.0.1-openjdk-21.0.1-249ae16d76d6-69315bf7" />
+        <option value="jdk-21.0.1-openjdk-21.0.1-3183f394aec4-7d648f2c" />
       </set>
     </attachedChunks>
   </component>
@@ -246,6 +235,8 @@
       <workItem from="1704028645079" duration="4120000" />
       <workItem from="1704042003257" duration="38602000" />
       <workItem from="1704189953283" duration="3482000" />
+      <workItem from="1704479011765" duration="8078000" />
+      <workItem from="1704502250486" duration="4003000" />
     </task>
     <task id="LOCAL-00001" summary="Création">
       <option name="closed" value="true" />
@@ -319,11 +310,22 @@
       <option name="project" value="LOCAL" />
       <updated>1704317128495</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="lecture des musiques en fonction de la playlist">
+      <option name="closed" value="true" />
+      <created>1704720425727</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1704720425727</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName=".env" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -351,7 +353,8 @@
     <MESSAGE value="workspace" />
     <MESSAGE value="carte" />
     <MESSAGE value="un peu de style" />
-    <option name="LAST_COMMIT_MESSAGE" value="un peu de style" />
+    <MESSAGE value="lecture des musiques en fonction de la playlist" />
+    <option name="LAST_COMMIT_MESSAGE" value="lecture des musiques en fonction de la playlist" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -26,54 +26,33 @@ import javafx.scene.layout.VBox;
 
 public class ControllerMusicPlay extends Controller {
     private StringProperty currentSongTitle = new SimpleStringProperty("Aucune chanson à l'écoute");
-    @FXML
-    private Label songTitle;
-
-    @FXML
-    private Button boutonPlay;
-
-    @FXML
-    private Button boutonPause;
-
-    @FXML
-    private Button boutonNext;
-
-    @FXML
-    private Button boutonPrevious;
-
-    @FXML
-    private Button boutonAddPrivatePlaylist;
-
-    @FXML
-    private Button boutonRetour;
-
-    @FXML
-    private ProgressBar songProgressBar;
+    @FXML private Label songTitle;
+    @FXML private Button boutonPlay;
+    @FXML private Button boutonPause;
+    @FXML private Button boutonNext;
+    @FXML private Button boutonPrevious;
+    @FXML private Button boutonAddPrivatePlaylist;
+    @FXML private Button boutonRetour;
+    @FXML private ProgressBar songProgressBar;
+    @FXML private VBox musicFooter;
+    @FXML private Button boutonAddRemovePrivatePlaylist;
+    @FXML private ImageView imageAddRemovePrivatePlaylist;
     private AnimationTimer progressTimer;
-    @FXML
-    private VBox musicFooter;
-
-    @FXML
-    private Button boutonAddRemovePrivatePlaylist;
-
-    @FXML
-    private ImageView imageAddRemovePrivatePlaylist;
-
-
     private boolean isPlaying = false; // Tracks whether the music is paused
-
     private boolean isMusicInPrivatePlaylist(Music music) {
         return userFacade.getCurrentUser().getPrivatePlaylist().contains(music);
     }
 
     private FacadeMusic musicPlayFacade;
     private FacadeArtist artistFacade;
-
     private FacadeUser userFacade;
     private FacadePrivatePlaylist privatePlaylistFacade;
 
-    @FXML
-    public void initialize() {
+    /**
+     * Initializes the music play controller. It sets up listeners for changes to the playing status, song details,
+     * and user interactions with the music progress bar. It also initializes the progress timer for the song.
+     */
+    @FXML public void initialize() {
 
         musicPlayFacade = FacadeMusic.getInstance();
         artistFacade = FacadeArtist.getInstance();
@@ -109,7 +88,13 @@ public class ControllerMusicPlay extends Controller {
 
     }
 
-
+    /**
+     * Handles the play button click event. It toggles the music play and pause status.
+     * It plays the first song if no music is currently playing, or resumes the current music if it's paused.
+     * It updates the UI elements to reflect the current state of music playback.
+     *
+     * @throws Exception if there is an issue controlling the music playback.
+     */
     @FXML
     private void handlePlay() throws Exception {
         Music music = musicPlayFacade.getCurrentMusic();
@@ -133,6 +118,12 @@ public class ControllerMusicPlay extends Controller {
         }
         updateSongDetails(music);
     }
+    /**
+     * Updates the song details displayed in the UI, including the artist and song name.
+     * This method is called whenever the current song changes.
+     *
+     * @param music the Music object for which details are to be displayed.
+     */
     private void updateSongDetails(Music music) {
         if (music != null) {
             try {
@@ -149,6 +140,11 @@ public class ControllerMusicPlay extends Controller {
         }
     }
 
+    /**
+     * Handles the next button click event to play the next song in the queue.
+     * It retrieves the next song, updates the song progress, and updates the UI to reflect the new song.
+     * It handles the case where there is no next song to play.
+     */
     @FXML
     private void handleNext() {
         try {
@@ -170,6 +166,12 @@ public class ControllerMusicPlay extends Controller {
             // You might want to update the UI or user about the error
         }
     }
+
+    /**
+     * Handles the previous button click event to play the previous song in the queue.
+     * It retrieves the previous song, updates the song progress, and updates the UI to reflect the new song.
+     * It handles the case where there is no previous song to play.
+     */
     @FXML
     private void handlePrevious() {
         try {
@@ -197,12 +199,21 @@ public class ControllerMusicPlay extends Controller {
         facadeMusic.addPrivatePlaylist("Ma playlist");
     }
 
+    /**
+     * Updates the progress bar based on the current time and total duration of the song.
+     *
+     * @param currentTime the current time of the song in seconds.
+     * @param totalDuration the total duration of the song in seconds.
+     */
     public void updateProgress(double currentTime, double totalDuration) {
         if (songProgressBar != null && totalDuration > 0) {
             songProgressBar.setProgress(currentTime / totalDuration);
         }
     }
-
+    /**
+     * Starts the timer that updates the progress bar based on the current playback position of the song.
+     * The timer continuously checks and updates the song progress.
+     */
     public void startProgressTimer() {
         progressTimer = new AnimationTimer() {
             @Override
@@ -218,24 +229,20 @@ public class ControllerMusicPlay extends Controller {
         };
         progressTimer.start();
     }
-
-    @FXML
-    private void songProgress() {
-        System.out.println("click sur la barre de progression");
-        songProgressBar.setOnMouseClicked(event -> {
-            double mousePosition = event.getX();
-            double progressBarWidth = songProgressBar.getWidth();
-            double progress = mousePosition / progressBarWidth;
-            PlayMusicFromBD.seek(progress * musicPlayFacade.getCurrentMusic().getDuration());
-        });
-    }
-
+    /**
+     * Handles the return button click event. It navigates back to the previous scene or window.
+     *
+     * @throws Exception if there is an issue returning to the previous scene or window.
+     */
     @FXML
     private void handleRetour() throws Exception {
         System.out.println("click sur retour");
         returnToLastScene(boutonRetour);
     }
-
+    /**
+     * Updates the add/remove from private playlist button based on whether the current song is in the private playlist.
+     * It changes the button's image to indicate the current status.
+     */
     private void updateAddRemoveButton() {
         System.out.println("[controller] updateAddRemoveButton");
         Music currentMusic = musicPlayFacade.getCurrentMusic();
@@ -256,7 +263,11 @@ public class ControllerMusicPlay extends Controller {
             imageAddRemovePrivatePlaylist.setImage(image);
         }
     }
-
+    /**
+     * Handles the add/remove from private playlist button click event.
+     * It adds the current song to the user's private playlist if it's not already in it,
+     * or removes it if it is in the playlist. It updates the button's status accordingly.
+     */
     @FXML
     private void handleAddRemovePrivatePlaylist() {
         Music currentMusic = musicPlayFacade.getCurrentMusic();

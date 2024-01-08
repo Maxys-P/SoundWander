@@ -6,6 +6,7 @@ import javafx.concurrent.Worker;
 import javafx.fxml.FXML;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
+import javafx.stage.Stage;
 import netscape.javascript.JSObject;
 
 public class ClickableMapController extends Controller {
@@ -27,7 +28,10 @@ public class ClickableMapController extends Controller {
     public void onContinentClicked(String continentName) {
         System.out.println("Continent cliqué: " + continentName);
         try {
-            goToPage("home/continent-view.fxml", continentName); // Assurez-vous d'avoir une vue FXML correspondante
+            goToPage("public-playlist/public-playlist.fxml", continentName);
+            Stage stage = (Stage) webView.getScene().getWindow();
+            stage.setTitle(continentName);
+            stage.close();
         } catch (ExceptionBadPage e) {
             e.printStackTrace();
         }

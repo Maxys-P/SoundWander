@@ -37,8 +37,8 @@ public abstract class ControllerUser extends Controller {
      * @throws ExceptionBadPage si problème pendant le chargement de la page
      */
     void goToHome(Control controlEl, String scope) throws ExceptionBadPage {
-        String pathUser = scope + "s/";
-        goToPage(controlEl, pathUser + "profil-" + scope + ".fxml", "Mon Profil");
+        String pathUser = "home/";
+        goToPage(controlEl, pathUser + "home-" + scope + ".fxml", "Page d'accueil");
     }
 
 

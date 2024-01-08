@@ -3,7 +3,6 @@ package com.sw.dao.daoMysql;
 import com.sw.classes.Music;
 import com.sw.classes.Playlist;
 import com.sw.classes.PlaylistMusic;
-import com.sw.dao.DAOPlaylist;
 import com.sw.dao.DAOPlaylistMusic;
 import com.sw.dao.boiteAOutils.MapperResultSet;
 import com.sw.dao.requetesDB.RequetesMySQL;
@@ -33,50 +32,45 @@ public class DAOPlaylistMusicMySQL extends DAOPlaylistMusic {
      * @return A list of PlaylistMusic objects.
      * @throws ExceptionDB If a database exception occurs.
      */
-    public List<PlaylistMusic> getPlaylistMusicByContinent(String continent) throws Exception {
+    @Override
+    public Map<String, List<PlaylistMusic>> getPlaylistMusicByContinent(String continent) throws Exception {
         // Set up the JOIN and WHERE conditions for the SQL query
-        String mainTable = "PlaylistMusic";
-        List<String> joinTables = Arrays.asList("Playlist", "Music");
+        String mainTable = "playlistMusic";
+        List<String> joinTables = Arrays.asList("playlist", "music");
         List<String> onConditions = Arrays.asList(
-                "PlaylistMusic.playlist_id = Playlist.id",
-                "PlaylistMusic.music_id = Music.id"
+                "playlistMusic.playlist_id = playlist.id",
+                "playlistMusic.music_id = music.id"
         );
         Map<String, Object> whereConditions = new HashMap<>();
-        whereConditions.put("Playlist.continent", continent);
+        whereConditions.put("playlist.continent", continent);
 
         // Execute the query
         MapperResultSet result;
         try {
             result = requetesDB.selectWithJoin(mainTable, joinTables, onConditions, whereConditions);
+            System.out.println("Result: " + result.getListData());
         } catch (Exception e) {
             e.printStackTrace();
             throw new ExceptionDB("Error retrieving PlaylistMusic by continent: " + e.getMessage(), e);
         }
 
-        // Map to hold Playlist and its associated list of Music
-        Map<Integer, PlaylistMusic> playlistMusicMap = new HashMap<>();
+        // Map to hold country as key and its associated list of PlaylistMusic as value
+        Map<String, List<PlaylistMusic>> playlistMusicByCountry = new HashMap<>();
         for (Map<String, Object> row : result.getListData()) {
             int playlistId = (int) row.get("playlist_id");
-            // Assuming you have methods to create playlist and music objects from the row data
+            String country = (String) row.get("country"); // Assuming country is part of the returned row
             Playlist playlist = DAOPlaylistMySQL.getPlaylistById(playlistId);
             Music music = DAOMusicMySQL.getMusicById((int) row.get("music_id"));
 
-            // Check if the playlist already has an entry in the map
-            PlaylistMusic playlistMusic = playlistMusicMap.get(playlistId);
-            if (playlistMusic == null) {
-                playlistMusic = new PlaylistMusic(playlist, new ArrayList<>());
-                playlistMusicMap.put(playlistId, playlistMusic);
-            }
-            // Add the music to the playlist's music list
-            playlistMusic.getMusic().add(music);
+            // Check if the country already has an entry in the map
+            PlaylistMusic playlistMusic = new PlaylistMusic(playlist, Collections.singletonList(music));
+            playlistMusicByCountry.computeIfAbsent(country, k -> new ArrayList<>()).add(playlistMusic);
         }
+        System.out.println("PlaylistMusic by country: " + playlistMusicByCountry);
+        // Return the map
+        return playlistMusicByCountry;
 
-        // Extract the PlaylistMusic objects from the map
-        List<PlaylistMusic> playlistMusics = new ArrayList<>(playlistMusicMap.values());
-
-        return playlistMusics;
     }
-
 
     /**
      * Méthode pour récupérer une PlaylistMusic par son ID.
@@ -144,7 +138,7 @@ public class DAOPlaylistMusicMySQL extends DAOPlaylistMusic {
             return null;
         } else {System.out.println("Musique récupérée: " + music);}
 
-        String sql = "INSERT INTO PlaylistMusic (playlist_id, music_id) VALUES (?, ?)";
+        String sql = "INSERT INTO playlistMusic (playlist_id, music_id) VALUES (?, ?)";
         try (Connection connection = this.requetesDB.getConnexion(); // utilisez getConnexion ou une méthode équivalente
              PreparedStatement requete = connection.prepareStatement(sql)) {
             requete.setInt(1, playlist.getPlaylistId());
@@ -161,6 +155,75 @@ public class DAOPlaylistMusicMySQL extends DAOPlaylistMusic {
         System.out.println("Musique ajoutée avec succès à la playlist.");
         return new PlaylistMusic(playlist, getAllMusicByPlaylist(playlist.getPlaylistId()));
     }
+    @Override
+    public PlaylistMusic getPlaylistMusicByCountry(String country) throws Exception {
+        // Set up the JOIN and WHERE conditions for the SQL query
+        String mainTable = "playlistMusic";
+        List<String> joinTables = Arrays.asList("playlist", "music");
+        List<String> onConditions = Arrays.asList(
+                "playlistMusic.playlist_id = playlist.id",
+                "playlistMusic.music_id = music.id"
+        );
+        Map<String, Object> whereConditions = new HashMap<>();
+        whereConditions.put("playlist.country", country); // Adjusted to filter by country
 
+        // Execute the query
+        MapperResultSet result;
+        try {
+            result = requetesDB.selectWithJoin(mainTable, joinTables, onConditions, whereConditions);
+            System.out.println("Result: " + result.getListData());
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new ExceptionDB("Error retrieving PlaylistMusic by country: " + e.getMessage(), e);
+        }
+
+        // Check the result and create PlaylistMusic if not empty
+        if (!result.getListData().isEmpty()) {
+            // Assuming that there is only one playlist per country, so we take the first one
+            Map<String, Object> firstRow = result.getListData().get(0);
+            int playlistId = (int) firstRow.get("playlist_id");
+            Playlist playlist = DAOPlaylistMySQL.getPlaylistById(playlistId); // Assuming this method exists and works properly
+
+            // Get the list of Music for this playlist
+            List<Music> musicList = getAllMusicByPlaylist(playlistId);
+
+            // Create the PlaylistMusic object
+            PlaylistMusic playlistMusic = new PlaylistMusic(playlist, musicList);
+            System.out.println("playlistMusic for country: " + country + " - " + playlistMusic);
+            return playlistMusic;
+        } else {
+            System.out.println("No PlaylistMusic found for country: " + country);
+            return null;
+        }
+    }
+    @Override
+    public List<PlaylistMusic> getAllPlaylistMusic() throws Exception {
+        List<PlaylistMusic> playlistMusics = new ArrayList<>();
+        try {
+            //Appel de la méthode selectAll de RequetesMySQL
+            MapperResultSet playlistMusicData = ((RequetesMySQL) requetesDB).selectAll(table);
+            // Parcourir le MapperResultSet et construire la liste des users
+            List<Map<String, Object>> listData = playlistMusicData.getListData();
+            for (Map<String, Object> row : listData) {
+                try {
+                    Integer id = (Integer) row.get("id");
+                    Integer playlistId = (Integer) row.get("playlist_id");
+                    Integer musicId = (Integer) row.get("music_id");
+
+                    Playlist playlist = DAOPlaylistMySQL.getPlaylistById(playlistId);
+                    List<Music> music = getAllMusicByPlaylist(playlistId);
+
+                    PlaylistMusic playlistMusic = new PlaylistMusic(playlist, music);
+                    playlistMusics.add(playlistMusic);
+                } catch (Exception e) {
+                    System.out.println("Erreur lors de la récupération d'une playlistMusic : " + e.getMessage());
+                    e.printStackTrace();
+                }
+            }
+        } catch (Exception e) {
+            throw new Exception("Erreur lors de la récupération de la playlistMusic par nom", e);
+        }
+        return playlistMusics;
+    }
 
 }

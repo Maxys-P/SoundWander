@@ -4,30 +4,32 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
+<BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
+            stylesheets="@../../styles/Style.css"
             fx:controller="com.sw.controllers.search.ControllerSearch"
-            prefHeight="400.0" prefWidth="600.0"
-            stylesheets="@../../styles/Style.css">
-    <VBox fx:id="conteneurSearch" alignment="CENTER" spacing="20" styleClass="conteneur" AnchorPane.rightAnchor="150" AnchorPane.leftAnchor="150">
-        <Button text="X" styleClass="close-button" AnchorPane.rightAnchor="0" onAction="#closeSearch"/>
-        <ComboBox fx:id="comboBoxType" prefWidth="200.0" promptText="Que cherchez-vous ?" styleClass="champ"/>
-        <HBox alignment="BASELINE_CENTER">
-            <TextField fx:id="searchTerm" HBox.hgrow="ALWAYS" promptText="Tapez votre recherche ici" styleClass="champ"/>
-            <Button fx:id="doSearch" onAction="#performSearch" style="-fx-background-color: transparent;">
-                <graphic>
-                    <ImageView fitHeight="30" fitWidth="30" pickOnBounds="true" preserveRatio="true">
-                        <Image url="@../../../images/loupeIcon.png" />
-                    </ImageView>
-                </graphic>
-            </Button>
-        </HBox>
-        <VBox fx:id="result" VBox.vgrow="ALWAYS"/>
-        <!-- Label pour afficher les messages d'erreur. Initialement caché. -->
-        <Text fx:id="errorText" fill="RED" text="Aucun élément trouvé"/>
-        <ListView fx:id="searchResultsListView" VBox.vgrow="ALWAYS" />
+            prefHeight="400.0" prefWidth="600.0">
+<center>
+        <VBox alignment="CENTER" spacing="20" fx:id="conteneurSearch" styleClass="conteneur">
+            <ComboBox fx:id="comboBoxType" prefWidth="200.0" promptText="Que cherchez-vous ?" styleClass="champ"/>
+            <HBox alignment="BASELINE_CENTER">
+                <TextField fx:id="searchTerm" HBox.hgrow="ALWAYS" promptText="Tapez votre recherche ici" styleClass="champ"/>
+                <ComboBox fx:id="searchComboBox" HBox.hgrow="ALWAYS" visible="false" promptText="Sélectionnez une playlist" styleClass="champ"/>
+                <Button fx:id="doSearch" onAction="#performSearch" style="-fx-background-color: transparent;">
+                    <graphic>
+                        <ImageView fitHeight="30" fitWidth="30" pickOnBounds="true" preserveRatio="true">
+                            <Image url="@../../../images/loupeIcon.png" />
+                        </ImageView>
+                    </graphic>
+                </Button>
+            </HBox>
+            <VBox fx:id="result" VBox.vgrow="ALWAYS"/>
+            <!-- Label pour afficher les messages d'erreur. Initialement caché. -->
+            <Text fx:id="errorText" fill="RED" text="Aucun élément trouvé"/>
+            <ListView fx:id="searchResultsListView" VBox.vgrow="NEVER" style="-fx-padding: 10;"/>
+            <Region VBox.vgrow="ALWAYS" />
 
+        </VBox>
+</center>
 
-    </VBox>
-
-</AnchorPane>
+</BorderPane>

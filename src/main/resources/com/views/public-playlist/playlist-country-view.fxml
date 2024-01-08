@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Text?>
 
-<?import javafx.scene.layout.Region?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.sw.controllers.publicPlaylist.ControllerPlaylistCountry"
             stylesheets="@../../styles/Style.css"
             prefHeight="600.0" prefWidth="1200.0">
-
     <top>
         <fx:include source="../../components/user/header.fxml" />
     </top>
@@ -18,15 +19,12 @@
         <ScrollPane fitToWidth="true">
             <VBox alignment="CENTER" spacing="20">
                 <VBox alignment="CENTER" spacing="20" styleClass="conteneurProfile">
-                    <fx:include source="../../components/profil/info.fxml"/>
+                    <ListView fx:id="musicListView" />
                 </VBox>
             </VBox>
         </ScrollPane>
     </center>
-
-    <!-- Pied de page toujours visible en bas -->
     <bottom>
         <fx:include source="../../components/music-play/music-footer.fxml" />
     </bottom>
 </BorderPane>
-

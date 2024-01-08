@@ -27,11 +27,4 @@ public class Playlist {
     public String getPlaylistName() {return name;}
     public String getPlaylistCountry() {return country;}
     public String getPlaylistContinent() {return continent;}
-
-    public void setPlaylistId(int id) {this.id = id;}
-    public void setPlaylistName(String name) {this.name = name;}
-    public void setPlaylistCountry(String country) {this.country = country;}
-    public void setPlaylistContinent(String continent) {this.continent = continent;}
-
-
 }

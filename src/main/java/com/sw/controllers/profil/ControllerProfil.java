@@ -25,9 +25,9 @@ public abstract class ControllerProfil extends Controller{
         if (userFacade.currentUser instanceof Artist) {
             goToPage(controlEl, "artists/profil-artist.fxml", "Mon Profil d'Artiste");
         } else if (userFacade.currentUser instanceof MusicalExpert) {
-            goToPage(controlEl, "musical-experts/profil-musical-expert.fxml", "Mon Profil d'expert musical");
+            goToPage(controlEl, "musical-experts/home-musical-expert.fxml", "Mon Profil d'expert musical");
         } else if (userFacade.currentUser instanceof Admin) {
-            goToPage(controlEl, "admins/profil-admin.fxml", "Mon Profil d'admin");
+            goToPage(controlEl, "admins/home-admin.fxml", "Mon Profil d'admin");
         } else {
             goToPage(controlEl, "users/profil-user.fxml", "Mon Profil de wander");
         }
