@@ -2,6 +2,7 @@ package com.sw.controllers.publicPlaylist;
 
 import com.sw.classes.Music;
 import com.sw.classes.PlaylistMusic;
+import com.sw.commons.DataHolder;
 import com.sw.controllers.Controller;
 import com.sw.facades.FacadePlaylistMusic;
 import javafx.collections.FXCollections;
@@ -94,6 +95,7 @@ public class ControllerPlaylistMusic extends Controller {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/views/public-playlist/playlist-country-view.fxml"));
             Parent root = loader.load();
+            DataHolder.setCurrentPlaylistId(playlistMusicFacade.getPlaylistMusicByCountry(country).getPlaylist().getPlaylistId());
 
             // Access the controller of the playlist country view
             ControllerPlaylistCountry playlistCountryController = loader.getController();
@@ -113,6 +115,8 @@ public class ControllerPlaylistMusic extends Controller {
             playlistCountryStage.show();
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
     @FXML

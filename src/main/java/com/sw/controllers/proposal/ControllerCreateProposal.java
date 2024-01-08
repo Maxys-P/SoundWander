@@ -19,6 +19,8 @@ import javafx.scene.text.Text;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import com.neovisionaries.i18n.CountryCode;
+import javafx.stage.Stage;
+
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -129,6 +131,8 @@ public class ControllerCreateProposal extends ControllerProposal {
 
     @FXML
     private void closeWindow() throws ExceptionBadPage {
+        Stage stage = (Stage) closeButton.getScene().getWindow();
+        stage.close();
         super.goToPage("artists/profil-artist.fxml", "Profil Artiste");
     }
 
