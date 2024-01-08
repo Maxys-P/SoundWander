@@ -22,6 +22,8 @@ public class ControllerHeader extends ControllerUser {
     private Button profilButton;
     @FXML
     private Button privatePlaylistButton;
+    @FXML
+    private Button messageButton;
 
 
     @FXML
@@ -80,6 +82,13 @@ public class ControllerHeader extends ControllerUser {
         }
     }
 
-    // Méthodes supplémentaires pour la navigation ou la logique de gestion des événements
+    @FXML
+    private void goMessage() {
+        try {
+            super.goToPage(messageButton, "users/messageView.fxml", "messagerie");
+        } catch (Exception e) {
+            e.printStackTrace(); // Handle the exception appropriately
+        }
+    }
 
 }

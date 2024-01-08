@@ -583,5 +583,32 @@ public class DAOUserMySQL extends DAOUser {
         }
     }
 
+    /**
+     * Méthode pour récupérer un utilisateur par son pseudo
+     * @param pseudo String, le pseudo de l'utilisateur
+     * @return User, l'utilisateur récupéré
+     * @throws Exception si problème pendant la récupération du user
+     */
+    @Override
+    public User getUserByPseudo(String pseudo) throws Exception {
+        Map<String, Object> conditions = new HashMap<>();
+        conditions.put("pseudo", pseudo);
+
+        try {
+            MapperResultSet userData = ((RequetesMySQL) requetesDB).selectWhere(table, conditions);
+            if (!userData.getListData().isEmpty()) {
+                Map<String, Object> userDetails = userData.getListData().getFirst();
+                User user = setUserRole(userDetails);
+                user.setPrivatePlaylist(getPrivatePlaylist(user.getId()));
+                return user;
+            } else {
+                throw new ExceptionDB("Aucun utilisateur trouvé avec le pseudo " + pseudo);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new Exception("Erreur lors de la récupération de l'utilisateur par pseudo", e);
+        }
+    }
+
 
 }

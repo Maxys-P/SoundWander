@@ -220,3 +220,33 @@
     -fx-padding: 10px;
     -fx-alignment: center;
 }
+
+/* ############ MESSAGES ############ */
+
+.message-box{
+    -fx-background-color: #5A93A480;
+    -fx-border-color: #416569; /* Couleur de la bordure */
+    -fx-border-width: 2px; /* Largeur de la bordure */
+    -fx-border-style: solid; /* Style de la bordure */
+    -fx-padding: 10px 15px 10px 15px; /* Haut, Droit, Bas, Gauche */
+    -fx-background-radius: 20 20 0 20; /* Haut gauche, haut droite, bas droite, bas gauche */
+    -fx-border-radius: 20 20 0 20; /* Haut gauche, haut droite, bas droite, bas gauche */
+    -fx-font-family: 'Mirza Regular'; /* La police du texte du bouton */
+    -fx-font-size: 12px; /* La taille de la police du bouton */
+    -fx-margin: 20px;
+}
+
+.message-box-received{
+    -fx-background-color: #D9D9D9;
+    -fx-border-color: darkgrey; /* Couleur de la bordure */
+    -fx-border-width: 2px; /* Largeur de la bordure */
+    -fx-border-style: solid; /* Style de la bordure */
+    -fx-padding: 10px 15px 10px 15px; /* Haut, Droit, Bas, Gauche */
+    -fx-font-family: 'Mirza Regular'; /* La police du texte du bouton */
+    -fx-font-size: 12px; /* La taille de la police du bouton */
+    -fx-background-radius: 20 20 20 0; /* Haut gauche, haut droite, bas droite, bas gauche */
+     -fx-border-radius: 20 20 20 0; /* Haut gauche, haut droite, bas droite, bas gauche */
+
+    -fx-margin: 20px;
+}
+

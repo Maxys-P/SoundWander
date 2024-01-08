@@ -20,6 +20,13 @@
                     </ImageView>
                 </graphic>
             </Button>
+            <Button fx:id="messageButton" onAction="#goMessage" style="-fx-background-color: transparent;">
+                <graphic>
+                    <ImageView fitHeight="50" fitWidth="50" pickOnBounds="true" preserveRatio="true">
+                        <Image url="@../../../images/message.png" />
+                    </ImageView>
+                </graphic>
+            </Button>
             <HBox HBox.hgrow="ALWAYS" style="-fx-background-color: transparent;"> <!-- Cette boîte est invisible et sert à pousser les éléments suivants vers la droite -->
                 <Pane HBox.hgrow="ALWAYS"/>
             </HBox>
