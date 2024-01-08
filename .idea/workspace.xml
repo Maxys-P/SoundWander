@@ -5,26 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="488cdd30-80e1-4c58-a706-5bdc807ad006" name="Changes" comment="Payment réparé">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/views/home/home-admin.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/views/home/home-musical-expert.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/classes/Playlist.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/classes/Playlist.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/controllers/admins/ControllerAdmin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/admins/ControllerAdmin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/controllers/profil/ControllerProfil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/profil/ControllerProfil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/controllers/profil/ControllerProfilUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/profil/ControllerProfilUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/controllers/publicPlaylist/ControllerPlaylist.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/publicPlaylist/ControllerPlaylist.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/controllers/search/ControllerSearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/search/ControllerSearch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/controllers/users/ControllerHeader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/users/ControllerHeader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/controllers/users/ControllerLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/users/ControllerLogin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/controllers/users/ControllerRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/users/ControllerRegister.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/controllers/users/ControllerUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/users/ControllerUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/components/music-play/music-footer.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/components/music-play/music-footer.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/components/profil/info.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/components/profil/info.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/components/search/search.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/components/search/search.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/components/user/header.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/components/user/header.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/views/admins/profil-admin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/views/admins/profil-admin.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/views/musical-experts/profil-musical-expert.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/views/musical-experts/profil-musical-expert.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/views/users/register-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/views/users/register-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/commons/DataHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/commons/DataHolder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/controllers/proposal/ControllerCreateProposal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/proposal/ControllerCreateProposal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/controllers/publicPlaylist/ControllerPlaylistMusic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/publicPlaylist/ControllerPlaylistMusic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/facades/FacadeMusic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/facades/FacadeMusic.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,7 +78,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "auriane",
+    "git-widget-placeholder": "margaux",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/maxys/Desktop/SoundWander/src/main/resources/com/components/admin",
     "node.js.detected.package.eslint": "true",

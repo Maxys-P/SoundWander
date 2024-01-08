@@ -1,7 +1,9 @@
 package com.sw.facades;
 
 import com.sw.classes.Music;
+import com.sw.commons.DataHolder;
 import com.sw.dao.DAOMusic;
+import com.sw.dao.DAOPlaylistMusic;
 import com.sw.dao.boiteAOutils.PlayMusicFromBD;
 import com.sw.dao.factories.FactoryDAO;
 import javafx.beans.property.ObjectProperty;
@@ -14,15 +16,18 @@ import javafx.beans.property.SimpleBooleanProperty;
 import java.util.List;
 
 public class FacadeMusic extends Facade{
+    protected FactoryDAO f = FactoryDAO.getInstanceofFactoryDAO();
     private ObjectProperty<Music> currentMusicProperty = new SimpleObjectProperty<>();
     private SimpleBooleanProperty isPlayingProperty = new SimpleBooleanProperty(false);
     private static FacadeMusic instance = null;
     private DAOMusic daoMusic;
+    private DAOPlaylistMusic daoPlaylistMusic;
     private Music currentMusic;
     private double lastPosition = 0.0;
 
     private FacadeMusic(){
-        this.daoMusic = FactoryDAO.getInstanceofFactoryDAO().getInstanceofDAOMusic();
+        this.daoMusic = f.getInstanceofDAOMusic();
+        this.daoPlaylistMusic = f.getDAOPlaylistMusic();
     }
 
     public static FacadeMusic getInstance() {
@@ -68,13 +73,25 @@ public class FacadeMusic extends Facade{
     public void stopMusic(){
         PlayMusicFromBD.stopMusic();
     }
-    public Music playNextMusic(int currentId) throws Exception {
+    public Music playNextMusic(int currentMusicId) throws Exception {
         try {
-            Music nextMusic = daoMusic.getNextMusic(currentId);  // Attempt to get the next music
-            if (nextMusic != null) {
+            int playlistId = DataHolder.getCurrentPlaylistId();  // Retrieve the current playlist id
+            List<Music> playlistMusics = daoPlaylistMusic.getAllMusicByPlaylist(playlistId); // Fetch all the songs in the playlist
+            // Find the current song's index in the playlist
+            int currentIndex = -1;
+            for (int i = 0; i < playlistMusics.size(); i++) {
+                if (playlistMusics.get(i).getId() == currentMusicId) {
+                    currentIndex = i;
+                    break;
+                }
+            }
+            // Determine the next song to play
+            if (currentIndex >= 0 && currentIndex < playlistMusics.size() - 1) { // Ensure there is a next song
+                Music nextMusic = playlistMusics.get(currentIndex + 1);
                 byte[] musicData = nextMusic.getMusicFile();
-                currentMusicProperty.set(nextMusic); // Update the current music property
+
                 if (musicData != null) {
+                    currentMusicProperty.set(nextMusic); // Update the current music property
                     PlayMusicFromBD.playMusicFromBD(musicData); // Play the next music
                     currentMusic = nextMusic; // Update current music
                     return nextMusic;
@@ -82,23 +99,33 @@ public class FacadeMusic extends Facade{
                     System.out.println("No music data found for the next music.");
                 }
             } else {
-                System.out.println("Next music not found for the selected ID.");
+                // Handle the end of the playlist or no next song found
+                System.out.println("Reached end of playlist or next music not found.");
             }
             return null; // Return null or handle it as required
         } catch (Exception e) {
             throw new Exception("Error when playing the next music", e);
         }
-
     }
-
-
-    public Music playPreviousMusic(int id) throws Exception {
+    public Music playPreviousMusic(int currentMusicId) throws Exception {
         try {
-            Music previousMusic = daoMusic.getPreviousMusic(id);  // Attempt to get the previous music
-            if (previousMusic != null) {
+            int playlistId = DataHolder.getCurrentPlaylistId(); // Retrieve the current playlist id
+            List<Music> playlistMusics = daoPlaylistMusic.getAllMusicByPlaylist(playlistId); // Fetch all the songs in the playlist
+            // Find the current song's index in the playlist
+            int currentIndex = -1;
+            for (int i = 0; i < playlistMusics.size(); i++) {
+                if (playlistMusics.get(i).getId() == currentMusicId) {
+                    currentIndex = i;
+                    break;
+                }
+            }
+            // Determine the previous song to play
+            if (currentIndex > 0) { // Ensure there is a previous song
+                Music previousMusic = playlistMusics.get(currentIndex - 1);
                 byte[] musicData = previousMusic.getMusicFile();
-                currentMusicProperty.set(previousMusic); // Update the current music property
+
                 if (musicData != null) {
+                    currentMusicProperty.set(previousMusic); // Update the current music property
                     PlayMusicFromBD.playMusicFromBD(musicData); // Play the previous music
                     currentMusic = previousMusic; // Update current music
                     return previousMusic;
@@ -106,7 +133,8 @@ public class FacadeMusic extends Facade{
                     System.out.println("No music data found for the previous music.");
                 }
             } else {
-                System.out.println("Previous music not found for the selected ID.");
+                // Handle the beginning of the playlist or no previous song found
+                System.out.println("Reached beginning of playlist or previous music not found.");
             }
             return null; // Return null or handle it as required
         } catch (Exception e) {
