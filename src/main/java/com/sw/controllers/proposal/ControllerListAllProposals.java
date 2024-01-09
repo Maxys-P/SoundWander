@@ -1,8 +1,10 @@
 package com.sw.controllers.proposal;
 
+import com.sw.classes.Playlist;
 import com.sw.classes.Proposal;
 import com.sw.classes.Music;
 import com.sw.facades.FacadeMusic;
+import com.sw.facades.FacadePlaylist;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -170,11 +172,16 @@ public class ControllerListAllProposals extends ControllerProposal {
         // Récupérer la proposition associée à ce bouton
         Proposal proposal = (Proposal) btn.getUserData();
         try {
-            boolean success = proposalFacade.acceptProposal(proposal.getId());
-            if (success) {
-                removeProposalFromUI(proposal.getId());
-                //TODO : Envoyer une notif à l'artiste pour lui dire que sa proposition a été acceptée
-                //TODO : Ajouter la musique à la playlist
+            String country = proposal.getCountry();
+            Playlist existingPlaylist = playlistFacade.getPlaylistByCountry(country);
+            if (existingPlaylist == null) {
+                throw new Exception("La proposition avec la playlist où country=" + country + " n'existe pas.");
+            } else {
+                // La playlist existe, vous pouvez accepter la proposition
+                if (proposalFacade.acceptProposal(proposal.getId())) {
+                    // La proposition a été acceptée avec succès, vous pouvez la supprimer
+                    removeProposalFromUI(proposal.getId());
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();

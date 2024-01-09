@@ -72,9 +72,9 @@ public class ControllerPlaylist extends Controller {
                 String country = Country.getValue();
                 String continent = Continent.getValue();
                 playlistFacade.addPublicPlaylist(name, country, continent);
+                goToPage("home/home-musical-expert.fxml", "Home");
                 Stage currentStage = (Stage) PlaylistName.getScene().getWindow();
                 currentStage.close();
-                goToPage("musical-experts/home-musical-expert.fxml", "Mon profil");
             } catch (Exception e) {
                 e.printStackTrace();
                 throw new ExceptionBadPage("Erreur lors de la création de la playlist publique");

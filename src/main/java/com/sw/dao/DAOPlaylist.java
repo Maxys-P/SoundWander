@@ -14,9 +14,4 @@ public abstract class DAOPlaylist extends DAO implements Searchable {
     public abstract Playlist getPlaylistById(int id) throws Exception;
     public abstract void addPlaylist(String name, String country, String continent) throws Exception;
     public abstract List<Playlist> getAllPlaylist() throws Exception;
-
-
-
-
-
 }

@@ -26,6 +26,14 @@ public class FacadePlaylist extends Facade{
         }
     }
 
+    public Playlist getPlaylistByCountry(String country) throws Exception {
+        try {
+            return daoPlaylist.getPlaylistByCountry(country);
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+
     public void addPublicPlaylist(String name, String country, String continent) throws Exception {
         try {
             daoPlaylist.addPlaylist(name, country, continent);
