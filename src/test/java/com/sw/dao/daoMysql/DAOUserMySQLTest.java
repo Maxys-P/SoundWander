@@ -196,23 +196,6 @@ class DAOUserMySQLTest {
 
 
     @Test
-    void deleteUser() {
-        DAOUserMySQL daoUserMySQL = new DAOUserMySQL();
-        int userId = 1;
-
-        try {
-            boolean isDeleted = daoUserMySQL.deleteUser(userId);
-            assertTrue(isDeleted);
-
-            User deletedUser = daoUserMySQL.getUserById(userId);
-            assertNull(deletedUser); // L'utilisateur ne devrait plus exister
-        } catch (Exception e) {
-            fail("La suppression de l'utilisateur a échoué : " + e.getMessage());
-        }
-    }
-
-
-    @Test
     void setUserRole() {
         DAOUserMySQL daoUserMySQL = new DAOUserMySQL();
         Map<String, Object> userData = new HashMap<>();

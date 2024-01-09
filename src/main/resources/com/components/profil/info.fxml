@@ -45,8 +45,9 @@
     <StackPane alignment="CENTER">
         <Button fx:id="boutonModifier" text="Modifier" onAction="#handleEditAction" styleClass="boutonBleu"/>
         <Button fx:id="boutonSave" text="Enregistrer" onAction="#handleButtonSave" styleClass="boutonBleu" visible="false"/>
-        <Button fx:id="boutonDeconnexion" text="Déconnexion" onAction="#handleButtonDeconnexion" styleClass="boutonBleu"/>
+
     </StackPane>
+    <Button fx:id="boutonDeconnexion" text="Déconnexion" onAction="#handleButtonDeconnexion" styleClass="boutonBleu"/>
 
 
 
