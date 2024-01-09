@@ -68,7 +68,6 @@ public class ControllerMessageView {
             receiverField.clear();
             contentField.clear();
 
-            // TODO: Ajoutez ici la logique pour mettre à jour l'affichage des messages
 
         } catch (Exception e) {
             // Gestion des erreurs: afficher une alerte ou un message à l'utilisateur
@@ -141,10 +140,6 @@ public class ControllerMessageView {
                 stage.setTitle("Conversation");
                 stage.setScene(new Scene(root));
                 stage.show();
-
-                // Ajouter un écouteur pour arrêter l'auto-refresh lorsque la fenêtre est fermée
-                stage.setOnCloseRequest(event -> controller.stopAutoRefresh());
-                stage.setOnHidden(event -> controller.stopAutoRefresh());
 
             }
         } catch (IOException e) {

@@ -62,6 +62,7 @@ public class ControllerLogin extends ControllerUser {
      */
     @FXML
     private void handleButtonLogin() {
+        System.out.println("Connexion en cours ...");
         try {
             // Vérifie que tous les champs sont remplis.
             verifForm();
@@ -79,6 +80,7 @@ public class ControllerLogin extends ControllerUser {
                 }
 
                 Facade.currentUser = user;
+                System.out.println("Connexion réussie !");
                 goToHome(scope);
             }
         } catch (Exception e) {
@@ -91,6 +93,7 @@ public class ControllerLogin extends ControllerUser {
      */
     @FXML
     private void goToHome(String scope) {
+        System.out.println("[controller Login] Redirection vers la page d'accueil ...");
         try {
             super.hideError(errorText);
             super.goToHome(boutonValider, scope);

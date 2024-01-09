@@ -37,6 +37,7 @@ public abstract class ControllerUser extends Controller {
      * @throws ExceptionBadPage si problème pendant le chargement de la page
      */
     void goToHome(Control controlEl, String scope) throws ExceptionBadPage {
+        System.out.println("[controller User] Redirection vers la page d'accueil ...");
         String pathUser = "home/";
         goToPage(controlEl, pathUser + "home-" + scope + ".fxml", "Page d'accueil");
     }
