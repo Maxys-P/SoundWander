@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="488cdd30-80e1-4c58-a706-5bdc807ad006" name="Changes" comment="message exchange ok">
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/sw/classes/MessageTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/sw/dao/daoMysql/DAOConversationMySQLTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/sw/dao/daoMysql/DAOMessageMySQLTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/controllers/publicPlaylist/ControllerPlaylistMusic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/publicPlaylist/ControllerPlaylistMusic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/dao/daoMysql/DAOPlaylistMusicMySQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/dao/daoMysql/DAOPlaylistMusicMySQL.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +82,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "57-tests-mateo",
+    "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/maxys/Desktop/SoundWander/src/main/resources/com/components/admin",
     "node.js.detected.package.eslint": "true",
@@ -122,7 +122,20 @@
       <recent name="com.sw.dao.boiteAOutils" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.DAOUserMySQLTest">
+  <component name="RunManager" selected="Application.App">
+    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.sw.App" />
+      <module name="SoundWander" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.sw.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="DAOConversationMySQLTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SoundWander" />
       <extension name="coverage">
@@ -149,22 +162,6 @@
       <option name="PACKAGE_NAME" value="com.sw.dao.daoMysql" />
       <option name="MAIN_CLASS_NAME" value="com.sw.dao.daoMysql.DAOMessageMySQLTest" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="DAOMessageMySQLTest.getMessage" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="SoundWander" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.sw.dao.daoMysql.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.sw.dao.daoMysql" />
-      <option name="MAIN_CLASS_NAME" value="com.sw.dao.daoMysql.DAOMessageMySQLTest" />
-      <option name="METHOD_NAME" value="getMessage" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -200,19 +197,19 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Application.App" />
       <item itemvalue="JUnit.DAOConversationMySQLTest" />
       <item itemvalue="JUnit.DAOMessageMySQLTest" />
-      <item itemvalue="JUnit.DAOMessageMySQLTest.getMessage" />
       <item itemvalue="JUnit.DAOUserMySQLTest" />
       <item itemvalue="JUnit.MessageTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.App" />
         <item itemvalue="JUnit.DAOUserMySQLTest" />
         <item itemvalue="JUnit.DAOConversationMySQLTest" />
         <item itemvalue="JUnit.MessageTest" />
         <item itemvalue="JUnit.DAOMessageMySQLTest" />
-        <item itemvalue="JUnit.DAOMessageMySQLTest.getMessage" />
       </list>
     </recent_temporary>
   </component>

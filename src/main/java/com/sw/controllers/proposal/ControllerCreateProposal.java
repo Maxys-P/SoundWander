@@ -131,9 +131,9 @@ public class ControllerCreateProposal extends ControllerProposal {
 
     @FXML
     private void closeWindow() throws ExceptionBadPage {
-        Stage stage = (Stage) closeButton.getScene().getWindow();
-        stage.close();
         super.goToPage("artists/profil-artist.fxml", "Profil Artiste");
+        Stage stage = (Stage) submitButton.getScene().getWindow();
+        stage.close();
     }
 
 

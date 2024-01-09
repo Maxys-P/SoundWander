@@ -48,7 +48,6 @@ public class DAOPlaylistMusicMySQL extends DAOPlaylistMusic {
         MapperResultSet result;
         try {
             result = requetesDB.selectWithJoin(mainTable, joinTables, onConditions, whereConditions);
-            System.out.println("Result: " + result.getListData());
         } catch (Exception e) {
             e.printStackTrace();
             throw new ExceptionDB("Error retrieving PlaylistMusic by continent: " + e.getMessage(), e);
@@ -66,7 +65,6 @@ public class DAOPlaylistMusicMySQL extends DAOPlaylistMusic {
             PlaylistMusic playlistMusic = new PlaylistMusic(playlist, Collections.singletonList(music));
             playlistMusicByCountry.computeIfAbsent(country, k -> new ArrayList<>()).add(playlistMusic);
         }
-        System.out.println("PlaylistMusic by country: " + playlistMusicByCountry);
         // Return the map
         return playlistMusicByCountry;
 
@@ -171,7 +169,6 @@ public class DAOPlaylistMusicMySQL extends DAOPlaylistMusic {
         MapperResultSet result;
         try {
             result = requetesDB.selectWithJoin(mainTable, joinTables, onConditions, whereConditions);
-            System.out.println("Result: " + result.getListData());
         } catch (Exception e) {
             e.printStackTrace();
             throw new ExceptionDB("Error retrieving PlaylistMusic by country: " + e.getMessage(), e);
@@ -189,7 +186,6 @@ public class DAOPlaylistMusicMySQL extends DAOPlaylistMusic {
 
             // Create the PlaylistMusic object
             PlaylistMusic playlistMusic = new PlaylistMusic(playlist, musicList);
-            System.out.println("playlistMusic for country: " + country + " - " + playlistMusic);
             return playlistMusic;
         } else {
             System.out.println("No PlaylistMusic found for country: " + country);
@@ -206,7 +202,6 @@ public class DAOPlaylistMusicMySQL extends DAOPlaylistMusic {
             List<Map<String, Object>> listData = playlistMusicData.getListData();
             for (Map<String, Object> row : listData) {
                 try {
-                    Integer id = (Integer) row.get("id");
                     Integer playlistId = (Integer) row.get("playlist_id");
                     Integer musicId = (Integer) row.get("music_id");
 

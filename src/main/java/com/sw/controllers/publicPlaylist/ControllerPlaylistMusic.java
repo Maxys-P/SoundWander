@@ -38,10 +38,8 @@ public class ControllerPlaylistMusic extends Controller {
      */
     public void initialize() {
         continentNameText.sceneProperty().addListener((observable, oldValue, newValue) -> {
-            System.out.println("ControllerPlaylistMusic scene vaut : " + newValue);
             if (newValue != null) {
                 newValue.windowProperty().addListener((obs, oldWindow, newWindow) -> {
-                    System.out.println("ControllerPlaylistMusic stage vaut : " + newWindow);
                     if (newWindow instanceof Stage){
                         Stage stage = (Stage) newWindow;
                         String continentName = stage.getTitle();
@@ -136,14 +134,8 @@ public class ControllerPlaylistMusic extends Controller {
 
             // Access the controller of the playlist country view
             ControllerPlaylistCountry playlistCountryController = loader.getController();
-            if (playlistCountryController == null) {
-                System.out.println("ControllerPlaylistMusic playlistCountryController est null");
-            } else {
-                System.out.println("ControllerPlaylistMusic playlistCountryController n'est pas null");
-            }
             // Pass the selected country to the playlist country view controller
             playlistCountryController.setCountry(country);
-            System.out.println("ControllerPlaylistMusic country vaut : " + country);
 
             // Create a new scene and stage for the playlist country view
             Scene playlistCountryScene = new Scene(root);
