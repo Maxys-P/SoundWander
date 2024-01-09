@@ -83,7 +83,7 @@ public class ControllerPlaylist extends Controller {
     }
     @FXML
     private void goBack() throws ExceptionBadPage {
-        goToPage(boutonRetour,"musical-experts/home-musical-expert.fxml", "Mon profil");
+        goToPage(boutonRetour,"home/home-musical-expert.fxml", "Mon profil");
     }
 
 }
