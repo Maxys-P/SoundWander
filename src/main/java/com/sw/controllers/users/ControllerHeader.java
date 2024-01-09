@@ -100,6 +100,7 @@ public class ControllerHeader extends ControllerUser {
         }
     }
 
+    @FXML
     private void goToHome() {
         User user = Facade.currentUser;
         if (user != null) {

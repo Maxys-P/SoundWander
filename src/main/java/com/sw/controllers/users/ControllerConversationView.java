@@ -9,6 +9,7 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
@@ -30,6 +31,8 @@ public class ControllerConversationView {
     private TextField contentField; // Ajouté pour afficher les messages
     @FXML
     private ScrollPane scrollPane;
+    @FXML
+    private Button refreshButton; // Bouton de rafraîchissement
 
     private String otherUserName;
     private String conversationId; // L'ID de la conversation (à définir)
@@ -38,15 +41,6 @@ public class ControllerConversationView {
     private User otherUser;
     private Timeline refreshMessagesTimeline;
 
-    public void initialize() {
-        setupAutoRefresh();
-    }
-
-    private void setupAutoRefresh() {
-        refreshMessagesTimeline = new Timeline(new KeyFrame(Duration.seconds(5), event -> loadMessages()));
-        refreshMessagesTimeline.setCycleCount(Timeline.INDEFINITE);
-        refreshMessagesTimeline.play();
-    }
 
     public void setOtherUserName(String otherUserName) {
         this.otherUserName = otherUserName;
@@ -100,11 +94,6 @@ public class ControllerConversationView {
     }
 
 
-    @FXML
-    private void handleSendMessage() {
-    }
-
-
     public void setOtherUser(User otherUser) {
         this.otherUser = otherUser;
         otherUserLabel.setText("Conversation avec " + otherUser.getPseudo());
@@ -126,20 +115,12 @@ public class ControllerConversationView {
             scrollToBottom();
 
 
-
-            // TODO: Ajoutez ici la logique pour mettre à jour l'affichage des messages
-
         } catch (Exception e) {
             // Gestion des erreurs: afficher une alerte ou un message à l'utilisateur
             e.printStackTrace();
         }
     }
 
-    public void stopAutoRefresh() {
-        if (refreshMessagesTimeline != null) {
-            refreshMessagesTimeline.stop();
-        }
-    }
 
     private void scrollToBottom() {
         if (scrollPane != null) {
@@ -148,5 +129,10 @@ public class ControllerConversationView {
         }
     }
 
+    @FXML
+    private void handleRefreshMessages() {
+        loadMessages();
+        scrollToBottom();
+    }
 
 }
