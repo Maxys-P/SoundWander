@@ -2,6 +2,7 @@ package com.sw.controllers.users;
 
 import com.sw.classes.Music;
 import com.sw.classes.User;
+import com.sw.facades.FacadeMusic;
 import com.sw.facades.FacadePrivatePlaylist;
 import com.sw.facades.FacadeUser;
 import javafx.collections.FXCollections;
@@ -26,9 +27,11 @@ public class ControllerPrivatePlaylist {
     private ListView<Music> playlistListView;
 
     private FacadeUser userFacade;
+    private FacadeMusic musicFacade;
 
     public void initialize() throws Exception {
         userFacade = FacadeUser.getInstance();
+        musicFacade = FacadeMusic.getInstance();
         List<Music> privatePlaylist = getPrivatePlaylist();
 
         // Set the items in the ListView
@@ -55,8 +58,14 @@ public class ControllerPrivatePlaylist {
                                 throw new RuntimeException(e);
                             }
 
+                            Button playButton = new Button("Play");
+                            playButton.getStyleClass().add("play-button");
+                            playButton.setOnAction(event -> {
+                                // Logique pour lire la musique ici (utilisez la méthode playSelectedMusic)
+                                playSelectedMusic(music);
+                            });
 
-                            musicItemHBox.getChildren().addAll(musicTitleLabel, musicArtistLabel);
+                            musicItemHBox.getChildren().addAll(musicTitleLabel, musicArtistLabel, playButton);
                             setGraphic(musicItemHBox);
                         }
                     }
@@ -65,9 +74,19 @@ public class ControllerPrivatePlaylist {
         });
     }
 
+
     private List<Music> getPrivatePlaylist() throws Exception {
         User currentUser = userFacade.getCurrentUser();
         return userFacade.getPrivatePlaylist(currentUser.getId());
+    }
+
+    private void playSelectedMusic(Music music) {
+        try {
+            int musicId = music.getId();
+            musicFacade.playMusic(musicId);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }
