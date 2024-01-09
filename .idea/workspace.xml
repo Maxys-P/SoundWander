@@ -4,16 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="488cdd30-80e1-4c58-a706-5bdc807ad006" name="Changes" comment="Payment réparé">
+    <list default="true" id="488cdd30-80e1-4c58-a706-5bdc807ad006" name="Changes" comment="message exchange ok">
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/sw/classes/MessageTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/sw/dao/daoMysql/DAOConversationMySQLTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/sw/dao/daoMysql/DAOMessageMySQLTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/controllers/users/ControllerConversationView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/users/ControllerConversationView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/controllers/users/ControllerHeader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/users/ControllerHeader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/controllers/users/ControllerLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/users/ControllerLogin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/controllers/users/ControllerMessageView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/users/ControllerMessageView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/controllers/users/ControllerRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/users/ControllerRegister.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/controllers/users/ControllerUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/controllers/users/ControllerUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/styles/Style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/styles/Style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/views/users/conversationView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/views/users/conversationView.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +69,12 @@
     "Application.CreateTableUserScript.executor": "Run",
     "Application.Main.executor": "Run",
     "DefaultHtmlFileTemplate": "HTML File",
+    "JUnit.DAOConversationMySQLTest.executor": "Run",
+    "JUnit.DAOMessageMySQLTest.createMessage.executor": "Run",
+    "JUnit.DAOMessageMySQLTest.executor": "Run",
+    "JUnit.DAOMessageMySQLTest.getMessage.executor": "Run",
     "JUnit.DAOUserMySQLTest.executor": "Run",
+    "JUnit.MessageTest.executor": "Run",
     "JUnit.UserTest.executor": "Run",
     "JUnit.UserTest.testToString.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
@@ -122,47 +122,69 @@
       <recent name="com.sw.dao.boiteAOutils" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.App">
-    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.sw.App" />
+  <component name="RunManager" selected="JUnit.DAOUserMySQLTest">
+    <configuration name="DAOConversationMySQLTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SoundWander" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.sw.*" />
+          <option name="PATTERN" value="com.sw.dao.daoMysql.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="com.sw.dao.daoMysql" />
+      <option name="MAIN_CLASS_NAME" value="com.sw.dao.daoMysql.DAOConversationMySQLTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CreateTableUserScript" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.sw.dao.CreateTableUserScript" />
+    <configuration name="DAOMessageMySQLTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SoundWander" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.sw.dao.*" />
+          <option name="PATTERN" value="com.sw.dao.daoMysql.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="com.sw.dao.daoMysql" />
+      <option name="MAIN_CLASS_NAME" value="com.sw.dao.daoMysql.DAOMessageMySQLTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.sw.Main" />
+    <configuration name="DAOMessageMySQLTest.getMessage" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SoundWander" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.sw.*" />
+          <option name="PATTERN" value="com.sw.dao.daoMysql.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="com.sw.dao.daoMysql" />
+      <option name="MAIN_CLASS_NAME" value="com.sw.dao.daoMysql.DAOMessageMySQLTest" />
+      <option name="METHOD_NAME" value="getMessage" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserTest.testToString" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="DAOUserMySQLTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SoundWander" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.sw.dao.daoMysql.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.sw.dao.daoMysql" />
+      <option name="MAIN_CLASS_NAME" value="com.sw.dao.daoMysql.DAOUserMySQLTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MessageTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SoundWander" />
       <extension name="coverage">
         <pattern>
@@ -171,26 +193,26 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.sw.classes" />
-      <option name="MAIN_CLASS_NAME" value="com.sw.classes.UserTest" />
-      <option name="METHOD_NAME" value="testToString" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="MAIN_CLASS_NAME" value="com.sw.classes.MessageTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.CreateTableUserScript" />
-      <item itemvalue="Application.Main" />
-      <item itemvalue="Application.App" />
-      <item itemvalue="JUnit.UserTest.testToString" />
+      <item itemvalue="JUnit.DAOConversationMySQLTest" />
+      <item itemvalue="JUnit.DAOMessageMySQLTest" />
+      <item itemvalue="JUnit.DAOMessageMySQLTest.getMessage" />
+      <item itemvalue="JUnit.DAOUserMySQLTest" />
+      <item itemvalue="JUnit.MessageTest" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.App" />
-        <item itemvalue="JUnit.UserTest.testToString" />
-        <item itemvalue="Application.Main" />
-        <item itemvalue="Application.CreateTableUserScript" />
-        <item itemvalue="Application.App" />
+        <item itemvalue="JUnit.DAOUserMySQLTest" />
+        <item itemvalue="JUnit.DAOConversationMySQLTest" />
+        <item itemvalue="JUnit.MessageTest" />
+        <item itemvalue="JUnit.DAOMessageMySQLTest" />
+        <item itemvalue="JUnit.DAOMessageMySQLTest.getMessage" />
       </list>
     </recent_temporary>
   </component>
@@ -314,7 +336,15 @@
       <option name="project" value="LOCAL" />
       <updated>1704720425727</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="message exchange ok">
+      <option name="closed" value="true" />
+      <created>1704760995276</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1704760995276</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -350,7 +380,23 @@
     <MESSAGE value="carte" />
     <MESSAGE value="un peu de style" />
     <MESSAGE value="lecture des musiques en fonction de la playlist" />
-    <option name="LAST_COMMIT_MESSAGE" value="lecture des musiques en fonction de la playlist" />
+    <MESSAGE value="message exchange ok" />
+    <option name="LAST_COMMIT_MESSAGE" value="message exchange ok" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/test/java/com/sw/dao/daoMysql/DAOMessageMySQLTest.java</url>
+          <line>53</line>
+          <properties class="com.sw.dao.daoMysql.DAOMessageMySQLTest" method="getMessage">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
