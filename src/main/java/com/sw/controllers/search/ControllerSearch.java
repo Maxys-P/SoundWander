@@ -76,7 +76,10 @@ public class ControllerSearch extends Controller {
                     // Vous devrez personnaliser l'affichage en fonction du type d'objet (Musique ou Playlist)
                     if (item instanceof Music) {
                         setText(((Music) item).getName());
-                    } else if (item instanceof Playlist) {
+                    } else if (item instanceof Artist) {
+                        setText(((Artist) item).getPseudo());
+                    }
+                    else if (item instanceof Playlist) {
                         setText(((Playlist) item).getPlaylistCountry());
                     }
                 }
@@ -89,7 +92,11 @@ public class ControllerSearch extends Controller {
                     // L'utilisateur a sélectionné une musique
                     Music selectedMusic = (Music) newSelection;
                     launchMusicInControllerMusicPlay(selectedMusic);
-                } else if (newSelection instanceof Playlist) {
+                } else if (newSelection instanceof Artist) {
+                    // L'utilisateur a sélectionné un artiste
+                    Artist selectedArtist = (Artist) newSelection;
+                    displayArtistInfo(selectedArtist);
+                }else if (newSelection instanceof Playlist) {
                     // L'utilisateur a sélectionné une playlist
                     Playlist selectedPlaylist = (Playlist) newSelection;
                     displayPlaylist(selectedPlaylist);
@@ -143,7 +150,6 @@ public class ControllerSearch extends Controller {
         } else {
             errorText.setVisible(false);
 
-            // Utilisez une seule ListView pour afficher les résultats
             ListView<Object> listViewToUse = searchResultsListView;
 
             for (Object result : searchResult) {
